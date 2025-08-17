@@ -1,0 +1,12 @@
+**/*.*
+
+!eslint.config.js
+!index.html
+!README.md
+!tailwind.config.js
+!vite.config.ts
+
+!src/**/*
+
+src/i18n/*/index.json
+!src/i18n/en/index.json

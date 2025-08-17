@@ -1,0 +1,616 @@
+{
+    "title": "English (English)",
+    "commands": {
+        "bgm": {
+            "title": "BGM",
+            "changed": "Changed BGM",
+            "modal": {
+                "file": "File",
+                "offset": "Offset (ms)",
+                "loading": "Loading file...",
+                "decoding": "Decoding audio...",
+                "generating": "Generating waveform..."
+            }
+        },
+        "brush": {
+            "title": "Switch to Brush tool",
+            "switched": "Switched to Brush tool",
+            "modal": {
+                "title": "Brush Properties",
+                "color": "Color",
+                "scaleL": "Scale L",
+                "scaleR": "Scale R",
+                "ease": "Ease"
+            }
+        },
+        "copy": {
+            "title": "Copy",
+            "noSelected": "No object selected to copy",
+            "copied": "Copied {0} objects"
+        },
+        "cut": {
+            "title": "Cut",
+            "noSelected": "No object selected to cut",
+            "cut": "Cut {0} objects"
+        },
+        "deselect": {
+            "title": "Deselect",
+            "deselected": "Deselected all objects"
+        },
+        "divisions": {
+            "title": "Switch to 1/{0} division",
+            "switched": "Switched to 1/{0} division",
+            "custom": {
+                "title": "Switch to custom division",
+                "modal": {
+                    "title": "Custom Division",
+                    "division": "Division"
+                }
+            }
+        },
+        "eraser": {
+            "title": "Switch to Eraser tool",
+            "switched": "Switched to Eraser tool"
+        },
+        "flip": {
+            "title": "Flip",
+            "noSelected": "No object selected to flip",
+            "flipped": "Flipped {0} objects"
+        },
+        "groups": {
+            "groupAll": {
+                "title": "Switch to all groups"
+            },
+            "groupPrev": {
+                "title": "Switch to previous group"
+            },
+            "groupNext": {
+                "title": "Switch to next group"
+            },
+            "switched": {
+                "all": "Switched to all groups",
+                "default": "Switched to Default group",
+                "other": "Switched to {0} group"
+            }
+        },
+        "help": {
+            "title": "Help"
+        },
+        "jumps": {
+            "jumpDown": {
+                "title": "Jump Down"
+            },
+            "jumpUp": {
+                "title": "Jump Up"
+            }
+        },
+        "note": {
+            "title": {
+                "default": "Switch to Note tool",
+                "preset": "Switch to Note tool #{0}"
+            },
+            "switched": "Switched to Note tool #{0}",
+            "modal": {
+                "title": "Default Note Properties"
+            }
+        },
+        "open": {
+            "title": "Open",
+            "loading": "Loading file...",
+            "importing": "Importing level...",
+            "opened": "Opened level"
+        },
+        "paste": {
+            "title": "Switch to Paste tool",
+            "switched": "Switched to Paste tool"
+        },
+        "play": {
+            "title": "Play"
+        },
+        "redo": {
+            "title": "Redo",
+            "noState": "Nothing to redo",
+            "redid": "Redid \"{0}\""
+        },
+        "reset": {
+            "title": "Reset",
+            "reset": "Reset level"
+        },
+        "save": {
+            "title": "Save",
+            "exporting": "Exporting level...",
+            "saved": "Saved level"
+        },
+        "scrolls": {
+            "scrollLeft": {
+                "title": "Scroll Left"
+            },
+            "scrollRight": {
+                "title": "Scroll Right"
+            },
+            "scrollDown": {
+                "title": "Scroll Down"
+            },
+            "scrollUp": {
+                "title": "Scroll Up"
+            },
+            "scrollPageDown": {
+                "title": "Scroll Page Down"
+            },
+            "scrollPageUp": {
+                "title": "Scroll Page Up"
+            }
+        },
+        "select": {
+            "title": "Switch to Select tool",
+            "switched": "Switched to Select tool"
+        },
+        "settings": {
+            "title": "Settings"
+        },
+        "slide": {
+            "title": {
+                "default": "Switch to Slide tool",
+                "preset": "Switch to Slide tool #{0}"
+            },
+            "switched": "Switched to Slide tool #{0}",
+            "modal": {
+                "title": "Default Slide Properties"
+            }
+        },
+        "snapping": {
+            "title": "Snapping",
+            "absolute": "Switch to absolute snapping",
+            "relative": "Switch to relative snapping"
+        },
+        "speeds": {
+            "speedDown": {
+                "title": "Speed Down"
+            },
+            "speedUp": {
+                "title": "Speed Up"
+            }
+        },
+        "stop": {
+            "title": "Stop"
+        },
+        "undo": {
+            "title": "Undo",
+            "noState": "Nothing to undo",
+            "undid": "Undid \"{0}\""
+        },
+        "utilities": {
+            "title": "Utilities"
+        },
+        "zooms": {
+            "zoomXIn": {
+                "title": "Zoom in X",
+                "zoomed": "Zoomed in X by 10%"
+            },
+            "zoomXOut": {
+                "title": "Zoom out X",
+                "zoomed": "Zoomed out X by 10%"
+            },
+            "zoomYIn": {
+                "title": "Zoom in Y",
+                "zoomed": "Zoomed in Y by 10%"
+            },
+            "zoomYOut": {
+                "title": "Zoom out Y",
+                "zoomed": "Zoomed out Y by 10%"
+            }
+        },
+        "bpm": {
+            "title": "Switch to BPM tool",
+            "switched": "Switched to BPM tool"
+        },
+        "timeScale": {
+            "title": "Switch to Time Scale tool",
+            "switched": "Switched to Time Scale tool"
+        }
+    },
+    "help": {
+        "modal": {
+            "title": "Help",
+            "touchscreen": {
+                "title": "Touchscreen",
+                "tap": "One finger tap to tap.",
+                "drag": "One finger drag to drag.",
+                "scrollY": "Two finger pan vertically to scroll.",
+                "scrollX": "Two finger pan horizontally to scroll.",
+                "zoomY": "Two finger pinch vertically to zoom Y.",
+                "zoomX": "Two finger pinch horizontally to zoom X."
+            },
+            "mouse": {
+                "title": "Mouse",
+                "tapPrimary": "Left click to tap with primary tool.",
+                "dragPrimary": "Left click and drag to drag with primary tool.",
+                "tapSecondary": "Right click to tap with secondary tool.",
+                "dragSecondary": "Right click and drag to drag with secondary tool.",
+                "scrollY": "Wheel scroll to scroll vertically.",
+                "scrollX": "Wheel scroll with Shift key to scroll horizontally.",
+                "zoomY": "Wheel scroll with Ctrl key to zoom vertically.",
+                "zoomX": "Wheel scroll with Ctrl and Shift key to zoom horizontally."
+            },
+            "keyboard": {
+                "title": "Keyboard",
+                "single": "Single press to execute.",
+                "multiple": "Long press to execute multiple times."
+            },
+            "selectTool": {
+                "title": "Select Tool",
+                "select": "Tap objects to select 1 object, cycling between overlapped objects.",
+                "deselect": "Tap empty space to deselect all objects.",
+                "move": "Drag objects to move multiple objects.",
+                "selectMultiple": "Drag empty space to select multiple objects.",
+                "ctrl": "Use Ctrl key to add objects to selection.",
+                "shift": "Use Shift key to operate on all related Note objects."
+            },
+            "eraserTool": {
+                "title": "Eraser Tool",
+                "erase": "Tap objects to erase.",
+                "deselect": "Tap empty space to deselect all objects.",
+                "eraseMultiple": "Drag to erase multiple objects.",
+                "shift": "Use Shift key to operate on all related Note objects."
+            },
+            "brushTool": {
+                "title": "Brush Tool",
+                "brush": "Tap objects to brush.",
+                "deselect": "Tap empty space to deselect all objects.",
+                "brushMultiple": "Drag to brush multiple objects.",
+                "shift": "Use Shift key to operate on all related Note objects."
+            },
+            "pasteTool": {
+                "title": "Paste Tool",
+                "paste": "Tap to paste.",
+                "shift": "Use Shift key to flip objects."
+            },
+            "noteTool": {
+                "title": "Note Tool",
+                "select": "Tap Note objects to select 1 object.",
+                "edit": "Tap 1 Note object to edit.",
+                "add": "Tap empty space to add.",
+                "move": "Drag 1 Note object to move.",
+                "ctrl": "Use Ctrl key to add objects to selection.",
+                "shift": "Use Shift key to operate on all related Note objects.",
+                "properties": "Switch to Note Tool again to change preset or default properties."
+            },
+            "slideTool": {
+                "title": "Slide Tool",
+                "select": "Tap Note objects to select 1 object.",
+                "edit": "Tap 1 Note object to edit.",
+                "add": "Tap empty space to add.",
+                "connect": "Tap empty space with 1 Note object selected to connect.",
+                "move": "Drag 1 Note object to move.",
+                "ctrl": "Use Ctrl key to add objects to selection.",
+                "shift": "Use Shift key to operate on all related Note objects.",
+                "properties": "Switch to Slide Tool again to change preset or default properties."
+            },
+            "bpmTool": {
+                "title": "BPM Tool",
+                "select": "Tap BPM objects to select 1 object.",
+                "edit": "Tap 1 BPM object to edit.",
+                "add": "Tap empty space to add.",
+                "move": "Drag 1 BPM object to move.",
+                "ctrl": "Use Ctrl key to add objects to selection."
+            },
+            "timeScaleTool": {
+                "title": "Time Scale Tool",
+                "select": "Tap Time Scale objects to select 1 object.",
+                "edit": "Tap 1 Time Scale object to edit.",
+                "add": "Tap empty space to add.",
+                "move": "Drag 1 Time Scale object to move.",
+                "ctrl": "Use Ctrl key to add objects to selection."
+            }
+        }
+    },
+    "settings": {
+        "title": "Settings",
+        "editor": {
+            "title": "Editor",
+            "locale": "Language",
+            "autoSave": "Auto Save",
+            "autoSaveDelay": "Auto Save Delay",
+            "waveformVisualization": {
+                "title": "Waveform Visualization",
+                "off": "Off",
+                "fft": "FFT",
+                "volume": "Volume",
+                "changed": "You have changed waveform visualization, select BGM file again in order for this change to take effect."
+            },
+            "dragToPanY": "Drag to Pan Y",
+            "dragToPanX": "Drag to Pan X"
+        },
+        "keyboardShortcuts": {
+            "title": "Keyboard Shortcuts"
+        },
+        "mouse": {
+            "title": "Mouse",
+            "secondaryTool": {
+                "title": "Secondary Tool",
+                "eraser": "Eraser",
+                "select": "Select"
+            },
+            "smoothScrolling": "Smooth Scrolling"
+        },
+        "play": {
+            "title": "Play",
+            "bgmVolume": "BGM Volume",
+            "sfxVolume": "SFX Volume",
+            "follow": "Follow",
+            "followPosition": "Follow Position"
+        },
+        "preview": {
+            "title": "Preview",
+            "position": {
+                "title": "Position",
+                "auto": "Auto",
+                "top": "Top",
+                "left": "Left"
+            }
+        },
+        "toolbar": {
+            "title": "Toolbar",
+            "modal": {
+                "title": "Select Tool"
+            }
+        },
+        "touch": {
+            "title": "Touch",
+            "scrollInertia": "Scroll Inertia"
+        }
+    },
+    "sidebars": {
+        "default": {
+            "title": "Object Properties",
+            "none": "No object selected",
+            "edited": "Edited {0} objects"
+        }
+    },
+    "tools": {
+        "bpm": {
+            "adding": "Adding {0} BPM objects",
+            "added": "Added {0} BPM objects",
+            "edited": "Edited {0} BPM objects",
+            "moving": "Moving {0} BPM objects",
+            "moved": "Moved {0} BPM objects",
+            "replaced": "Replaced {0} BPM objects",
+            "selected": "Added {0} BPM objects",
+            "modal": {
+                "title": "BPM Properties"
+            }
+        },
+        "brush": {
+            "deselected": "Deselected all objects",
+            "brushing": "Brushing {0} objects",
+            "brushed": "Brushed {0} objects",
+            "sidebar": {
+                "title": "Brush Properties"
+            }
+        },
+        "eraser": {
+            "deselected": "Deselected all objects",
+            "erasing": "Erasing {0} objects",
+            "erased": "Erased {0} objects"
+        },
+        "note": {
+            "adding": "Adding {0} Note objects",
+            "added": "Added {0} Note objects",
+            "editing": "Editing {0} Note objects",
+            "edited": "Edited {0} Note objects",
+            "moving": "Moving {0} Note objects",
+            "moved": "Moved {0} Note objects",
+            "selected": "Selected {0} Note objects",
+            "modal": {
+                "title": "Note Properties"
+            },
+            "sidebar": {
+                "title": "Default Note Properties"
+            }
+        },
+        "paste": {
+            "pasted": "Pasted {0} objects",
+            "sidebar": {
+                "title": "Clipboard History"
+            }
+        },
+        "select": {
+            "deselected": "Deselected all objects",
+            "selecting": "Selecting {0} objects",
+            "selected": "Selected {0} objects",
+            "moving": "Moving {0} objects",
+            "moved": "Moved {0} objects"
+        },
+        "slide": {
+            "adding": "Adding {0} Note objects",
+            "added": "Added {0} Note objects",
+            "editing": "Editing {0} Note objects",
+            "edited": "Edited {0} Note objects",
+            "moving": "Moving {0} Note objects",
+            "moved": "Moved {0} Note objects",
+            "selected": "Selected {0} Note objects",
+            "modal": {
+                "title": "Note Properties"
+            },
+            "sidebar": {
+                "title": "Default Slide Properties"
+            }
+        },
+        "timeScale": {
+            "adding": "Adding {0} Time Scale objects",
+            "added": "Added {0} Time Scale objects",
+            "edited": "Edited {0} Time Scale objects",
+            "moving": "Moving {0} Time Scale objects",
+            "moved": "Moved {0} Time Scale objects",
+            "replaced": "Replaced {0} Time Scale objects",
+            "selected": "Added {0} Time Scale objects",
+            "modal": {
+                "title": "Time Scale Properties"
+            }
+        }
+    },
+    "utilities": {
+        "title": "Utilities",
+        "coverEditor": {
+            "title": "Cover Editor",
+            "cover": "Cover",
+            "size": "Size",
+            "generate": "Generate",
+            "loading": "Loading file...",
+            "decoding": "Decoding image...",
+            "generating": "Generating cover..."
+        },
+        "previewEditor": {
+            "title": "Preview Editor",
+            "bgm": "BGM",
+            "start": "Start",
+            "end": "End",
+            "fadeStart": "Fade Start",
+            "fadeEnd": "Fade End",
+            "generate": "Generate",
+            "loading": "Loading file...",
+            "decoding": "Decoding audio...",
+            "generating": "Generating preview..."
+        }
+    },
+    "notification": {
+        "title": "Sonolus Next Sekai Editor\nVersion {0}"
+    },
+    "player": {
+        "started": "Started playing",
+        "stopped": "Stopped playing",
+        "changed": "Changed speed to {0}x"
+    },
+    "history": {
+        "initialize": "Initialize",
+        "autoSave": {
+            "title": "Auto Save",
+            "importing": "Importing level..."
+        },
+        "changes": {
+            "title": "Changes",
+            "message": "Changes to the chart may be lost. Continue?"
+        }
+    },
+    "modals": {
+        "form": {
+            "confirm": "Confirm",
+            "beat": {
+                "label": "Beat"
+            },
+            "bpm": {
+                "label": "BPM"
+            },
+            "connectorActiveIsCritical": {
+                "label": "Slide Critical"
+            },
+            "connectorActiveIsFake": {
+                "label": "Slide Fake"
+            },
+            "connectorEase": {
+                "label": "Connector Ease",
+                "linear": "Linear",
+                "in": "In",
+                "out": "Out",
+                "inOut": "In-Out",
+                "outIn": "Out-In",
+                "none": "None"
+            },
+            "connectorGuideAlpha": {
+                "label": "Guide Alpha"
+            },
+            "connectorGuideColor": {
+                "label": "Guide Color",
+                "neutral": "Neutral",
+                "red": "Red",
+                "green": "Green",
+                "blue": "Blue",
+                "yellow": "Yellow",
+                "purple": "Purple",
+                "cyan": "Cyan",
+                "black": "Black"
+            },
+            "connectorType": {
+                "label": "Connector Type",
+                "active": "Slide",
+                "guide": "Guide"
+            },
+            "file": {
+                "select": "Select File..."
+            },
+            "flickDirection": {
+                "label": "Flick Direction",
+                "none": "None",
+                "up": "Up",
+                "upLeft": "Up Left",
+                "upRight": "Up Right",
+                "down": "Down",
+                "downLeft": "Down Left",
+                "downRight": "Down Right"
+            },
+            "group": {
+                "label": "Group",
+                "default": "Default"
+            },
+            "isAttached": {
+                "label": "Attached"
+            },
+            "isConnectorSeparator": {
+                "label": "Connector Separator"
+            },
+            "isCritical": {
+                "label": "Critical"
+            },
+            "isFake": {
+                "label": "Fake"
+            },
+            "left": {
+                "label": "Lane"
+            },
+            "key": {
+                "input": "Input Key",
+                "press": "Press a key..."
+            },
+            "noteType": {
+                "label": "Note Type",
+                "default": "Default",
+                "trace": "Trace",
+                "anchor": "Anchor",
+                "damage": "Damage",
+                "forceTick": "Force Tick",
+                "forceNonTick": "Force Non Tick"
+            },
+            "preset": {
+                "label": "Preset"
+            },
+            "size": {
+                "label": "Size"
+            },
+            "skip": {
+                "label": "Skip (beats)"
+            },
+            "timeScale": {
+                "label": "Time Scale"
+            },
+            "timeScaleEase": {
+                "label": "Time Scale Ease",
+                "none": "None",
+                "linear": "Linear"
+            },
+            "toggle": {
+                "enabled": "Enabled",
+                "disabled": "Disabled"
+            }
+        },
+        "confirm": {
+            "confirm": "Confirm",
+            "cancel": "Cancel"
+        },
+        "info": {
+            "ok": "Ok"
+        },
+        "loading": {
+            "loading": "Loading ..."
+        }
+    }
+}

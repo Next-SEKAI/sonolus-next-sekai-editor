@@ -1,0 +1,65 @@
+export type Chart = {
+    bpms: BpmObject[]
+    groupCount: number
+    timeScales: TimeScaleObject[]
+    slides: NoteObject[][]
+}
+
+export type BpmObject = {
+    beat: number
+    bpm: number
+}
+
+export type TimeScaleEase = 'none' | 'linear'
+
+export type TimeScaleObject = {
+    group: number
+    beat: number
+    timeScale: number
+    skip: number
+    ease: TimeScaleEase
+}
+
+export type NoteType = 'default' | 'trace' | 'anchor' | 'damage' | 'forceTick' | 'forceNonTick'
+
+export type FlickDirection =
+    | 'none'
+    | 'up'
+    | 'upLeft'
+    | 'upRight'
+    | 'down'
+    | 'downLeft'
+    | 'downRight'
+
+export type ConnectorType = 'active' | 'guide'
+
+export type ConnectorEase = 'linear' | 'in' | 'out' | 'inOut' | 'outIn' | 'none'
+
+export type ConnectorGuideColor =
+    | 'neutral'
+    | 'red'
+    | 'green'
+    | 'blue'
+    | 'yellow'
+    | 'purple'
+    | 'cyan'
+    | 'black'
+
+export type NoteObject = {
+    group: number
+    beat: number
+    noteType: NoteType
+    isAttached: boolean
+    left: number
+    size: number
+    isCritical: boolean
+    flickDirection: FlickDirection
+    isFake: boolean
+    isConnectorSeparator: boolean
+    connectorType: ConnectorType
+    connectorEase: ConnectorEase
+    connectorActiveIsCritical: boolean
+    connectorActiveIsFake: boolean
+    connectorGuideColor: ConnectorGuideColor
+    connectorGuideAlpha: number
+}
