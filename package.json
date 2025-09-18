@@ -1,6 +1,6 @@
 {
   "name": "sonolus-next-sekai-editor",
-  "version": "0.3.5-beta",
+  "version": "0.3.6-beta",
   "private": true,
   "type": "module",
   "scripts": {
