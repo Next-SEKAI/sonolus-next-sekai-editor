@@ -16,11 +16,7 @@
       "title": "Passer à l'outil Pinceau",
       "switched": "Outil Pinceau activé",
       "modal": {
-        "title": "Propriétés du Pinceau",
-        "color": "Couleur",
-        "scaleL": "Échelle L",
-        "scaleR": "Échelle R",
-        "ease": "Accélération"
+        "title": "Propriétés du Pinceau"
       }
     },
     "copy": {
@@ -151,7 +147,7 @@
     "slide": {
       "title": {
         "default": "Passer à l'outil Slide",
-        "preset": "Switch to Slide tool #{0}"
+        "preset": "Passer à l'outil Slide #{0}"
       },
       "switched": "Outil Slide #{0} activé",
       "modal": {
@@ -375,7 +371,7 @@
       "moving": "Déplacement de {0} objets BPM",
       "moved": "{0} objets BPM déplacés",
       "replaced": "{0} objets BPM remplacés",
-      "selected": "{0} objets BPM ajoutés",
+      "selected": "{0} objets BPM sélectionnés",
       "modal": {
         "title": "Propriétés du BPM"
       }
@@ -443,7 +439,7 @@
       "moving": "Déplacement de {0} objets Échelle de Temps",
       "moved": "{0} objets Échelle de Temps déplacés",
       "replaced": "{0} objets Échelle de Temps remplacés",
-      "selected": "{0} objets Échelle de Temps ajoutés",
+      "selected": "{0} objets Échelle de Temps sélectionnés",
       "modal": {
         "title": "Propriétés de l'Échelle de Temps"
       }
