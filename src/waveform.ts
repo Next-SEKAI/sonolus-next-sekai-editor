@@ -43,7 +43,7 @@ export const createWaveform = async (
         }
     }
 
-    const count = Math.floor(h / canvas.height) + 1
+    const count = Math.ceil(h / canvas.height)
     for (let i = 0; i < count; i++) {
         for (let x = 0; x < w; x++) {
             for (let y = 0; y < canvas.height; y++) {

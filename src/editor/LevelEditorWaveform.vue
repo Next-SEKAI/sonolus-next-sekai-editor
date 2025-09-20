@@ -8,8 +8,8 @@ import { waveformDuration } from '../waveform'
 import { ups } from './view'
 
 const indexes = computedRange(() => ({
-    min: Math.floor(times.value.min / waveformDuration),
-    max: Math.ceil(times.value.max / waveformDuration) - 1,
+    min: Math.floor((times.value.min + bgm.value.offset) / waveformDuration),
+    max: Math.floor((times.value.max + bgm.value.offset) / waveformDuration),
 }))
 
 const images = computed(() => {
