@@ -3,6 +3,7 @@ import { useTemplateRef, watch, type Ref } from 'vue'
 import { useAutoSave } from '../history'
 import { time } from '../time'
 import { controlListeners } from './controls'
+import { useFocusControl } from './controls/focus'
 import { useKeyboardControl } from './controls/keyboard'
 import LevelEditorCreatingEntities from './entities/LevelEditorCreatingEntities.vue'
 import LevelEditorEntities from './entities/LevelEditorEntities.vue'
@@ -19,6 +20,7 @@ import LevelEditorWaveform from './LevelEditorWaveform.vue'
 import LevelEditorToolbar from './toolbar/LevelEditorToolbar.vue'
 import { view, viewBox } from './view'
 
+useFocusControl()
 useKeyboardControl()
 
 useAutoSave()
