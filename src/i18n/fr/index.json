@@ -1,0 +1,616 @@
+{
+  "title": "Français (French)",
+  "commands": {
+    "bgm": {
+      "title": "Musique",
+      "changed": "Musique Modifiée",
+      "modal": {
+        "file": "Fichier",
+        "offset": "Décalage (ms)",
+        "loading": "Chargement du fichier...",
+        "decoding": "Décodage audio...",
+        "generating": "Génération de forme d'onde..."
+      }
+    },
+    "brush": {
+      "title": "Passer à l'outil Pinceau",
+      "switched": "Outil Pinceau activé",
+      "modal": {
+        "title": "Propriétés du Pinceau",
+        "color": "Couleur",
+        "scaleL": "Échelle L",
+        "scaleR": "Échelle R",
+        "ease": "Accélération"
+      }
+    },
+    "copy": {
+      "title": "Copier",
+      "noSelected": "Aucun objet sélectionné à copier",
+      "copied": "{0} objets copiés"
+    },
+    "cut": {
+      "title": "Couper",
+      "noSelected": "Aucun objet sélectionné à couper",
+      "cut": "{0} objets coupés"
+    },
+    "deselect": {
+      "title": "Désélectionner",
+      "deselected": "Tout désélectionné"
+    },
+    "divisions": {
+      "title": "Passer à la division en 1/{0}",
+      "switched": "Division en 1/{0} sélectionnée",
+      "custom": {
+        "title": "Passer à la division personnalisée",
+        "modal": {
+          "title": "Division Personnalisée",
+          "division": "Division"
+        }
+      }
+    },
+    "eraser": {
+      "title": "Passer à l'outil Gomme",
+      "switched": "Outil Gomme activé"
+    },
+    "flip": {
+      "title": "Retourner",
+      "noSelected": "Aucun objet sélectionné à retourner",
+      "flipped": "{0} objets retournés"
+    },
+    "groups": {
+      "groupAll": {
+        "title": "Passer à tous les groupes"
+      },
+      "groupPrev": {
+        "title": "Passer au groupe précédent"
+      },
+      "groupNext": {
+        "title": "Passer au groupe suivant"
+      },
+      "switched": {
+        "all": "Tous les groupes activés",
+        "default": "Groupe par défaut activé",
+        "other": "Groupe {0} activé"
+      }
+    },
+    "help": {
+      "title": "Aide"
+    },
+    "jumps": {
+      "jumpDown": {
+        "title": "Aller en Bas"
+      },
+      "jumpUp": {
+        "title": "Aller en Haut"
+      }
+    },
+    "note": {
+      "title": {
+        "default": "Passer à l'outil Note",
+        "preset": "Passer à l'outil Note #{0}"
+      },
+      "switched": "Outil Note #{0} activé",
+      "modal": {
+        "title": "Propriétés des Notes par défaut"
+      }
+    },
+    "open": {
+      "title": "Ouvrir",
+      "loading": "Chargement du fichier...",
+      "importing": "Importation du niveau...",
+      "opened": "Niveau ouvert"
+    },
+    "paste": {
+      "title": "Passer à l'outil Coller",
+      "switched": "Outil Coller activé"
+    },
+    "play": {
+      "title": "Jouer"
+    },
+    "redo": {
+      "title": "Refaire",
+      "noState": "Rien à refaire",
+      "redid": "\"{0}\" refait"
+    },
+    "reset": {
+      "title": "Réinitialiser",
+      "reset": "Réinitialiser le niveau"
+    },
+    "save": {
+      "title": "Sauvegarder",
+      "exporting": "Exportation du niveau...",
+      "saved": "Niveau sauvegardé"
+    },
+    "scrolls": {
+      "scrollLeft": {
+        "title": "Défiler vers la Gauche"
+      },
+      "scrollRight": {
+        "title": "Défiler vers la Droite"
+      },
+      "scrollDown": {
+        "title": "Défiler vers le Bas"
+      },
+      "scrollUp": {
+        "title": "Défiler vers le Haut"
+      },
+      "scrollPageDown": {
+        "title": "Défiler la Page vers le Bas"
+      },
+      "scrollPageUp": {
+        "title": "Défiler la Page vers le Haut"
+      }
+    },
+    "select": {
+      "title": "Passer à l'outil Sélectionner",
+      "switched": "Outil Sélectionner activé"
+    },
+    "settings": {
+      "title": "Paramètres"
+    },
+    "slide": {
+      "title": {
+        "default": "Passer à l'outil Slide",
+        "preset": "Switch to Slide tool #{0}"
+      },
+      "switched": "Outil Slide #{0} activé",
+      "modal": {
+        "title": "Propriétés des Slides par Défaut"
+      }
+    },
+    "snapping": {
+      "title": "Alignement",
+      "absolute": "Passer à l'alignement absolu",
+      "relative": "Passer à l'alignement relatif"
+    },
+    "speeds": {
+      "speedDown": {
+        "title": "Ralentir"
+      },
+      "speedUp": {
+        "title": "Accélérer"
+      }
+    },
+    "stop": {
+      "title": "Arrêter"
+    },
+    "undo": {
+      "title": "Défaire",
+      "noState": "Rien à défaire",
+      "undid": "\"{0}\" annulé"
+    },
+    "utilities": {
+      "title": "Utilitaires"
+    },
+    "zooms": {
+      "zoomXIn": {
+        "title": "Zoom avant sur l'axe X",
+        "zoomed": "Zoom avant sur l'axe X de 10%"
+      },
+      "zoomXOut": {
+        "title": "Zoom arrière sur l'axe X",
+        "zoomed": "Zoom arrière sur l'axe X de 10%"
+      },
+      "zoomYIn": {
+        "title": "Zoom avant sur l'axe Y",
+        "zoomed": "Zoom avant sur l'axe Y de 10%"
+      },
+      "zoomYOut": {
+        "title": "Zoom arrière sur l'axe Y",
+        "zoomed": "Zoom arrière sur l'axe Y de 10%"
+      }
+    },
+    "bpm": {
+      "title": "Passer à l'outil BPM",
+      "switched": "Outil BPM activé"
+    },
+    "timeScale": {
+      "title": "Passer à l'outil Échelle de Temps",
+      "switched": "Outil Échelle de Temps activé"
+    }
+  },
+  "help": {
+    "modal": {
+      "title": "Aide",
+      "touchscreen": {
+        "title": "Écran Tactile",
+        "tap": "Appuyez d'un seul doigt pour appuyer.",
+        "drag": "Glissez d'un seul doigt pour faire glisser.",
+        "scrollY": "Glissez deux doigts verticalement pour faire défiler.",
+        "scrollX": "Glissez deux doigts horizontalement pour faire défiler.",
+        "zoomY": "Pincez verticalement avec deux doigts pour zoomer l'axe Y.",
+        "zoomX": "Pincez horizontalement avec deux doigts pour zoomer l'axe X."
+      },
+      "mouse": {
+        "title": "Souris",
+        "tapPrimary": "Clic gauche pour appuyer avec l'outil principal.",
+        "dragPrimary": "Clic gauche et glisser pour faire glisser avec l'outil principal.",
+        "tapSecondary": "Clic droit pour appuyer avec l'outil secondaire.",
+        "dragSecondary": "Clic droit et glisser pour faire glisser avec l'outil secondaire.",
+        "scrollY": "Utilisez la molette pour faire défiler verticalement.",
+        "scrollX": "Utilisez la molette avec la touche Maj pour faire défiler horizontalement.",
+        "zoomY": "Utilisez la molette avec la touche Ctrl pour zoomer verticalement.",
+        "zoomX": "Utilisez la molette avec les touche Ctrl et Maj pour zoomer horizontalement."
+      },
+      "keyboard": {
+        "title": "Clavier",
+        "single": "Appuyez une fois pour exécuter.",
+        "multiple": "Restez appuyé pour exécuter plusieurs fois."
+      },
+      "selectTool": {
+        "title": "Outil Sélection",
+        "select": "Appuyez sur un objet pour le sélectionner. Réappuyez pour sélectionner le suivant si les objets sont superposés.",
+        "deselect": "Appuyez sur une zone vide pour désélectionner tous les objets.",
+        "move": "Glissez des objets pour les déplacer.",
+        "selectMultiple": "Glissez une zone vide pour sélectionner plusieurs objets.",
+        "ctrl": "Utilisez la touche Ctrl pour ajouter des objets à la sélection.",
+        "shift": "Utilisez la touche Maj pour agir sur tous les objets Note associés."
+      },
+      "eraserTool": {
+        "title": "Outil Gomme",
+        "erase": "Appuyez sur les objets pour les effacer.",
+        "deselect": "Appuyez sur une zone vide pour désélectionner tous les objets.",
+        "eraseMultiple": "Glissez pour effacer plusieurs objets.",
+        "shift": "Utilisez la touche Maj pour agir sur tous les objets Note associés."
+      },
+      "brushTool": {
+        "title": "Outil Pinceau",
+        "brush": "Appuyez sur des objets pour les peindre.",
+        "deselect": "Appuyez sur une zone vide pour désélectionner tous les objets.",
+        "brushMultiple": "Glissez pour peindre plusieurs objets.",
+        "shift": "Utilisez la touche Maj pour agir sur tous les objets Note associés."
+      },
+      "pasteTool": {
+        "title": "Outil Coller",
+        "paste": "Appuyez pour coller.",
+        "shift": "Utilisez la touche Maj pour retourner des objets."
+      },
+      "noteTool": {
+        "title": "Outil Note",
+        "select": "Appuyez sur des objets Note pour sélectionner 1 objet.",
+        "edit": "Appuyez sur 1 objet Note pour le modifier.",
+        "add": "Appuyez sur une zone vide pour ajouter.",
+        "move": "Glissez 1 objet Note pour le déplacer.",
+        "ctrl": "Utilisez la touche Ctrl pour ajouter des objets à la sélection.",
+        "shift": "Utilisez la touche Maj pour agir sur tous les objets Note associés.",
+        "properties": "Passez à l'outil Note de nouveau pour changer le préréglage ou les propriétés par défaut."
+      },
+      "slideTool": {
+        "title": "Outil Slide",
+        "select": "Appuyez sur des objets Note pour sélectionner 1 objet.",
+        "edit": "Appuyez sur 1 objet Note pour le modifier.",
+        "add": "Appuyez sur une zone vide pour ajouter.",
+        "connect": "Appuyez sur une zone vide avec 1 objet Note selectionné pour connecter.",
+        "move": "Glissez 1 objet Note pour le déplacer.",
+        "ctrl": "Utilisez la touche Ctrl pour ajouter des objets à la sélection.",
+        "shift": "Utilisez la touche Maj pour agir sur tous les objets Note associés.",
+        "properties": "Passez à l'outil Slide de nouveau pour changer le préréglage ou les propriétés par défaut."
+      },
+      "bpmTool": {
+        "title": "Outil BPM",
+        "select": "Appuyez sur des objets BPM pour sélectionner 1 objet.",
+        "edit": "Appuyez sur 1 objet BPM pour le modifier.",
+        "add": "Appuyez sur une zone vide pour ajouter.",
+        "move": "Glissez 1 objet BPM pour le déplacer.",
+        "ctrl": "Utilisez la touche Ctrl pour ajouter des objets à la sélection."
+      },
+      "timeScaleTool": {
+        "title": "Outil Échelle de Temps",
+        "select": "Appuyez sur des objets Échelle de Temps pour sélectionner 1 objet.",
+        "edit": "Appuyez sur 1 objet Échelle de Temps pour le modifier.",
+        "add": "Appuyez sur une zone vide pour ajouter.",
+        "move": "Glissez 1 objet Échelle de Temps pour le déplacer.",
+        "ctrl": "Utilisez la touche Ctrl pour ajouter des objets à la sélection."
+      }
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "editor": {
+      "title": "Éditeur",
+      "locale": "Langue",
+      "autoSave": "Sauvegarde Automatique",
+      "autoSaveDelay": "Délai de la Sauvegarde Automatique",
+      "waveformVisualization": {
+        "title": "Visualisation en forme d'onde",
+        "off": "Désactivée",
+        "fft": "FFT",
+        "volume": "Volume",
+        "changed": "Vous avez modifié la visualisation en forme d'onde, rechargez le fichier audio pour appliquer ce changement."
+      },
+      "dragToPanY": "Glissez pour déplacer Y",
+      "dragToPanX": "Glissez pour déplacer X"
+    },
+    "keyboardShortcuts": {
+      "title": "Raccourcis Clavier"
+    },
+    "mouse": {
+      "title": "Souris",
+      "secondaryTool": {
+        "title": "Outil Secondaire",
+        "eraser": "Gomme",
+        "select": "Sélectionner"
+      },
+      "smoothScrolling": "Défilement Fluide"
+    },
+    "play": {
+      "title": "Jouer",
+      "bgmVolume": "Volume de la Musique",
+      "sfxVolume": "Volume des Effets Sonores",
+      "follow": "Suivre",
+      "followPosition": "Suivre la Position"
+    },
+    "preview": {
+      "title": "Aperçu",
+      "position": {
+        "title": "Position",
+        "auto": "Auto",
+        "top": "Haut",
+        "left": "Gauche"
+      }
+    },
+    "toolbar": {
+      "title": "Barre d'outil",
+      "modal": {
+        "title": "Sélectionner l'outil"
+      }
+    },
+    "touch": {
+      "title": "Touche",
+      "scrollInertia": "Inertie de défilement"
+    }
+  },
+  "sidebars": {
+    "default": {
+      "title": "Propriétés d'Objet",
+      "none": "Aucun objet sélectionné",
+      "edited": "{0} objets modifiés"
+    }
+  },
+  "tools": {
+    "bpm": {
+      "adding": "Ajout de {0} objets BPM",
+      "added": "{0} objets BPM ajoutés",
+      "edited": "{0} objets BPM modifiés",
+      "moving": "Déplacement de {0} objets BPM",
+      "moved": "{0} objets BPM déplacés",
+      "replaced": "{0} objets BPM remplacés",
+      "selected": "{0} objets BPM ajoutés",
+      "modal": {
+        "title": "Propriétés du BPM"
+      }
+    },
+    "brush": {
+      "deselected": "Tout désélectionné",
+      "brushing": "Peinture de {0} objets",
+      "brushed": "{0} objects peints",
+      "sidebar": {
+        "title": "Propriétés du Pinceau"
+      }
+    },
+    "eraser": {
+      "deselected": "Tout désélectionné",
+      "erasing": "Effacement de {0} objets",
+      "erased": "{0} objets effacés"
+    },
+    "note": {
+      "adding": "Ajout de {0} objets Note",
+      "added": "{0} objets Note ajoutés",
+      "editing": "Modification de {0} objets Note",
+      "edited": "{0} objets Note modifiés",
+      "moving": "Déplacement de {0} objets Note",
+      "moved": "{0} Note objects déplacés",
+      "selected": "{0} objets Note sélectionnés",
+      "modal": {
+        "title": "Propriétés de Note"
+      },
+      "sidebar": {
+        "title": "Propriétés de Note par défaut"
+      }
+    },
+    "paste": {
+      "pasted": "{0} objets collés",
+      "sidebar": {
+        "title": "Historique du presse-papiers"
+      }
+    },
+    "select": {
+      "deselected": "Tout désélectionné",
+      "selecting": "Sélection de {0} objets",
+      "selected": "{0} objets séléctionnés",
+      "moving": "Déplacement de {0} objets",
+      "moved": "{0} objects déplacés"
+    },
+    "slide": {
+      "adding": "Ajout de {0} objets Note",
+      "added": "{0} objets Note ajoutés",
+      "editing": "Modification de {0} objets Note",
+      "edited": "{0} objets Note modifiés",
+      "moving": "Déplacement de {0} objets Note",
+      "moved": "{0} objets Note déplacés",
+      "selected": "Sélection de {0} objets Note",
+      "modal": {
+        "title": "Propriétés de Note"
+      },
+      "sidebar": {
+        "title": "Propriétés de Slide par Défaut"
+      }
+    },
+    "timeScale": {
+      "adding": "Ajout de {0} objets Échelle de Temps",
+      "added": "{0} objets Échelle de Temps ajoutés",
+      "edited": "{0} objets Échelle de Temps modifiés",
+      "moving": "Déplacement de {0} objets Échelle de Temps",
+      "moved": "{0} objets Échelle de Temps déplacés",
+      "replaced": "{0} objets Échelle de Temps remplacés",
+      "selected": "{0} objets Échelle de Temps ajoutés",
+      "modal": {
+        "title": "Propriétés de l'Échelle de Temps"
+      }
+    }
+  },
+  "utilities": {
+    "title": "Utilitaires",
+    "coverEditor": {
+      "title": "Éditeur de la Couverture",
+      "cover": "Couverture",
+      "size": "Taille",
+      "generate": "Générer",
+      "loading": "Chargement du fichier...",
+      "decoding": "Décodage d'image...",
+      "generating": "Génération de la couverture..."
+    },
+    "previewEditor": {
+      "title": "Éditeur de l'Aperçu",
+      "bgm": "Musique",
+      "start": "Début",
+      "end": "Fin",
+      "fadeStart": "Début du Fondu",
+      "fadeEnd": "Fin du Fondu",
+      "generate": "Générer",
+      "loading": "Chargement du fichier...",
+      "decoding": "Décodage audio...",
+      "generating": "Génération de l'aperçu..."
+    }
+  },
+  "notification": {
+    "title": "Éditeur Sonolus Next SEKAI\nVersion {0}"
+  },
+  "player": {
+    "started": "Lecture démarrée",
+    "stopped": "Lecture arrêtée",
+    "changed": "Vitesse modifiée à {0}x"
+  },
+  "history": {
+    "initialize": "Initialiser",
+    "autoSave": {
+      "title": "Sauvegarde Automatique",
+      "importing": "Importation du niveau…"
+    },
+    "changes": {
+      "title": "Modifications",
+      "message": "Les modifications apportées au niveau peuvent être perdues. Continuer?"
+    }
+  },
+  "modals": {
+    "form": {
+      "confirm": "Confirmer",
+      "beat": {
+        "label": "Temps"
+      },
+      "bpm": {
+        "label": "BPM"
+      },
+      "connectorActiveIsCritical": {
+        "label": "Slide Critique"
+      },
+      "connectorActiveIsFake": {
+        "label": "Slide Faux"
+      },
+      "connectorEase": {
+        "label": "Accélération du Connecteur",
+        "linear": "Linéaire",
+        "in": "In",
+        "out": "Out",
+        "inOut": "In-Out",
+        "outIn": "Out-In",
+        "none": "Aucune"
+      },
+      "connectorGuideAlpha": {
+        "label": "Opacité du Guide"
+      },
+      "connectorGuideColor": {
+        "label": "Couler du Guide",
+        "neutral": "Neutre",
+        "red": "Rouge",
+        "green": "Vert",
+        "blue": "Bleu",
+        "yellow": "Jaune",
+        "purple": "Violet",
+        "cyan": "Cyan",
+        "black": "Noir"
+      },
+      "connectorType": {
+        "label": "Type de Connecteur",
+        "active": "Slide",
+        "guide": "Guide"
+      },
+      "file": {
+        "select": "Sélectionner le Fichier..."
+      },
+      "flickDirection": {
+        "label": "Direction du Flick",
+        "none": "Aucune",
+        "up": "Haut",
+        "upLeft": "Haut à Gauche",
+        "upRight": "Haut à Droite",
+        "down": "Bas",
+        "downLeft": "Bas à Gauche",
+        "downRight": "Bas à Droite"
+      },
+      "group": {
+        "label": "Groupe",
+        "default": "Par défaut"
+      },
+      "isAttached": {
+        "label": "Attaché"
+      },
+      "isConnectorSeparator": {
+        "label": "Séparateur de Connecteur"
+      },
+      "isCritical": {
+        "label": "Critique"
+      },
+      "isFake": {
+        "label": "Faux"
+      },
+      "left": {
+        "label": "Voie"
+      },
+      "key": {
+        "input": "Touche de Saisie",
+        "press": "Appuyez sur une touche..."
+      },
+      "noteType": {
+        "label": "Type de Note",
+        "default": "Par défaut",
+        "trace": "Trace",
+        "anchor": "Ancre",
+        "damage": "Dégât",
+        "forceTick": "Force Tique",
+        "forceNonTick": "Force Non Tique"
+      },
+      "preset": {
+        "label": "Préréglage"
+      },
+      "size": {
+        "label": "Taille"
+      },
+      "skip": {
+        "label": "Sauter (temps)"
+      },
+      "timeScale": {
+        "label": "Échelle de Temps"
+      },
+      "timeScaleEase": {
+        "label": "Accélération de l'Échelle de Temps",
+        "none": "Aucune",
+        "linear": "Linéaire"
+      },
+      "toggle": {
+        "enabled": "Activé",
+        "disabled": "Désactivé"
+      }
+    },
+    "confirm": {
+      "confirm": "Confirmer",
+      "cancel": "Annuler"
+    },
+    "info": {
+      "ok": "Ok"
+    },
+    "loading": {
+      "loading": "Chargement ..."
+    }
+  }
+}
