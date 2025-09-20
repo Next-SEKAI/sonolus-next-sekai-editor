@@ -1,0 +1,615 @@
+{
+  "title": "中文 (Chinese)",
+  "commands": {
+    "bgm": {
+      "title": "背景音乐",
+      "changed": "已更改背景音乐",
+      "modal": {
+        "file": "文件",
+        "offset": "偏移 (毫秒)",
+        "loading": "正在载入文件...",
+        "decoding": "正在解码音频...",
+        "generating": "正在生成波形..."
+      }
+    },
+    "brush": {
+      "title": "切换到笔刷工具",
+      "switched": "已切换到笔刷工具",
+      "modal": {
+        "title": "笔刷属性",
+        "color": "颜色",
+        "scaleL": "尺寸 左",
+        "scaleR": "尺寸 右",
+        "ease": "缓动类型"
+      }
+    },
+    "copy": {
+      "title": "复制",
+      "noSelected": "未选择要复制的对象",
+      "copied": "已复制 {0} 个对象"
+    },
+    "cut": {
+      "title": "剪切",
+      "noSelected": "未选择要剪切的对象",
+      "cut": "已剪切 {0} 个对象"
+    },
+    "deselect": {
+      "title": "取消选择",
+      "deselected": "已取消选择所有对象"
+    },
+    "divisions": {
+      "title": "切换到 1/{0} 分割",
+      "switched": "已切换到 1/{0} 分割",
+      "custom": {
+        "title": "切换到自定义分割",
+        "modal": {
+          "title": "自定义分割",
+          "division": "分割"
+        }
+      }
+    },
+    "eraser": {
+      "title": "切换到橡皮擦工具",
+      "switched": "已切换到橡皮擦工具"
+    },
+    "flip": {
+      "title": "翻转",
+      "noSelected": "未选择要翻转的对象",
+      "flipped": "已翻转 {0} 个对象"
+    },
+    "groups": {
+      "groupAll": {
+        "title": "切换到所有群组"
+      },
+      "groupPrev": {
+        "title": "切换到上一个群组"
+      },
+      "groupNext": {
+        "title": "切换到下一群组"
+      },
+      "switched": {
+        "all": "已切换到所有群组",
+        "default": "已切换到默认群组",
+        "other": "已切换到 {0} 群组"
+      }
+    },
+    "help": {
+      "title": "帮助"
+    },
+    "jumps": {
+      "jumpDown": {
+        "title": "跳至开头"
+      },
+      "jumpUp": {
+        "title": "跳至结尾"
+      }
+    },
+    "note": {
+      "title": {
+        "default": "切换到音符工具",
+        "preset": "切换到音符工具 #{0}"
+      },
+      "switched": "已切换到音符工具 #{0}",
+      "modal": {
+        "title": "默认音符属性"
+      }
+    },
+    "open": {
+      "title": "开启",
+      "loading": "正在加载文件...",
+      "importing": "正在导入关卡...",
+      "opened": "已开启关卡"
+    },
+    "paste": {
+      "title": "切换到粘贴工具",
+      "switched": "已切换到粘贴工具"
+    },
+    "play": {
+      "title": "播放"
+    },
+    "redo": {
+      "title": "重做",
+      "noState": "无重做事件",
+      "redid": "已重做 “{0}”"
+    },
+    "reset": {
+      "title": "清除谱面",
+      "reset": "已清除谱面"
+    },
+    "save": {
+      "title": "保存",
+      "exporting": "正在导出关卡...",
+      "saved": "已保存关卡"
+    },
+    "scrolls": {
+      "scrollLeft": {
+        "title": "向左滚动"
+      },
+      "scrollRight": {
+        "title": "向右滚动"
+      },
+      "scrollDown": {
+        "title": "向下滚动"
+      },
+      "scrollUp": {
+        "title": "向上滚动"
+      },
+      "scrollPageDown": {
+        "title": "向下滚动页面"
+      },
+      "scrollPageUp": {
+        "title": "向上滚动页面"
+      }
+    },
+    "select": {
+      "title": "切换到选择工具",
+      "switched": "已切换到选择工具"
+    },
+    "settings": {
+      "title": "设置"
+    },
+    "slide": {
+      "title": {
+        "default": "切换到长按音符工具",
+        "preset": "切换到长按音符工具 #{0}"
+      },
+      "switched": "已切换到长按音符工具 #{0}",
+      "modal": {
+        "title": "默认长按音符属性"
+      }
+    },
+    "snapping": {
+      "title": "吸附",
+      "absolute": "切换到绝对吸附",
+      "relative": "切换到相对吸附"
+    },
+    "speeds": {
+      "speedDown": {
+        "title": "减速"
+      },
+      "speedUp": {
+        "title": "加速"
+      }
+    },
+    "stop": {
+      "title": "停止"
+    },
+    "undo": {
+      "title": "撤消",
+      "noState": "无撤消事件",
+      "undid": "已撤消 “{0}”"
+    },
+    "utilities": {
+      "title": "工具"
+    },
+    "zooms": {
+      "zoomXIn": {
+        "title": "横向放大",
+        "zoomed": "横向放大 10%"
+      },
+      "zoomXOut": {
+        "title": "横向缩小",
+        "zoomed": "横向缩小 10%"
+      },
+      "zoomYIn": {
+        "title": "纵向放大",
+        "zoomed": "纵向放大 10%"
+      },
+      "zoomYOut": {
+        "title": "纵向缩小",
+        "zoomed": "纵向缩小 10%"
+      }
+    },
+    "bpm": {
+      "title": "切换到 BPM 工具",
+      "switched": "已切换到 BPM 工具"
+    },
+    "timeScale": {
+      "title": "切换到时间尺度工具",
+      "switched": "已切换到时间尺度工具"
+    }
+  },
+  "help": {
+    "modal": {
+      "title": "帮助",
+      "touchscreen": {
+        "title": "触控屏",
+        "tap": "单指轻触即可点击。",
+        "drag": "单指拖曳即可拖动。",
+        "scrollY": "双指垂直平移即可纵向滚动。",
+        "scrollX": "双指水平平移即可横向滚动。",
+        "zoomY": "双指垂直捏合可纵向缩放。",
+        "zoomX": "双指水平捏合可横向缩放。"
+      },
+      "mouse": {
+        "title": "滑鼠",
+        "tapPrimary": "左键单击即可点击主要工具。",
+        "dragPrimary": "左键拖曳以拖动主要工具。",
+        "tapSecondary": "右键单击即可点击辅助工具。",
+        "dragSecondary": "右键拖曳以拖动辅助工具。",
+        "scrollY": "滚动滚轮即可垂直滚动。",
+        "scrollX": "按下 Shift 键并滚动滚轮以水平滚动。",
+        "zoomY": "按下 Ctrl 键并滚动滚轮以垂直缩放。",
+        "zoomX": "按下 Ctrl 和 Shift 键并滚动滚轮以水平缩放。"
+      },
+      "keyboard": {
+        "title": "键盘",
+        "single": "单击执行。",
+        "multiple": "长按即可执行多次。"
+      },
+      "selectTool": {
+        "title": "选择工具",
+        "select": "点击 1 个对象选择 ，重复点击即可在重叠对象之间循环选择。",
+        "deselect": "点击空白处取消选择所有对象。",
+        "move": "拖动对象即可移动多个对象。",
+        "selectMultiple": "拖动框选多个对象。",
+        "ctrl": "按下 Ctrl 键并点击对象即可添加到选择中。",
+        "shift": "按下 Shift 键对即可操作所有相关的音符。"
+      },
+      "eraserTool": {
+        "title": "橡皮擦工具",
+        "erase": "点击要擦除的对象。",
+        "deselect": "点击空白处即可取消选择所有对象。",
+        "eraseMultiple": "拖动以框选擦除多个对象。",
+        "shift": "按下 Shift 键对即可操作所有相关的音符。"
+      },
+      "brushTool": {
+        "title": "笔刷工具",
+        "brush": "点击要刷的对象。",
+        "deselect": "点击空白处可取消选择所有对象。",
+        "brushMultiple": "拖动框选以刷多个对象。\n",
+        "shift": "按下 Shift 键对即可操作所有相关的音符。"
+      },
+      "pasteTool": {
+        "title": "粘贴工具",
+        "paste": "点击即可粘贴。",
+        "shift": "按下 Shift 键翻转对象。"
+      },
+      "noteTool": {
+        "title": "音符工具",
+        "select": "点击音符以选择 1 个对象。",
+        "edit": "点击 1 个音符进行编辑。",
+        "add": "点击空白处即可添加音符。",
+        "move": "拖动 1 个音符进行移动。",
+        "ctrl": "按下 Ctrl 键并点击对象即可添加到选择中。",
+        "shift": "按下 Shift 键对即可操作所有相关的音符。",
+        "properties": "再次切换音符工具即可更改预设或默认属性。"
+      },
+      "slideTool": {
+        "title": "长按音符工具",
+        "select": "点击音符以选择 1 个对象。",
+        "edit": "点击 1 个音符进行编辑。",
+        "add": "点击空白处即可添加音符。",
+        "connect": "选择 1 个音符后，点击空白处即可添加并连接音符。",
+        "move": "拖动 1 个音符进行移动。",
+        "ctrl": "按下 Ctrl 键并点击对象即可添加到选择中。",
+        "shift": "按下 Shift 键对即可操作所有相关的音符。",
+        "properties": "再次切换长按音符工具即可更改预设或默认属性。"
+      },
+      "bpmTool": {
+        "title": "BPM 工具",
+        "select": "点击 BPM 对象以选择 1 个对象。",
+        "edit": "点击 1 个 BPM 对象进行编辑。",
+        "add": "点击空白处即可添加 BPM。",
+        "move": "拖动 1 个 BPM 对象进行移动。",
+        "ctrl": "按下 Ctrl 键并点击对象即可添加到选择中。"
+      },
+      "timeScaleTool": {
+        "title": "时间尺度工具",
+        "select": "点击时间尺度对象以选择 1 个对象。",
+        "edit": "点击 1 个时间尺度对象进行编辑。",
+        "add": "点击空白处即可添加。",
+        "move": "拖动 1 个时间尺度对象进行移动。",
+        "ctrl": "按下 Ctrl 键并点击对象即可添加到选择中。"
+      }
+    }
+  },
+  "settings": {
+    "title": "设置",
+    "editor": {
+      "title": "编辑器",
+      "locale": "语言",
+      "autoSave": "自动保存",
+      "autoSaveDelay": "自动保存延迟",
+      "waveformVisualization": {
+        "title": "波形可视化",
+        "off": "关",
+        "fft": "快速傅里叶变换",
+        "volume": "音量",
+        "changed": "您已更改波形可视化选项，请再次选择背景音乐文件以生效更改。"
+      },
+      "dragToPanY": "拖动以纵向平移",
+      "dragToPanX": "拖动以横向平移"
+    },
+    "keyboardShortcuts": {
+      "title": "键盘快捷键"
+    },
+    "mouse": {
+      "title": "滑鼠",
+      "secondaryTool": {
+        "title": "辅助工具",
+        "eraser": "橡皮擦",
+        "select": "选择"
+      },
+      "smoothScrolling": "平滑滚动"
+    },
+    "play": {
+      "title": "播放",
+      "bgmVolume": "背景音乐音量",
+      "sfxVolume": "音效音量",
+      "follow": "跟随",
+      "followPosition": "跟随位置"
+    },
+    "preview": {
+      "title": "预览",
+      "position": {
+        "title": "位置",
+        "auto": "自动",
+        "top": "顶部",
+        "left": "左边"
+      }
+    },
+    "toolbar": {
+      "title": "工具栏",
+      "modal": {
+        "title": "选择工具"
+      }
+    },
+    "touch": {
+      "title": "触控",
+      "scrollInertia": "滚动惯性"
+    }
+  },
+  "sidebars": {
+    "default": {
+      "title": "对象属性",
+      "none": "未选择对象",
+      "edited": "已编辑 {0} 个对象"
+    }
+  },
+  "tools": {
+    "bpm": {
+      "adding": "添加 {0} 个 BPM 对象",
+      "added": "已添加 {0} 个 BPM 对象",
+      "edited": "已编辑 {0} 个 BPM 对象",
+      "moving": "移动 {0} 个 BPM 对象",
+      "moved": "已移动 {0} 个 BPM 对象",
+      "replaced": "已替换 {0} 个 BPM 对象",
+      "selected": "已添加 {0} 个 BPM 对象",
+      "modal": {
+        "title": "BPM 属性"
+      }
+    },
+    "brush": {
+      "deselected": "取消选择所有对象",
+      "brushing": "刷 {0} 个物体",
+      "brushed": "已刷 {0} 个对象",
+      "sidebar": {
+        "title": "笔刷属性"
+      }
+    },
+    "eraser": {
+      "deselected": "取消选择所有对象",
+      "erasing": "擦除 {0} 个对象",
+      "erased": "已擦除 {0} 个对象"
+    },
+    "note": {
+      "adding": "添加 {0} 个音符",
+      "added": "已添加 {0} 个音符",
+      "editing": "编辑 {0} 个音符",
+      "edited": "已编辑 {0} 个音符",
+      "moving": "移动 {0} 个音符",
+      "moved": "已移动 {0} 个音符",
+      "selected": "已选择 {0} 个音符",
+      "modal": {
+        "title": "音符属性"
+      },
+      "sidebar": {
+        "title": "默认音符属性"
+      }
+    },
+    "paste": {
+      "pasted": "已粘贴 {0} 个对象",
+      "sidebar": {
+        "title": "剪贴板记录"
+      }
+    },
+    "select": {
+      "deselected": "取消选择所有对象",
+      "selecting": "选择 {0} 个对象",
+      "selected": "已选择 {0} 个对象",
+      "moving": "移动 {0} 个对象",
+      "moved": "已移动 {0} 个对象"
+    },
+    "slide": {
+      "adding": "添加 {0} 个音符",
+      "added": "已添加 {0} 个音符",
+      "editing": "编辑 {0} 个音符",
+      "edited": "已编辑 {0} 个音符",
+      "moving": "移动 {0} 个音符",
+      "moved": "已移动 {0} 个音符",
+      "selected": "已选择 {0} 个音符",
+      "modal": {
+        "title": "音符属性"
+      },
+      "sidebar": {
+        "title": "默认长按音符属性"
+      }
+    },
+    "timeScale": {
+      "adding": "添加 {0} 个时间尺度对象",
+      "added": "已添加 {0} 个时间尺度对象",
+      "edited": "已编辑 {0} 个时间尺度对象",
+      "moving": "移动 {0} 个时间尺度对象",
+      "moved": "已移动 {0} 个时间尺度对象",
+      "replaced": "已替换 {0} 个时间尺度对象",
+      "selected": "已添加 {0} 个时间尺度对象",
+      "modal": {
+        "title": "时间尺度属性"
+      }
+    }
+  },
+  "utilities": {
+    "title": "工具",
+    "coverEditor": {
+      "title": "封面编辑器",
+      "cover": "封面",
+      "size": "尺寸",
+      "generate": "生成",
+      "loading": "正在加载文件...",
+      "decoding": "正在解码图像...",
+      "generating": "正在生成封面..."
+    },
+    "previewEditor": {
+      "title": "预览编辑器",
+      "bgm": "背景音乐",
+      "start": "开始",
+      "end": "结束",
+      "fadeStart": "淡入开始",
+      "fadeEnd": "淡出结束",
+      "generate": "生成",
+      "loading": "正在加载文件...",
+      "decoding": "正在解码音频...",
+      "generating": "正在生成预览..."
+    }
+  },
+  "notification": {
+    "title": "Sonolus Next SEKAI Editor 版本 {0}"
+  },
+  "player": {
+    "started": "开始播放",
+    "stopped": "停止播放",
+    "changed": "速度更改为 {0}x"
+  },
+  "history": {
+    "initialize": "初始化",
+    "autoSave": {
+      "title": "自动保存",
+      "importing": "正在导入关卡..."
+    },
+    "changes": {
+      "title": "更动",
+      "message": "谱面更改可能会丢失。是否继续？"
+    }
+  },
+  "modals": {
+    "form": {
+      "confirm": "确认",
+      "beat": {
+        "label": "节拍"
+      },
+      "bpm": {
+        "label": "BPM"
+      },
+      "connectorActiveIsCritical": {
+        "label": "关键长按音符"
+      },
+      "connectorActiveIsFake": {
+        "label": "假长按音符"
+      },
+      "connectorEase": {
+        "label": "连接缓动",
+        "linear": "线性",
+        "in": "緩入",
+        "out": "緩出",
+        "inOut": "緩入 - 緩出",
+        "outIn": "緩出 - 緩入",
+        "none": "无"
+      },
+      "connectorGuideAlpha": {
+        "label": "引导不透明度"
+      },
+      "connectorGuideColor": {
+        "label": "引导颜色",
+        "neutral": "白",
+        "red": "红",
+        "green": "绿",
+        "blue": "蓝",
+        "yellow": "黄",
+        "purple": "紫",
+        "cyan": "青",
+        "black": "黑"
+      },
+      "connectorType": {
+        "label": "连接类型",
+        "active": "长按音符",
+        "guide": "引导"
+      },
+      "file": {
+        "select": "选择文件..."
+      },
+      "flickDirection": {
+        "label": "滑动方向",
+        "none": "无",
+        "up": "上",
+        "upLeft": "左上",
+        "upRight": "右上",
+        "down": "下",
+        "downLeft": "左下",
+        "downRight": "右下"
+      },
+      "group": {
+        "label": "群组",
+        "default": "默认"
+      },
+      "isAttached": {
+        "label": "依附"
+      },
+      "isConnectorSeparator": {
+        "label": "分隔"
+      },
+      "isCritical": {
+        "label": "关键"
+      },
+      "isFake": {
+        "label": "假键"
+      },
+      "left": {
+        "label": "轨道"
+      },
+      "key": {
+        "input": "输入键",
+        "press": "按一个键..."
+      },
+      "noteType": {
+        "label": "音符类型",
+        "default": "默认",
+        "trace": "迹",
+        "anchor": "锚",
+        "damage": "损害",
+        "forceTick": "强制判定",
+        "forceNonTick": "强制不判定"
+      },
+      "preset": {
+      },
+      "size": {
+        "label": "尺寸"
+      },
+      "skip": {
+        "label": "略过（节拍）"
+      },
+      "timeScale": {
+        "label": "时间尺度"
+      },
+      "timeScaleEase": {
+        "label": "时间尺度缓动",
+        "none": "无",
+        "linear": "线性"
+      },
+      "toggle": {
+        "enabled": "启用",
+        "disabled": "禁用"
+      }
+    },
+    "confirm": {
+      "confirm": "确认",
+      "cancel": "取消"
+    },
+    "info": {
+      "ok": "好的"
+    },
+    "loading": {
+      "loading": "加载中 ..."
+    }
+  }
+}
