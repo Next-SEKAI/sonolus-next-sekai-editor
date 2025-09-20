@@ -581,6 +581,7 @@
         "forceNonTick": "强制不判定"
       },
       "preset": {
+        "label": "预设"
       },
       "size": {
         "label": "尺寸"
