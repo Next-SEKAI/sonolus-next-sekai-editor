@@ -16,11 +16,7 @@
       "title": "切换到笔刷工具",
       "switched": "已切换到笔刷工具",
       "modal": {
-        "title": "笔刷属性",
-        "color": "颜色",
-        "scaleL": "尺寸 左",
-        "scaleR": "尺寸 右",
-        "ease": "缓动类型"
+        "title": "笔刷属性"
       }
     },
     "copy": {
@@ -257,7 +253,7 @@
         "title": "笔刷工具",
         "brush": "点击要刷的对象。",
         "deselect": "点击空白处可取消选择所有对象。",
-        "brushMultiple": "拖动框选以刷多个对象。\n",
+        "brushMultiple": "拖动框选以刷多个对象。",
         "shift": "按下 Shift 键对即可操作所有相关的音符。"
       },
       "pasteTool": {
@@ -375,7 +371,7 @@
       "moving": "移动 {0} 个 BPM 对象",
       "moved": "已移动 {0} 个 BPM 对象",
       "replaced": "已替换 {0} 个 BPM 对象",
-      "selected": "已添加 {0} 个 BPM 对象",
+      "selected": "已选择 {0} 个 BPM 对象",
       "modal": {
         "title": "BPM 属性"
       }
@@ -443,7 +439,7 @@
       "moving": "移动 {0} 个时间尺度对象",
       "moved": "已移动 {0} 个时间尺度对象",
       "replaced": "已替换 {0} 个时间尺度对象",
-      "selected": "已添加 {0} 个时间尺度对象",
+      "selected": "已选择 {0} 个时间尺度对象",
       "modal": {
         "title": "时间尺度属性"
       }
@@ -463,10 +459,10 @@
     "previewEditor": {
       "title": "预览编辑器",
       "bgm": "背景音乐",
-      "start": "开始",
-      "end": "结束",
-      "fadeStart": "淡入开始",
-      "fadeEnd": "淡出结束",
+      "start": "开始时间",
+      "end": "结束时间",
+      "fadeStart": "淡入时长",
+      "fadeEnd": "淡出时长",
       "generate": "生成",
       "loading": "正在加载文件...",
       "decoding": "正在解码音频...",
@@ -577,8 +573,8 @@
         "trace": "迹",
         "anchor": "锚",
         "damage": "损害",
-        "forceTick": "强制判定",
-        "forceNonTick": "强制不判定"
+        "forceTick": "强制中继点",
+        "forceNonTick": "强制中非继点"
       },
       "preset": {
         "label": "预设"
