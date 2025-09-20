@@ -53,7 +53,9 @@ export type DefaultSlideProperties = {
 }
 
 export const defaultSlidePropertiesPresets = ref<DefaultSlideProperties[]>([
-    {},
+    {
+        connectorEase: 'linear',
+    },
     {
         isCritical: true,
     },
