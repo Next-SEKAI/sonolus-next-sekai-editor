@@ -16,11 +16,7 @@
       "title": "ブラシツールを選択",
       "switched": "ブラシツールを選択しました",
       "modal": {
-        "title": "ブラシの設定",
-        "color": "色",
-        "scaleL": "左端のサイズ(unused)\n\nTranslated by Oomisoka",
-        "scaleR": "右端のサイズ\n(unused)",
-        "ease": "加減速"
+        "title": "ブラシの設定"
       }
     },
     "copy": {
@@ -454,7 +450,7 @@
     "coverEditor": {
       "title": "ジャケットエディター",
       "cover": "ジャケット",
-      "size": "サイズ(400以下)",
+      "size": "サイズ(400px以下)",
       "generate": "生成",
       "loading": "ファイルを読み込み中...",
       "decoding": "画像をデコード中...",
