@@ -141,11 +141,7 @@ watch(time, ({ now }) => {
                 }
             }
         } else if (isActiveHead) {
-            if (entity.isCritical) {
-                targets.criticalTap.add(entity.beat)
-            } else {
-                targets.normalTap.add(entity.beat)
-            }
+            targets.normalTap.add(entity.beat)
         } else if (isActiveTail) {
             if (isFlick) {
                 if (entity.isCritical) {
@@ -154,11 +150,7 @@ watch(time, ({ now }) => {
                     targets.normalFlick.add(entity.beat)
                 }
             } else {
-                if (entity.isCritical) {
-                    targets.criticalTap.add(entity.beat)
-                } else {
-                    targets.normalTap.add(entity.beat)
-                }
+                targets.normalTap.add(entity.beat)
             }
         } else if (entity.noteType === 'default') {
             if (entity.isCritical) {
