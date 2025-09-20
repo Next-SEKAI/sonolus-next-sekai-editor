@@ -16,11 +16,7 @@
             "title": "Switch to Brush tool",
             "switched": "Switched to Brush tool",
             "modal": {
-                "title": "Brush Properties",
-                "color": "Color",
-                "scaleL": "Scale L",
-                "scaleR": "Scale R",
-                "ease": "Ease"
+                "title": "Brush Properties"
             }
         },
         "copy": {
@@ -375,7 +371,7 @@
             "moving": "Moving {0} BPM objects",
             "moved": "Moved {0} BPM objects",
             "replaced": "Replaced {0} BPM objects",
-            "selected": "Added {0} BPM objects",
+            "selected": "Selected {0} BPM objects",
             "modal": {
                 "title": "BPM Properties"
             }
@@ -443,7 +439,7 @@
             "moving": "Moving {0} Time Scale objects",
             "moved": "Moved {0} Time Scale objects",
             "replaced": "Replaced {0} Time Scale objects",
-            "selected": "Added {0} Time Scale objects",
+            "selected": "Selected {0} Time Scale objects",
             "modal": {
                 "title": "Time Scale Properties"
             }
