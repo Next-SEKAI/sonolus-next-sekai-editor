@@ -574,7 +574,7 @@
         "anchor": "锚",
         "damage": "损害",
         "forceTick": "强制中继点",
-        "forceNonTick": "强制中非继点"
+        "forceNonTick": "强制非中继点"
       },
       "preset": {
         "label": "预设"
