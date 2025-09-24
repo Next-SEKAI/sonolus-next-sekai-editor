@@ -49,7 +49,7 @@ export const getOptionalValue = <T extends TSchema>(
     entity: LevelDataEntity,
     name: string,
     schema: T,
-): Static<T> => {
+): Static<T> | undefined => {
     const data = entity.data.find((data) => data.name === name)
     if (!data) return
     if (!('value' in data)) return
