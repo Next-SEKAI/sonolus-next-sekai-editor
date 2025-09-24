@@ -191,6 +191,7 @@ const toMovedTimeScaleObject = (entity: TimeScaleEntity, beat: number): TimeScal
     timeScale: entity.timeScale,
     skip: entity.skip,
     ease: entity.ease,
+    hideNotes: entity.hideNotes,
 })
 
 const flippedFlickDirections: Record<FlickDirection, FlickDirection> = {

@@ -45,6 +45,7 @@ export const timeScale: Tool = {
                         timeScale: 1,
                         skip: 0,
                         ease: 'none',
+                        hideNotes: false,
                     }),
                 ],
             }
@@ -104,6 +105,7 @@ export const timeScale: Tool = {
                 timeScale: 1,
                 skip: 0,
                 ease: 'none',
+                hideNotes: false,
             }
 
             const overlap = find(view.group, object.beat)
@@ -174,6 +176,7 @@ export const timeScale: Tool = {
                                 timeScale: 1,
                                 skip: 0,
                                 ease: 'none',
+                                hideNotes: false,
                             }),
                         ],
                     }
@@ -193,6 +196,7 @@ export const timeScale: Tool = {
                             timeScale: active.entity.timeScale,
                             skip: active.entity.skip,
                             ease: active.entity.ease,
+                            hideNotes: false,
                         }),
                     ],
                 }
@@ -227,6 +231,7 @@ export const timeScale: Tool = {
                         timeScale: 1,
                         skip: 0,
                         ease: 'none',
+                        hideNotes: false,
                     }
 
                     const overlap = find(view.group, object.beat)
@@ -250,6 +255,7 @@ export const timeScale: Tool = {
                     timeScale: active.entity.timeScale,
                     skip: active.entity.skip,
                     ease: active.entity.ease,
+                    hideNotes: active.entity.hideNotes,
                 })
                 focusViewAtBeat(beat)
                 break
@@ -267,6 +273,7 @@ export const editTimeScale = (entity: TimeScaleEntity, object: Partial<TimeScale
         timeScale: object.timeScale ?? entity.timeScale,
         skip: object.skip ?? entity.skip,
         ease: object.ease ?? entity.ease,
+        hideNotes: object.hideNotes ?? entity.hideNotes,
     })
 }
 
@@ -282,6 +289,7 @@ export const editSelectedTimeScale = (
         timeScale: object.timeScale ?? entity.timeScale,
         skip: object.skip ?? entity.skip,
         ease: object.ease ?? entity.ease,
+        hideNotes: object.hideNotes ?? entity.hideNotes,
     })
 }
 

@@ -27,6 +27,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                         timeScale: change.timeScale,
                         skip: 0,
                         ease: 'none',
+                        hideNotes: false,
                     })
                 }
                 break

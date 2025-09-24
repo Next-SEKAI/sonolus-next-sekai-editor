@@ -21,7 +21,7 @@ const y = computed(() => time.value * ups.value)
         <line :x1="-6" :x2="6" :y1="y" :y2="y" stroke="#ff0" stroke-opacity="0.5" />
 
         <text :x="-6.1" :y text-anchor="end" dominant-baseline="middle" fill="#ff0">
-            {{ formatTimeScale(entity.timeScale, entity.skip, entity.ease) }}
+            {{ formatTimeScale(entity.timeScale, entity.skip, entity.ease, entity.hideNotes) }}
         </text>
         <text
             v-if="entity.group"
