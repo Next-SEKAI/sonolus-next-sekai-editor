@@ -1,5 +1,5 @@
 {
-  "title": "Turkish (Türkçe)",
+  "title": "Türkçe (Turkish)",
   "commands": {
     "bgm": {
       "title": "Arkaplan Müziği",
@@ -565,7 +565,7 @@
       },
       "key": {
         "input": "Giriş Anahtarı",
-        "press": "Bir tuşa bas..."
+        "press": "Bir tuşa basın..."
       },
       "noteType": {
         "label": "Nota Türü",
