@@ -5,6 +5,7 @@ export const defaultLocale = (() => {
     switch (main) {
         case 'fr':
         case 'ja':
+        case 'tr':
             return main
         case 'zh':
             return 'zhs'
