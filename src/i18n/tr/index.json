@@ -1,0 +1,612 @@
+{
+  "title": "Turkish (Türkçe)",
+  "commands": {
+    "bgm": {
+      "title": "Arkaplan Müziği",
+      "changed": "Arkaplan Müziği Değiştirildi",
+      "modal": {
+        "file": "Dosya",
+        "offset": "Denge Ayarı (ms)",
+        "loading": "Dosya yükleniyor...",
+        "decoding": "Ses çözümleniyor...",
+        "generating": "Dalga formu oluşturuluyor..."
+      }
+    },
+    "brush": {
+      "title": "Fırça aracına geç",
+      "switched": "Fırça aracına geçildi",
+      "modal": {
+        "title": "Fırça Özellikleri"
+      }
+    },
+    "copy": {
+      "title": "Kopyala",
+      "noSelected": "Kopyalanacak nesne seçilmedi",
+      "copied": "{0} nesne kopyalandı"
+    },
+    "cut": {
+      "title": "Kes",
+      "noSelected": "Kesilecek nesne seçilmedi",
+      "cut": "{0} nesneyi kes"
+    },
+    "deselect": {
+      "title": "Seçimi kaldır",
+      "deselected": "Tüm nesnelerin seçimi kaldırıldı"
+    },
+    "divisions": {
+      "title": "1/{0} bölümüne geç",
+      "switched": "1/{0} bölümüne geçildi",
+      "custom": {
+        "title": "Özelleştirilebilir bölüme geç",
+        "modal": {
+          "title": "Özelleştirilebilir Bölüm",
+          "division": "Bölüm"
+        }
+      }
+    },
+    "eraser": {
+      "title": "Silgi aracına geç",
+      "switched": "Silgi aracına geçildi"
+    },
+    "flip": {
+      "title": "Çevir",
+      "noSelected": "Çevirilecek nesne seçilmedi",
+      "flipped": "{0} nesne çevrildi"
+    },
+    "groups": {
+      "groupAll": {
+        "title": "Tüm gruplara geç"
+      },
+      "groupPrev": {
+        "title": "Önceki gruba geç"
+      },
+      "groupNext": {
+        "title": "Sonraki gruba geç"
+      },
+      "switched": {
+        "all": "Tüm gruplara geçildi",
+        "default": "Varsayılan gruba geçildi",
+        "other": "{0} grubuna geçildi"
+      }
+    },
+    "help": {
+      "title": "Yardım"
+    },
+    "jumps": {
+      "jumpDown": {
+        "title": "Aşağı Atla"
+      },
+      "jumpUp": {
+        "title": "Yukarı Atla"
+      }
+    },
+    "note": {
+      "title": {
+        "default": "Nota Aracına Geç",
+        "preset": "#{0} Nota Aracına Geç "
+      },
+      "switched": "#{0} Nota Aracına Geçildi",
+      "modal": {
+        "title": "Varsayılan Nota Özellikleri"
+      }
+    },
+    "open": {
+      "title": "Aç",
+      "loading": "Dosya yükleniyor...",
+      "importing": "Seviye içe aktarılıyor...",
+      "opened": "Seviye açıldı"
+    },
+    "paste": {
+      "title": "Yapıştırma aracına geç",
+      "switched": "Yapıştırma aracına geçildi"
+    },
+    "play": {
+      "title": "Oynat"
+    },
+    "redo": {
+      "title": "Yeniden Yap",
+      "noState": "Yeniden yapılacak bir şey yok",
+      "redid": "\"{0}\" yeniden düzenlendi"
+    },
+    "reset": {
+      "title": "Sıfırla",
+      "reset": "Seviyeyi sıfırla"
+    },
+    "save": {
+      "title": "Kaydet",
+      "exporting": "Seviye dışa aktarılıyor…",
+      "saved": "Seviye kaydedildi"
+    },
+    "scrolls": {
+      "scrollLeft": {
+        "title": "Sola Kaydır"
+      },
+      "scrollRight": {
+        "title": "Sağa Kaydır"
+      },
+      "scrollDown": {
+        "title": "Aşağı Kaydır"
+      },
+      "scrollUp": {
+        "title": "Yukarı Kaydır"
+      },
+      "scrollPageDown": {
+        "title": "Sayfayı Aşağı Kaydır"
+      },
+      "scrollPageUp": {
+        "title": "Sayfayı Yukarı Kaydır"
+      }
+    },
+    "select": {
+      "title": "Seçim Aracına Geç",
+      "switched": "Seçim Aracına Geçildi"
+    },
+    "settings": {
+      "title": "Ayarlar"
+    },
+    "slide": {
+      "title": {
+        "default": "Kaydırma Aracına Geç",
+        "preset": "#{0} Kaydırma Aracına Geç"
+      },
+      "switched": "#{0} Kaydırma Aracına Geçildi",
+      "modal": {
+        "title": "Varsayılan Kaydırma Özellikleri"
+      }
+    },
+    "snapping": {
+      "title": "Hizala",
+      "absolute": "Mutlak hizalamaya geç",
+      "relative": "Göreceli hizalamaya geç"
+    },
+    "speeds": {
+      "speedDown": {
+        "title": "Hızı Azalt"
+      },
+      "speedUp": {
+        "title": "Hızı Yükselt"
+      }
+    },
+    "stop": {
+      "title": "Durdur"
+    },
+    "undo": {
+      "title": "Geri al",
+      "noState": "Geri alınacak hiçbir şey yok",
+      "undid": "\"{0}\" geri alındı"
+    },
+    "utilities": {
+      "title": "Araçlar"
+    },
+    "zooms": {
+      "zoomXIn": {
+        "title": "X’ i Yakınlaştır ",
+        "zoomed": "X'e %10 yakınlaştırılma yapıldı"
+      },
+      "zoomXOut": {
+        "title": "X’ i Uzaklaştır ",
+        "zoomed": "X %10 oranında uzaklaştırıldı"
+      },
+      "zoomYIn": {
+        "title": "Y'ye yakınlaştır",
+        "zoomed": "Y'de %10 yakınlaştırma yapıldı"
+      },
+      "zoomYOut": {
+        "title": "Y’ yi Uzaklaştır ",
+        "zoomed": "Y %10 oranında uzaklaştırıldı"
+      }
+    },
+    "bpm": {
+      "title": "BPM aracına geç",
+      "switched": "BPM aracına geçildi"
+    },
+    "timeScale": {
+      "title": "Zaman Ölçeği aracına geç",
+      "switched": "Zaman Ölçeği aracına geçildi"
+    }
+  },
+  "help": {
+    "modal": {
+      "title": "Yardım",
+      "touchscreen": {
+        "title": "Dokunmatik Ekran",
+        "tap": "Dokunmak için tek parmakla dokunun.",
+        "drag": "Tek parmakla sürükleyin.",
+        "scrollY": "Kaydırmak için iki parmağınızı dikey olarak kaydırın.",
+        "scrollX": "Kaydırmak için iki parmağınızı yatay olarak kaydırın.",
+        "zoomY": "Y’ yi yakınlaştırmak için iki parmağınızı dikey olarak sıkıştırın.",
+        "zoomX": "X’ i yakınlaştırmak için iki parmağınızı yatay olarak sıkıştırın."
+      },
+      "mouse": {
+        "title": "Fare",
+        "tapPrimary": "Birincil araçla dokunmak için sol tıklayın.",
+        "dragPrimary": "Birincil araçla sürüklemek için sol tıkla ve sürükle.",
+        "tapSecondary": "İkincil araçla dokunmak için sağ tıklayın.",
+        "dragSecondary": "Sağ tıklayıp sürükleyerek ikincil aracı kullanın.",
+        "scrollY": "Dikey kaydırma için tekerleği çevirin.",
+        "scrollX": "Yatay kaydırma için Shift tuşuyla birlikte tekerlek kaydırması yapın.",
+        "zoomY": "Dikey yakınlaştırma için CTRL tuşuyla birlikte tekerleği kaydırın.",
+        "zoomX": "Yatay yakınlaştırma için CTRL ve Shift tuşlarıyla tekerlek kaydırması yapın."
+      },
+      "keyboard": {
+        "title": "Klavye",
+        "single": "Çalıştırmak için bir kere basın.",
+        "multiple": "Birden fazla kez çalıştırmak için uzun basın."
+      },
+      "selectTool": {
+        "title": "Araç Seç",
+        "select": "Nesnelere dokunarak 1 nesne seç, üst üste gelen nesneler arasında sırayla geçiş yapın.",
+        "deselect": "Tüm nesnelerin seçimini kaldırmak için boş alana dokunun.",
+        "move": "Birden fazla nesneyi taşımak için nesneleri sürükleyin.",
+        "selectMultiple": "Birden fazla nesneyi seçmek için boş alanı sürükleyin.",
+        "ctrl": "Seçime nesne eklemek için CTRL tuşunu kullanın.",
+        "shift": "Tüm ilgili Nota nesneleri üzerinde işlem yapmak için Shift tuşunu kullanın."
+      },
+      "eraserTool": {
+        "title": "Silgi Aracı",
+        "erase": "Silmek istediğin nesnelere dokunun.",
+        "deselect": "Tüm nesnelerin seçimini kaldırmak için boş alana dokunun.",
+        "eraseMultiple": "Birden fazla nesneyi silmek için sürükleyin.",
+        "shift": "Tüm ilgili Nota nesneleri üzerinde işlem yapmak için Shift tuşunu kullanın."
+      },
+      "brushTool": {
+        "title": "Fırça Aracı",
+        "brush": "Fırçalamak için nesnelere dokunun.",
+        "deselect": "Tüm nesnelerin seçimini kaldırmak için boş alana dokunun.",
+        "brushMultiple": "Birden fazla nesneyi fırçalamak için sürükleyin.",
+        "shift": "Tüm ilgili Nota nesneleri üzerinde işlem yapmak için Shift tuşunu kullanın."
+      },
+      "pasteTool": {
+        "title": "Yapıştırma Aracı",
+        "paste": "Yapıştırmak için dokun.",
+        "shift": "Nesneleri çevirmek için Shift tuşunu kullanın."
+      },
+      "noteTool": {
+        "title": "Nota Aracı",
+        "select": "1 nesne seçmek için Nota nesnelerine dokunun.",
+        "edit": "Düzenlemek için 1 Nota nesnesine dokunun.",
+        "add": "Eklemek için boş alana dokunun.",
+        "move": "1 Nota nesnesini taşımak için sürükleyin.",
+        "ctrl": "Seçime nesne eklemek için CTRL tuşunu kullanın.",
+        "shift": "Tüm ilgili Nota nesneleri üzerinde işlem yapmak için Shift tuşunu kullanın.",
+        "properties": "Ön ayarlanmış veya varsayılan özellikleri değiştirmek için tekrar Nota Aracı’na geçin."
+      },
+      "slideTool": {
+        "title": "Kaydırma Aracı",
+        "select": "1 nesne seçmek için Nota nesnelerine dokunun.",
+        "edit": "Düzenlemek için 1 Nota nesnesine dokunun.",
+        "add": "Eklemek için boş alana dokunun.",
+        "connect": "Bir Nota nesnesi seçiliyken bağlamak için boş alana dokunun.",
+        "move": "1 Nota nesnesini taşımak için sürükleyin.",
+        "ctrl": "Seçime nesne eklemek için CTRL tuşunu kullanın.",
+        "shift": "Tüm ilgili Nota nesneleri üzerinde işlem yapmak için Shift tuşunu kullanın.",
+        "properties": "Ön ayarlı veya varsayılan özellikleri değiştirmek için  Kaydırma Aracına tekrar geçin."
+      },
+      "bpmTool": {
+        "title": "BPM Aracı",
+        "select": "1 nesne seçmek için BPM nesnelerine dokunun.",
+        "edit": "Düzenlemek için 1 BPM nesnesine dokunun.",
+        "add": "Eklemek için boş alana dokun.",
+        "move": "Taşımak için 1 BPM nesnesini sürükleyin.",
+        "ctrl": "Seçime nesne eklemek için CTRL tuşunu kullanın."
+      },
+      "timeScaleTool": {
+        "title": "Zaman Ölçeği Aracı",
+        "select": "1 nesne seçmek için Zaman Ölçeği nesnelerine dokunun.",
+        "edit": "Düzenlemek için 1 Zaman Ölçeği nesnesine dokunun.",
+        "add": "Eklemek için boş alana dokun.",
+        "move": "Taşımak için 1 Zaman Ölçeği nesnesini sürükleyin.",
+        "ctrl": "Seçime nesne eklemek için CTRL tuşunu kullanın."
+      }
+    }
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "editor": {
+      "title": "Editör",
+      "locale": "Dil",
+      "autoSave": "Otomatik Kaydet",
+      "autoSaveDelay": "Otomatik Kaydetme Gecikmesi",
+      "waveformVisualization": {
+        "title": "Dalga Formu Görselleştirmesi",
+        "off": "Kapalı",
+        "fft": "FFT",
+        "volume": "Ses",
+        "changed": "Dalga formu görselleştirmesini değiştirdin, bu değişikliğin etkili olması için BGM (Arka Plan Sesi) dosyasını tekrar seç."
+      },
+      "dragToPanY": "Y’ yi kaydırmak için sürükle",
+      "dragToPanX": "X’ i kaydırmak için sürükle"
+    },
+    "keyboardShortcuts": {
+      "title": "Klavye Kısayolları"
+    },
+    "mouse": {
+      "title": "Fare",
+      "secondaryTool": {
+        "title": "İkincil Araç",
+        "eraser": "Silgi",
+        "select": "Seç"
+      },
+      "smoothScrolling": "Pürüzsüz Kaydırma"
+    },
+    "play": {
+      "title": "Oynat",
+      "bgmVolume": "Arkaplan Müziği Sesi",
+      "sfxVolume": "Ses Efekti Sesi",
+      "follow": "Takip Et",
+      "followPosition": "Pozisyonu Takip Et"
+    },
+    "preview": {
+      "title": "Önizleme",
+      "position": {
+        "title": "Pozisyon",
+        "auto": "Otomatik",
+        "top": "Üst",
+        "left": "Sol"
+      }
+    },
+    "toolbar": {
+      "title": "Araç çubuğu",
+      "modal": {
+        "title": "Araç Seç"
+      }
+    },
+    "touch": {
+      "title": "Dokunma",
+      "scrollInertia": "Kaydırma Eylemsizliği"
+    }
+  },
+  "sidebars": {
+    "default": {
+      "title": "Nesne Özellikleri",
+      "none": "Hiçbir nesne seçilmedi",
+      "edited": "{0} nesne düzenlendi"
+    }
+  },
+  "tools": {
+    "bpm": {
+      "adding": "{0} BPM nesnesi ekleniyor",
+      "added": "{0} BPM nesnesi eklendi",
+      "edited": "{0} BPM nesnesi düzenlendi",
+      "moving": "{0} BPM nesnesi taşınıyor",
+      "moved": "{0} BPM nesnesi taşındı",
+      "replaced": "{0} BPM nesnesi değiştirildi",
+      "selected": "{0} BPM nesnesi seçildi",
+      "modal": {
+        "title": "BPM Özellikleri"
+      }
+    },
+    "brush": {
+      "deselected": "Tüm nesnelerin seçimi kaldırıldı",
+      "brushing": "{0} nesne fırçalanıyor",
+      "brushed": "{0} nesne fırçalandı",
+      "sidebar": {
+        "title": "Fırça Özellikleri"
+      }
+    },
+    "eraser": {
+      "deselected": "Tüm nesnelerin seçimi kaldırıldı",
+      "erasing": "{0} nesne siliniyor",
+      "erased": "{0} nesne silindi"
+    },
+    "note": {
+      "adding": "{0} Nota nesnesi ekleniyor",
+      "added": "{0} Nota nesnesi eklendi",
+      "editing": "{0} Nota nesnesi\n düzenleniyor",
+      "edited": "{0} Nota nesnesi düzenlendi",
+      "moving": "{0} Nota nesnelerini taşınıyor",
+      "moved": "{0} Nota nesnesi taşındı",
+      "selected": " {0} Nota nesnesi seçildi",
+      "modal": {
+        "title": "Nota Özellikleri"
+      },
+      "sidebar": {
+        "title": "Varsayılan Nota Özellikleri"
+      }
+    },
+    "paste": {
+      "pasted": "{0} nesne yapıştırıldı",
+      "sidebar": {
+        "title": "Pano Geçmişi"
+      }
+    },
+    "select": {
+      "deselected": "Tüm nesnelerin seçimi kaldırıldı",
+      "selecting": "{0} nesne seçiliyor",
+      "selected": " {0} nesne seçildi",
+      "moving": "{0} nesne taşınıyor",
+      "moved": "{0} nesne taşındı"
+    },
+    "slide": {
+      "adding": "{0} Nota nesnesi ekleniyor",
+      "added": "{0} Nota nesnesi eklendi",
+      "editing": "{0} Nota nesnesi düzenleniyor",
+      "edited": "{0} Nota nesnesi düzenlendi",
+      "moving": "{0} Nota nesnesi taşınıyor",
+      "moved": "{0} Nota nesnesi taşındı",
+      "selected": "{0} Nota nesnesi seçildi",
+      "modal": {
+        "title": "Nota Özellikleri"
+      },
+      "sidebar": {
+        "title": "Varsayılan Kaydırma Özellikleri"
+      }
+    },
+    "timeScale": {
+      "adding": "{0} Zaman Ölçeği nesneleri ekleniyor",
+      "added": "{0} Zaman Ölçeği nesnesi eklendi",
+      "edited": "{0} Zaman Ölçeği nesnesi düzenlendi",
+      "moving": "{0} Zaman Ölçeği nesnesi taşınıyor",
+      "moved": "{0} Zaman Ölçeği nesnesi taşındı",
+      "replaced": "{0} Zaman Ölçeği nesneleri değiştirildi",
+      "selected": " {0} Zaman Ölçeği nesnesi seçildi",
+      "modal": {
+        "title": "Zaman Ölçeği Özellikleri"
+      }
+    }
+  },
+  "utilities": {
+    "title": "Araçlar",
+    "coverEditor": {
+      "title": "Kapak Editörü",
+      "cover": "Kapak",
+      "size": "Boyut",
+      "generate": "Oluştur",
+      "loading": "Dosya yükleniyor...",
+      "decoding": "Görsel çözümleniyor...",
+      "generating": "Kapak oluşturuluyor..."
+    },
+    "previewEditor": {
+      "title": "Önizleme Düzenleyicisi",
+      "bgm": "Arka Plan Müziği",
+      "start": "Başlangıç",
+      "end": "Son",
+      "fadeStart": "Solma Başlangıcı",
+      "fadeEnd": "Solma Bitişi",
+      "generate": "Oluştur",
+      "loading": "Dosya yükleniyor...",
+      "decoding": "Ses çözümleniyor...",
+      "generating": "Önizleme oluşturuluyor..."
+    }
+  },
+  "notification": {
+    "title": "Sonolus Next SEKAI Editörü\nSürüm {0}"
+  },
+  "player": {
+    "started": "Oynatmaya başlandı",
+    "stopped": "Oynatma durduruldu",
+    "changed": "Hız {0}x olarak değiştirildi"
+  },
+  "history": {
+    "initialize": "Başlat",
+    "autoSave": {
+      "title": "Otomatik Kaydet",
+      "importing": "Seviye içe aktarılıyor…"
+    },
+    "changes": {
+      "title": "Değişiklikler",
+      "message": "Haritadaki değişiklikler kaybolabilir. Devam etmek istiyor musun?"
+    }
+  },
+  "modals": {
+    "form": {
+      "confirm": "Onayla",
+      "beat": {
+        "label": "Vuruş"
+      },
+      "bpm": {
+        "label": "BPM"
+      },
+      "connectorActiveIsCritical": {
+        "label": "Kritik Kaydırma"
+      },
+      "connectorActiveIsFake": {
+        "label": "Sahte Kaydırma"
+      },
+      "connectorEase": {
+        "label": "Bağlayıcı Yumuşatma",
+        "linear": "Doğrusal",
+        "in": "Giriş",
+        "out": "Çıkış",
+        "inOut": "Giriş-Çıkış",
+        "outIn": "Çıkış-Giriş",
+        "none": "Hiçbiri"
+      },
+      "connectorGuideAlpha": {
+        "label": "Guide Saydamlığı"
+      },
+      "connectorGuideColor": {
+        "label": "Guide Rengi",
+        "neutral": "Nötr",
+        "red": "Kırmızı",
+        "green": "Yeşil",
+        "blue": "Mavi",
+        "yellow": "Sarı",
+        "purple": "Mor",
+        "cyan": "Camgöbeği",
+        "black": "Siyah"
+      },
+      "connectorType": {
+        "label": "Bağlayıcı Tipi",
+        "active": "Kaydırma",
+        "guide": "Guide"
+      },
+      "file": {
+        "select": "Dosya Seç..."
+      },
+      "flickDirection": {
+        "label": "Fiske Yönü",
+        "none": "Hiçbiri",
+        "up": "Yukarı",
+        "upLeft": "Sol Yukarı",
+        "upRight": "Sağ Yukarı",
+        "down": "Aşağı",
+        "downLeft": "Sol Aşağı",
+        "downRight": "Sağ Aşağı"
+      },
+      "group": {
+        "label": "Grup",
+        "default": "Varsayılan"
+      },
+      "isAttached": {
+        "label": "Ekli"
+      },
+      "isConnectorSeparator": {
+        "label": "Bağlayıcı Ayırıcı"
+      },
+      "isCritical": {
+        "label": "Kritik"
+      },
+      "isFake": {
+        "label": "Sahte"
+      },
+      "left": {
+        "label": "Lane"
+      },
+      "key": {
+        "input": "Giriş Anahtarı",
+        "press": "Bir tuşa bas..."
+      },
+      "noteType": {
+        "label": "Nota Türü",
+        "default": "Varsayılan",
+        "trace": "Trace",
+        "anchor": "Sabit Nokta",
+        "damage": "Hasar",
+        "forceTick": "Zorla İşaretle",
+        "forceNonTick": "Tıklamamaya Zorla"
+      },
+      "preset": {
+        "label": "Ön ayar"
+      },
+      "size": {
+        "label": "Boyut"
+      },
+      "skip": {
+        "label": "Atla (vuruşlar)"
+      },
+      "timeScale": {
+        "label": "Zaman Ölçeği"
+      },
+      "timeScaleEase": {
+        "label": "Zaman Ölçeği Yumuşatması",
+        "none": "Hiçbiri",
+        "linear": "Doğrusal"
+      },
+      "toggle": {
+        "enabled": "Etkinleştirilmiş",
+        "disabled": " Devre Dışı"
+      }
+    },
+    "confirm": {
+      "confirm": "Onayla",
+      "cancel": "İptal Et"
+    },
+    "info": {
+      "ok": "Ok"
+    },
+    "loading": {
+      "loading": "Yükleniyor..."
+    }
+  }
+}
