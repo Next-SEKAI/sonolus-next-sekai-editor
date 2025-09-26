@@ -1,0 +1,351 @@
+{
+  "title": "Turkish (Türkçe)",
+  "commands": {
+    "bgm": {
+      "title": "Arkaplan Müziği",
+      "changed": "Arkaplan Müziği Değiştirildi",
+      "modal": {
+        "offset": "Denge Ayarı (ms)"
+      }
+    },
+    "brush": {
+      "modal": {
+      }
+    },
+    "copy": {
+    },
+    "cut": {
+    },
+    "deselect": {
+    },
+    "divisions": {
+      "custom": {
+        "modal": {
+        }
+      }
+    },
+    "eraser": {
+    },
+    "flip": {
+    },
+    "groups": {
+      "groupAll": {
+      },
+      "groupPrev": {
+      },
+      "groupNext": {
+      },
+      "switched": {
+      }
+    },
+    "help": {
+    },
+    "jumps": {
+      "jumpDown": {
+      },
+      "jumpUp": {
+      }
+    },
+    "note": {
+      "title": {
+        "default": "Nota Aracına Geç",
+        "preset": "#{0} Nota Aracına Geç "
+      },
+      "switched": "#{0} Nota Aracına Geçildi",
+      "modal": {
+      }
+    },
+    "open": {
+    },
+    "paste": {
+    },
+    "play": {
+    },
+    "redo": {
+      "title": "Yeniden Yap"
+    },
+    "reset": {
+    },
+    "save": {
+    },
+    "scrolls": {
+      "scrollLeft": {
+      },
+      "scrollRight": {
+      },
+      "scrollDown": {
+      },
+      "scrollUp": {
+      },
+      "scrollPageDown": {
+      },
+      "scrollPageUp": {
+      }
+    },
+    "select": {
+      "title": "Seçim Aracına Geç",
+      "switched": "Seçim Aracına Geçildi"
+    },
+    "settings": {
+    },
+    "slide": {
+      "title": {
+        "default": "Kaydırma Aracına Geç",
+        "preset": "#{0} Kaydırma Aracına Geç"
+      },
+      "switched": "#{0} Kaydırma Aracına Geçildi",
+      "modal": {
+      }
+    },
+    "snapping": {
+    },
+    "speeds": {
+      "speedDown": {
+      },
+      "speedUp": {
+      }
+    },
+    "stop": {
+    },
+    "undo": {
+    },
+    "utilities": {
+    },
+    "zooms": {
+      "zoomXIn": {
+      },
+      "zoomXOut": {
+      },
+      "zoomYIn": {
+      },
+      "zoomYOut": {
+      }
+    },
+    "bpm": {
+    },
+    "timeScale": {
+    }
+  },
+  "help": {
+    "modal": {
+      "touchscreen": {
+        "title": "Dokunmatik Ekran",
+        "tap": "Dokunmak için tek parmakla dokunun.",
+        "drag": "Tek parmakla sürükleyin.",
+        "scrollY": "Kaydırmak için iki parmağınızı dikey olarak kaydırın.",
+        "scrollX": "Kaydırmak için iki parmağınızı yatay olarak kaydırın.",
+        "zoomY": "Y’ yi yakınlaştırmak için iki parmağınızı dikey olarak sıkıştırın.",
+        "zoomX": "X’ i yakınlaştırmak için iki parmağınızı yatay olarak sıkıştırın."
+      },
+      "mouse": {
+        "tapPrimary": "Birincil araçla dokunmak için sol tıklayın.",
+        "tapSecondary": "İkincil araçla dokunmak için sağ tıklayın.",
+        "dragSecondary": "Sağ tıklayıp sürükleyerek ikincil aracı kullanın.",
+        "scrollY": "Dikey kaydırma için tekerleği çevirin.",
+        "scrollX": "Yatay kaydırma için Shift tuşuyla birlikte tekerlek kaydırması yapın.",
+        "zoomY": "Dikey yakınlaştırma için CTRL tuşuyla birlikte tekerleği kaydırın.",
+        "zoomX": "Yatay yakınlaştırma için CTRL ve Shift tuşlarıyla tekerlek kaydırması yapın."
+      },
+      "keyboard": {
+        "single": "Çalıştırmak için bir kere basın.",
+        "multiple": "Birden fazla kez çalıştırmak için uzun basın."
+      },
+      "selectTool": {
+        "select": "Nesnelere dokunarak 1 nesne seç, üst üste gelen nesneler arasında sırayla geçiş yapın.",
+        "deselect": "Tüm nesnelerin seçimini kaldırmak için boş alana dokunun.",
+        "move": "Birden fazla nesneyi taşımak için nesneleri sürükleyin.",
+        "selectMultiple": "Birden fazla nesneyi seçmek için boş alanı sürükleyin.",
+        "ctrl": "Seçime nesne eklemek için CTRL tuşunu kullanın.",
+        "shift": "Tüm ilgili Nota nesneleri üzerinde işlem yapmak için Shift tuşunu kullanın."
+      },
+      "eraserTool": {
+        "erase": "Silmek istediğin nesnelere dokunun.",
+        "deselect": "Tüm nesnelerin seçimini kaldırmak için boş alana dokunun.",
+        "eraseMultiple": "Birden fazla nesneyi silmek için sürükleyin.",
+        "shift": "Tüm ilgili Nota nesneleri üzerinde işlem yapmak için Shift tuşunu kullanın."
+      },
+      "brushTool": {
+        "brush": "Fırçalamak için nesnelere dokunun.",
+        "deselect": "Tüm nesnelerin seçimini kaldırmak için boş alana dokunun.",
+        "brushMultiple": "Birden fazla nesneyi fırçalamak için sürükleyin.",
+        "shift": "Tüm ilgili Nota nesneleri üzerinde işlem yapmak için Shift tuşunu kullanın."
+      },
+      "pasteTool": {
+        "shift": "Nesneleri çevirmek için Shift tuşunu kullanın."
+      },
+      "noteTool": {
+        "select": "1 nesne seçmek için Nota nesnelerine dokunun.",
+        "edit": "Düzenlemek için 1 Nota nesnesine dokunun.",
+        "add": "Eklemek için boş alana dokunun.",
+        "move": "1 Nota nesnesini taşımak için sürükleyin.",
+        "ctrl": "Seçime nesne eklemek için CTRL tuşunu kullanın.",
+        "shift": "Tüm ilgili Nota nesneleri üzerinde işlem yapmak için Shift tuşunu kullanın.",
+        "properties": "Ön ayarlanmış veya varsayılan özellikleri değiştirmek için tekrar Nota Aracı’na geçin."
+      },
+      "slideTool": {
+        "select": "1 nesne seçmek için Nota nesnelerine dokunun.",
+        "edit": "Düzenlemek için 1 Nota nesnesine dokunun.",
+        "add": "Eklemek için boş alana dokunun.",
+        "connect": "Bir Nota nesnesi seçiliyken bağlamak için boş alana dokunun.",
+        "move": "1 Nota nesnesini taşımak için sürükleyin.",
+        "ctrl": "Seçime nesne eklemek için CTRL tuşunu kullanın.",
+        "shift": "Tüm ilgili Nota nesneleri üzerinde işlem yapmak için Shift tuşunu kullanın.",
+        "properties": "Ön ayarlı veya varsayılan özellikleri değiştirmek için  Kaydırma Aracına tekrar geçin."
+      },
+      "bpmTool": {
+        "select": "1 nesne seçmek için BPM nesnelerine dokunun.",
+        "edit": "Düzenlemek için 1 BPM nesnesine dokunun.",
+        "move": "Taşımak için 1 BPM nesnesini sürükleyin.",
+        "ctrl": "Seçime nesne eklemek için CTRL tuşunu kullanın."
+      },
+      "timeScaleTool": {
+        "select": "1 nesne seçmek için Zaman Ölçeği nesnelerine dokunun.",
+        "edit": "Düzenlemek için 1 Zaman Ölçeği nesnesine dokunun.",
+        "move": "Taşımak için 1 Zaman Ölçeği nesnesini sürükleyin.",
+        "ctrl": "Seçime nesne eklemek için CTRL tuşunu kullanın."
+      }
+    }
+  },
+  "settings": {
+    "editor": {
+      "waveformVisualization": {
+      }
+    },
+    "keyboardShortcuts": {
+    },
+    "mouse": {
+      "secondaryTool": {
+      }
+    },
+    "play": {
+      "bgmVolume": "Arkaplan Müziği Sesi",
+      "sfxVolume": "Ses Efekti Sesi",
+      "follow": "Takip Et"
+    },
+    "preview": {
+      "position": {
+      }
+    },
+    "toolbar": {
+      "modal": {
+      }
+    },
+    "touch": {
+    }
+  },
+  "sidebars": {
+    "default": {
+    }
+  },
+  "tools": {
+    "bpm": {
+      "modal": {
+      }
+    },
+    "brush": {
+      "sidebar": {
+      }
+    },
+    "eraser": {
+    },
+    "note": {
+      "modal": {
+      },
+      "sidebar": {
+      }
+    },
+    "paste": {
+      "sidebar": {
+      }
+    },
+    "select": {
+    },
+    "slide": {
+      "modal": {
+      },
+      "sidebar": {
+      }
+    },
+    "timeScale": {
+      "modal": {
+      }
+    }
+  },
+  "utilities": {
+    "coverEditor": {
+      "decoding": "Görsel çözümleniyor..."
+    },
+    "previewEditor": {
+    }
+  },
+  "notification": {
+  },
+  "player": {
+  },
+  "history": {
+    "autoSave": {
+    },
+    "changes": {
+    }
+  },
+  "modals": {
+    "form": {
+      "beat": {
+      },
+      "bpm": {
+      },
+      "connectorActiveIsCritical": {
+      },
+      "connectorActiveIsFake": {
+      },
+      "connectorEase": {
+      },
+      "connectorGuideAlpha": {
+      },
+      "connectorGuideColor": {
+        "neutral": "Nötr"
+      },
+      "connectorType": {
+      },
+      "file": {
+      },
+      "flickDirection": {
+        "label": "Fiske Yönü"
+      },
+      "group": {
+      },
+      "isAttached": {
+      },
+      "isConnectorSeparator": {
+      },
+      "isCritical": {
+      },
+      "isFake": {
+      },
+      "left": {
+      },
+      "key": {
+      },
+      "noteType": {
+      },
+      "preset": {
+      },
+      "size": {
+      },
+      "skip": {
+      },
+      "timeScale": {
+      },
+      "timeScaleEase": {
+      },
+      "toggle": {
+      }
+    },
+    "confirm": {
+    },
+    "info": {
+    },
+    "loading": {
+    }
+  }
+}
