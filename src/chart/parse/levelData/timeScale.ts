@@ -1,6 +1,6 @@
 import { Type } from '@sinclair/typebox'
 import { EngineArchetypeDataName, EngineArchetypeName } from '@sonolus/core'
-import { getGroup, getValue, type ParseToChart } from '.'
+import { getGroup, getOptionalValue, getValue, type ParseToChart } from '.'
 import { beatSchema } from './schemas'
 
 export const parseTimeScalesToChart: ParseToChart = (chart, timeScaleNames, entities) => {
@@ -19,6 +19,7 @@ export const parseTimeScalesToChart: ParseToChart = (chart, timeScaleNames, enti
             timeScale: getValue(entity, EngineArchetypeDataName.TimeScale, valueSchema),
             skip: getValue(entity, '#TIMESCALE_SKIP', skipSchema),
             ease: eases[getValue(entity, '#TIMESCALE_EASE', easeSchema)],
+            hideNotes: !!getOptionalValue(entity, 'hideNotes', hideNotesSchema),
         })
     }
 }
@@ -33,3 +34,5 @@ const eases = {
     0: 'none',
     1: 'linear',
 } as const
+
+const hideNotesSchema = Type.Number()

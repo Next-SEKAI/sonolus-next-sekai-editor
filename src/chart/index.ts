@@ -18,6 +18,7 @@ export type TimeScaleObject = {
     timeScale: number
     skip: number
     ease: TimeScaleEase
+    hideNotes: boolean
 }
 
 export type NoteType = 'default' | 'trace' | 'anchor' | 'damage' | 'forceTick' | 'forceNonTick'
