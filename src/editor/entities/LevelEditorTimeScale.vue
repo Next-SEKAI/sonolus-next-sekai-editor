@@ -4,7 +4,7 @@ import { bpms } from '../../history/bpms'
 import type { TimeScaleEntity } from '../../state/entities/timeScale'
 import { beatToTime } from '../../state/integrals/bpms'
 import { formatTimeScale } from '../../utils/format'
-import { ups } from '../view'
+import { isViewRecentlyActive, ups } from '../view'
 
 const props = defineProps<{
     entity: TimeScaleEntity
@@ -24,7 +24,7 @@ const y = computed(() => time.value * ups.value)
             {{ formatTimeScale(entity.timeScale, entity.skip, entity.ease) }}
         </text>
         <text
-            v-if="entity.group"
+            v-if="entity.group && (isHighlighted || isViewRecentlyActive)"
             :x="-6.1"
             :y
             font-size="0.4"

@@ -11,7 +11,7 @@ const layers = {
 <script setup lang="ts">
 import { computed } from 'vue'
 import { entityComponents } from '.'
-import { keys } from '..'
+import { beats, keys } from '..'
 import { selectedEntities } from '../../history/selectedEntities'
 import { cullAllEntities } from '../../history/store'
 import type { Entity } from '../../state/entities'
@@ -31,10 +31,23 @@ const isEntityVisible = (entity: Entity) => {
     }
 }
 
-const culledEntities = computed(() => cullAllEntities(keys.value.min, keys.value.max))
+const culledEntities = computed(() => [...cullAllEntities(keys.value.min, keys.value.max)])
 
 const visibleEntities = computed(() =>
-    [...culledEntities.value]
+    culledEntities.value.filter((entity) => {
+        switch (entity.type) {
+            case 'bpm':
+            case 'timeScale':
+            case 'note':
+                return entity.beat >= beats.value.min && entity.beat <= beats.value.max
+            case 'connector':
+                return entity.head.beat <= beats.value.max && entity.tail.beat >= beats.value.min
+        }
+    }),
+)
+
+const visibleEntityInfos = computed(() =>
+    visibleEntities.value
         .map((entity) => ({
             entity,
             isSelected: selectedEntities.value.includes(entity),
@@ -53,7 +66,7 @@ const visibleEntities = computed(() =>
 <template>
     <component
         :is="entityComponents[entity.type]"
-        v-for="{ entity, isSelected, isHovered, isVisible } in visibleEntities"
+        v-for="{ entity, isSelected, isHovered, isVisible } in visibleEntityInfos"
         :key="entity as never"
         :entity="entity as never"
         :is-highlighted="isSelected || isHovered"

@@ -5,6 +5,7 @@ import { settings } from '../settings'
 import type { Entity } from '../state/entities'
 import { beatToTime, timeToBeat } from '../state/integrals/bpms'
 import { time } from '../time'
+import { computedArray } from '../utils/array'
 import { align, clamp, lerp, unlerp } from '../utils/math'
 import { optional } from '../utils/optional'
 
@@ -148,7 +149,7 @@ watch(time, ({ now, delta }) => {
     }
 })
 
-export const hoveredEntities = computed(() => view.entities.hovered)
+export const hoveredEntities = computedArray(() => view.entities.hovered)
 
 export const isViewRecentlyActive = computed(() => time.value.now - view.lastActive < 0.5)
 
