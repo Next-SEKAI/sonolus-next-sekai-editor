@@ -56,6 +56,13 @@ const onGenerate = () => {
             const endFadeSample = Math.floor(buffer.value.sampleRate * (end.value - fadeEnd.value))
             const endSample = Math.floor(buffer.value.sampleRate * end.value)
 
+            let range = 1
+            for (const channel of channels) {
+                for (let i = startSample; i <= endSample; i++) {
+                    range = Math.max(range, Math.abs(channel[i] ?? 0))
+                }
+            }
+
             const buffers: Uint8Array<ArrayBuffer>[] = []
 
             const { Mp3Encoder } = await import('@breezystack/lamejs')
@@ -80,7 +87,7 @@ const onGenerate = () => {
                                         value *= unlerp(endSample, endFadeSample, i + j)
                                     }
 
-                                    return remap(-1, 1, -32768, 32767, value)
+                                    return remap(-range, range, -32768, 32767, value)
                                 }),
                             ),
                     ) as [Int16Array]),
