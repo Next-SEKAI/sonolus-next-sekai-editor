@@ -5,7 +5,7 @@ import { bpms } from '../../../history/bpms'
 import { store } from '../../../history/store'
 import type { NoteEntity } from '../../../state/entities/slides/note'
 import { beatToTime } from '../../../state/integrals/bpms'
-import { ups } from '../../view'
+import { isViewRecentlyActive, ups } from '../../view'
 
 const props = defineProps<{
     entity: NoteEntity
@@ -82,7 +82,7 @@ const type = computed(() => {
     <g :transform="`translate(${entity.left}, ${time * ups - 0.4})`">
         <component :is="noteComponents[type]" :entity :is-highlighted="isHighlighted" />
         <text
-            v-if="entity.group"
+            v-if="entity.group && (isHighlighted || isViewRecentlyActive)"
             :x="entity.size / 2"
             y="0.4"
             font-size="0.4"
