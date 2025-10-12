@@ -61,6 +61,10 @@ export const serializeTimeScaleChangesToLevelDataEntities = (
                                 name: '#TIMESCALE_EASE',
                                 value: timeScaleEases[timeScale.ease],
                             },
+                            {
+                                name: 'hideNotes',
+                                value: +timeScale.hideNotes,
+                            },
                         ],
                     }
 

@@ -12,8 +12,13 @@ export const formatBeat = (beat: number) => beat.toFixed(3)
 
 export const formatBpm = (value: number) => `${value}`
 
-export const formatTimeScale = (value: number, skip: number, ease: TimeScaleEase) => {
-    let text = `${value}x`
+export const formatTimeScale = (
+    value: number,
+    skip: number,
+    ease: TimeScaleEase,
+    hideNotes: boolean,
+) => {
+    let text = `${hideNotes ? 'H' : ''}${value}x`
 
     if (skip) {
         if (skip > 0) text += '+'

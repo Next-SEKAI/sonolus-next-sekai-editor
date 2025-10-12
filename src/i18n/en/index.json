@@ -548,6 +548,9 @@
                 "label": "Group",
                 "default": "Default"
             },
+            "hideNotes": {
+                "label": "Hide Notes"
+            },
             "isAttached": {
                 "label": "Attached"
             },
