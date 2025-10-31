@@ -115,11 +115,11 @@ const wheel = (event: WheelEvent) => {
         if (event.shiftKey) {
             switch (event.deltaMode) {
                 case WheelEvent.DOM_DELTA_PIXEL:
-                    scrollViewXBy(-event.deltaY, settings.mouseSmoothScrolling)
+                    scrollViewXBy(event.deltaY, settings.mouseSmoothScrolling)
                     scrollViewYBy(-event.deltaX, settings.mouseSmoothScrolling)
                     break
                 case WheelEvent.DOM_DELTA_LINE:
-                    scrollViewXBy(-(event.deltaY * 20), settings.mouseSmoothScrolling)
+                    scrollViewXBy(event.deltaY * 20, settings.mouseSmoothScrolling)
                     scrollViewYBy(-(event.deltaX * 20), settings.mouseSmoothScrolling)
                     break
                 case WheelEvent.DOM_DELTA_PAGE:
@@ -130,15 +130,15 @@ const wheel = (event: WheelEvent) => {
         } else {
             switch (event.deltaMode) {
                 case WheelEvent.DOM_DELTA_PIXEL:
-                    scrollViewXBy(-event.deltaX, settings.mouseSmoothScrolling)
+                    scrollViewXBy(event.deltaX, settings.mouseSmoothScrolling)
                     scrollViewYBy(-event.deltaY, settings.mouseSmoothScrolling)
                     break
                 case WheelEvent.DOM_DELTA_LINE:
-                    scrollViewXBy(-(event.deltaX * 20), settings.mouseSmoothScrolling)
+                    scrollViewXBy(event.deltaX * 20, settings.mouseSmoothScrolling)
                     scrollViewYBy(-(event.deltaY * 20), settings.mouseSmoothScrolling)
                     break
                 case WheelEvent.DOM_DELTA_PAGE:
-                    scrollViewXBy(-event.deltaX * view.w, settings.mouseSmoothScrolling)
+                    scrollViewXBy(event.deltaX * view.w, settings.mouseSmoothScrolling)
                     scrollViewYBy(-event.deltaY * view.h, settings.mouseSmoothScrolling)
                     break
             }
