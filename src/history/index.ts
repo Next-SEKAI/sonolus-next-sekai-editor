@@ -28,6 +28,8 @@ const defaultChart: Chart = {
 
 const index = ref(0)
 
+const isStateDirty = computed(() => index.value > 0)
+
 const states = shallowReactive([
     {
         name: () => i18n.value.history.initialize,
@@ -36,7 +38,7 @@ const states = shallowReactive([
 ])
 
 addEventListener('beforeunload', (event) => {
-    if (index.value) event.preventDefault()
+    if (isStateDirty.value) event.preventDefault()
 })
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -60,7 +62,7 @@ export const pushState = (name: () => string, state: State) => {
 }
 
 export const undoState = () => {
-    if (index.value <= 0) return
+    if (!isStateDirty.value) return
 
     const name = current.value.name
     index.value--
@@ -75,7 +77,7 @@ export const redoState = () => {
 }
 
 export const checkState = async () => {
-    if (!index.value) return true
+    if (!isStateDirty.value) return true
 
     return await showModal(ConfirmModal, {
         title: () => i18n.value.history.changes.title,
@@ -106,7 +108,7 @@ export const useAutoSave = () => {
                 return
             }
 
-            if (!index.value) return
+            if (!isStateDirty.value) return
 
             id = setTimeout(() => {
                 storageSet(
