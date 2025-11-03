@@ -9,6 +9,7 @@ import HelpSection from './HelpSection.vue'
         <HelpSection :title="i18n.help.modal.touchscreen.title">
             <li>{{ i18n.help.modal.touchscreen.tap }}</li>
             <li>{{ i18n.help.modal.touchscreen.drag }}</li>
+            <li>{{ i18n.help.modal.touchscreen.quickScroll }}</li>
             <li>{{ i18n.help.modal.touchscreen.scrollY }}</li>
             <li>{{ i18n.help.modal.touchscreen.scrollX }}</li>
             <li>{{ i18n.help.modal.touchscreen.zoomY }}</li>
