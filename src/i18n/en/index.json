@@ -353,6 +353,7 @@
         },
         "touch": {
             "title": "Touch",
+            "quickScrollZone": "Quick Scroll Zone",
             "scrollInertia": "Scroll Inertia"
         }
     },
