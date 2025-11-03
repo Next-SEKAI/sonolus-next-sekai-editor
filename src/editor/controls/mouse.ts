@@ -10,7 +10,7 @@ import { gesture } from './gestures/gesture'
 import { drag } from './gestures/recognizers/drag'
 import { tap } from './gestures/recognizers/tap'
 
-const mouseGesture = gesture(drag(), tap())
+const mouseGesture = gesture(drag(false), tap())
 
 const toP = (event: MouseEvent) => ({
     id: 1,

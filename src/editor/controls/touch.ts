@@ -7,7 +7,7 @@ import { tap } from './gestures/recognizers/tap'
 import { zoomX } from './gestures/recognizers/zoomX'
 import { zoomY } from './gestures/recognizers/zoomY'
 
-const touchGesture = gesture(zoomY(), zoomX(), pan(), drag(), tap())
+const touchGesture = gesture(zoomY(), zoomX(), pan(), drag(true), tap())
 
 const toPs = (event: TouchEvent) =>
     [...event.changedTouches].map((touch) => ({

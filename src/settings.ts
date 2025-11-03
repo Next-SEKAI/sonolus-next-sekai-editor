@@ -111,6 +111,8 @@ const settingsProperties = {
 
     mouseSmoothScrolling: Type.Boolean({ default: true }),
 
+    touchQuickScrollZone: number(25, 0, 50),
+
     touchScrollInertia: Type.Boolean({ default: true }),
 
     keyboardShortcuts: Type.Transform(

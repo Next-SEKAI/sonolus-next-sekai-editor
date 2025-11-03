@@ -212,6 +212,7 @@
                 "title": "Touchscreen",
                 "tap": "One finger tap to tap.",
                 "drag": "One finger drag to drag.",
+                "quickScroll": "One finger drag in quick scroll zone to scroll.",
                 "scrollY": "Two finger pan vertically to scroll.",
                 "scrollX": "Two finger pan horizontally to scroll.",
                 "zoomY": "Two finger pinch vertically to zoom Y.",
@@ -353,6 +354,7 @@
         },
         "touch": {
             "title": "Touch",
+            "quickScrollZone": "Quick Scroll Zone",
             "scrollInertia": "Scroll Inertia"
         }
     },
