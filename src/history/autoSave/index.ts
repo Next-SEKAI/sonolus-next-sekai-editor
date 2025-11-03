@@ -3,13 +3,14 @@ import { isStateDirty, resetState, state } from '..'
 import { parseLevelDataChart } from '../../chart/parse/levelData'
 import { validateChart } from '../../chart/validate'
 import { i18n } from '../../i18n'
-import { parseLevelData } from '../../levelData/parse'
 import { serializeToLevelData } from '../../levelData/serialize'
 import { showModal } from '../../modals'
 import LoadingModal from '../../modals/LoadingModal.vue'
 import { settings } from '../../settings'
 import { storageGet, storageRemove, storageSet } from '../../storage'
 import { timeout } from '../../utils/promise'
+import { parseAutoSave } from './parse'
+import { serializeAutoSave } from './serialize'
 
 export const useAutoSave = () => {
     let id: number | undefined
@@ -29,7 +30,9 @@ export const useAutoSave = () => {
             id = setTimeout(() => {
                 storageSet(
                     'autoSave.levelData',
-                    serializeToLevelData(state.bgm.offset, state.store, state.groupCount),
+                    serializeAutoSave(
+                        serializeToLevelData(state.bgm.offset, state.store, state.groupCount),
+                    ),
                 )
             }, settings.autoSaveDelay * 1000)
         },
@@ -43,7 +46,7 @@ export const useAutoSave = () => {
                 yield () => i18n.value.history.autoSave.importing
                 await timeout(50)
 
-                const levelData = parseLevelData(data)
+                const levelData = parseAutoSave(data)
 
                 const chart = parseLevelDataChart(levelData.entities)
                 validateChart(chart)
