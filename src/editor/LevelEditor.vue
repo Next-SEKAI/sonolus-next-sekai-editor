@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useTemplateRef, watch, type Ref } from 'vue'
-import { useAutoSave } from '../history'
+import { useAutoSave } from '../history/autoSave'
 import { time } from '../time'
 import { controlListeners } from './controls'
 import { useFocusControl } from './controls/focus'
