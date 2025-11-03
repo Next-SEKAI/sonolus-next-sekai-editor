@@ -315,6 +315,7 @@
                 "volume": "Volume",
                 "changed": "You have changed waveform visualization, select BGM file again in order for this change to take effect."
             },
+            "lockScrollX": "Lock Scroll X",
             "dragToPanY": "Drag to Pan Y",
             "dragToPanX": "Drag to Pan X"
         },

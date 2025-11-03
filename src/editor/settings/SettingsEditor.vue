@@ -53,6 +53,8 @@ watch(
             ]"
         />
 
+        <ToggleField v-model="settings.lockScrollX" :label="i18n.settings.editor.lockScrollX" />
+
         <ToggleField v-model="settings.dragToPanY" :label="i18n.settings.editor.dragToPanY" />
 
         <ToggleField v-model="settings.dragToPanX" :label="i18n.settings.editor.dragToPanX" />
