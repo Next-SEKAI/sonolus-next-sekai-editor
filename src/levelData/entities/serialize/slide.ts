@@ -283,7 +283,7 @@ export const serializeSlidesToLevelDataEntities = (
     return entities
 }
 
-const beatToTicks = 48
+const beatToTicks = 480
 const ticksPerHidden = beatToTicks / 2
 
 const flickDirections = {
