@@ -1,0 +1,612 @@
+{
+  "title": "繁體中文 (Traditional Chinese)",
+  "commands": {
+    "bgm": {
+      "title": "BGM",
+      "changed": "已更改BGM",
+      "modal": {
+        "file": "檔案",
+        "offset": "偏移（毫秒）",
+        "loading": "正在載入檔案...",
+        "decoding": "解碼音訊...",
+        "generating": "生成波形..."
+      }
+    },
+    "brush": {
+      "title": "切換到筆刷工具",
+      "switched": "切換到筆刷工具",
+      "modal": {
+        "title": "筆刷屬性"
+      }
+    },
+    "copy": {
+      "title": "複製",
+      "noSelected": "未選擇要複製的對象",
+      "copied": "已複製 {0} 個對象"
+    },
+    "cut": {
+      "title": "剪下",
+      "noSelected": "未選擇要剪下的對象",
+      "cut": "已剪下 {0} 個對象"
+    },
+    "deselect": {
+      "title": "取消選擇",
+      "deselected": "已取消選取所有對象"
+    },
+    "divisions": {
+      "title": "切換到 {0} 分音符時值",
+      "switched": "已切換至 {0} 分音符時值",
+      "custom": {
+        "title": "切換到自訂時值",
+        "modal": {
+          "title": "自訂時值",
+          "division": "時值"
+        }
+      }
+    },
+    "eraser": {
+      "title": "切換到橡皮擦工具",
+      "switched": "已切換到橡皮擦工具"
+    },
+    "flip": {
+      "title": "翻轉",
+      "noSelected": "未選擇要翻轉的對象",
+      "flipped": "已翻轉 {0} 個對象"
+    },
+    "groups": {
+      "groupAll": {
+        "title": "切換到所有圖層"
+      },
+      "groupPrev": {
+        "title": "切換到上一個圖層"
+      },
+      "groupNext": {
+        "title": "切換到下一個圖層"
+      },
+      "switched": {
+        "all": "已切換到所有圖層",
+        "default": "已切換到預設圖層",
+        "other": "已切換到 {0} 圖層"
+      }
+    },
+    "help": {
+      "title": "幫助"
+    },
+    "jumps": {
+      "jumpDown": {
+        "title": "下移"
+      },
+      "jumpUp": {
+        "title": "上移"
+      }
+    },
+    "note": {
+      "title": {
+        "default": "切換到音符工具",
+        "preset": "切換到音符工具 #{0}"
+      },
+      "switched": "已切換到音符工具 #{0}",
+      "modal": {
+        "title": "預設音符屬性"
+      }
+    },
+    "open": {
+      "title": "開啟",
+      "loading": "正在載入檔案...",
+      "importing": "正在匯入關卡...",
+      "opened": "已開啟關卡"
+    },
+    "paste": {
+      "title": "切換到貼上工具",
+      "switched": "已切換到貼上工具"
+    },
+    "play": {
+      "title": "播放"
+    },
+    "redo": {
+      "title": "重做",
+      "noState": "無需重做",
+      "redid": "已重做 \"{0}\""
+    },
+    "reset": {
+      "title": "重置",
+      "reset": "重置關卡"
+    },
+    "save": {
+      "title": "儲存存",
+      "exporting": "正在匯出關卡...",
+      "saved": "已儲存關卡"
+    },
+    "scrolls": {
+      "scrollLeft": {
+        "title": "向左滾動"
+      },
+      "scrollRight": {
+        "title": "向右滾動"
+      },
+      "scrollDown": {
+        "title": "向下滾動"
+      },
+      "scrollUp": {
+        "title": "向上滾動"
+      },
+      "scrollPageDown": {
+        "title": "向下捲動頁面"
+      },
+      "scrollPageUp": {
+        "title": "向上捲動頁面"
+      }
+    },
+    "select": {
+      "title": "切換到選擇工具",
+      "switched": "已切換到選擇工具"
+    },
+    "settings": {
+      "title": "設定"
+    },
+    "slide": {
+      "title": {
+        "default": "切換到Slide工具",
+        "preset": "切換到Slide工具 #{0}"
+      },
+      "switched": "已切換到Slide工具 #{0}",
+      "modal": {
+        "title": "預設Slide屬性"
+      }
+    },
+    "snapping": {
+      "title": "結合",
+      "absolute": "切換到絕對結合",
+      "relative": "切換到相對結合"
+    },
+    "speeds": {
+      "speedDown": {
+        "title": "減速"
+      },
+      "speedUp": {
+        "title": "加速"
+      }
+    },
+    "stop": {
+      "title": "停止"
+    },
+    "undo": {
+      "title": "撤銷",
+      "noState": "無需撤銷",
+      "undid": "已撤銷 \"{0}\""
+    },
+    "utilities": {
+      "title": "工具"
+    },
+    "zooms": {
+      "zoomXIn": {
+        "title": "放大X軸",
+        "zoomed": "放大X軸 10%"
+      },
+      "zoomXOut": {
+        "title": "縮小X軸",
+        "zoomed": "縮小X軸 10%"
+      },
+      "zoomYIn": {
+        "title": "放大Y軸",
+        "zoomed": "放大Y軸 10%"
+      },
+      "zoomYOut": {
+        "title": "縮小Y軸",
+        "zoomed": "縮小Y軸 10%"
+      }
+    },
+    "bpm": {
+      "title": "切換到 BPM 工具",
+      "switched": "已切換到 BPM 工具"
+    },
+    "timeScale": {
+      "title": "切換到時間尺度工具",
+      "switched": "已切換到時間尺度工具"
+    }
+  },
+  "help": {
+    "modal": {
+      "title": "幫助",
+      "touchscreen": {
+        "title": "觸控螢幕",
+        "tap": "單指點擊以點擊。",
+        "drag": "單指拖曳以拖曳。",
+        "scrollY": "用兩根手指垂直平移即可滾動。",
+        "scrollX": "用兩根手指水平平移即可滾動。",
+        "zoomY": "兩根手指垂直捏合可縮放Y軸。",
+        "zoomX": "兩根手指水平捏合可縮放X軸。"
+      },
+      "mouse": {
+        "title": "滑鼠",
+        "tapPrimary": "左鍵單擊以使用主要工具進行點擊。",
+        "dragPrimary": "左鍵單擊並拖曳以使用主要工具進行拖曳。",
+        "tapSecondary": "右鍵單擊即可使用輔助工具進行點擊。",
+        "dragSecondary": "右鍵單擊並拖曳以使用輔助工具進行拖曳。",
+        "scrollY": "滾輪滾動可垂直滾動。",
+        "scrollX": "使用 Shift 鍵+滾輪滾動可水平滾動。",
+        "zoomY": "使用 Ctrl 鍵+滾輪滾動可垂直縮放。",
+        "zoomX": "使用 Ctrl 和 Shift 鍵滾動滾輪可水平縮放。"
+      },
+      "keyboard": {
+        "title": "鍵盤",
+        "single": "單擊以觸發功能。",
+        "multiple": "長按以觸發多次功能。"
+      },
+      "selectTool": {
+        "title": "選擇工具",
+        "select": "點擊以選擇一個對象，在重疊的對象之間循環。",
+        "deselect": "點選空白處可取消選取所有物件。",
+        "move": "拖曳物件來移動多個物件。",
+        "selectMultiple": "拖曳區域以選取多個物件。",
+        "ctrl": "使用 Ctrl 鍵將物件新增至選取範圍。",
+        "shift": "使用 Shift 鍵對所有相關的 Note 物件進行操作。"
+      },
+      "eraserTool": {
+        "title": "橡皮擦工具",
+        "erase": "點擊以擦除物件。",
+        "deselect": "點選空白處可取消選取所有物件。",
+        "eraseMultiple": "拖曳以刪除多個物件。",
+        "shift": "使用 Shift 鍵對所有相關的 Note 物件進行操作。"
+      },
+      "brushTool": {
+        "title": "筆刷工具",
+        "brush": "點選以刷物件。",
+        "deselect": "點選空白處可取消選取所有物件。",
+        "brushMultiple": "拖曳以刷多個物件。",
+        "shift": "使用 Shift 鍵對所有相關的 Note 物件進行操作。"
+      },
+      "pasteTool": {
+        "title": "貼上工具",
+        "paste": "點擊以貼上。",
+        "shift": "使用 Shift 鍵翻轉物件。"
+      },
+      "noteTool": {
+        "title": "音符工具",
+        "select": "點擊音符物件以選擇一個物件。",
+        "edit": "點選一個音符物件進行編輯。",
+        "add": "點擊空白處即可新增。",
+        "move": "拖曳一個音符物件進行移動。",
+        "ctrl": "使用 Ctrl 鍵將物件新增至選取範圍。",
+        "shift": "使用 Shift 鍵對所有相關的音符物件進行操作。",
+        "properties": "再次切換到音符工具以變更預設或預設屬性。"
+      },
+      "slideTool": {
+        "title": "Slide工具",
+        "select": "點擊音符物件以選擇一個物件。",
+        "edit": "點選一個音符物件進行編輯。",
+        "add": "點擊空白處即可新增。",
+        "connect": "點選空白處並選擇一個音符物件進行連線。",
+        "move": "拖曳一個音符物件進行移動。",
+        "ctrl": "使用 Ctrl 鍵將物件新增至選取範圍。",
+        "shift": "使用 Shift 鍵對所有相關的音符物件進行操作。",
+        "properties": "再次切換到Slide工具以變更預設或預設屬性。"
+      },
+      "bpmTool": {
+        "title": "BPM工具",
+        "select": "點擊 BPM 物件以選擇一個物件。",
+        "edit": "點選一個 BPM 物件進行編輯。",
+        "add": "點擊空白處即可新增。",
+        "move": "拖曳一個 BPM 物件進行移動。",
+        "ctrl": "使用 Ctrl 鍵將物件新增至選取範圍。"
+      },
+      "timeScaleTool": {
+        "title": "時間尺度工具",
+        "select": "點選時間尺度物件以選擇 1 個物件。",
+        "edit": "點選一個時間刻度物件進行編輯。",
+        "add": "點擊空白處即可新增。",
+        "move": "拖曳一個時間刻度物件進行移動。",
+        "ctrl": "使用 Ctrl 鍵將物件新增至選取範圍。"
+      }
+    }
+  },
+  "settings": {
+    "title": "設定",
+    "editor": {
+      "title": "編輯器",
+      "locale": "語言",
+      "autoSave": "自動儲存",
+      "autoSaveDelay": "自動儲存週期",
+      "waveformVisualization": {
+        "title": "波形視覺化",
+        "off": "關閉",
+        "fft": "FFT",
+        "volume": "音量",
+        "changed": "您已變更波形視覺化，請再次選擇 BGM 檔案以使此變更生效。"
+      },
+      "dragToPanY": "拖曳以平移 Y",
+      "dragToPanX": "拖曳以平移 X"
+    },
+    "keyboardShortcuts": {
+      "title": "鍵盤快捷鍵"
+    },
+    "mouse": {
+      "title": "滑鼠",
+      "secondaryTool": {
+        "title": "輔助工具",
+        "eraser": "橡皮擦",
+        "select": "選擇"
+      },
+      "smoothScrolling": "平滑滾動"
+    },
+    "play": {
+      "title": "播放",
+      "bgmVolume": "BGM音量",
+      "sfxVolume": "音效音量",
+      "follow": "跟隨",
+      "followPosition": "跟隨位置"
+    },
+    "preview": {
+      "title": "預覽",
+      "position": {
+        "title": "位置",
+        "auto": "自動",
+        "top": "頂部",
+        "left": "左邊"
+      }
+    },
+    "toolbar": {
+      "title": "工具列",
+      "modal": {
+        "title": "選擇工具"
+      }
+    },
+    "touch": {
+      "title": "觸碰",
+      "scrollInertia": "滾動慣性"
+    }
+  },
+  "sidebars": {
+    "default": {
+      "title": "物件屬性",
+      "none": "未選擇對象",
+      "edited": "已編輯 {0} 個對象"
+    }
+  },
+  "tools": {
+    "bpm": {
+      "adding": "新增 {0} 個 BPM 對象",
+      "added": "新增了 {0} 個 BPM 對象",
+      "edited": "已編輯 {0} 個 BPM 對象",
+      "moving": "正在移動 {0} 個 BPM 對象",
+      "moved": "已移動 {0} 個 BPM 對象",
+      "replaced": "已替換 {0} 個 BPM 對象",
+      "selected": "以選擇選擇 {0} 個 BPM 對象",
+      "modal": {
+        "title": "BPM 屬性"
+      }
+    },
+    "brush": {
+      "deselected": "取消選取所有對象",
+      "brushing": "正在粉刷 {0} 個對象",
+      "brushed": "已粉刷 {0} 個對象",
+      "sidebar": {
+        "title": "筆刷屬性"
+      }
+    },
+    "eraser": {
+      "deselected": "取消選取所有對象",
+      "erasing": "正在刪除 {0} 個對象",
+      "erased": "已刪除 {0} 個對象"
+    },
+    "note": {
+      "adding": "正在新增 {0} 個音符對象",
+      "added": "已新增 {0} 個音符對象",
+      "editing": "正在編輯 {0} 個音符對象",
+      "edited": "已編輯 {0} 個音符對象",
+      "moving": "正在移動 {0} 個音符對象",
+      "moved": "已移動 {0} 個音符對象",
+      "selected": "已選擇 {0} 個音符對象",
+      "modal": {
+        "title": "音符屬性"
+      },
+      "sidebar": {
+        "title": "預設音符屬性"
+      }
+    },
+    "paste": {
+      "pasted": "已貼上 {0} 個對象",
+      "sidebar": {
+        "title": "剪貼簿歷史記錄"
+      }
+    },
+    "select": {
+      "deselected": "取消選取所有對象",
+      "selecting": "正在選擇 {0} 個對象",
+      "selected": "已選擇 {0} 個對象",
+      "moving": "正在移動 {0} 個對象",
+      "moved": "已移動 {0} 個對象"
+    },
+    "slide": {
+      "adding": "正在新增 {0} 個音符對象",
+      "added": "已新增 {0} 個音符對象",
+      "editing": "正在編輯 {0} 個音符對象",
+      "edited": "已編輯 {0} 個音符對象",
+      "moving": "正在移動 {0} 個音符對象",
+      "moved": "已移動 {0} 個音符對象",
+      "selected": "正在選擇 {0} 個音符對象",
+      "modal": {
+        "title": "音符屬性"
+      },
+      "sidebar": {
+        "title": "預設Slide屬性"
+      }
+    },
+    "timeScale": {
+      "adding": "正在新增 {0} 個時間尺度對象",
+      "added": "已新增 {0} 個時間尺度對象",
+      "edited": "已編輯 {0} 個時間尺度對象",
+      "moving": "正在移動 {0} 個時間尺度對象",
+      "moved": "已移動 {0} 個時間尺度對象",
+      "replaced": "已替換 {0} 個時間尺度對象",
+      "selected": "已選定 {0} 個時間尺度對象",
+      "modal": {
+        "title": "時間尺度屬性"
+      }
+    }
+  },
+  "utilities": {
+    "title": "工具",
+    "coverEditor": {
+      "title": "封面編輯器",
+      "cover": "封面",
+      "size": "尺寸",
+      "generate": "產生",
+      "loading": "正在載入檔案...",
+      "decoding": "正在解碼圖像...",
+      "generating": "正在產生封面..."
+    },
+    "previewEditor": {
+      "title": "預覽編輯器",
+      "bgm": "BGM",
+      "start": "開始",
+      "end": "結尾",
+      "fadeStart": "淡入開始",
+      "fadeEnd": "淡出結束",
+      "generate": "產生",
+      "loading": "正在載入檔案...",
+      "decoding": "生成解碼音訊...",
+      "generating": "正在生成預覽..."
+    }
+  },
+  "notification": {
+    "title": "Sonolus Next SEKAI Editor\nVersion {0}"
+  },
+  "player": {
+    "started": "開始播放",
+    "stopped": "停止播放",
+    "changed": "將速度改為 {0}x"
+  },
+  "history": {
+    "initialize": "初始化",
+    "autoSave": {
+      "title": "自動儲存",
+      "importing": "正在導入關卡..."
+    },
+    "changes": {
+      "title": "更改",
+      "message": "更改譜面可能會遺失。是否繼續？"
+    }
+  },
+  "modals": {
+    "form": {
+      "confirm": "確認",
+      "beat": {
+        "label": "拍號"
+      },
+      "bpm": {
+        "label": "BPM"
+      },
+      "connectorActiveIsCritical": {
+        "label": "Slide Critical"
+      },
+      "connectorActiveIsFake": {
+        "label": "假Slide"
+      },
+      "connectorEase": {
+        "label": "連接器形狀",
+        "linear": "線性",
+        "in": "入",
+        "out": "出",
+        "inOut": "入-出",
+        "outIn": "出-入",
+        "none": "無"
+      },
+      "connectorGuideAlpha": {
+        "label": "Guide不透明度"
+      },
+      "connectorGuideColor": {
+        "label": "Guide顏色",
+        "neutral": "預設",
+        "red": "紅",
+        "green": "綠",
+        "blue": "藍",
+        "yellow": "黃",
+        "purple": "紫",
+        "cyan": "青",
+        "black": "黑"
+      },
+      "connectorType": {
+        "label": "連接器類型",
+        "active": "Slide",
+        "guide": "Guide"
+      },
+      "file": {
+        "select": "選擇檔案..."
+      },
+      "flickDirection": {
+        "label": "Flick方向",
+        "none": "無",
+        "up": "上",
+        "upLeft": "左上",
+        "upRight": "右上",
+        "down": "下",
+        "downLeft": "左下",
+        "downRight": "右下"
+      },
+      "group": {
+        "label": "圖層",
+        "default": "預設"
+      },
+      "isAttached": {
+        "label": "連接"
+      },
+      "isConnectorSeparator": {
+        "label": "連接器分離器"
+      },
+      "isCritical": {
+        "label": "Critical"
+      },
+      "isFake": {
+        "label": "假"
+      },
+      "left": {
+        "label": "位置"
+      },
+      "key": {
+        "input": "輸入鍵位",
+        "press": "按一個鍵..."
+      },
+      "noteType": {
+        "label": "音符類型",
+        "default": "預設",
+        "trace": "Trace",
+        "anchor": "錨",
+        "damage": "Damage",
+        "forceTick": "強制勾選",
+        "forceNonTick": "強制不勾選"
+      },
+      "preset": {
+        "label": "預設定"
+      },
+      "size": {
+        "label": "尺寸"
+      },
+      "skip": {
+        "label": "跳過（節拍）"
+      },
+      "timeScale": {
+        "label": "時間尺度"
+      },
+      "timeScaleEase": {
+        "label": "時間尺度形狀",
+        "none": "無",
+        "linear": "線性"
+      },
+      "toggle": {
+        "enabled": "已啟用",
+        "disabled": "已停用"
+      }
+    },
+    "confirm": {
+      "confirm": "確認",
+      "cancel": "取消"
+    },
+    "info": {
+      "ok": "OK"
+    },
+    "loading": {
+      "loading": "載入中 ..."
+    }
+  }
+}
