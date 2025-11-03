@@ -9,6 +9,7 @@ import LoadingModal from '../../../modals/LoadingModal.vue'
 import { loadBgm } from '../../../player'
 import { settings } from '../../../settings'
 import type { Bgm } from '../../../state/bgm'
+import { getFilename } from '../../../utils/file'
 import { formatTime } from '../../../utils/format'
 import { timeout } from '../../../utils/promise'
 import { createWaveform } from '../../../waveform'
@@ -43,6 +44,7 @@ const onSelect = (file: File) => {
 
             const waveform = await createWaveform(buffer, settings.waveform)
 
+            model.filename = getFilename(file)
             model.buffer = buffer
             model.waveform = waveform
         },

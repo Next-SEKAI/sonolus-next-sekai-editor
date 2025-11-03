@@ -3,6 +3,7 @@ import { gzip } from 'pako'
 import type { Command } from '..'
 import { state } from '../../../history'
 import { bgm } from '../../../history/bgm'
+import { filename } from '../../../history/filename'
 import { store } from '../../../history/store'
 import { i18n } from '../../../i18n'
 import { serializeToLevelData } from '../../../levelData/serialize'
@@ -37,7 +38,7 @@ export const save: Command = {
                 const blob = new Blob([file], {
                     type: 'application/octet-stream',
                 })
-                saveAs(blob, 'LevelData')
+                saveAs(blob, filename.value ?? 'LevelData')
 
                 notify(() => i18n.value.commands.save.saved)
             },

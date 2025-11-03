@@ -13,3 +13,5 @@ export const pickFile = () =>
 
         input.click()
     })
+
+export const getFilename = (file: File) => file.name.split('.')[0]?.trim()

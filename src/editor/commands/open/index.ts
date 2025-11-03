@@ -9,7 +9,7 @@ import { parseLevelData } from '../../../levelData/parse'
 import { showModal } from '../../../modals'
 import LoadingModal from '../../../modals/LoadingModal.vue'
 import { parseUsc } from '../../../usc/parse'
-import { pickFile } from '../../../utils/file'
+import { getFilename, pickFile } from '../../../utils/file'
 import { timeout } from '../../../utils/promise'
 import { notify } from '../../notification'
 import OpenIcon from './OpenIcon.vue'
@@ -44,7 +44,7 @@ export const open: Command = {
                         const chart = parseLevelDataChart(levelData.entities)
                         validateChart(chart)
 
-                        resetState(chart, levelData.bgmOffset)
+                        resetState(chart, levelData.bgmOffset, getFilename(file))
                         break
                     }
                     case 'usc': {
@@ -53,7 +53,7 @@ export const open: Command = {
                         const chart = parseUscChart(usc.objects)
                         validateChart(chart)
 
-                        resetState(chart, usc.offset)
+                        resetState(chart, usc.offset, getFilename(file))
                         break
                     }
                 }
