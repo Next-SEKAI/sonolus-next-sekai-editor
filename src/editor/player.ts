@@ -13,7 +13,7 @@ let state:
     | {
           speed: number
           startTime: number
-          startCursorTime: number
+          startBgmTime: number
           returnTime: number
       }
     | undefined
@@ -21,7 +21,7 @@ let state:
 watch(time, ({ now }) => {
     if (!state) return
 
-    view.cursorTime = Math.max(0, now - state.startTime) * state.speed + state.startCursorTime
+    view.cursorTime = Math.max(0, now - state.startTime) * state.speed + state.startBgmTime
 
     if (!settings.playFollow) return
 
@@ -48,11 +48,22 @@ export const startOrStopPlayer = () => {
 
         notify(() => i18n.value.player.stopped)
     } else {
+        const bgmTime =
+            settings.playStartPosition === 'cursor'
+                ? view.cursorTime
+                : Math.max(
+                      0,
+                      view.time +
+                          (((settings.playFollow ? settings.playFollowPosition : 0) / 100 - 0.5) *
+                              view.h) /
+                              settings.pps,
+                  )
+
         state = {
             speed,
-            startTime: _startPlayer(speed),
-            startCursorTime: view.cursorTime,
-            returnTime: view.cursorTime,
+            startTime: _startPlayer(bgmTime, speed),
+            startBgmTime: bgmTime,
+            returnTime: bgmTime,
         }
 
         notify(() => i18n.value.player.started)
@@ -80,8 +91,8 @@ export const changePlayerSpeed = (direction: -1 | 1) => {
     if (state) {
         state = {
             speed,
-            startTime: _startPlayer(speed),
-            startCursorTime: view.cursorTime,
+            startTime: _startPlayer(view.cursorTime, speed),
+            startBgmTime: view.cursorTime,
             returnTime: state.returnTime,
         }
     }

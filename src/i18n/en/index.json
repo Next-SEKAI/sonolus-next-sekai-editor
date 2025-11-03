@@ -334,6 +334,11 @@
             "title": "Play",
             "bgmVolume": "BGM Volume",
             "sfxVolume": "SFX Volume",
+            "startPosition": {
+                "title": "Start Position",
+                "view": "View",
+                "cursor": "Cursor"
+            },
             "follow": "Follow",
             "followPosition": "Follow Position"
         },

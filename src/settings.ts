@@ -103,6 +103,8 @@ const settingsProperties = {
 
     playSfxVolume: number(100, 0, 100),
 
+    playStartPosition: Type.Union([Type.Literal('view'), Type.Literal('cursor')]),
+
     playFollow: Type.Boolean({ default: true }),
 
     playFollowPosition: number(25, 0, 100),
