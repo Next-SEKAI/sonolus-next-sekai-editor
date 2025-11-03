@@ -4,13 +4,24 @@ import { ungzip } from 'pako'
 import { parseLevelData } from '../../levelData/parse'
 import { autoSaveSchema } from './schema'
 
-export const parseAutoSave = (data: unknown): LevelData => {
+type ParsedAutoSave = {
+    filename?: string
+    levelData: LevelData
+}
+
+export const parseAutoSave = (data: unknown): ParsedAutoSave => {
     Value.Assert(autoSaveSchema, data)
 
-    if (!('version' in data)) return data
+    if (!('version' in data))
+        return {
+            levelData: data,
+        }
 
     // eslint-disable-next-line @typescript-eslint/no-misused-spread
     const buffer = Uint8Array.from([...atob(data.levelData)].map((c) => c.charCodeAt(0)))
 
-    return parseLevelData(JSON.parse(new TextDecoder().decode(ungzip(buffer))))
+    return {
+        filename: data.filename,
+        levelData: parseLevelData(JSON.parse(new TextDecoder().decode(ungzip(buffer)))),
+    }
 }

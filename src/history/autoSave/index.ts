@@ -9,6 +9,7 @@ import LoadingModal from '../../modals/LoadingModal.vue'
 import { settings } from '../../settings'
 import { storageGet, storageRemove, storageSet } from '../../storage'
 import { timeout } from '../../utils/promise'
+import { filename } from '../filename'
 import { parseAutoSave } from './parse'
 import { serializeAutoSave } from './serialize'
 
@@ -32,6 +33,7 @@ export const useAutoSave = () => {
                     'autoSave.levelData',
                     serializeAutoSave(
                         serializeToLevelData(state.bgm.offset, state.store, state.groupCount),
+                        filename.value,
                     ),
                 )
             }, settings.autoSaveDelay * 1000)
@@ -46,12 +48,12 @@ export const useAutoSave = () => {
                 yield () => i18n.value.history.autoSave.importing
                 await timeout(50)
 
-                const levelData = parseAutoSave(data)
+                const { filename, levelData } = parseAutoSave(data)
 
                 const chart = parseLevelDataChart(levelData.entities)
                 validateChart(chart)
 
-                resetState(chart, levelData.bgmOffset)
+                resetState(chart, levelData.bgmOffset, filename)
             },
         })
     }

@@ -3,6 +3,7 @@ import { levelDataSchema } from '../../levelData/schema'
 
 const v1Schema = Type.Object({
     version: Type.Literal(1),
+    filename: Type.Optional(Type.String()),
     levelData: Type.String(),
 })
 
