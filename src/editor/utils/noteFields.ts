@@ -40,8 +40,8 @@ export const getNoteFields = (note: NoteEntity): NoteFields => {
         isCritical: note.noteType !== 'anchor' && note.noteType !== 'damage',
         flickDirection:
             note.noteType === 'trace' ||
-            (note.noteType === 'default' && (!isInActive || isActiveTail)) ||
-            (note.noteType === 'forceNonTick' && (!isInActive || !isActiveHead)),
+            (note.noteType === 'default' && (!isInActive || isActiveHead || isActiveTail)) ||
+            note.noteType === 'forceNonTick',
         isFake: note.noteType !== 'anchor',
         isConnectorSeparator: !isFirst && !isLast,
         connectorType: (isFirst || note.isConnectorSeparator) && !isLast,
