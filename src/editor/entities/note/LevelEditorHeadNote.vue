@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { NoteEntity } from '../../../state/entities/slides/note'
+import { arrowComponents } from './arrow'
 import { bodyComponents } from './body'
 import { fakeMarkerComponent } from './fakeMarker'
 
@@ -11,7 +12,16 @@ defineProps<{
 
 <template>
     <component
-        :is="bodyComponents.single[entity.isCritical ? 'yellow' : 'green']"
+        :is="
+            bodyComponents.single[
+                entity.isCritical ? 'yellow' : entity.flickDirection !== 'none' ? 'red' : 'green'
+            ]
+        "
+        :size="entity.size"
+    />
+    <component
+        :is="arrowComponents[entity.isCritical ? 'yellow' : 'red'][entity.flickDirection]"
+        v-if="entity.flickDirection !== 'none'"
         :size="entity.size"
     />
     <component :is="fakeMarkerComponent" v-if="entity.isFake" :size="entity.size" />

@@ -120,7 +120,7 @@ export const serializeSlidesToLevelDataEntities = (
                 } else if (!isInActive) {
                     entity.archetype += isFlick ? 'Flick' : 'Tap'
                 } else if (isActiveHead) {
-                    entity.archetype += 'HeadTap'
+                    entity.archetype += isFlick ? 'HeadFlick' : 'HeadTap'
                 } else if (isActiveTail) {
                     entity.archetype += isFlick ? 'TailFlick' : 'TailRelease'
                 } else if (info.note.noteType === 'default') {
