@@ -7,6 +7,7 @@ export type TimeScaleEntity = BaseEntity & {
     timeScale: number
     skip: number
     ease: TimeScaleEase
+    hideNotes: boolean
 }
 
 export const toTimeScaleEntity = (object: TimeScaleObject): TimeScaleEntity => ({
@@ -23,4 +24,5 @@ export const toTimeScaleEntity = (object: TimeScaleObject): TimeScaleEntity => (
     timeScale: object.timeScale,
     skip: object.skip,
     ease: object.ease,
+    hideNotes: object.hideNotes,
 })

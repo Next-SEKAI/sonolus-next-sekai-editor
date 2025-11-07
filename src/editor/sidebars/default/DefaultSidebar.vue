@@ -11,6 +11,7 @@ import MultiConnectorGuideColorField from '../../../modals/form/MultiConnectorGu
 import MultiConnectorTypeField from '../../../modals/form/MultiConnectorTypeField.vue'
 import MultiFlickDirectionField from '../../../modals/form/MultiFlickDirectionField.vue'
 import MultiGroupField from '../../../modals/form/MultiGroupField.vue'
+import MultiHideNotesField from '../../../modals/form/MultiHideNotesField.vue'
 import MultiIsAttachedField from '../../../modals/form/MultiIsAttachedField.vue'
 import MultiIsConnectorSeparatorField from '../../../modals/form/MultiIsConnectorSeparatorField.vue'
 import MultiIsCriticalField from '../../../modals/form/MultiIsCriticalField.vue'
@@ -32,6 +33,7 @@ const group = createModel('group')
 const timeScale = createModel('timeScale')
 const skip = createModel('skip')
 const ease = createModel('ease')
+const hideNotes = createModel('hideNotes')
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')
 const left = createModel('left')
@@ -56,6 +58,7 @@ const connectorGuideAlpha = createModel('connectorGuideAlpha')
             <MultiTimeScaleField v-if="types.timeScale" v-model="timeScale" />
             <MultiSkipField v-if="types.timeScale" v-model="skip" />
             <MultiTimeScaleEaseField v-if="types.timeScale" v-model="ease" />
+            <MultiHideNotesField v-if="types.timeScale" v-model="hideNotes" />
             <MultiNoteTypeField v-if="types.note" v-model="noteType" />
             <MultiGroupField v-if="types.timeScale || types.note" v-model="group" />
             <MultiBeatField

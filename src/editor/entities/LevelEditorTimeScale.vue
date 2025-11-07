@@ -18,7 +18,16 @@ const y = computed(() => time.value * ups.value)
 
 <template>
     <g>
-        <line :x1="-6" :x2="6" :y1="y" :y2="y" stroke="#ff0" stroke-opacity="0.5" />
+        <line
+            :x1="-6"
+            :x2="6"
+            :y1="y"
+            :y2="y"
+            stroke="#ff0"
+            stroke-opacity="0.5"
+            :stroke-dasharray="entity.hideNotes ? '2 2' : ''"
+            stroke-dashoffset="0"
+        />
 
         <text :x="-6.1" :y text-anchor="end" dominant-baseline="middle" fill="#ff0">
             {{ formatTimeScale(entity.timeScale, entity.skip, entity.ease) }}
