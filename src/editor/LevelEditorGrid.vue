@@ -60,15 +60,17 @@ const timeNumbers = computed(() =>
             />
         </g>
 
-        <line
-            v-for="{ y, isBeat } in lines"
-            :key="y"
-            :x1="-6"
-            :x2="6"
-            :y1="y"
-            :y2="y"
-            :stroke-opacity="isBeat ? 0.5 : 0.25"
-        />
+        <template v-if="range.max - range.min <= 100">
+            <line
+                v-for="{ y, isBeat } in lines"
+                :key="y"
+                :x1="-6"
+                :x2="6"
+                :y1="y"
+                :y2="y"
+                :stroke-opacity="isBeat ? 0.5 : 0.25"
+            />
+        </template>
     </g>
 
     <g fill="#fff" fill-opacity="0.5" font-size="0.4" dominant-baseline="middle">
