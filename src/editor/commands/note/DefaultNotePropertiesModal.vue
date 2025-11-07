@@ -18,16 +18,11 @@ import PropertiesModal from '../../../modals/form/PropertiesModal.vue'
 import {
     defaultNoteProperties,
     defaultNotePropertiesPresetIndex,
-    defaultNotePropertiesPresets,
+    setDefaultNotePropertiesPreset,
 } from '../../tools/note'
 import { useProperties } from '../../utils/properties'
 
-const createModel = useProperties(
-    () => defaultNoteProperties.value,
-    (properties) => {
-        defaultNotePropertiesPresets.value[defaultNotePropertiesPresetIndex.value] = properties
-    },
-)
+const createModel = useProperties(() => defaultNoteProperties.value, setDefaultNotePropertiesPreset)
 
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')
