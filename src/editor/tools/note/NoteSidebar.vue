@@ -2,7 +2,7 @@
 import {
     defaultNoteProperties,
     defaultNotePropertiesPresetIndex,
-    defaultNotePropertiesPresets,
+    setDefaultNotePropertiesPreset,
 } from '.'
 import { i18n } from '../../../i18n'
 import OptionalConnectorActiveIsCriticalField from '../../../modals/form/OptionalConnectorActiveIsCriticalField.vue'
@@ -22,12 +22,7 @@ import PresetField from '../../../modals/form/PresetField.vue'
 import BaseSidebar from '../../sidebars/BaseSidebar.vue'
 import { useProperties } from '../../utils/properties'
 
-const createModel = useProperties(
-    () => defaultNoteProperties.value,
-    (properties) => {
-        defaultNotePropertiesPresets.value[defaultNotePropertiesPresetIndex.value] = properties
-    },
-)
+const createModel = useProperties(() => defaultNoteProperties.value, setDefaultNotePropertiesPreset)
 
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')

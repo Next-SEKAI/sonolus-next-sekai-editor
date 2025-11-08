@@ -18,15 +18,13 @@ import PropertiesModal from '../../../modals/form/PropertiesModal.vue'
 import {
     defaultSlideProperties,
     defaultSlidePropertiesPresetIndex,
-    defaultSlidePropertiesPresets,
+    setDefaultSlidePropertiesPreset,
 } from '../../tools/slide'
 import { useProperties } from '../../utils/properties'
 
 const createModel = useProperties(
     () => defaultSlideProperties.value,
-    (properties) => {
-        defaultSlidePropertiesPresets.value[defaultSlidePropertiesPresetIndex.value] = properties
-    },
+    setDefaultSlidePropertiesPreset,
 )
 
 const noteType = createModel('noteType')

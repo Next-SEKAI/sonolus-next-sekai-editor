@@ -1,4 +1,4 @@
-import { Type, type StaticDecode, type TSchema, type TString } from '@sinclair/typebox'
+import { Type, type Static, type StaticDecode, type TSchema, type TString } from '@sinclair/typebox'
 import { Value } from '@sinclair/typebox/value'
 import { shallowRef, watch } from 'vue'
 import { isCommandName, type CommandName } from './editor/commands'
@@ -11,6 +11,57 @@ const number = (def: number, min: number, max: number) =>
     Type.Transform(Type.Number({ default: def }))
         .Decode((value) => clamp(value, min, max))
         .Encode((value) => value)
+
+const defaultNoteSlidePropertiesSchema = Type.Partial(
+    Type.Object({
+        noteType: Type.Union([
+            Type.Literal('default'),
+            Type.Literal('trace'),
+            Type.Literal('anchor'),
+            Type.Literal('damage'),
+            Type.Literal('forceTick'),
+            Type.Literal('forceNonTick'),
+        ]),
+        isAttached: Type.Boolean(),
+        size: Type.Number(),
+        isCritical: Type.Boolean(),
+        flickDirection: Type.Union([
+            Type.Literal('none'),
+            Type.Literal('up'),
+            Type.Literal('upLeft'),
+            Type.Literal('upRight'),
+            Type.Literal('down'),
+            Type.Literal('downLeft'),
+            Type.Literal('downRight'),
+        ]),
+        isFake: Type.Boolean(),
+        isConnectorSeparator: Type.Boolean(),
+        connectorType: Type.Union([Type.Literal('active'), Type.Literal('guide')]),
+        connectorEase: Type.Union([
+            Type.Literal('linear'),
+            Type.Literal('in'),
+            Type.Literal('out'),
+            Type.Literal('inOut'),
+            Type.Literal('outIn'),
+            Type.Literal('none'),
+        ]),
+        connectorActiveIsCritical: Type.Boolean(),
+        connectorActiveIsFake: Type.Boolean(),
+        connectorGuideColor: Type.Union([
+            Type.Literal('neutral'),
+            Type.Literal('red'),
+            Type.Literal('green'),
+            Type.Literal('blue'),
+            Type.Literal('yellow'),
+            Type.Literal('purple'),
+            Type.Literal('cyan'),
+            Type.Literal('black'),
+        ]),
+        connectorGuideAlpha: Type.Number(),
+    }),
+)
+
+export type DefaultNoteSlideProperties = Static<typeof defaultNoteSlidePropertiesSchema>
 
 const settingsProperties = {
     showSidebar: Type.Boolean({ default: true }),
@@ -182,6 +233,38 @@ const settingsProperties = {
                 ) as Partial<Record<CommandName, string>>,
         )
         .Encode((values) => values),
+
+    defaultNotePropertiesPresets: Type.Array(defaultNoteSlidePropertiesSchema, {
+        default: [
+            {},
+            {
+                isCritical: true,
+            },
+            {
+                flickDirection: 'up',
+            },
+            {
+                noteType: 'trace',
+            },
+        ] satisfies DefaultNoteSlideProperties[],
+    }),
+
+    defaultSlidePropertiesPresets: Type.Array(defaultNoteSlidePropertiesSchema, {
+        default: [
+            {
+                connectorEase: 'linear',
+            },
+            {
+                isCritical: true,
+            },
+            {
+                flickDirection: 'up',
+            },
+            {
+                noteType: 'trace',
+            },
+        ] satisfies DefaultNoteSlideProperties[],
+    }),
 }
 
 const normalize = <T extends TSchema>(schema: T, value: unknown) =>

@@ -2,7 +2,7 @@
 import {
     defaultSlideProperties,
     defaultSlidePropertiesPresetIndex,
-    defaultSlidePropertiesPresets,
+    setDefaultSlidePropertiesPreset,
 } from '.'
 import { i18n } from '../../../i18n'
 import OptionalConnectorActiveIsCriticalField from '../../../modals/form/OptionalConnectorActiveIsCriticalField.vue'
@@ -24,9 +24,7 @@ import { useProperties } from '../../utils/properties'
 
 const createModel = useProperties(
     () => defaultSlideProperties.value,
-    (properties) => {
-        defaultSlidePropertiesPresets.value[defaultSlidePropertiesPresetIndex.value] = properties
-    },
+    setDefaultSlidePropertiesPreset,
 )
 
 const noteType = createModel('noteType')

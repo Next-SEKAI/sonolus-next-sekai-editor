@@ -1,18 +1,12 @@
 import { computed, ref } from 'vue'
 import type { Tool } from '..'
-import type {
-    ConnectorEase,
-    ConnectorGuideColor,
-    ConnectorType,
-    FlickDirection,
-    NoteObject,
-    NoteType,
-} from '../../../chart'
+import type { NoteObject } from '../../../chart'
 import { pushState, replaceState, state } from '../../../history'
 import { selectedEntities } from '../../../history/selectedEntities'
 import { store } from '../../../history/store'
 import { i18n } from '../../../i18n'
 import { showModal } from '../../../modals'
+import { settings, type DefaultNoteSlideProperties } from '../../../settings'
 import type { Entity } from '../../../state/entities'
 import { createSlideId, type SlideId } from '../../../state/entities/slides'
 import { toNoteEntity, type NoteEntity } from '../../../state/entities/slides/note'
@@ -36,42 +30,17 @@ import { hitEntitiesAtPoint, modifyEntities } from '../utils'
 import SlidePropertiesModal from './SlidePropertiesModal.vue'
 import SlideSidebar from './SlideSidebar.vue'
 
-export type DefaultSlideProperties = {
-    noteType?: NoteType
-    isAttached?: boolean
-    size?: number
-    isCritical?: boolean
-    flickDirection?: FlickDirection
-    isFake?: boolean
-    isConnectorSeparator?: boolean
-    connectorType?: ConnectorType
-    connectorEase?: ConnectorEase
-    connectorActiveIsCritical?: boolean
-    connectorActiveIsFake?: boolean
-    connectorGuideColor?: ConnectorGuideColor
-    connectorGuideAlpha?: number
-}
-
-export const defaultSlidePropertiesPresets = ref<DefaultSlideProperties[]>([
-    {
-        connectorEase: 'linear',
-    },
-    {
-        isCritical: true,
-    },
-    {
-        flickDirection: 'up',
-    },
-    {
-        noteType: 'trace',
-    },
-])
-
 export const defaultSlidePropertiesPresetIndex = ref(0)
+
+export const setDefaultSlidePropertiesPreset = (properties: DefaultNoteSlideProperties) => {
+    settings.defaultSlidePropertiesPresets = settings.defaultSlidePropertiesPresets.map(
+        (preset, i) => (i === defaultSlidePropertiesPresetIndex.value ? properties : preset),
+    )
+}
 
 export const defaultSlideProperties = computed(
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    () => defaultSlidePropertiesPresets.value[defaultSlidePropertiesPresetIndex.value]!,
+    () => settings.defaultSlidePropertiesPresets[defaultSlidePropertiesPresetIndex.value]!,
 )
 
 let active:
