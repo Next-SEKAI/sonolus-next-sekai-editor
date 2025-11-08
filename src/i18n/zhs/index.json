@@ -470,7 +470,7 @@
     }
   },
   "notification": {
-    "title": "Sonolus Next SEKAI Editor 版本 {0}"
+    "title": "Sonolus Next SEKAI Editor\n版本 {0}"
   },
   "player": {
     "started": "开始播放",
