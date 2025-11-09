@@ -1,24 +1,41 @@
 <script setup lang="ts">
-defineProps<{
+import { computed } from 'vue'
+import { settings } from '../../../settings'
+import { defaultSlidePropertiesPresetIndex } from '../../tools/slide'
+import { iconComponents } from './icon'
+
+const props = defineProps<{
     index?: number
 }>()
+
+const properties = computed(
+    () =>
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        settings.defaultSlidePropertiesPresets[
+            props.index ?? defaultSlidePropertiesPresetIndex.value
+        ]!,
+)
+
+const type = computed(() => {
+    const noteType = properties.value.noteType
+
+    if (noteType === 'trace') return 'trace'
+
+    if (noteType === 'anchor') return 'anchor'
+
+    if (noteType === 'damage') return 'damage'
+
+    if (noteType === 'forceTick') return 'tick'
+
+    if (noteType === 'forceNonTick') return 'single'
+
+    return 'tail'
+})
 </script>
 
 <template>
     <svg viewBox="-0.55 -0.55 1.1 1.1">
-        <rect
-            x="-0.5"
-            y="-0.3"
-            width="1"
-            height="0.6"
-            rx="0.1"
-            ry="0.1"
-            stroke="#81f8cf"
-            stroke-width="0.1"
-            fill="#dafdf1"
-        />
-        <rect x="-0.5" y="-0.1" width="0.2" height="0.2" fill="#5ce29d" />
-        <rect x="0.3" y="-0.1" width="0.2" height="0.2" fill="#5ce29d" />
+        <component :is="iconComponents[type]" :properties />
         <text
             v-if="index !== undefined"
             x="0"
