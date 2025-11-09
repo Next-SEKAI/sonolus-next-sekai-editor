@@ -11,7 +11,14 @@ export const useProperties =
         computed({
             get: () => get()[key],
             set: (value) => {
-                set({ ...get(), [key]: value })
+                const properties = { ...get() }
+                if (value === undefined) {
+                    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+                    delete properties[key]
+                } else {
+                    properties[key] = value
+                }
+                set(properties)
             },
         })
 
