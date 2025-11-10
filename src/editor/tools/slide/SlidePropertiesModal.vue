@@ -15,6 +15,7 @@ import MultiIsCriticalField from '../../../modals/form/MultiIsCriticalField.vue'
 import MultiIsFakeField from '../../../modals/form/MultiIsFakeField.vue'
 import MultiLeftField from '../../../modals/form/MultiLeftField.vue'
 import MultiNoteTypeField from '../../../modals/form/MultiNoteTypeField.vue'
+import MultiSfxField from '../../../modals/form/MultiSfxField.vue'
 import MultiSizeField from '../../../modals/form/MultiSizeField.vue'
 import PropertiesModal from '../../../modals/form/PropertiesModal.vue'
 import { useSelectedEntitiesProperties } from '../../utils/properties'
@@ -32,6 +33,7 @@ const size = createModel('size')
 const isCritical = createModel('isCritical')
 const flickDirection = createModel('flickDirection')
 const isFake = createModel('isFake')
+const sfx = createModel('sfx')
 const isConnectorSeparator = createModel('isConnectorSeparator')
 const connectorType = createModel('connectorType')
 const connectorEase = createModel('connectorEase')
@@ -55,6 +57,7 @@ const connectorGuideAlpha = createModel('connectorGuideAlpha')
             v-model="flickDirection"
         />
         <MultiIsFakeField v-if="noteFields.isFake !== false" v-model="isFake" />
+        <MultiSfxField v-model="sfx" />
         <MultiIsConnectorSeparatorField
             v-if="noteFields.isConnectorSeparator !== false"
             v-model="isConnectorSeparator"

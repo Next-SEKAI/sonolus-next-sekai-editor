@@ -590,6 +590,20 @@
             "preset": {
                 "label": "Preset"
             },
+            "sfx": {
+                "label": "SFX",
+                "default": "Default",
+                "none": "None",
+                "normalTap": "Tap",
+                "criticalTap": "Tap (Critical)",
+                "normalFlick": "Flick",
+                "criticalFlick": "Flick (Critical)",
+                "normalTrace": "Trace",
+                "criticalTrace": "Trace (Critical)",
+                "normalTick": "Tick",
+                "criticalTick": "Tick (Critical)",
+                "damage": "Damage"
+            },
             "size": {
                 "label": "Size"
             },

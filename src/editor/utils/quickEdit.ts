@@ -3,31 +3,17 @@ import type {
     ConnectorGuideColor,
     ConnectorType,
     FlickDirection,
+    NoteSfx,
     NoteType,
 } from '../../chart'
 import { selectedEntities } from '../../history/selectedEntities'
+import type { DefaultNoteSlideProperties } from '../../settings'
 import { entries } from '../../utils/object'
 import { editSelectedEditableEntities } from '../sidebars/default'
 
-type QuickEditProperties = {
-    noteType?: NoteType
-    isAttached?: boolean
-    size?: number
-    isCritical?: boolean
-    flickDirection?: FlickDirection
-    isFake?: boolean
-    isConnectorSeparator?: boolean
-    connectorType?: ConnectorType
-    connectorEase?: ConnectorEase
-    connectorActiveIsCritical?: boolean
-    connectorActiveIsFake?: boolean
-    connectorGuideColor?: ConnectorGuideColor
-    connectorGuideAlpha?: number
-}
-
-export const quickEdit = (properties: QuickEditProperties) => {
+export const quickEdit = (properties: DefaultNoteSlideProperties) => {
     let count = 0
-    let key: keyof QuickEditProperties | undefined
+    let key: keyof DefaultNoteSlideProperties | undefined
 
     for (const [k, v] of entries(properties)) {
         if (v === undefined) continue
@@ -97,6 +83,23 @@ export const quickEdit = (properties: QuickEditProperties) => {
             break
         case 'isFake':
             editSelectedEditableEntities({ isFake: !value })
+            break
+        case 'sfx':
+            editSelectedEditableEntities({
+                sfx: rotate(value as NoteSfx, [
+                    'default',
+                    'none',
+                    'normalTap',
+                    'criticalTap',
+                    'normalFlick',
+                    'criticalFlick',
+                    'normalTrace',
+                    'criticalTrace',
+                    'normalTick',
+                    'criticalTick',
+                    'damage',
+                ]),
+            })
             break
         case 'isConnectorSeparator':
             editSelectedEditableEntities({ isConnectorSeparator: !value })

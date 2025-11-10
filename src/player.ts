@@ -26,14 +26,14 @@ const delay = 0.2
 const context = new AudioContext()
 
 const sfxBuffers = {
-    normalTick: optional<AudioBuffer>(),
-    criticalTick: optional<AudioBuffer>(),
+    normalTap: optional<AudioBuffer>(),
     criticalTap: optional<AudioBuffer>(),
     normalFlick: optional<AudioBuffer>(),
     criticalFlick: optional<AudioBuffer>(),
-    normalTap: optional<AudioBuffer>(),
     normalTrace: optional<AudioBuffer>(),
     criticalTrace: optional<AudioBuffer>(),
+    normalTick: optional<AudioBuffer>(),
+    criticalTick: optional<AudioBuffer>(),
     normalActive: optional<AudioBuffer>(),
     criticalActive: optional<AudioBuffer>(),
 }
@@ -76,20 +76,28 @@ watch(time, ({ now }) => {
     }
 
     const targets = {
-        normalTick: new Set<number>(),
-        criticalTick: new Set<number>(),
+        normalTap: new Set<number>(),
         criticalTap: new Set<number>(),
         normalFlick: new Set<number>(),
         criticalFlick: new Set<number>(),
-        normalTap: new Set<number>(),
         normalTrace: new Set<number>(),
         criticalTrace: new Set<number>(),
+        normalTick: new Set<number>(),
+        criticalTick: new Set<number>(),
     }
 
     for (const entity of cullEntities('note', keys.min, keys.max)) {
         if (entity.beat < beats.min || entity.beat >= beats.max) continue
 
         if (entity.isFake) continue
+
+        if (entity.sfx === 'none') continue
+        if (entity.sfx === 'damage') continue
+
+        if (entity.sfx !== 'default') {
+            targets[entity.sfx].add(entity.beat)
+            continue
+        }
 
         if (entity.noteType === 'anchor') continue
 
@@ -401,14 +409,14 @@ const loadSfx = () => {
         sfxBuffers[type] = await context.decodeAudioData(data)
     }
 
-    void load('normalTick', normalTickUrl)
-    void load('criticalTick', criticalTickUrl)
+    void load('normalTap', normalTapUrl)
     void load('criticalTap', criticalTapUrl)
     void load('normalFlick', normalFlickUrl)
     void load('criticalFlick', criticalFlickUrl)
-    void load('normalTap', normalTapUrl)
     void load('normalTrace', normalTraceUrl)
     void load('criticalTrace', criticalTraceUrl)
+    void load('normalTick', normalTickUrl)
+    void load('criticalTick', criticalTickUrl)
     void load('normalActive', normalActiveUrl)
     void load('criticalActive', criticalActiveUrl)
 }

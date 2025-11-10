@@ -78,6 +78,10 @@ export const serializeSlidesToLevelDataEntities = (
                         name: 'segmentAlpha',
                         value: note.connectorGuideAlpha,
                     },
+                    {
+                        name: 'effectKind',
+                        value: sfxs[note.sfx],
+                    },
                 ],
             }
             entities.push(entity)
@@ -294,6 +298,20 @@ const flickDirections = {
     down: 3,
     downLeft: 4,
     downRight: 5,
+}
+
+const sfxs = {
+    default: 0,
+    none: 1,
+    normalTap: 2,
+    criticalTap: 6,
+    normalFlick: 3,
+    criticalFlick: 7,
+    normalTrace: 4,
+    criticalTrace: 8,
+    normalTick: 5,
+    criticalTick: 9,
+    damage: 10,
 }
 
 const connectorEases = {

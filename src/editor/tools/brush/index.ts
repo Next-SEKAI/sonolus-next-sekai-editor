@@ -4,6 +4,7 @@ import type {
     ConnectorGuideColor,
     ConnectorType,
     FlickDirection,
+    NoteSfx,
     NoteType,
 } from '../../../chart'
 import { pushState, replaceState, state } from '../../../history'
@@ -31,6 +32,7 @@ export type BrushProperties = {
     isCritical?: boolean
     flickDirection?: FlickDirection
     isFake?: boolean
+    sfx?: NoteSfx
     isConnectorSeparator?: boolean
     connectorType?: ConnectorType
     connectorEase?: ConnectorEase
