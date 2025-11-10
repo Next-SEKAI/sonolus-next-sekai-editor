@@ -57,7 +57,7 @@ const connectorGuideAlpha = createModel('connectorGuideAlpha')
             v-model="flickDirection"
         />
         <MultiIsFakeField v-if="noteFields.isFake !== false" v-model="isFake" />
-        <MultiSfxField v-model="sfx" />
+        <MultiSfxField v-if="noteFields.sfx !== false" v-model="sfx" />
         <MultiIsConnectorSeparatorField
             v-if="noteFields.isConnectorSeparator !== false"
             v-model="isConnectorSeparator"
