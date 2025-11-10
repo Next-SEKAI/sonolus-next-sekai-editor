@@ -8,6 +8,7 @@ import OptionalConnectorGuideColorField from '../../../modals/form/OptionalConne
 import OptionalConnectorTypeField from '../../../modals/form/OptionalConnectorTypeField.vue'
 import OptionalFlickDirectionField from '../../../modals/form/OptionalFlickDirectionField.vue'
 import OptionalGroupField from '../../../modals/form/OptionalGroupField.vue'
+import OptionalHideNotesField from '../../../modals/form/OptionalHideNotesField.vue'
 import OptionalIsAttachedField from '../../../modals/form/OptionalIsAttachedField.vue'
 import OptionalIsConnectorSeparatorField from '../../../modals/form/OptionalIsConnectorSeparatorField.vue'
 import OptionalIsCriticalField from '../../../modals/form/OptionalIsCriticalField.vue'
@@ -15,6 +16,9 @@ import OptionalIsFakeField from '../../../modals/form/OptionalIsFakeField.vue'
 import OptionalNoteTypeField from '../../../modals/form/OptionalNoteTypeField.vue'
 import OptionalSfxField from '../../../modals/form/OptionalSfxField.vue'
 import OptionalSizeField from '../../../modals/form/OptionalSizeField.vue'
+import OptionalSkipField from '../../../modals/form/OptionalSkipField.vue'
+import OptionalTimeScaleEaseField from '../../../modals/form/OptionalTimeScaleEaseField.vue'
+import OptionalTimeScaleField from '../../../modals/form/OptionalTimeScaleField.vue'
 import PropertiesModal from '../../../modals/form/PropertiesModal.vue'
 import { brushProperties, setBrushProperties } from '../../tools/brush'
 import { useProperties } from '../../utils/properties'
@@ -36,6 +40,10 @@ const connectorActiveIsCritical = createModel('connectorActiveIsCritical')
 const connectorActiveIsFake = createModel('connectorActiveIsFake')
 const connectorGuideColor = createModel('connectorGuideColor')
 const connectorGuideAlpha = createModel('connectorGuideAlpha')
+const timeScale = createModel('timeScale')
+const skip = createModel('skip')
+const ease = createModel('ease')
+const hideNotes = createModel('hideNotes')
 </script>
 
 <template>
@@ -55,5 +63,9 @@ const connectorGuideAlpha = createModel('connectorGuideAlpha')
         <OptionalConnectorActiveIsFakeField v-model="connectorActiveIsFake" />
         <OptionalConnectorGuideColorField v-model="connectorGuideColor" />
         <OptionalConnectorGuideAlphaField v-model="connectorGuideAlpha" />
+        <OptionalTimeScaleField v-model="timeScale" />
+        <OptionalSkipField v-model="skip" />
+        <OptionalTimeScaleEaseField v-model="ease" />
+        <OptionalHideNotesField v-model="hideNotes" />
     </PropertiesModal>
 </template>

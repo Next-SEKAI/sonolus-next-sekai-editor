@@ -6,6 +6,7 @@ import type {
     FlickDirection,
     NoteSfx,
     NoteType,
+    TimeScaleEase,
 } from '../../../chart'
 import { pushState, replaceState, state } from '../../../history'
 import { selectedEntities } from '../../../history/selectedEntities'
@@ -16,6 +17,7 @@ import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
 import { focusViewAtBeat, setViewHover, view, xToLane, yToTime, yToValidBeat } from '../../view'
 import { editSelectedNote } from '../note'
+import { editSelectedTimeScale } from '../timeScale'
 import {
     hitAllEntitiesAtPoint,
     hitAllEntitiesInSelection,
@@ -40,6 +42,10 @@ export type BrushProperties = {
     connectorActiveIsFake?: boolean
     connectorGuideColor?: ConnectorGuideColor
     connectorGuideAlpha?: number
+    timeScale?: number
+    skip?: number
+    ease?: TimeScaleEase
+    hideNotes?: boolean
 }
 
 export let brushProperties: BrushProperties = {}
@@ -149,6 +155,7 @@ type Apply<T> = (transaction: Transaction, entity: T, object: BrushProperties) =
 const applies: {
     [T in Entity as T['type']]?: Apply<T>
 } = {
+    timeScale: editSelectedTimeScale,
     note: editSelectedNote,
 }
 
