@@ -14,6 +14,7 @@ import OptionalIsConnectorSeparatorField from '../../../modals/form/OptionalIsCo
 import OptionalIsCriticalField from '../../../modals/form/OptionalIsCriticalField.vue'
 import OptionalIsFakeField from '../../../modals/form/OptionalIsFakeField.vue'
 import OptionalNoteTypeField from '../../../modals/form/OptionalNoteTypeField.vue'
+import OptionalSfxField from '../../../modals/form/OptionalSfxField.vue'
 import OptionalSizeField from '../../../modals/form/OptionalSizeField.vue'
 import BaseSidebar from '../../sidebars/BaseSidebar.vue'
 import { useProperties } from '../../utils/properties'
@@ -27,6 +28,7 @@ const size = createModel('size')
 const isCritical = createModel('isCritical')
 const flickDirection = createModel('flickDirection')
 const isFake = createModel('isFake')
+const sfx = createModel('sfx')
 const isConnectorSeparator = createModel('isConnectorSeparator')
 const connectorType = createModel('connectorType')
 const connectorEase = createModel('connectorEase')
@@ -45,6 +47,7 @@ const connectorGuideAlpha = createModel('connectorGuideAlpha')
         <OptionalIsCriticalField v-model="isCritical" />
         <OptionalFlickDirectionField v-model="flickDirection" />
         <OptionalIsFakeField v-model="isFake" />
+        <OptionalSfxField v-model="sfx" />
         <OptionalIsConnectorSeparatorField v-model="isConnectorSeparator" />
         <OptionalConnectorTypeField v-model="connectorType" />
         <OptionalConnectorEaseField v-model="connectorEase" />

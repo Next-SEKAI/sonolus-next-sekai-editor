@@ -32,6 +32,19 @@ export type FlickDirection =
     | 'downLeft'
     | 'downRight'
 
+export type NoteSfx =
+    | 'default'
+    | 'none'
+    | 'normalTap'
+    | 'criticalTap'
+    | 'normalFlick'
+    | 'criticalFlick'
+    | 'normalTrace'
+    | 'criticalTrace'
+    | 'normalTick'
+    | 'criticalTick'
+    | 'damage'
+
 export type ConnectorType = 'active' | 'guide'
 
 export type ConnectorEase = 'linear' | 'in' | 'out' | 'inOut' | 'outIn' | 'none'
@@ -56,6 +69,7 @@ export type NoteObject = {
     isCritical: boolean
     flickDirection: FlickDirection
     isFake: boolean
+    sfx: NoteSfx
     isConnectorSeparator: boolean
     connectorType: ConnectorType
     connectorEase: ConnectorEase

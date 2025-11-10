@@ -185,6 +185,34 @@ const directions = {
     5: 'downRight',
 } as const
 
+const sfxSchema = Type.Union([
+    Type.Literal(0),
+    Type.Literal(1),
+    Type.Literal(2),
+    Type.Literal(3),
+    Type.Literal(4),
+    Type.Literal(5),
+    Type.Literal(6),
+    Type.Literal(7),
+    Type.Literal(8),
+    Type.Literal(9),
+    Type.Literal(10),
+])
+
+const sfxs = {
+    0: 'default',
+    1: 'none',
+    2: 'normalTap',
+    3: 'normalFlick',
+    4: 'normalTrace',
+    5: 'normalTick',
+    6: 'criticalTap',
+    7: 'criticalFlick',
+    8: 'criticalTrace',
+    9: 'criticalTick',
+    10: 'damage',
+} as const
+
 const isSeparatorSchema = Type.Number()
 
 const segmentKindSchema = Type.Union([
@@ -329,6 +357,7 @@ const toNoteObject = (
         isCritical: false,
         flickDirection: directions[getValue(entity, 'direction', directionSchema)],
         isFake: false,
+        sfx: sfxs[getOptionalValue(entity, 'effectKind', sfxSchema) ?? 0],
         isConnectorSeparator: !!getOptionalValue(entity, 'isSeparator', isSeparatorSchema),
         ...segmentKinds[getValue(entity, 'segmentKind', segmentKindSchema)],
         connectorEase: connectorEases[getValue(entity, 'connectorEase', connectorEaseSchema)],

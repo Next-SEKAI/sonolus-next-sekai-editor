@@ -311,6 +311,7 @@ export const editNote = (entity: NoteEntity, object: Partial<NoteObject>) => {
         isCritical: object.isCritical ?? entity.isCritical,
         flickDirection: object.flickDirection ?? entity.flickDirection,
         isFake: object.isFake ?? entity.isFake,
+        sfx: object.sfx ?? entity.sfx,
         isConnectorSeparator: object.isConnectorSeparator ?? entity.isConnectorSeparator,
         connectorType: object.connectorType ?? entity.connectorType,
         connectorEase: object.connectorEase ?? entity.connectorEase,
@@ -340,6 +341,7 @@ export const editSelectedNote = (
         isCritical: object.isCritical ?? entity.isCritical,
         flickDirection: object.flickDirection ?? entity.flickDirection,
         isFake: object.isFake ?? entity.isFake,
+        sfx: object.sfx ?? entity.sfx,
         isConnectorSeparator: object.isConnectorSeparator ?? entity.isConnectorSeparator,
         connectorType: object.connectorType ?? entity.connectorType,
         connectorEase: object.connectorEase ?? entity.connectorEase,
@@ -374,6 +376,7 @@ const getPropertiesFromSelection = () => {
         flickDirection:
             defaultNoteProperties.value.flickDirection ?? note?.flickDirection ?? 'none',
         isFake: defaultNoteProperties.value.isFake ?? note?.isFake ?? false,
+        sfx: defaultNoteProperties.value.sfx ?? note?.sfx ?? 'default',
         isConnectorSeparator: defaultNoteProperties.value.isConnectorSeparator ?? false,
         connectorType: defaultNoteProperties.value.connectorType ?? 'active',
         connectorEase: defaultNoteProperties.value.connectorEase ?? 'linear',

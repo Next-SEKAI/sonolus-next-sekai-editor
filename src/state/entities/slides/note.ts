@@ -6,6 +6,7 @@ import type {
     ConnectorType,
     FlickDirection,
     NoteObject,
+    NoteSfx,
     NoteType,
 } from '../../../chart'
 
@@ -22,6 +23,7 @@ export type NoteEntity = BaseEntity & {
     isCritical: boolean
     flickDirection: FlickDirection
     isFake: boolean
+    sfx: NoteSfx
     isConnectorSeparator: boolean
     connectorType: ConnectorType
     connectorEase: ConnectorEase
@@ -55,6 +57,7 @@ export const toNoteEntity = (
     size: object.size,
     isCritical: object.isCritical,
     flickDirection: object.flickDirection,
+    sfx: object.sfx,
     isFake: object.isFake,
     isConnectorSeparator: object.isConnectorSeparator,
     connectorType: object.connectorType,

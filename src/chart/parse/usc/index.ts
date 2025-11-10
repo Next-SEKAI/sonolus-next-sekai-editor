@@ -43,6 +43,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                         isCritical: object.critical,
                         flickDirection: flickDirections[object.direction ?? 'none'],
                         isFake: false,
+                        sfx: 'default',
                         isConnectorSeparator: false,
                         connectorType: 'active',
                         connectorEase: 'linear',
@@ -73,6 +74,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                                 ? flickDirections[connection.direction ?? 'none']
                                 : 'none',
                         isFake: false,
+                        sfx: 'default',
                         isConnectorSeparator: false,
                         connectorType: 'active',
                         connectorEase:
@@ -98,6 +100,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                         isCritical: false,
                         flickDirection: 'none',
                         isFake: false,
+                        sfx: 'default',
                         isConnectorSeparator: false,
                         connectorType: 'guide',
                         connectorEase: connectorEases[midpoint.ease],
@@ -122,6 +125,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                         isCritical: false,
                         flickDirection: 'none',
                         isFake: false,
+                        sfx: 'default',
                         isConnectorSeparator: false,
                         connectorType: 'active',
                         connectorEase: 'linear',
