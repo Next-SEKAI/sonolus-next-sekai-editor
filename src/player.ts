@@ -207,7 +207,6 @@ watch(time, ({ now }) => {
         if (entity.head.beat < beats.min || entity.head.beat >= beats.max) continue
 
         if (entity.segmentHead.connectorType !== 'active') continue
-        if (entity.segmentHead.connectorActiveIsFake) continue
 
         if (entity.segmentHead.connectorActiveIsCritical) {
             activeTargets.criticalActive.push(entity)
