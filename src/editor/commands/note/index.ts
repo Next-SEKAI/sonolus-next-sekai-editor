@@ -1,6 +1,7 @@
 import type { Command } from '..'
 import { i18n } from '../../../i18n'
 import { showModal } from '../../../modals'
+import { settings } from '../../../settings'
 import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
 import { focusSidebar, isSidebarVisible } from '../../sidebars'
@@ -19,7 +20,8 @@ export const note: Command = {
         if (toolName.value === 'note') {
             if (isSidebarVisible.value) {
                 defaultNotePropertiesPresetIndex.value =
-                    (defaultNotePropertiesPresetIndex.value + 1) % 4
+                    (defaultNotePropertiesPresetIndex.value + 1) %
+                    settings.defaultNotePropertiesPresets.length
             } else {
                 await showModal(DefaultNotePropertiesModal, {})
             }

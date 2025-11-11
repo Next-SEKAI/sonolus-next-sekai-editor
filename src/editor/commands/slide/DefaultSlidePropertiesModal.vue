@@ -16,6 +16,7 @@ import OptionalSfxField from '../../../modals/form/OptionalSfxField.vue'
 import OptionalSizeField from '../../../modals/form/OptionalSizeField.vue'
 import PresetField from '../../../modals/form/PresetField.vue'
 import PropertiesModal from '../../../modals/form/PropertiesModal.vue'
+import { settings } from '../../../settings'
 import {
     defaultSlideProperties,
     defaultSlidePropertiesPresetIndex,
@@ -46,7 +47,10 @@ const connectorGuideAlpha = createModel('connectorGuideAlpha')
 
 <template>
     <PropertiesModal :title="i18n.commands.slide.modal.title">
-        <PresetField v-model="defaultSlidePropertiesPresetIndex" />
+        <PresetField
+            v-model="defaultSlidePropertiesPresetIndex"
+            :count="settings.defaultSlidePropertiesPresets.length"
+        />
         <OptionalNoteTypeField v-model="noteType" />
         <OptionalIsAttachedField v-model="isAttached" />
         <OptionalSizeField v-model="size" />

@@ -1,6 +1,7 @@
 import type { Command } from '..'
 import { i18n } from '../../../i18n'
 import { showModal } from '../../../modals'
+import { settings } from '../../../settings'
 import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
 import { focusSidebar, isSidebarVisible } from '../../sidebars'
@@ -19,7 +20,8 @@ export const slide: Command = {
         if (toolName.value === 'slide') {
             if (isSidebarVisible.value) {
                 defaultSlidePropertiesPresetIndex.value =
-                    (defaultSlidePropertiesPresetIndex.value + 1) % 4
+                    (defaultSlidePropertiesPresetIndex.value + 1) %
+                    settings.defaultSlidePropertiesPresets.length
             } else {
                 await showModal(DefaultSlidePropertiesModal, {})
             }

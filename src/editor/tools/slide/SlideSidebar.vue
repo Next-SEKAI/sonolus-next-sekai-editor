@@ -20,6 +20,7 @@ import OptionalNoteTypeField from '../../../modals/form/OptionalNoteTypeField.vu
 import OptionalSfxField from '../../../modals/form/OptionalSfxField.vue'
 import OptionalSizeField from '../../../modals/form/OptionalSizeField.vue'
 import PresetField from '../../../modals/form/PresetField.vue'
+import { settings } from '../../../settings'
 import BaseSidebar from '../../sidebars/BaseSidebar.vue'
 import { useProperties } from '../../utils/properties'
 
@@ -46,7 +47,10 @@ const connectorGuideAlpha = createModel('connectorGuideAlpha')
 
 <template>
     <BaseSidebar :title="i18n.tools.slide.sidebar.title">
-        <PresetField v-model="defaultSlidePropertiesPresetIndex" />
+        <PresetField
+            v-model="defaultSlidePropertiesPresetIndex"
+            :count="settings.defaultSlidePropertiesPresets.length"
+        />
         <OptionalNoteTypeField v-model="noteType" />
         <OptionalIsAttachedField v-model="isAttached" />
         <OptionalSizeField v-model="size" />
