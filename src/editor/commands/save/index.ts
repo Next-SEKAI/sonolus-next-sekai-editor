@@ -1,7 +1,7 @@
 import { saveAs } from 'file-saver'
 import { gzip } from 'pako'
 import type { Command } from '..'
-import { state } from '../../../history'
+import { levelDataHandle, setLevelDataHandle, state } from '../../../history'
 import { bgm } from '../../../history/bgm'
 import { filename } from '../../../history/filename'
 import { store } from '../../../history/store'
@@ -9,6 +9,7 @@ import { i18n } from '../../../i18n'
 import { serializeToLevelData } from '../../../levelData/serialize'
 import { showModal } from '../../../modals'
 import LoadingModal from '../../../modals/LoadingModal.vue'
+import { pickFileForSave } from '../../../utils/file'
 import { timeout } from '../../../utils/promise'
 import { notify } from '../../notification'
 import SaveIcon from './SaveIcon.vue'
@@ -26,6 +27,8 @@ export const save: Command = {
                 yield () => i18n.value.commands.save.exporting
                 await timeout(50)
 
+                const name = filename.value ?? 'LevelData'
+
                 const levelData = serializeToLevelData(
                     bgm.value.offset,
                     store.value,
@@ -38,7 +41,17 @@ export const save: Command = {
                 const blob = new Blob([file], {
                     type: 'application/octet-stream',
                 })
-                saveAs(blob, filename.value ?? 'LevelData')
+
+                const handle = levelDataHandle ?? (await pickFileForSave('levelData', name))
+                if (handle) {
+                    const writable = await handle.createWritable()
+                    await writable.write(blob)
+                    await writable.close()
+
+                    setLevelDataHandle(handle)
+                } else {
+                    saveAs(blob, name)
+                }
 
                 notify(() => i18n.value.commands.save.saved)
             },

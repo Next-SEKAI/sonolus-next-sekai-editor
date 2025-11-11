@@ -29,6 +29,8 @@ const states = shallowReactive([
     },
 ])
 
+export let levelDataHandle: FileSystemFileHandle | undefined
+
 addEventListener('beforeunload', (event) => {
     if (isStateDirty.value) event.preventDefault()
 })
@@ -77,12 +79,22 @@ export const checkState = async () => {
     })
 }
 
-export const resetState = (chart?: Chart, offset?: number, filename?: string) => {
+export const resetState = (
+    chart?: Chart,
+    offset?: number,
+    filename?: string,
+    handle?: FileSystemFileHandle,
+) => {
     index.value = 0
     states.splice(0, states.length, {
         name: () => i18n.value.history.initialize,
         state: createState(chart ?? defaultChart, offset ?? 0, filename),
     })
+    setLevelDataHandle(handle)
 
     cleanupWaveform()
+}
+
+export const setLevelDataHandle = (handle: FileSystemFileHandle | undefined) => {
+    levelDataHandle = handle
 }

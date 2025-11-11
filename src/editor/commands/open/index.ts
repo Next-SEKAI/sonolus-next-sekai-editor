@@ -9,7 +9,7 @@ import { parseLevelData } from '../../../levelData/parse'
 import { showModal } from '../../../modals'
 import LoadingModal from '../../../modals/LoadingModal.vue'
 import { parseUsc } from '../../../usc/parse'
-import { getFilename, pickFile } from '../../../utils/file'
+import { getFilename, pickFileForOpen } from '../../../utils/file'
 import { timeout } from '../../../utils/promise'
 import { notify } from '../../notification'
 import OpenIcon from './OpenIcon.vue'
@@ -23,7 +23,7 @@ export const open: Command = {
     async execute() {
         if (!(await checkState())) return
 
-        const file = await pickFile()
+        const { file, handle } = await pickFileForOpen('levelData')
         if (!file) return
 
         await showModal(LoadingModal, {
@@ -44,7 +44,7 @@ export const open: Command = {
                         const chart = parseLevelDataChart(levelData.entities)
                         validateChart(chart)
 
-                        resetState(chart, levelData.bgmOffset, getFilename(file))
+                        resetState(chart, levelData.bgmOffset, getFilename(file), handle)
                         break
                     }
                     case 'usc': {
