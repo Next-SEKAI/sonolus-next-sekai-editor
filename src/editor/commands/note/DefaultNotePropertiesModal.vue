@@ -16,6 +16,7 @@ import OptionalSfxField from '../../../modals/form/OptionalSfxField.vue'
 import OptionalSizeField from '../../../modals/form/OptionalSizeField.vue'
 import PresetField from '../../../modals/form/PresetField.vue'
 import PropertiesModal from '../../../modals/form/PropertiesModal.vue'
+import { settings } from '../../../settings'
 import {
     defaultNoteProperties,
     defaultNotePropertiesPresetIndex,
@@ -43,7 +44,10 @@ const connectorGuideAlpha = createModel('connectorGuideAlpha')
 
 <template>
     <PropertiesModal :title="i18n.commands.note.modal.title">
-        <PresetField v-model="defaultNotePropertiesPresetIndex" />
+        <PresetField
+            v-model="defaultNotePropertiesPresetIndex"
+            :count="settings.defaultNotePropertiesPresets.length"
+        />
         <OptionalNoteTypeField v-model="noteType" />
         <OptionalIsAttachedField v-model="isAttached" />
         <OptionalSizeField v-model="size" />

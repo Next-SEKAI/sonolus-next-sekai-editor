@@ -248,6 +248,8 @@ const settingsProperties = {
         .Encode((values) => values),
 
     defaultNotePropertiesPresets: Type.Array(defaultNoteSlidePropertiesSchema, {
+        minItems: 4,
+        maxItems: 4,
         default: [
             {},
             {
@@ -263,6 +265,8 @@ const settingsProperties = {
     }),
 
     defaultSlidePropertiesPresets: Type.Array(defaultNoteSlidePropertiesSchema, {
+        minItems: 5,
+        maxItems: 5,
         default: [
             {
                 connectorEase: 'linear',
@@ -275,6 +279,9 @@ const settingsProperties = {
             },
             {
                 noteType: 'trace',
+            },
+            {
+                noteType: 'anchor',
             },
         ] satisfies DefaultNoteSlideProperties[],
     }),
