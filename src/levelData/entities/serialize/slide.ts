@@ -139,11 +139,10 @@ export const serializeSlidesToLevelDataEntities = (
             const tick = Math.round(info.note.beat * beatToTicks)
 
             if (
-                !info.note.isFake &&
-                (info.note.noteType === 'trace' ||
-                    (info.note.noteType === 'default' &&
-                        (!isInActive || isActiveHead || isActiveTail)) ||
-                    info.note.noteType === 'forceNonTick')
+                info.note.noteType === 'trace' ||
+                (info.note.noteType === 'default' &&
+                    (!isInActive || isActiveHead || isActiveTail)) ||
+                info.note.noteType === 'forceNonTick'
             ) {
                 const notes = allowSimLines.get(tick)
                 if (notes) {
