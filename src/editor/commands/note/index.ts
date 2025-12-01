@@ -4,7 +4,7 @@ import { showModal } from '../../../modals'
 import { settings } from '../../../settings'
 import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
-import { focusSidebar, isSidebarVisible } from '../../sidebars'
+import { isSidebarVisible } from '../../sidebars'
 import { switchToolTo, toolName } from '../../tools'
 import { defaultNotePropertiesPresetIndex } from '../../tools/note'
 import DefaultNotePropertiesModal from './DefaultNotePropertiesModal.vue'
@@ -49,9 +49,7 @@ export const createNote = (index: number): Command => ({
 
     async execute() {
         if (toolName.value === 'note' && defaultNotePropertiesPresetIndex.value === index) {
-            if (isSidebarVisible.value) {
-                focusSidebar()
-            } else {
+            if (!isSidebarVisible.value) {
                 await showModal(DefaultNotePropertiesModal, {})
             }
         } else {
