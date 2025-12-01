@@ -132,7 +132,7 @@ const settingsProperties = {
                         'select',
                     ],
                     ['note3', 'note2', 'note1', 'note0', 'note'],
-                    ['slide3', 'slide2', 'slide1', 'slide0', 'slide'],
+                    ['slide4', 'slide3', 'slide2', 'slide1', 'slide0', 'slide'],
                     ['timeScale', 'bpm'],
                     ['groupPrev', 'groupNext', 'groupAll'],
                     [

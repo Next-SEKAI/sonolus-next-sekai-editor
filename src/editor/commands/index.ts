@@ -87,6 +87,7 @@ export const commands = {
     slide1: createSlide(1),
     slide2: createSlide(2),
     slide3: createSlide(3),
+    slide4: createSlide(4),
 
     bpm,
     timeScale,
