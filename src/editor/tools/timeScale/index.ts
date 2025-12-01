@@ -12,7 +12,7 @@ import { getInStoreGrid } from '../../../state/store/grid'
 import { createTransaction, type Transaction } from '../../../state/transaction'
 import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
-import { focusDefaultSidebar, isSidebarVisible } from '../../sidebars'
+import { isSidebarVisible } from '../../sidebars'
 import { focusViewAtBeat, setViewHover, snapYToBeat, view, yToValidBeat } from '../../view'
 import { hitEntitiesAtPoint } from '../utils'
 import TimeScalePropertiesModal from './TimeScalePropertiesModal.vue'
@@ -79,9 +79,7 @@ export const timeScale: Tool = {
                 if (selectedEntities.value.includes(entity)) {
                     focusViewAtBeat(entity.beat)
 
-                    if (isSidebarVisible.value) {
-                        focusDefaultSidebar()
-                    } else {
+                    if (!isSidebarVisible.value) {
                         void showModal(TimeScalePropertiesModal, {})
                     }
                 } else {
