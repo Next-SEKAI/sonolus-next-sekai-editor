@@ -22,25 +22,26 @@ export const fullscreen: Command = {
         is: FullscreenIcon,
     },
 
-    execute() {
+    async execute() {
         try {
             if (document.fullscreenElement || document.webkitFullscreenElement) {
                 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 if (document.exitFullscreen) {
-                    void document.exitFullscreen()
+                    await document.exitFullscreen()
                 } else {
-                    void document.webkitExitFullscreen()
+                    await document.webkitExitFullscreen()
                 }
             } else {
                 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 if (document.body.requestFullscreen) {
-                    void document.body.requestFullscreen({ navigationUI: 'hide' })
+                    await document.body.requestFullscreen({ navigationUI: 'hide' })
                 } else {
-                    void document.body.webkitRequestFullscreen({ navigationUI: 'hide' })
+                    await document.body.webkitRequestFullscreen({ navigationUI: 'hide' })
                 }
             }
-        } finally {
             notify(() => i18n.value.commands.fullscreen.toggled)
+        } catch {
+            notify(() => i18n.value.commands.fullscreen.unsupported)
         }
     },
 }

@@ -55,7 +55,8 @@
         },
         "fullscreen": {
             "title": "Fullscreen",
-            "toggled": "Toggled fullscreen"
+            "toggled": "Toggled fullscreen",
+            "unsupported": "Fullscreen is not supported on your device"
         },
         "groups": {
             "groupAll": {
