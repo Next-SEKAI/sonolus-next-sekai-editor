@@ -79,6 +79,10 @@ export const serializeSlidesToLevelDataEntities = (
                         value: note.connectorGuideAlpha,
                     },
                     {
+                        name: 'segmentLayer',
+                        value: segmentLayers[note.connectorLayer],
+                    },
+                    {
                         name: 'effectKind',
                         value: sfxs[note.sfx],
                     },
@@ -331,4 +335,9 @@ const guideSegmentKinds = {
     purple: 106,
     cyan: 107,
     black: 108,
+}
+
+const segmentLayers = {
+    top: 0,
+    bottom: 1,
 }

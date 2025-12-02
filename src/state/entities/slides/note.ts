@@ -3,6 +3,7 @@ import type { BaseEntity } from '..'
 import type {
     ConnectorEase,
     ConnectorGuideColor,
+    ConnectorLayer,
     ConnectorType,
     FlickDirection,
     NoteObject,
@@ -27,6 +28,7 @@ export type NoteEntity = BaseEntity & {
     isConnectorSeparator: boolean
     connectorType: ConnectorType
     connectorEase: ConnectorEase
+    connectorLayer: ConnectorLayer
     connectorActiveIsCritical: boolean
     connectorActiveIsFake: boolean
     connectorGuideColor: ConnectorGuideColor
@@ -66,6 +68,7 @@ export const toNoteEntity = (
     connectorActiveIsFake: object.connectorActiveIsFake,
     connectorGuideColor: object.connectorGuideColor,
     connectorGuideAlpha: object.connectorGuideAlpha,
+    connectorLayer: object.connectorLayer,
 
     useInfoOf,
 })

@@ -59,6 +59,8 @@ export type ConnectorGuideColor =
     | 'cyan'
     | 'black'
 
+export type ConnectorLayer = 'top' | 'bottom'
+
 export type NoteObject = {
     group: number
     beat: number
@@ -77,4 +79,5 @@ export type NoteObject = {
     connectorActiveIsFake: boolean
     connectorGuideColor: ConnectorGuideColor
     connectorGuideAlpha: number
+    connectorLayer: ConnectorLayer
 }

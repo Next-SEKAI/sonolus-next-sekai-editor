@@ -325,6 +325,13 @@ const connectorEases = {
 
 const segmentAlphaSchema = Type.Number({ minimum: 0, maximum: 1 })
 
+const segmentLayerSchema = Type.Union([Type.Literal(0), Type.Literal(1)])
+
+const connectorLayers = {
+    0: 'top',
+    1: 'bottom',
+} as const
+
 const trimStart = <T extends string, U extends string>(
     name: T,
     prefix: U,
@@ -362,6 +369,8 @@ const toNoteObject = (
         ...segmentKinds[getValue(entity, 'segmentKind', segmentKindSchema)],
         connectorEase: connectorEases[getValue(entity, 'connectorEase', connectorEaseSchema)],
         connectorGuideAlpha: getValue(entity, 'segmentAlpha', segmentAlphaSchema),
+        connectorLayer:
+            connectorLayers[getOptionalValue(entity, 'segmentLayer', segmentLayerSchema) ?? 0],
     }
 
     const [isFake, archetype1] = startsWith(entity.archetype, 'Fake')

@@ -539,6 +539,11 @@
                 "cyan": "Cyan",
                 "black": "Black"
             },
+            "connectorLayer": {
+                "label": "Connector Layer",
+                "top": "Top",
+                "bottom": "Bottom"
+            },
             "connectorType": {
                 "label": "Connector Type",
                 "active": "Slide",

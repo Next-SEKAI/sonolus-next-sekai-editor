@@ -323,6 +323,7 @@ export const editNote = (entity: NoteEntity, object: Partial<NoteObject>) => {
             object.connectorActiveIsFake ?? object.isFake ?? entity.connectorActiveIsFake,
         connectorGuideColor: object.connectorGuideColor ?? entity.connectorGuideColor,
         connectorGuideAlpha: object.connectorGuideAlpha ?? entity.connectorGuideAlpha,
+        connectorLayer: object.connectorLayer ?? entity.connectorLayer,
     })
 }
 
@@ -353,6 +354,7 @@ export const editSelectedNote = (
             object.connectorActiveIsFake ?? object.isFake ?? entity.connectorActiveIsFake,
         connectorGuideColor: object.connectorGuideColor ?? entity.connectorGuideColor,
         connectorGuideAlpha: object.connectorGuideAlpha ?? entity.connectorGuideAlpha,
+        connectorLayer: object.connectorLayer ?? entity.connectorLayer,
     })
 }
 
@@ -390,6 +392,7 @@ const getPropertiesFromSelection = () => {
             false,
         connectorGuideColor: defaultNoteProperties.value.connectorGuideColor ?? 'green',
         connectorGuideAlpha: defaultNoteProperties.value.connectorGuideAlpha ?? 1,
+        connectorLayer: defaultNoteProperties.value.connectorLayer ?? 'top',
     }
 }
 

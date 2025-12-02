@@ -71,6 +71,7 @@ const defaultNoteSlidePropertiesSchema = Type.Partial(
             Type.Literal('black'),
         ]),
         connectorGuideAlpha: Type.Number(),
+        connectorLayer: Type.Union([Type.Literal('top'), Type.Literal('bottom')]),
     }),
 )
 

@@ -352,6 +352,8 @@ const getPropertiesFromSelection = (beat: number) => {
             'green',
         connectorGuideAlpha:
             defaultSlideProperties.value.connectorGuideAlpha ?? nearest?.connectorGuideAlpha ?? 1,
+        connectorLayer:
+            defaultSlideProperties.value.connectorLayer ?? nearest?.connectorLayer ?? 'top',
     }
 }
 
