@@ -8,6 +8,7 @@ import MultiConnectorActiveIsFakeField from '../../../modals/form/MultiConnector
 import MultiConnectorEaseField from '../../../modals/form/MultiConnectorEaseField.vue'
 import MultiConnectorGuideAlphaField from '../../../modals/form/MultiConnectorGuideAlphaField.vue'
 import MultiConnectorGuideColorField from '../../../modals/form/MultiConnectorGuideColorField.vue'
+import MultiConnectorLayerField from '../../../modals/form/MultiConnectorLayerField.vue'
 import MultiConnectorTypeField from '../../../modals/form/MultiConnectorTypeField.vue'
 import MultiFlickDirectionField from '../../../modals/form/MultiFlickDirectionField.vue'
 import MultiGroupField from '../../../modals/form/MultiGroupField.vue'
@@ -50,6 +51,7 @@ const connectorActiveIsCritical = createModel('connectorActiveIsCritical')
 const connectorActiveIsFake = createModel('connectorActiveIsFake')
 const connectorGuideColor = createModel('connectorGuideColor')
 const connectorGuideAlpha = createModel('connectorGuideAlpha')
+const connectorLayer = createModel('connectorLayer')
 </script>
 
 <template>
@@ -110,6 +112,10 @@ const connectorGuideAlpha = createModel('connectorGuideAlpha')
             <MultiConnectorGuideAlphaField
                 v-if="types.note && noteFields.connectorGuideAlpha !== false"
                 v-model="connectorGuideAlpha"
+            />
+            <MultiConnectorLayerField
+                v-if="types.note && noteFields.connectorLayer !== false"
+                v-model="connectorLayer"
             />
         </template>
     </BaseSidebar>

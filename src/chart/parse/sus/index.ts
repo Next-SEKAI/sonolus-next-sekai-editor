@@ -131,6 +131,7 @@ export const parseSusChart = (sus: Sus) => {
                 connectorActiveIsFake: false,
                 connectorGuideColor: 'green',
                 connectorGuideAlpha: 1,
+                connectorLayer: 'top',
             },
         ])
     }
@@ -150,6 +151,7 @@ export const parseSusChart = (sus: Sus) => {
         const connectorActiveIsFake = false
         const connectorGuideColor =
             connectorType === 'guide' && slideCriticalMod ? 'yellow' : 'green'
+        const connectorLayer = connectorType === 'guide' ? 'bottom' : 'top'
 
         const objects: NoteObject[] = []
 
@@ -184,6 +186,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorActiveIsFake,
                             connectorGuideColor,
                             connectorGuideAlpha: 1,
+                            connectorLayer,
                         })
                     } else {
                         objects.push({
@@ -204,6 +207,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorActiveIsFake,
                             connectorGuideColor,
                             connectorGuideAlpha: 1,
+                            connectorLayer,
                         })
                     }
                     break
@@ -228,6 +232,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorActiveIsFake,
                             connectorGuideColor,
                             connectorGuideAlpha: 0,
+                            connectorLayer,
                         })
                     } else {
                         objects.push({
@@ -248,6 +253,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorActiveIsFake,
                             connectorGuideColor,
                             connectorGuideAlpha: 1,
+                            connectorLayer,
                         })
                     }
                     break
@@ -272,6 +278,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorActiveIsFake,
                             connectorGuideColor,
                             connectorGuideAlpha: 1,
+                            connectorLayer,
                         })
                     } else {
                         objects.push({
@@ -292,6 +299,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorActiveIsFake,
                             connectorGuideColor,
                             connectorGuideAlpha: 1,
+                            connectorLayer,
                         })
                     }
                     break
@@ -317,6 +325,7 @@ export const parseSusChart = (sus: Sus) => {
                         connectorActiveIsFake,
                         connectorGuideColor,
                         connectorGuideAlpha: 1,
+                        connectorLayer,
                     })
                     break
                 }

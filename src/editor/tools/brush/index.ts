@@ -2,6 +2,7 @@ import type { Tool } from '..'
 import type {
     ConnectorEase,
     ConnectorGuideColor,
+    ConnectorLayer,
     ConnectorType,
     FlickDirection,
     NoteSfx,
@@ -42,6 +43,7 @@ export type BrushProperties = {
     connectorActiveIsFake?: boolean
     connectorGuideColor?: ConnectorGuideColor
     connectorGuideAlpha?: number
+    connectorLayer?: ConnectorLayer
     timeScale?: number
     skip?: number
     ease?: TimeScaleEase

@@ -5,6 +5,7 @@ import OptionalConnectorActiveIsFakeField from '../../../modals/form/OptionalCon
 import OptionalConnectorEaseField from '../../../modals/form/OptionalConnectorEaseField.vue'
 import OptionalConnectorGuideAlphaField from '../../../modals/form/OptionalConnectorGuideAlphaField.vue'
 import OptionalConnectorGuideColorField from '../../../modals/form/OptionalConnectorGuideColorField.vue'
+import OptionalConnectorLayerField from '../../../modals/form/OptionalConnectorLayerField.vue'
 import OptionalConnectorTypeField from '../../../modals/form/OptionalConnectorTypeField.vue'
 import OptionalFlickDirectionField from '../../../modals/form/OptionalFlickDirectionField.vue'
 import OptionalGroupField from '../../../modals/form/OptionalGroupField.vue'
@@ -40,6 +41,7 @@ const connectorActiveIsCritical = createModel('connectorActiveIsCritical')
 const connectorActiveIsFake = createModel('connectorActiveIsFake')
 const connectorGuideColor = createModel('connectorGuideColor')
 const connectorGuideAlpha = createModel('connectorGuideAlpha')
+const connectorLayer = createModel('connectorLayer')
 const timeScale = createModel('timeScale')
 const skip = createModel('skip')
 const ease = createModel('ease')
@@ -63,6 +65,7 @@ const hideNotes = createModel('hideNotes')
         <OptionalConnectorActiveIsFakeField v-model="connectorActiveIsFake" />
         <OptionalConnectorGuideColorField v-model="connectorGuideColor" />
         <OptionalConnectorGuideAlphaField v-model="connectorGuideAlpha" />
+        <OptionalConnectorLayerField v-model="connectorLayer" />
         <OptionalTimeScaleField v-model="timeScale" />
         <OptionalSkipField v-model="skip" />
         <OptionalTimeScaleEaseField v-model="ease" />

@@ -16,6 +16,7 @@ export type NoteFields = {
     connectorActiveIsFake: boolean
     connectorGuideColor: boolean
     connectorGuideAlpha: boolean
+    connectorLayer: boolean
 }
 
 export const getNoteFields = (note: NoteEntity): NoteFields => {
@@ -52,5 +53,6 @@ export const getNoteFields = (note: NoteEntity): NoteFields => {
         connectorActiveIsFake: isInActive && (isActiveHead || note.isConnectorSeparator),
         connectorGuideColor: isInGuide && (isGuideHead || note.isConnectorSeparator),
         connectorGuideAlpha: isInGuide && (isGuideHead || note.isConnectorSeparator || isGuideTail),
+        connectorLayer: (isFirst || note.isConnectorSeparator) && !isLast,
     }
 }
