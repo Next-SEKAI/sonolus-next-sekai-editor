@@ -9,6 +9,7 @@ import { division } from './divisions'
 import { divisionCustom } from './divisions/custom'
 import { eraser } from './eraser'
 import { flip } from './flip'
+import { fullscreen } from './fullscreen'
 import { groupAll } from './groups/groupAll'
 import { groupNext } from './groups/groupNext'
 import { groupPrev } from './groups/groupPrev'
@@ -123,6 +124,7 @@ export const commands = {
 
     help,
     settings,
+    fullscreen,
 }
 
 export type CommandName = keyof typeof commands
