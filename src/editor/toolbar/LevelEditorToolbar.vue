@@ -5,7 +5,10 @@ import { commands, type CommandName } from '../commands'
 import { isDragging } from '../controls/gestures/recognizers/drag'
 import LevelEditorToolbarTool from './LevelEditorToolbarTool.vue'
 
-const toolbar = computed<CommandName[][]>(() => [...settings.toolbar, ['settings', 'help']])
+const toolbar = computed<CommandName[][]>(() => [
+    ...settings.toolbar,
+    ['fullscreen', 'settings', 'help'],
+])
 
 const activeNames = ref<CommandName[]>([])
 

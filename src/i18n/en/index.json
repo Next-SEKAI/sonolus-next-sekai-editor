@@ -53,6 +53,10 @@
             "noSelected": "No object selected to flip",
             "flipped": "Flipped {0} objects"
         },
+        "fullscreen": {
+            "title": "Fullscreen",
+            "toggled": "Toggled fullscreen"
+        },
         "groups": {
             "groupAll": {
                 "title": "Switch to all groups"
