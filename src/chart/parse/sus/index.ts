@@ -145,8 +145,8 @@ export const parseSusChart = (sus: Sus) => {
         const group = 0
         const isFake = false
         const sfx = 'default'
-        const isConnectorSeparator = false
         const connectorType = slide.type === 3 ? 'active' : 'guide'
+        const isConnectorSeparator = connectorType === 'guide'
         const connectorActiveIsCritical = connectorType === 'active' && slideCriticalMod
         const connectorActiveIsFake = false
         const connectorGuideColor =
@@ -155,7 +155,7 @@ export const parseSusChart = (sus: Sus) => {
 
         const objects: NoteObject[] = []
 
-        for (const note of slide.notes) {
+        for (const [i, note] of slide.notes.entries()) {
             const key = getKey(note)
 
             const beat = note.tick / sus.ticksPerBeat
@@ -164,6 +164,8 @@ export const parseSusChart = (sus: Sus) => {
             const isCritical =
                 connectorType === 'active' && (slideCriticalMod || criticalMods.has(key))
             const connectorEase = easeMods.get(key) ?? 'linear'
+            const connectorGuideAlpha =
+                connectorType === 'guide' ? 1 - (0.8 * i) / (slide.notes.length - 1) : 1
 
             switch (note.type) {
                 case 1: {
@@ -185,7 +187,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorActiveIsCritical,
                             connectorActiveIsFake,
                             connectorGuideColor,
-                            connectorGuideAlpha: 1,
+                            connectorGuideAlpha,
                             connectorLayer,
                         })
                     } else {
@@ -206,7 +208,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorActiveIsCritical,
                             connectorActiveIsFake,
                             connectorGuideColor,
-                            connectorGuideAlpha: 1,
+                            connectorGuideAlpha,
                             connectorLayer,
                         })
                     }
@@ -231,7 +233,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorActiveIsCritical,
                             connectorActiveIsFake,
                             connectorGuideColor,
-                            connectorGuideAlpha: 0,
+                            connectorGuideAlpha,
                             connectorLayer,
                         })
                     } else {
@@ -252,7 +254,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorActiveIsCritical,
                             connectorActiveIsFake,
                             connectorGuideColor,
-                            connectorGuideAlpha: 1,
+                            connectorGuideAlpha,
                             connectorLayer,
                         })
                     }
@@ -277,7 +279,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorActiveIsCritical,
                             connectorActiveIsFake,
                             connectorGuideColor,
-                            connectorGuideAlpha: 1,
+                            connectorGuideAlpha,
                             connectorLayer,
                         })
                     } else {
@@ -298,7 +300,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorActiveIsCritical,
                             connectorActiveIsFake,
                             connectorGuideColor,
-                            connectorGuideAlpha: 1,
+                            connectorGuideAlpha,
                             connectorLayer,
                         })
                     }
@@ -324,7 +326,7 @@ export const parseSusChart = (sus: Sus) => {
                         connectorActiveIsCritical,
                         connectorActiveIsFake,
                         connectorGuideColor,
-                        connectorGuideAlpha: 1,
+                        connectorGuideAlpha,
                         connectorLayer,
                     })
                     break
