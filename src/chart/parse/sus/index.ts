@@ -165,7 +165,10 @@ export const parseSusChart = (sus: Sus) => {
                 connectorType === 'active' && (slideCriticalMod || criticalMods.has(key))
             const connectorEase = easeMods.get(key) ?? 'linear'
             const connectorGuideAlpha =
-                connectorType === 'guide' ? 1 - (0.8 * i) / (slide.notes.length - 1) : 1
+                connectorType === 'guide'
+                    ? ((slide.notes.length - 1 - i) / (slide.notes.length - 1)) * 1 +
+                      (i / (slide.notes.length - 1)) * 0.2
+                    : 1
 
             switch (note.type) {
                 case 1: {
