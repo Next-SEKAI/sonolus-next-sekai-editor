@@ -148,9 +148,7 @@ watch(time, ({ now }) => {
                     targets.normalTap.add(entity.beat)
                 }
             }
-        } else if (isActiveHead) {
-            targets.normalTap.add(entity.beat)
-        } else if (isActiveTail) {
+        } else if (isActiveHead || isActiveTail) {
             if (isFlick) {
                 if (entity.isCritical) {
                     targets.criticalFlick.add(entity.beat)
