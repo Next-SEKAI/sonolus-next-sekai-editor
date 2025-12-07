@@ -44,11 +44,17 @@ export const save: Command = {
 
                 const handle = levelDataHandle ?? (await pickFileForSave('levelData', name))
                 if (handle) {
-                    const writable = await handle.createWritable()
-                    await writable.write(blob)
-                    await writable.close()
+                    try {
+                        const writable = await handle.createWritable()
+                        await writable.write(blob)
+                        await writable.close()
 
-                    setLevelDataHandle(handle)
+                        setLevelDataHandle(handle)
+                    } catch {
+                        saveAs(blob, name)
+
+                        setLevelDataHandle(undefined)
+                    }
                 } else {
                     saveAs(blob, name)
                 }
