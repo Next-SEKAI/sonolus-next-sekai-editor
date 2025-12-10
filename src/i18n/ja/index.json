@@ -53,6 +53,11 @@
       "noSelected": "反転するオブジェクトが選択されていません",
       "flipped": "{0}個のオブジェクトを反転しました"
     },
+    "fullscreen": {
+      "title": "フルスクリーン",
+      "toggled": "フルスクリーン表示を切り替えました",
+      "unsupported": "フルスクリーン表示はお使いのデバイスではサポートされていません"
+    },
     "groups": {
       "groupAll": {
         "title": "全てのグループに切り替え"
@@ -332,7 +337,7 @@
       "smoothScrolling": "スムーズスクロール"
     },
     "play": {
-      "title": "譜面再生\n",
+      "title": "譜面再生",
       "bgmVolume": "BGM音量",
       "sfxVolume": "SE音量",
       "startPosition": {
@@ -534,6 +539,11 @@
         "cyan": "水",
         "black": "黒"
       },
+      "connectorLayer": {
+        "label": "中継点レイヤー",
+        "top": "前",
+        "bottom": "奥"
+      },
       "connectorType": {
         "label": "スライド/ガイド",
         "active": "スライド",
@@ -555,6 +565,9 @@
       "group": {
         "label": "グループ",
         "default": "デフォルト"
+      },
+      "hideNotes": {
+        "label": "ノーツを非表示"
       },
       "isAttached": {
         "label": "無視中継点化"
@@ -586,6 +599,20 @@
       },
       "preset": {
         "label": "プリセット"
+      },
+      "sfx": {
+        "label": "SE",
+        "default": "デフォルト",
+        "none": "なし",
+        "normalTap": "タップ",
+        "criticalTap": "クリティカルタップ",
+        "normalFlick": "フリック",
+        "criticalFlick": "クリティカルフリック",
+        "normalTrace": "トレース",
+        "criticalTrace": "クリティカルトレース",
+        "normalTick": "中継点",
+        "criticalTick": "クリティカル中継点",
+        "damage": "ダメージ"
       },
       "size": {
         "label": "幅"
