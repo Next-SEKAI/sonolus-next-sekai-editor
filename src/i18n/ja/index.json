@@ -337,7 +337,7 @@
       "smoothScrolling": "スムーズスクロール"
     },
     "play": {
-      "title": "譜面再生\n",
+      "title": "譜面再生",
       "bgmVolume": "BGM音量",
       "sfxVolume": "SE音量",
       "startPosition": {
@@ -540,7 +540,7 @@
         "black": "黒"
       },
       "connectorLayer": {
-        "label": "中継点レイヤー\n ",
+        "label": "中継点レイヤー",
         "top": "前",
         "bottom": "奥"
       },
