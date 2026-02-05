@@ -323,7 +323,7 @@ const connectorEases = {
     5: 'outIn',
 } as const
 
-const segmentAlphaSchema = Type.Number({ minimum: 0, maximum: 1 })
+const segmentAlphaSchema = Type.Number({ minimum: 0, maximum: 2 })
 
 const segmentLayerSchema = Type.Union([Type.Literal(0), Type.Literal(1)])
 
