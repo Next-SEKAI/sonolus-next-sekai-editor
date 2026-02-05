@@ -10,7 +10,7 @@ const modelValue = defineModel<number | undefined>({ required: true })
         v-model="modelValue"
         :label="i18n.modals.form.connectorGuideAlpha.label"
         :min="0"
-        :max="1"
+        :max="2"
         step="any"
     />
 </template>

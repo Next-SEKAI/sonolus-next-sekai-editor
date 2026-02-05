@@ -38,25 +38,27 @@ export const getColor = (
     return {
         fill: {
             fill: `url(#${id})`,
-            'fill-opacity': 0.5,
+            'fill-opacity': 1,
         },
         gradient: {
             id,
             color: guideColors[segmentHead.connectorGuideColor],
-            headAlpha: remap(
-                tSegmentHead,
-                tSegmentTail,
-                segmentHead.connectorGuideAlpha,
-                segmentTail.connectorGuideAlpha,
-                tHead,
-            ),
-            tailAlpha: remap(
-                tSegmentHead,
-                tSegmentTail,
-                segmentHead.connectorGuideAlpha,
-                segmentTail.connectorGuideAlpha,
-                tTail,
-            ),
+            headAlpha:
+                remap(
+                    tSegmentHead,
+                    tSegmentTail,
+                    segmentHead.connectorGuideAlpha,
+                    segmentTail.connectorGuideAlpha,
+                    tHead,
+                ) * 0.5,
+            tailAlpha:
+                remap(
+                    tSegmentHead,
+                    tSegmentTail,
+                    segmentHead.connectorGuideAlpha,
+                    segmentTail.connectorGuideAlpha,
+                    tTail,
+                ) * 0.5,
         },
     }
 }
