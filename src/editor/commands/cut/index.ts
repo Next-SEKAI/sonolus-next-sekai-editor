@@ -35,6 +35,7 @@ export const cut: Command = {
             beat: yToValidBeat(view.pointer.y),
             entities: serializeToLevelDataEntities(
                 createStore({
+                    initialLife: 1000,
                     bpms: getEntities(entities, 'bpm'),
                     timeScales: getEntities(entities, 'timeScale'),
                     groupCount: state.value.groupCount,

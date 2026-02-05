@@ -42,6 +42,7 @@ export const createTransaction = (state: State) => {
 
             return {
                 bgm: state.bgm,
+                initialLife: state.initialLife,
                 store: {
                     grid: {
                         ...state.store.grid,

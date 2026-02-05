@@ -108,6 +108,13 @@
         "play": {
             "title": "Play"
         },
+        "properties": {
+            "title": "Properties",
+            "changed": "Changed properties",
+            "modal": {
+                "life": "Life"
+            }
+        },
         "redo": {
             "title": "Redo",
             "noState": "Nothing to redo",

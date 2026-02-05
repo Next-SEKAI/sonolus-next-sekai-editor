@@ -9,6 +9,7 @@ export type State = {
     filename?: string
 
     bgm: Bgm
+    initialLife: number
     store: Store
     bpms: BpmIntegral[]
     groupCount: number
@@ -20,6 +21,7 @@ export const createState = (chart: Chart, offset: number, filename?: string): St
     filename,
 
     bgm: { offset },
+    initialLife: chart.initialLife,
     store: createStore(chart),
     bpms: createBpms(chart),
     groupCount: chart.groupCount,

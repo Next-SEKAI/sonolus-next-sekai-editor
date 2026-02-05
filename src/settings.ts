@@ -118,7 +118,7 @@ const settingsProperties = {
                 .Encode((values) => values),
             {
                 default: [
-                    ['utilities', 'reset', 'save', 'open'],
+                    ['utilities', 'properties', 'reset', 'save', 'open'],
                     ['bgm', 'speedUp', 'speedDown', 'stop', 'play'],
                     [
                         'redo',
