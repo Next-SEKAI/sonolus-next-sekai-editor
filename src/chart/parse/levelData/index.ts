@@ -3,6 +3,7 @@ import { Value } from '@sinclair/typebox/value'
 import { type LevelDataEntity } from '@sonolus/core'
 import type { Chart } from '../..'
 import { parseBpmsToChart } from './bpm'
+import { parseInitializationToChart } from './initialization'
 import { parseSlidesToChart } from './slide'
 import { parseTimeScalesToChart } from './timeScale'
 
@@ -16,11 +17,14 @@ export type ParseToChart = (
 
 export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
     const chart: Chart = {
+        initialLife: 1000,
         bpms: [],
         groupCount: 2,
         timeScales: [],
         slides: [],
     }
+
+    parseInitializationToChart(chart, entities)
 
     const timeScaleNames: TimeScaleNames = []
 

@@ -31,6 +31,7 @@ export const copy: Command = {
             ...getAnchor(entities, view.pointer.x, view.pointer.y),
             entities: serializeToLevelDataEntities(
                 createStore({
+                    initialLife: 1000,
                     bpms: getEntities(entities, 'bpm'),
                     timeScales: getEntities(entities, 'timeScale'),
                     groupCount: state.value.groupCount,

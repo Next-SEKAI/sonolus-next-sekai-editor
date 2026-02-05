@@ -3,6 +3,7 @@ import type { Chart, NoteObject } from '../../index.js'
 
 export const parseSusChart = (sus: Sus) => {
     const chart: Chart = {
+        initialLife: 1000,
         bpms: [],
         groupCount: 2,
         timeScales: [],

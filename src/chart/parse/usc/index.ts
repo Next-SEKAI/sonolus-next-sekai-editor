@@ -3,6 +3,7 @@ import type { UscObject } from '../../../usc/objects/schema'
 
 export const parseUscChart = (objects: UscObject[]) => {
     const chart: Chart = {
+        initialLife: 1000,
         bpms: [],
         groupCount: 2,
         timeScales: [],

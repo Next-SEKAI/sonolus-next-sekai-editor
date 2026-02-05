@@ -30,6 +30,7 @@ export const save: Command = {
                 const name = filename.value ?? 'LevelData'
 
                 const levelData = serializeToLevelData(
+                    state.value.initialLife,
                     bgm.value.offset,
                     store.value,
                     state.value.groupCount,
