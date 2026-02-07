@@ -108,6 +108,13 @@
     "play": {
       "title": "再生"
     },
+    "properties": {
+      "title": "設定",
+      "changed": "設定を変更しました",
+      "modal": {
+        "life": "ライフ"
+      }
+    },
     "redo": {
       "title": "やり直す",
       "noState": "やり直すものがありません",
