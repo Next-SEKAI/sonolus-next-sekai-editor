@@ -329,7 +329,8 @@
             },
             "lockScrollX": "Lock Scroll X",
             "dragToPanY": "Drag to Pan Y",
-            "dragToPanX": "Drag to Pan X"
+            "dragToPanX": "Drag to Pan X",
+            "showOtherGroups": "Show Other Groups"
         },
         "keyboardShortcuts": {
             "title": "Keyboard Shortcuts"

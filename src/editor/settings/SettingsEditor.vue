@@ -58,5 +58,10 @@ watch(
         <ToggleField v-model="settings.dragToPanY" :label="i18n.settings.editor.dragToPanY" />
 
         <ToggleField v-model="settings.dragToPanX" :label="i18n.settings.editor.dragToPanX" />
+
+        <ToggleField
+            v-model="settings.showOtherGroups"
+            :label="i18n.settings.editor.showOtherGroups"
+        />
     </SettingsSection>
 </template>
