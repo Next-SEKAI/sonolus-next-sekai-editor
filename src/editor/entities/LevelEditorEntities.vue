@@ -14,6 +14,7 @@ import { entityComponents } from '.'
 import { beats, keys } from '..'
 import { selectedEntities } from '../../history/selectedEntities'
 import { cullAllEntities } from '../../history/store'
+import { settings } from '../../settings'
 import type { Entity } from '../../state/entities'
 import { hoveredEntities, view } from '../view'
 
@@ -46,21 +47,25 @@ const visibleEntities = computed(() =>
     }),
 )
 
-const visibleEntityInfos = computed(() =>
-    visibleEntities.value
-        .map((entity) => ({
-            entity,
-            isSelected: selectedEntities.value.includes(entity),
-            isHovered: hoveredEntities.value.includes(entity),
-            isVisible: isEntityVisible(entity),
-        }))
-        .sort(
-            (a, b) =>
-                +a.isSelected - +b.isSelected ||
-                layers[a.entity.type] - layers[b.entity.type] ||
-                b.entity.beat - a.entity.beat,
-        ),
-)
+const visibleEntityInfos = computed(() => {
+    let entities = visibleEntities.value.map((entity) => ({
+        entity,
+        isSelected: selectedEntities.value.includes(entity),
+        isHovered: hoveredEntities.value.includes(entity),
+        isVisible: isEntityVisible(entity),
+    }))
+
+    if (!settings.showOtherGroups) {
+        entities = entities.filter((entity) => entity.isVisible)
+    }
+
+    return entities.sort(
+        (a, b) =>
+            +a.isSelected - +b.isSelected ||
+            layers[a.entity.type] - layers[b.entity.type] ||
+            b.entity.beat - a.entity.beat,
+    )
+})
 </script>
 
 <template>

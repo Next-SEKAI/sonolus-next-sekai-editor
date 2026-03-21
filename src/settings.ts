@@ -111,6 +111,8 @@ const settingsProperties = {
 
     dragToPanX: Type.Boolean(),
 
+    showOtherGroups: Type.Boolean({ default: true }),
+
     toolbar: Type.Transform(
         Type.Array(
             Type.Transform(Type.Array(Type.String()))
