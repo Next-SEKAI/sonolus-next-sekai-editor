@@ -53,6 +53,7 @@ const onSelect = (file: File) => {
 
 const onSubmit = () => {
     emit('close', {
+        // eslint-disable-next-line @typescript-eslint/no-misused-spread
         ...model,
         offset: model.offset / 1000,
     })
