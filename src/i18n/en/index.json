@@ -229,7 +229,8 @@
                 "scrollY": "Two finger pan vertically to scroll.",
                 "scrollX": "Two finger pan horizontally to scroll.",
                 "zoomY": "Two finger pinch vertically to zoom Y.",
-                "zoomX": "Two finger pinch horizontally to zoom X."
+                "zoomX": "Two finger pinch horizontally to zoom X.",
+                "play": "Three finger tap to play."
             },
             "mouse": {
                 "title": "Mouse",
