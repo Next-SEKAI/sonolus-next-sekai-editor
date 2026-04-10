@@ -15,6 +15,7 @@ import HelpSection from './HelpSection.vue'
             <li>{{ i18n.help.modal.touchscreen.scrollX }}</li>
             <li>{{ i18n.help.modal.touchscreen.zoomY }}</li>
             <li>{{ i18n.help.modal.touchscreen.zoomX }}</li>
+            <li>{{ i18n.help.modal.touchscreen.play }}</li>
         </HelpSection>
 
         <HelpSection :title="i18n.help.modal.mouse.title">
