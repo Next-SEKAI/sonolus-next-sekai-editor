@@ -225,6 +225,7 @@
                 "tap": "One finger tap to tap.",
                 "drag": "One finger drag to drag.",
                 "quickScroll": "One finger drag in quick scroll zone to scroll.",
+                "deselect": "Two finger tap to deselect.",
                 "scrollY": "Two finger pan vertically to scroll.",
                 "scrollX": "Two finger pan horizontally to scroll.",
                 "zoomY": "Two finger pinch vertically to zoom Y.",
