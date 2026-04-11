@@ -73,7 +73,7 @@ const onOverBackdrop = (event: PointerEvent) => {
 
             <div
                 v-if="activeIndex === i"
-                class="absolute left-8 w-[calc(100%-4rem)] -translate-y-[calc(100%+2rem)] lg:left-auto lg:w-max"
+                class="absolute left-1/2 w-max -translate-x-1/2 -translate-y-[calc(100%+2rem)] lg:left-auto lg:translate-x-0"
             >
                 <LevelEditorToolbarTool
                     v-for="(name, j) in toolbar[i]"
