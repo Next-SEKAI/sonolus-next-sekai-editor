@@ -95,6 +95,10 @@
                 "title": "Default Note Properties"
             }
         },
+        "offset": {
+            "title": "Switch to Offset tool",
+            "switched": "Switched to Offset tool"
+        },
         "open": {
             "title": "Open",
             "loading": "Loading file...",
@@ -426,6 +430,9 @@
             "sidebar": {
                 "title": "Default Note Properties"
             }
+        },
+        "offset": {
+            "changed": "Changed BGM offset"
         },
         "paste": {
             "pasted": "Pasted {0} objects",

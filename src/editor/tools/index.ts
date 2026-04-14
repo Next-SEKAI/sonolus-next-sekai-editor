@@ -5,6 +5,7 @@ import { bpm } from './bpm'
 import { brush } from './brush'
 import { eraser } from './eraser'
 import { note } from './note'
+import { offset } from './offset'
 import { paste } from './paste'
 import { select } from './select'
 import { slide } from './slide'
@@ -33,6 +34,8 @@ export const tools = {
 
     bpm,
     timeScale,
+
+    offset,
 }
 
 export type ToolName = keyof typeof tools

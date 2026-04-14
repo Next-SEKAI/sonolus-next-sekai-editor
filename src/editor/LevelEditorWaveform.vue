@@ -5,11 +5,14 @@ import { bgm } from '../history/bgm'
 import { settings } from '../settings'
 import { computedRange } from '../utils/range'
 import { waveformDuration } from '../waveform'
+import { bgmOffsetDelta } from './tools/offset'
 import { ups } from './view'
 
+const bgmOffset = computed(() => bgm.value.offset + bgmOffsetDelta.value)
+
 const indexes = computedRange(() => ({
-    min: Math.floor((times.value.min + bgm.value.offset) / waveformDuration),
-    max: Math.floor((times.value.max + bgm.value.offset) / waveformDuration),
+    min: Math.floor((times.value.min + bgmOffset.value) / waveformDuration),
+    max: Math.floor((times.value.max + bgmOffset.value) / waveformDuration),
 }))
 
 const images = computed(() => {
@@ -42,7 +45,7 @@ const images = computed(() => {
 <template>
     <g
         opacity="0.25"
-        :transform="`translate(0, ${bgm.offset * -ups}) scale(4, ${waveformDuration * -ups})`"
+        :transform="`translate(0, ${bgmOffset * -ups}) scale(4, ${waveformDuration * -ups})`"
     >
         <template v-for="{ href, y, style } in images" :key="href">
             <image :href :y width="1" height="1" preserveAspectRatio="none" :style />
