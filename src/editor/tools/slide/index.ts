@@ -6,7 +6,7 @@ import { selectedEntities } from '../../../history/selectedEntities'
 import { store } from '../../../history/store'
 import { i18n } from '../../../i18n'
 import { showModal } from '../../../modals'
-import { settings, type DefaultNoteSlideProperties } from '../../../settings'
+import { settings } from '../../../settings'
 import type { Entity } from '../../../state/entities'
 import { createSlideId, type SlideId } from '../../../state/entities/slides'
 import { toNoteEntity, type NoteEntity } from '../../../state/entities/slides/note'
@@ -32,16 +32,15 @@ import SlideSidebar from './SlideSidebar.vue'
 
 export const defaultSlidePropertiesPresetIndex = ref(0)
 
-export const setDefaultSlidePropertiesPreset = (properties: DefaultNoteSlideProperties) => {
-    settings.defaultSlidePropertiesPresets = settings.defaultSlidePropertiesPresets.map(
-        (preset, i) => (i === defaultSlidePropertiesPresetIndex.value ? properties : preset),
-    )
-}
-
-export const defaultSlideProperties = computed(
+export const defaultSlideProperties = computed({
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    () => settings.defaultSlidePropertiesPresets[defaultSlidePropertiesPresetIndex.value]!,
-)
+    get: () => settings.defaultSlidePropertiesPresets[defaultSlidePropertiesPresetIndex.value]!,
+    set: (properties) => {
+        settings.defaultSlidePropertiesPresets = settings.defaultSlidePropertiesPresets.map(
+            (preset, i) => (i === defaultSlidePropertiesPresetIndex.value ? properties : preset),
+        )
+    },
+})
 
 let active:
     | {
@@ -303,6 +302,8 @@ export const slide: Tool = {
 }
 
 const getNoteFromSelection = () => {
+    if (!defaultSlideProperties.value.copyProperties) return
+
     if (selectedEntities.value.length !== 1) return
 
     const [entity] = selectedEntities.value

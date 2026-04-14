@@ -1,4 +1,4 @@
-import { computed } from 'vue'
+import { computed, type Ref } from 'vue'
 import { selectedEntities } from '../../history/selectedEntities'
 import type { Entity, EntityType } from '../../state/entities'
 import { entries } from '../../utils/object'
@@ -6,19 +6,19 @@ import { editSelectedEditableEntities, type EditableObject } from '../sidebars/d
 import { getNoteFields, type NoteFields } from './noteFields'
 
 export const useProperties =
-    <T>(get: () => T, set: (properties: T) => void) =>
+    <T>(ref: Ref<T>) =>
     <K extends keyof T>(key: K) =>
         computed({
-            get: () => get()[key],
+            get: () => ref.value[key],
             set: (value) => {
-                const properties = { ...get() }
+                const properties = { ...ref.value }
                 if (value === undefined) {
                     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
                     delete properties[key]
                 } else {
                     properties[key] = value
                 }
-                set(properties)
+                ref.value = properties
             },
         })
 

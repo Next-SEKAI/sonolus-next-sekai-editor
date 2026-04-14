@@ -21,10 +21,10 @@ import OptionalSkipField from '../../../modals/form/OptionalSkipField.vue'
 import OptionalTimeScaleEaseField from '../../../modals/form/OptionalTimeScaleEaseField.vue'
 import OptionalTimeScaleField from '../../../modals/form/OptionalTimeScaleField.vue'
 import PropertiesModal from '../../../modals/form/PropertiesModal.vue'
-import { brushProperties, setBrushProperties } from '../../tools/brush'
+import { brushProperties } from '../../tools/brush'
 import { useProperties } from '../../utils/properties'
 
-const createModel = useProperties(() => brushProperties, setBrushProperties)
+const createModel = useProperties(brushProperties)
 
 const group = createModel('group')
 const noteType = createModel('noteType')

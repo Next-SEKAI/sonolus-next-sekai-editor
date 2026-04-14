@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import {
-    defaultNoteProperties,
-    defaultNotePropertiesPresetIndex,
-    setDefaultNotePropertiesPreset,
-} from '.'
+import { defaultNoteProperties, defaultNotePropertiesPresetIndex } from '.'
 import { i18n } from '../../../i18n'
+import CopyPropertiesField from '../../../modals/form/CopyPropertiesField.vue'
 import OptionalConnectorActiveIsCriticalField from '../../../modals/form/OptionalConnectorActiveIsCriticalField.vue'
 import OptionalConnectorActiveIsFakeField from '../../../modals/form/OptionalConnectorActiveIsFakeField.vue'
 import OptionalConnectorEaseField from '../../../modals/form/OptionalConnectorEaseField.vue'
@@ -25,7 +22,7 @@ import { settings } from '../../../settings'
 import BaseSidebar from '../../sidebars/BaseSidebar.vue'
 import { useProperties } from '../../utils/properties'
 
-const createModel = useProperties(() => defaultNoteProperties.value, setDefaultNotePropertiesPreset)
+const createModel = useProperties(defaultNoteProperties)
 
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')
@@ -42,6 +39,7 @@ const connectorActiveIsFake = createModel('connectorActiveIsFake')
 const connectorGuideColor = createModel('connectorGuideColor')
 const connectorGuideAlpha = createModel('connectorGuideAlpha')
 const connectorLayer = createModel('connectorLayer')
+const copyProperties = createModel('copyProperties')
 </script>
 
 <template>
@@ -65,5 +63,6 @@ const connectorLayer = createModel('connectorLayer')
         <OptionalConnectorGuideColorField v-model="connectorGuideColor" />
         <OptionalConnectorGuideAlphaField v-model="connectorGuideAlpha" />
         <OptionalConnectorLayerField v-model="connectorLayer" />
+        <CopyPropertiesField v-model="copyProperties" />
     </BaseSidebar>
 </template>
