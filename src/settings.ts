@@ -12,68 +12,73 @@ const number = (def: number, min: number, max: number) =>
         .Decode((value) => clamp(value, min, max))
         .Encode((value) => value)
 
-const defaultNoteSlidePropertiesSchema = Type.Partial(
+const defaultNoteSlidePropertiesSchema = Type.Intersect([
+    Type.Partial(
+        Type.Object({
+            noteType: Type.Union([
+                Type.Literal('default'),
+                Type.Literal('trace'),
+                Type.Literal('anchor'),
+                Type.Literal('damage'),
+                Type.Literal('forceTick'),
+                Type.Literal('forceNonTick'),
+            ]),
+            isAttached: Type.Boolean(),
+            size: Type.Number(),
+            isCritical: Type.Boolean(),
+            flickDirection: Type.Union([
+                Type.Literal('none'),
+                Type.Literal('up'),
+                Type.Literal('upLeft'),
+                Type.Literal('upRight'),
+                Type.Literal('down'),
+                Type.Literal('downLeft'),
+                Type.Literal('downRight'),
+            ]),
+            isFake: Type.Boolean(),
+            sfx: Type.Union([
+                Type.Literal('default'),
+                Type.Literal('none'),
+                Type.Literal('normalTap'),
+                Type.Literal('criticalTap'),
+                Type.Literal('normalFlick'),
+                Type.Literal('criticalFlick'),
+                Type.Literal('normalTrace'),
+                Type.Literal('criticalTrace'),
+                Type.Literal('normalTick'),
+                Type.Literal('criticalTick'),
+                Type.Literal('damage'),
+            ]),
+            isConnectorSeparator: Type.Boolean(),
+            connectorType: Type.Union([Type.Literal('active'), Type.Literal('guide')]),
+            connectorEase: Type.Union([
+                Type.Literal('linear'),
+                Type.Literal('in'),
+                Type.Literal('out'),
+                Type.Literal('inOut'),
+                Type.Literal('outIn'),
+                Type.Literal('none'),
+            ]),
+            connectorActiveIsCritical: Type.Boolean(),
+            connectorActiveIsFake: Type.Boolean(),
+            connectorGuideColor: Type.Union([
+                Type.Literal('neutral'),
+                Type.Literal('red'),
+                Type.Literal('green'),
+                Type.Literal('blue'),
+                Type.Literal('yellow'),
+                Type.Literal('purple'),
+                Type.Literal('cyan'),
+                Type.Literal('black'),
+            ]),
+            connectorGuideAlpha: Type.Number(),
+            connectorLayer: Type.Union([Type.Literal('top'), Type.Literal('bottom')]),
+        }),
+    ),
     Type.Object({
-        noteType: Type.Union([
-            Type.Literal('default'),
-            Type.Literal('trace'),
-            Type.Literal('anchor'),
-            Type.Literal('damage'),
-            Type.Literal('forceTick'),
-            Type.Literal('forceNonTick'),
-        ]),
-        isAttached: Type.Boolean(),
-        size: Type.Number(),
-        isCritical: Type.Boolean(),
-        flickDirection: Type.Union([
-            Type.Literal('none'),
-            Type.Literal('up'),
-            Type.Literal('upLeft'),
-            Type.Literal('upRight'),
-            Type.Literal('down'),
-            Type.Literal('downLeft'),
-            Type.Literal('downRight'),
-        ]),
-        isFake: Type.Boolean(),
-        sfx: Type.Union([
-            Type.Literal('default'),
-            Type.Literal('none'),
-            Type.Literal('normalTap'),
-            Type.Literal('criticalTap'),
-            Type.Literal('normalFlick'),
-            Type.Literal('criticalFlick'),
-            Type.Literal('normalTrace'),
-            Type.Literal('criticalTrace'),
-            Type.Literal('normalTick'),
-            Type.Literal('criticalTick'),
-            Type.Literal('damage'),
-        ]),
-        isConnectorSeparator: Type.Boolean(),
-        connectorType: Type.Union([Type.Literal('active'), Type.Literal('guide')]),
-        connectorEase: Type.Union([
-            Type.Literal('linear'),
-            Type.Literal('in'),
-            Type.Literal('out'),
-            Type.Literal('inOut'),
-            Type.Literal('outIn'),
-            Type.Literal('none'),
-        ]),
-        connectorActiveIsCritical: Type.Boolean(),
-        connectorActiveIsFake: Type.Boolean(),
-        connectorGuideColor: Type.Union([
-            Type.Literal('neutral'),
-            Type.Literal('red'),
-            Type.Literal('green'),
-            Type.Literal('blue'),
-            Type.Literal('yellow'),
-            Type.Literal('purple'),
-            Type.Literal('cyan'),
-            Type.Literal('black'),
-        ]),
-        connectorGuideAlpha: Type.Number(),
-        connectorLayer: Type.Union([Type.Literal('top'), Type.Literal('bottom')]),
+        copyProperties: Type.Boolean({ default: true }),
     }),
-)
+])
 
 export type DefaultNoteSlideProperties = Static<typeof defaultNoteSlidePropertiesSchema>
 
@@ -246,15 +251,20 @@ const settingsProperties = {
         minItems: 4,
         maxItems: 4,
         default: [
-            {},
+            {
+                copyProperties: true,
+            },
             {
                 isCritical: true,
+                copyProperties: true,
             },
             {
                 flickDirection: 'up',
+                copyProperties: true,
             },
             {
                 noteType: 'trace',
+                copyProperties: true,
             },
         ] satisfies DefaultNoteSlideProperties[],
     }),
@@ -265,18 +275,23 @@ const settingsProperties = {
         default: [
             {
                 connectorEase: 'linear',
+                copyProperties: true,
             },
             {
                 isCritical: true,
+                copyProperties: true,
             },
             {
                 flickDirection: 'up',
+                copyProperties: true,
             },
             {
                 noteType: 'trace',
+                copyProperties: true,
             },
             {
                 noteType: 'anchor',
+                copyProperties: true,
             },
         ] satisfies DefaultNoteSlideProperties[],
     }),

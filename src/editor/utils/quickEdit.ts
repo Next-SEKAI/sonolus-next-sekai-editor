@@ -14,9 +14,10 @@ import { editSelectedEditableEntities } from '../sidebars/default'
 
 export const quickEdit = (properties: DefaultNoteSlideProperties) => {
     let count = 0
-    let key: keyof DefaultNoteSlideProperties | undefined
+    let key: Exclude<keyof DefaultNoteSlideProperties, 'copyProperties'> | undefined
 
     for (const [k, v] of entries(properties)) {
+        if (k === 'copyProperties') continue
         if (v === undefined) continue
 
         count++

@@ -302,6 +302,8 @@ export const slide: Tool = {
 }
 
 const getNoteFromSelection = () => {
+    if (!defaultSlideProperties.value.copyProperties) return
+
     if (selectedEntities.value.length !== 1) return
 
     const [entity] = selectedEntities.value

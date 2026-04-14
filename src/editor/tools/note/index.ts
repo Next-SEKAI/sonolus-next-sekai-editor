@@ -358,6 +358,8 @@ export const editSelectedNote = (
 }
 
 const getNoteFromSelection = () => {
+    if (!defaultNoteProperties.value.copyProperties) return
+
     if (selectedEntities.value.length !== 1) return
 
     const [entity] = selectedEntities.value

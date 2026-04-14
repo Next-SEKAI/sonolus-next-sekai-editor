@@ -567,6 +567,9 @@
                 "active": "Slide",
                 "guide": "Guide"
             },
+            "copyProperties": {
+                "label": "Copy Properties"
+            },
             "file": {
                 "select": "Select File..."
             },
