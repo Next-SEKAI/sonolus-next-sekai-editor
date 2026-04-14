@@ -17,6 +17,7 @@ import { help } from './help'
 import { jumpDown } from './jumps/jumpDown'
 import { jumpUp } from './jumps/jumpUp'
 import { createNote, note } from './note'
+import { offset } from './offset'
 import { open } from './open'
 import { paste } from './paste'
 import { play } from './play'
@@ -67,6 +68,7 @@ export const commands = {
     speedUp,
     speedDown,
     bgm,
+    offset,
 
     select,
     deselect,
