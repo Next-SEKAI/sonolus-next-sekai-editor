@@ -168,6 +168,8 @@ const settingsProperties = {
 
     playFollowPosition: number(25, 0, 100),
 
+    playPreviewDuration: number(500, 0, 1000),
+
     mouseSecondaryTool: Type.Union([Type.Literal('eraser'), Type.Literal('select')]),
 
     mouseSmoothScrolling: Type.Boolean({ default: true }),
