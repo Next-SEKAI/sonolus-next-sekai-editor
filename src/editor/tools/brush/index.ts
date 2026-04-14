@@ -1,3 +1,4 @@
+import { ref } from 'vue'
 import type { Tool } from '..'
 import type {
     ConnectorEase,
@@ -50,10 +51,10 @@ export type BrushProperties = {
     hideNotes?: boolean
 }
 
-export let brushProperties: BrushProperties = {}
+export const brushProperties = ref<BrushProperties>({})
 
 export const setBrushProperties = (properties: BrushProperties) => {
-    brushProperties = properties
+    brushProperties.value = properties
 }
 
 let active:
@@ -178,7 +179,7 @@ const apply = (entities: Entity[]) => {
 
     const selectedEntities = entities.flatMap(
         (entity) =>
-            applies[entity.type]?.(transaction, entity as never, brushProperties) ?? [entity],
+            applies[entity.type]?.(transaction, entity as never, brushProperties.value) ?? [entity],
     )
 
     pushState(

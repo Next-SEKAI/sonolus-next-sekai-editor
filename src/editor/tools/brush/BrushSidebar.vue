@@ -24,7 +24,7 @@ import OptionalTimeScaleField from '../../../modals/form/OptionalTimeScaleField.
 import BaseSidebar from '../../sidebars/BaseSidebar.vue'
 import { useProperties } from '../../utils/properties'
 
-const createModel = useProperties(() => brushProperties, setBrushProperties)
+const createModel = useProperties(() => brushProperties.value, setBrushProperties)
 
 const group = createModel('group')
 const noteType = createModel('noteType')

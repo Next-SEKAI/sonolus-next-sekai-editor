@@ -24,7 +24,7 @@ import PropertiesModal from '../../../modals/form/PropertiesModal.vue'
 import { brushProperties, setBrushProperties } from '../../tools/brush'
 import { useProperties } from '../../utils/properties'
 
-const createModel = useProperties(() => brushProperties, setBrushProperties)
+const createModel = useProperties(() => brushProperties.value, setBrushProperties)
 
 const group = createModel('group')
 const noteType = createModel('noteType')
