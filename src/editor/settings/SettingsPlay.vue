@@ -43,5 +43,13 @@ import SettingsSection from './SettingsSection.vue'
             :max="100"
             step="any"
         />
+
+        <NumberField
+            v-model="settings.playPreviewDuration"
+            :label="i18n.settings.play.previewDuration"
+            :min="0"
+            :max="1000"
+            step="any"
+        />
     </SettingsSection>
 </template>

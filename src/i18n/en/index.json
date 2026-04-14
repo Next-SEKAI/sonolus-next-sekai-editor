@@ -360,7 +360,8 @@
                 "cursor": "Cursor"
             },
             "follow": "Follow",
-            "followPosition": "Follow Position"
+            "followPosition": "Follow Position",
+            "previewDuration": "Preview Duration (ms)"
         },
         "preview": {
             "title": "Preview",
