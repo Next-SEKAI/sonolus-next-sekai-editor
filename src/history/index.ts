@@ -21,10 +21,9 @@ const defaultChart: Chart = {
 
 const index = ref(0)
 
-export const isStateDirty = computed(() => index.value > 0)
-
 const states = shallowReactive([
     {
+        isDirty: false,
         name: () => i18n.value.history.initialize,
         state: createState(defaultChart, 0),
     },
@@ -33,16 +32,19 @@ const states = shallowReactive([
 export let levelDataHandle: FileSystemFileHandle | undefined
 
 addEventListener('beforeunload', (event) => {
-    if (isStateDirty.value) event.preventDefault()
+    if (isDirty.value) event.preventDefault()
 })
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const current = computed(() => states[index.value]!)
 
+export const isDirty = computed(() => current.value.isDirty)
+
 export const state = computed(() => current.value.state)
 
 export const replaceState = (state: State) => {
     states[index.value] = {
+        isDirty: current.value.isDirty,
         name: current.value.name,
         state,
     }
@@ -50,6 +52,7 @@ export const replaceState = (state: State) => {
 
 export const pushState = (name: () => string, state: State) => {
     states.splice(index.value + 1, states.length - index.value - 1, {
+        isDirty: true,
         name,
         state,
     })
@@ -57,7 +60,7 @@ export const pushState = (name: () => string, state: State) => {
 }
 
 export const undoState = () => {
-    if (!isStateDirty.value) return
+    if (!isDirty.value) return
 
     const name = current.value.name
     index.value--
@@ -72,7 +75,7 @@ export const redoState = () => {
 }
 
 export const checkState = async () => {
-    if (!isStateDirty.value) return true
+    if (!isDirty.value) return true
 
     return await showModal(ConfirmModal, {
         title: () => i18n.value.history.changes.title,
@@ -81,6 +84,7 @@ export const checkState = async () => {
 }
 
 export const resetState = (
+    isDirty: boolean,
     chart?: Chart,
     offset?: number,
     filename?: string,
@@ -88,6 +92,7 @@ export const resetState = (
 ) => {
     index.value = 0
     states.splice(0, states.length, {
+        isDirty,
         name: () => i18n.value.history.initialize,
         state: createState(chart ?? defaultChart, offset ?? 0, filename),
     })

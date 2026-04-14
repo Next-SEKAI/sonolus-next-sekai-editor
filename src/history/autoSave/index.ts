@@ -1,5 +1,5 @@
 import { watch } from 'vue'
-import { isStateDirty, resetState, state } from '..'
+import { isDirty, resetState, state } from '..'
 import { parseLevelDataChart } from '../../chart/parse/levelData'
 import { validateChart } from '../../chart/validate'
 import { i18n } from '../../i18n'
@@ -26,7 +26,7 @@ export const useAutoSave = () => {
                 return
             }
 
-            if (!isStateDirty.value) return
+            if (!isDirty.value) return
 
             id = setTimeout(() => {
                 storageSet(
@@ -58,7 +58,7 @@ export const useAutoSave = () => {
                 const chart = parseLevelDataChart(levelData.entities)
                 validateChart(chart)
 
-                resetState(chart, levelData.bgmOffset, filename)
+                resetState(true, chart, levelData.bgmOffset, filename)
             },
         })
     }

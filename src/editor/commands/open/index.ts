@@ -46,7 +46,7 @@ export const open: Command = {
                         const chart = parseLevelDataChart(levelData.entities)
                         validateChart(chart)
 
-                        resetState(chart, levelData.bgmOffset, getFilename(file), handle)
+                        resetState(false, chart, levelData.bgmOffset, getFilename(file), handle)
                         break
                     }
                     case 'usc': {
@@ -55,7 +55,7 @@ export const open: Command = {
                         const chart = parseUscChart(usc.objects)
                         validateChart(chart)
 
-                        resetState(chart, usc.offset, getFilename(file))
+                        resetState(false, chart, usc.offset, getFilename(file))
                         break
                     }
                     case 'sus': {
@@ -64,7 +64,7 @@ export const open: Command = {
                         const chart = parseSusChart(sus)
                         validateChart(chart)
 
-                        resetState(chart, sus.offset, getFilename(file))
+                        resetState(false, chart, sus.offset, getFilename(file))
                         break
                     }
                 }
