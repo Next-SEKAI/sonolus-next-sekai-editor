@@ -5,7 +5,7 @@ import { pushState, replaceState, state } from '../../../history'
 import { selectedEntities } from '../../../history/selectedEntities'
 import { i18n } from '../../../i18n'
 import { showModal } from '../../../modals'
-import { settings, type DefaultNoteSlideProperties } from '../../../settings'
+import { settings } from '../../../settings'
 import type { Entity } from '../../../state/entities'
 import { createSlideId } from '../../../state/entities/slides'
 import { toNoteEntity, type NoteEntity } from '../../../state/entities/slides/note'
@@ -30,16 +30,15 @@ import NoteSidebar from './NoteSidebar.vue'
 
 export const defaultNotePropertiesPresetIndex = ref(0)
 
-export const setDefaultNotePropertiesPreset = (properties: DefaultNoteSlideProperties) => {
-    settings.defaultNotePropertiesPresets = settings.defaultNotePropertiesPresets.map(
-        (preset, i) => (i === defaultNotePropertiesPresetIndex.value ? properties : preset),
-    )
-}
-
-export const defaultNoteProperties = computed(
+export const defaultNoteProperties = computed({
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    () => settings.defaultNotePropertiesPresets[defaultNotePropertiesPresetIndex.value]!,
-)
+    get: () => settings.defaultNotePropertiesPresets[defaultNotePropertiesPresetIndex.value]!,
+    set: (properties) => {
+        settings.defaultNotePropertiesPresets = settings.defaultNotePropertiesPresets.map(
+            (preset, i) => (i === defaultNotePropertiesPresetIndex.value ? properties : preset),
+        )
+    },
+})
 
 let active:
     | {

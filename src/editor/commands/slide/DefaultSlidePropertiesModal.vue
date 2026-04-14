@@ -18,17 +18,10 @@ import OptionalSizeField from '../../../modals/form/OptionalSizeField.vue'
 import PresetField from '../../../modals/form/PresetField.vue'
 import PropertiesModal from '../../../modals/form/PropertiesModal.vue'
 import { settings } from '../../../settings'
-import {
-    defaultSlideProperties,
-    defaultSlidePropertiesPresetIndex,
-    setDefaultSlidePropertiesPreset,
-} from '../../tools/slide'
+import { defaultSlideProperties, defaultSlidePropertiesPresetIndex } from '../../tools/slide'
 import { useProperties } from '../../utils/properties'
 
-const createModel = useProperties(
-    () => defaultSlideProperties.value,
-    setDefaultSlidePropertiesPreset,
-)
+const createModel = useProperties(defaultSlideProperties)
 
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')

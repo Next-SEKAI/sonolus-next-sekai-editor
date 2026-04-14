@@ -18,14 +18,10 @@ import OptionalSizeField from '../../../modals/form/OptionalSizeField.vue'
 import PresetField from '../../../modals/form/PresetField.vue'
 import PropertiesModal from '../../../modals/form/PropertiesModal.vue'
 import { settings } from '../../../settings'
-import {
-    defaultNoteProperties,
-    defaultNotePropertiesPresetIndex,
-    setDefaultNotePropertiesPreset,
-} from '../../tools/note'
+import { defaultNoteProperties, defaultNotePropertiesPresetIndex } from '../../tools/note'
 import { useProperties } from '../../utils/properties'
 
-const createModel = useProperties(() => defaultNoteProperties.value, setDefaultNotePropertiesPreset)
+const createModel = useProperties(defaultNoteProperties)
 
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')

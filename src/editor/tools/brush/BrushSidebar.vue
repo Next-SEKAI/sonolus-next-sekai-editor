@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { brushProperties, setBrushProperties } from '.'
+import { brushProperties } from '.'
 import { i18n } from '../../../i18n'
 import OptionalConnectorActiveIsCriticalField from '../../../modals/form/OptionalConnectorActiveIsCriticalField.vue'
 import OptionalConnectorActiveIsFakeField from '../../../modals/form/OptionalConnectorActiveIsFakeField.vue'
@@ -24,7 +24,7 @@ import OptionalTimeScaleField from '../../../modals/form/OptionalTimeScaleField.
 import BaseSidebar from '../../sidebars/BaseSidebar.vue'
 import { useProperties } from '../../utils/properties'
 
-const createModel = useProperties(() => brushProperties.value, setBrushProperties)
+const createModel = useProperties(brushProperties)
 
 const group = createModel('group')
 const noteType = createModel('noteType')

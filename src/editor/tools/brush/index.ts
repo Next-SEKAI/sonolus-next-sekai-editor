@@ -53,10 +53,6 @@ export type BrushProperties = {
 
 export const brushProperties = ref<BrushProperties>({})
 
-export const setBrushProperties = (properties: BrushProperties) => {
-    brushProperties.value = properties
-}
-
 let active:
     | {
           lane: number

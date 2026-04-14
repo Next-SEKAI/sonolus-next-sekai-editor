@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import {
-    defaultNoteProperties,
-    defaultNotePropertiesPresetIndex,
-    setDefaultNotePropertiesPreset,
-} from '.'
+import { defaultNoteProperties, defaultNotePropertiesPresetIndex } from '.'
 import { i18n } from '../../../i18n'
 import OptionalConnectorActiveIsCriticalField from '../../../modals/form/OptionalConnectorActiveIsCriticalField.vue'
 import OptionalConnectorActiveIsFakeField from '../../../modals/form/OptionalConnectorActiveIsFakeField.vue'
@@ -25,7 +21,7 @@ import { settings } from '../../../settings'
 import BaseSidebar from '../../sidebars/BaseSidebar.vue'
 import { useProperties } from '../../utils/properties'
 
-const createModel = useProperties(() => defaultNoteProperties.value, setDefaultNotePropertiesPreset)
+const createModel = useProperties(defaultNoteProperties)
 
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')
