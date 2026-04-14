@@ -13,7 +13,7 @@ export const reset: Command = {
     async execute() {
         if (!(await checkState())) return
 
-        resetState()
+        resetState(false)
 
         notify(() => i18n.value.commands.reset.reset)
     },
