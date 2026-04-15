@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { i18n } from '../../i18n'
+import { formatShortcut } from '../../utils/format'
 import BaseField from './BaseField.vue'
 
 defineProps<{
@@ -38,11 +39,7 @@ const onBlur = () => {
             @keydown.prevent="onKeyDown"
             @blur="onBlur"
         >
-            {{
-                modelValue === ' '
-                    ? 'Space'
-                    : (modelValue ?? (isActive ? i18n.modals.form.key.press : '\xa0'))
-            }}
+            {{ formatShortcut(modelValue) ?? (isActive ? i18n.modals.form.key.press : '\xa0') }}
         </button>
     </BaseField>
 </template>

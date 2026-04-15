@@ -26,3 +26,6 @@ export const formatTimeScale = (value: number, skip: number, ease: TimeScaleEase
 
     return text
 }
+
+export const formatShortcut = (shortcut: string | undefined) =>
+    shortcut === ' ' ? 'Space' : shortcut
