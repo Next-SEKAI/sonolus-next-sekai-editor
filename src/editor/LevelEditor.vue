@@ -94,7 +94,7 @@ const group = computed(() =>
 
             <LevelEditorToolbar />
         </div>
-        <div class="bg-preview z-10 flex gap-4 px-2 py-1 text-xs text-white/50">
+        <div class="z-10 flex gap-4 bg-preview px-2 py-1 text-xs text-white/50">
             <span class="flex-grow">{{ tool.title() }}</span>
             <span>{{ group() }}</span>
             <span>1/{{ view.division }}</span>
