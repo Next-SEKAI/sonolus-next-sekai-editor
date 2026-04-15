@@ -28,6 +28,8 @@ let active:
     | undefined
 
 export const bpm: Tool = {
+    title: () => i18n.value.tools.bpm.title,
+
     hover(x, y) {
         const [entity, beat] = tryFind(x, y)
         if (entity) {

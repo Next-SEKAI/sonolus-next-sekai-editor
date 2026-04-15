@@ -21,6 +21,8 @@ let active:
     | undefined
 
 export const eraser: Tool = {
+    title: () => i18n.value.tools.eraser.title,
+
     hover(x, y) {
         const entities = hitAllEntitiesAtPoint(x, y)
 

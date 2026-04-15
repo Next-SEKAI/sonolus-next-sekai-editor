@@ -12,6 +12,7 @@ import { slide } from './slide'
 import { timeScale } from './timeScale'
 
 export type Tool = {
+    title: () => string
     sidebar?: Component
 
     hover?: (x: number, y: number, modifiers: Modifiers) => void | Promise<void>

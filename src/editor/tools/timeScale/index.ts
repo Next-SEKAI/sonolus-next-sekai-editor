@@ -28,6 +28,8 @@ let active:
     | undefined
 
 export const timeScale: Tool = {
+    title: () => i18n.value.tools.timeScale.title,
+
     hover(x, y) {
         const [entity, beat] = tryFind(x, y)
         if (entity) {

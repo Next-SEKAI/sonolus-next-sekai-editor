@@ -49,6 +49,8 @@ let active:
     | undefined
 
 export const select: Tool = {
+    title: () => i18n.value.tools.select.title,
+
     hover(x, y, modifiers) {
         const entities = modifyEntities(hitAllEntitiesAtPoint(x, y), modifiers)
 
