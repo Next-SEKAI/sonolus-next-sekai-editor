@@ -10,6 +10,7 @@ module.exports = {
                 accent: '#77efdc',
                 header: '#bcbcd1',
                 modal: '#e9ebef',
+                preview: '#5b5c7c',
             },
             width: {
                 screen: ['100vw', '100dvw'],

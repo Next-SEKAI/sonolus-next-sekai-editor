@@ -11,6 +11,8 @@ export const bgmOffsetDelta = ref(0)
 let activeTime = 0
 
 export const offset: Tool = {
+    title: () => i18n.value.tools.offset.title,
+
     dragStart(x, y) {
         activeTime = yToTime(y)
 

@@ -60,6 +60,10 @@ let active:
     | undefined
 
 export const slide: Tool = {
+    title: interpolate(
+        () => i18n.value.tools.slide.title,
+        () => `${defaultSlidePropertiesPresetIndex.value + 1}`,
+    ),
     sidebar: SlideSidebar,
 
     hover(x, y, modifiers) {

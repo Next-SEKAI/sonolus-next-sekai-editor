@@ -62,6 +62,7 @@ let active:
     | undefined
 
 export const brush: Tool = {
+    title: () => i18n.value.tools.brush.title,
     sidebar: BrushSidebar,
 
     hover(x, y, modifiers) {

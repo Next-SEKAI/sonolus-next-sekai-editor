@@ -39,6 +39,7 @@ const clipboardEntries: ClipboardEntry[] = []
 export const clipboardEntryNames = ref<string[]>([])
 
 export const paste: Tool = {
+    title: () => i18n.value.tools.paste.title,
     sidebar: PasteSidebar,
 
     async hover(x, y, modifiers) {

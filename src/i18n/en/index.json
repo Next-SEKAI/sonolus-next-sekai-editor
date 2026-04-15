@@ -391,8 +391,16 @@
             "edited": "Edited {0} objects"
         }
     },
+    "statusBar": {
+        "group": {
+            "all": "all groups",
+            "default": "Default group",
+            "other": "{0} group"
+        }
+    },
     "tools": {
         "bpm": {
+            "title": "BPM",
             "adding": "Adding {0} BPM objects",
             "added": "Added {0} BPM objects",
             "edited": "Edited {0} BPM objects",
@@ -405,6 +413,7 @@
             }
         },
         "brush": {
+            "title": "Brush",
             "deselected": "Deselected all objects",
             "brushing": "Brushing {0} objects",
             "brushed": "Brushed {0} objects",
@@ -413,11 +422,13 @@
             }
         },
         "eraser": {
+            "title": "Eraser",
             "deselected": "Deselected all objects",
             "erasing": "Erasing {0} objects",
             "erased": "Erased {0} objects"
         },
         "note": {
+            "title": "Note #{0}",
             "adding": "Adding {0} Note objects",
             "added": "Added {0} Note objects",
             "editing": "Editing {0} Note objects",
@@ -433,15 +444,18 @@
             }
         },
         "offset": {
+            "title": "Offset",
             "changed": "Changed BGM offset"
         },
         "paste": {
+            "title": "Paste",
             "pasted": "Pasted {0} objects",
             "sidebar": {
                 "title": "Clipboard History"
             }
         },
         "select": {
+            "title": "Select",
             "deselected": "Deselected all objects",
             "selecting": "Selecting {0} objects",
             "selected": "Selected {0} objects",
@@ -449,6 +463,7 @@
             "moved": "Moved {0} objects"
         },
         "slide": {
+            "title": "Slide #{0}",
             "adding": "Adding {0} Note objects",
             "added": "Added {0} Note objects",
             "editing": "Editing {0} Note objects",
@@ -464,6 +479,7 @@
             }
         },
         "timeScale": {
+            "title": "Time Scale",
             "adding": "Adding {0} Time Scale objects",
             "added": "Added {0} Time Scale objects",
             "edited": "Edited {0} Time Scale objects",
