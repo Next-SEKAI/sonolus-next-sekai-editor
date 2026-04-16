@@ -1,5 +1,8 @@
 {
   "title": "Türkçe (Turkish)",
+  "group": {
+    "default": "Varsayılan"
+  },
   "commands": {
     "bgm": {
       "title": "Arkaplan Müziği",
@@ -65,8 +68,7 @@
       },
       "switched": {
         "all": "Tüm gruplara geçildi",
-        "default": "Varsayılan gruba geçildi",
-        "other": "{0} grubuna geçildi"
+        "one": "{0} grubuna geçildi"
       }
     },
     "help": {
@@ -545,8 +547,7 @@
         "downRight": "Sağ Aşağı"
       },
       "group": {
-        "label": "Grup",
-        "default": "Varsayılan"
+        "label": "Grup"
       },
       "isAttached": {
         "label": "Ekli"

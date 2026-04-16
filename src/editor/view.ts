@@ -3,6 +3,7 @@ import { times } from '.'
 import { bpms } from '../history/bpms'
 import { settings } from '../settings'
 import type { Entity } from '../state/entities'
+import type { GroupId } from '../state/groups'
 import { beatToTime, timeToBeat } from '../state/integrals/bpms'
 import { time } from '../time'
 import { computedArray } from '../utils/array'
@@ -31,7 +32,7 @@ export const view = shallowReactive({
     division: 4,
     snapping: 'absolute' as 'absolute' | 'relative',
 
-    group: optional<number>(),
+    group: optional<GroupId>(),
 
     pointer: {
         x: 0,

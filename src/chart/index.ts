@@ -1,7 +1,9 @@
+import type { GroupId, Groups } from '../state/groups'
+
 export type Chart = {
     initialLife: number
     bpms: BpmObject[]
-    groupCount: number
+    groups: Groups
     timeScales: TimeScaleObject[]
     slides: NoteObject[][]
 }
@@ -14,7 +16,7 @@ export type BpmObject = {
 export type TimeScaleEase = 'none' | 'linear'
 
 export type TimeScaleObject = {
-    group: number
+    group: GroupId
     beat: number
     timeScale: number
     skip: number
@@ -63,7 +65,7 @@ export type ConnectorGuideColor =
 export type ConnectorLayer = 'top' | 'bottom'
 
 export type NoteObject = {
-    group: number
+    group: GroupId
     beat: number
     noteType: NoteType
     isAttached: boolean

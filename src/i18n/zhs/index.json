@@ -1,5 +1,8 @@
 {
   "title": "简体中文 (Simplified Chinese)",
+  "group": {
+    "default": "默认"
+  },
   "commands": {
     "bgm": {
       "title": "背景音乐",
@@ -65,8 +68,7 @@
       },
       "switched": {
         "all": "已切换到所有群组",
-        "default": "已切换到默认群组",
-        "other": "已切换到 {0} 群组"
+        "one": "已切换到 {0} 群组"
       }
     },
     "help": {
@@ -545,8 +547,7 @@
         "downRight": "右下"
       },
       "group": {
-        "label": "群组",
-        "default": "默认"
+        "label": "群组"
       },
       "isAttached": {
         "label": "依附"

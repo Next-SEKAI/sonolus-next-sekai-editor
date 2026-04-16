@@ -1,9 +1,10 @@
 import { EngineArchetypeDataName, type LevelDataEntity } from '@sonolus/core'
 import type { NoteEntity } from '../../../state/entities/slides/note'
+import type { GroupId } from '../../../state/groups'
 import type { Store } from '../../../state/store'
 
 export const serializeSlidesToLevelDataEntities = (
-    timeScaleGroupEntities: LevelDataEntity[],
+    timeScaleGroupEntities: Map<GroupId, LevelDataEntity>,
     store: Store,
     getName: () => string,
 ) => {
@@ -23,8 +24,8 @@ export const serializeSlidesToLevelDataEntities = (
     for (const infos of store.slides.info.values()) {
         let prev: LevelDataEntity | undefined
         for (const [i, { note }] of infos.entries()) {
-            const timeScaleGroup = timeScaleGroupEntities[note.group]
-            if (!timeScaleGroup) throw new Error(`Unexpected missing group ${note.group}`)
+            const timeScaleGroup = timeScaleGroupEntities.get(note.group)
+            if (!timeScaleGroup) throw new Error('Unexpected missing group')
 
             const entity: LevelDataEntity = {
                 archetype: '',

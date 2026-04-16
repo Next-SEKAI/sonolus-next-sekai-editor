@@ -1,5 +1,8 @@
 {
     "title": "English (English)",
+    "group": {
+        "default": "Default"
+    },
     "commands": {
         "bgm": {
             "title": "BGM",
@@ -70,8 +73,7 @@
             },
             "switched": {
                 "all": "Switched to all groups",
-                "default": "Switched to Default group",
-                "other": "Switched to {0} group"
+                "one": "Switched to {0} group"
             }
         },
         "help": {
@@ -394,8 +396,7 @@
     "statusBar": {
         "group": {
             "all": "all groups",
-            "default": "Default group",
-            "other": "{0} group"
+            "one": "{0} group"
         }
     },
     "tools": {
@@ -600,8 +601,7 @@
                 "downRight": "Down Right"
             },
             "group": {
-                "label": "Group",
-                "default": "Default"
+                "label": "Group"
             },
             "hideNotes": {
                 "label": "Hide Notes"

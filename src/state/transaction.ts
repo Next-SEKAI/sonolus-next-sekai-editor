@@ -1,6 +1,7 @@
 import type { State } from '.'
 import type { Entity } from './entities'
 import type { SlideId } from './entities/slides'
+import { addToGroups, type GroupId, type Groups } from './groups'
 import { calculateBpms, type BpmIntegral } from './integrals/bpms'
 import { rebuildSlide } from './mutations/slides'
 
@@ -11,7 +12,8 @@ export const createTransaction = (state: State) => {
     const slides = createMapObjectTransaction(state.store.slides)
     const dirtySlideIds = new Set<SlideId>()
 
-    let groupCount = state.groupCount
+    let lastGroup: GroupId | undefined
+    let groups: Groups | undefined
 
     let bpms: BpmIntegral[] | undefined
 
@@ -25,8 +27,12 @@ export const createTransaction = (state: State) => {
             },
         },
 
-        addToGroup: (group: number) => {
-            groupCount = Math.max(groupCount, group + 2)
+        addToGroup: (group: GroupId) => {
+            lastGroup ??= [...state.groups.keys()].at(-1)
+            if (group !== lastGroup) return
+
+            groups = new Map(state.groups)
+            addToGroups(groups)
         },
 
         get bpms() {
@@ -54,7 +60,7 @@ export const createTransaction = (state: State) => {
                     },
                 },
                 bpms: bpms ?? state.bpms,
-                groupCount,
+                groups: groups ?? state.groups,
 
                 selectedEntities,
             }

@@ -5,6 +5,8 @@ export type SlideEntity = NoteEntity | ConnectorEntity
 
 declare const idBrand: unique symbol
 
-export type SlideId = { [idBrand]: never }
+export type SlideId = number & { [idBrand]: never }
 
-export const createSlideId = () => ({}) as SlideId
+let i = 1
+
+export const createSlideId = () => i++ as SlideId

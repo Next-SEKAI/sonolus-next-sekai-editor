@@ -2,36 +2,56 @@ import { type Static, type TSchema } from '@sinclair/typebox'
 import { Value } from '@sinclair/typebox/value'
 import { type LevelDataEntity } from '@sonolus/core'
 import type { Chart } from '../..'
+import { addToGroups, type GroupId } from '../../../state/groups'
 import { parseBpmsToChart } from './bpm'
 import { parseInitializationToChart } from './initialization'
 import { parseSlidesToChart } from './slide'
 import { parseTimeScalesToChart } from './timeScale'
 
-export type TimeScaleNames = (string | undefined)[]
-
 export type ParseToChart = (
     chart: Chart,
-    timeScaleNames: TimeScaleNames,
     entities: LevelDataEntity[],
+    getGroup: (entity: LevelDataEntity) => GroupId,
+    addGroup: (name: string | undefined) => void,
 ) => void
 
 export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
     const chart: Chart = {
         initialLife: 1000,
         bpms: [],
-        groupCount: 2,
+        groups: new Map(),
         timeScales: [],
         slides: [],
     }
 
-    parseInitializationToChart(chart, entities)
+    const groupIds: Record<string, GroupId> = {}
 
-    const timeScaleNames: TimeScaleNames = []
+    const getGroup = (entity: LevelDataEntity) => {
+        const group = getRef(entity, '#TIMESCALE_GROUP')
+        const id = groupIds[group]
+        if (!id) throw new Error(`Invalid level: ref "${group}" not found`)
 
-    parseBpmsToChart(chart, timeScaleNames, entities)
-    parseTimeScalesToChart(chart, timeScaleNames, entities)
+        return id
+    }
 
-    parseSlidesToChart(chart, timeScaleNames, entities)
+    const addGroup = (name: string | undefined) => {
+        const [id] = addToGroups(chart.groups)
+
+        if (name) {
+            groupIds[name] = id
+        }
+    }
+
+    parseInitializationToChart(chart, entities, getGroup, addGroup)
+
+    parseBpmsToChart(chart, entities, getGroup, addGroup)
+    parseTimeScalesToChart(chart, entities, getGroup, addGroup)
+
+    parseSlidesToChart(chart, entities, getGroup, addGroup)
+
+    while (chart.groups.size < 2) {
+        addToGroups(chart.groups)
+    }
 
     return chart
 }
@@ -76,13 +96,4 @@ export const getOptionalRef = (entity: LevelDataEntity, name: string) => {
     if (!('ref' in data)) return
 
     return data.ref
-}
-
-export const getGroup = (chart: Chart, timeScaleNames: TimeScaleNames, entity: LevelDataEntity) => {
-    const group = getRef(entity, '#TIMESCALE_GROUP')
-    const index = timeScaleNames.indexOf(group)
-    if (index === -1) throw new Error(`Invalid level: ref "${group}" not found`)
-
-    chart.groupCount = Math.max(chart.groupCount, index + 2)
-    return index
 }

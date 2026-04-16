@@ -1,5 +1,5 @@
 import type { Command } from '..'
-import { state } from '../../../history'
+import { groups } from '../../../history/groups'
 import { i18n } from '../../../i18n'
 import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
@@ -13,21 +13,25 @@ export const groupPrev: Command = {
     },
 
     execute() {
-        if (view.group === undefined) {
-            view.group = state.value.groupCount - 1
-        } else if (view.group === 0) {
+        const ids = [...groups.value.keys()]
+        const index = view.group ? ids.indexOf(view.group) : -1
+
+        if (index < 0) {
+            view.group = ids.at(-1)
+        } else if (index === 0) {
             view.group = undefined
         } else {
-            view.group--
+            view.group = ids[index - 1]
         }
         updateViewLastActive()
 
         notify(
             view.group === undefined
                 ? () => i18n.value.commands.groups.switched.all
-                : view.group
-                  ? interpolate(() => i18n.value.commands.groups.switched.other, `#${view.group}`)
-                  : () => i18n.value.commands.groups.switched.default,
+                : interpolate(
+                      () => i18n.value.commands.groups.switched.one,
+                      groups.value.get(view.group)?.name ?? '',
+                  ),
         )
     },
 }

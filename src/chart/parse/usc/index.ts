@@ -1,16 +1,28 @@
 import type { Chart } from '../..'
+import { addToGroups } from '../../../state/groups'
 import type { UscObject } from '../../../usc/objects/schema'
 
 export const parseUscChart = (objects: UscObject[]) => {
     const chart: Chart = {
         initialLife: 1000,
         bpms: [],
-        groupCount: 2,
+        groups: new Map(),
         timeScales: [],
         slides: [],
     }
 
-    let group = -1
+    const timeScaleGroups = objects.filter((object) => object.type === 'timeScaleGroup')
+    const groupIds = [...Array(Math.max(2, timeScaleGroups.length)).keys()].map(
+        () => addToGroups(chart.groups)[0],
+    )
+
+    const getGroup = (index: number) => {
+        const group = groupIds[index]
+        if (!group) throw new Error(`Invalid level: group ${index} not found`)
+
+        return group
+    }
+
     for (const object of objects) {
         switch (object.type) {
             case 'bpm':
@@ -20,10 +32,9 @@ export const parseUscChart = (objects: UscObject[]) => {
                 })
                 break
             case 'timeScaleGroup':
-                group++
                 for (const change of object.changes) {
                     chart.timeScales.push({
-                        group,
+                        group: getGroup(timeScaleGroups.indexOf(object)),
                         beat: change.beat,
                         timeScale: change.timeScale,
                         skip: 0,
@@ -35,7 +46,7 @@ export const parseUscChart = (objects: UscObject[]) => {
             case 'single':
                 chart.slides.push([
                     {
-                        group: object.timeScaleGroup,
+                        group: getGroup(object.timeScaleGroup),
                         beat: object.beat,
                         noteType: object.trace ? 'trace' : 'default',
                         isAttached: false,
@@ -59,7 +70,7 @@ export const parseUscChart = (objects: UscObject[]) => {
             case 'slide':
                 chart.slides.push(
                     object.connections.map((connection) => ({
-                        group: connection.timeScaleGroup ?? 0,
+                        group: getGroup(connection.timeScaleGroup ?? 0),
                         beat: connection.beat,
                         noteType:
                             connection.type === 'start' || connection.type === 'end'
@@ -94,7 +105,7 @@ export const parseUscChart = (objects: UscObject[]) => {
             case 'guide':
                 chart.slides.push(
                     object.midpoints.map((midpoint, i) => ({
-                        group: midpoint.timeScaleGroup,
+                        group: getGroup(midpoint.timeScaleGroup),
                         beat: midpoint.beat,
                         noteType: 'anchor',
                         isAttached: false,
@@ -120,7 +131,7 @@ export const parseUscChart = (objects: UscObject[]) => {
             case 'damage':
                 chart.slides.push([
                     {
-                        group: object.timeScaleGroup,
+                        group: getGroup(object.timeScaleGroup),
                         beat: object.beat,
                         noteType: 'damage',
                         isAttached: false,
@@ -143,8 +154,6 @@ export const parseUscChart = (objects: UscObject[]) => {
                 break
         }
     }
-
-    chart.groupCount += Math.max(0, group)
 
     return chart
 }

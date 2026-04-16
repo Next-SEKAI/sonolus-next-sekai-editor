@@ -2,6 +2,7 @@ import { computed, ref } from 'vue'
 import type { Tool } from '..'
 import type { NoteObject } from '../../../chart'
 import { pushState, replaceState, state } from '../../../history'
+import { defaultGroup } from '../../../history/groups'
 import { selectedEntities } from '../../../history/selectedEntities'
 import { store } from '../../../history/store'
 import { i18n } from '../../../i18n'
@@ -78,7 +79,7 @@ export const slide: Tool = {
                 hovered: [],
                 creating: [
                     toNoteEntity(getSelectedSlideId() ?? createSlideId(), {
-                        group: view.group ?? 0,
+                        group: view.group ?? defaultGroup.value,
                         beat,
                         left: lane,
                         ...getPropertiesFromSelection(beat),
@@ -138,7 +139,7 @@ export const slide: Tool = {
             }
         } else {
             add(getSelectedSlideId() ?? createSlideId(), {
-                group: view.group ?? 0,
+                group: view.group ?? defaultGroup.value,
                 beat,
                 left: lane,
                 ...getPropertiesFromSelection(beat),
@@ -210,7 +211,7 @@ export const slide: Tool = {
                     hovered: [],
                     creating: [
                         toNoteEntity(getSelectedSlideId() ?? createSlideId(), {
-                            group: view.group ?? 0,
+                            group: view.group ?? defaultGroup.value,
                             beat,
                             ...getPropertiesFromSelection(beat),
                             left: Math.min(active.lane, lane),
@@ -271,7 +272,7 @@ export const slide: Tool = {
                 const beat = yToValidBeat(y)
 
                 add(getSelectedSlideId() ?? createSlideId(), {
-                    group: view.group ?? 0,
+                    group: view.group ?? defaultGroup.value,
                     beat,
                     ...getPropertiesFromSelection(beat),
                     left: Math.min(active.lane, lane),
