@@ -15,6 +15,8 @@ import { notify } from '../../../notification'
 import { updateViewLastActive, view } from '../../../view'
 import DeleteIcon from './DeleteIcon.vue'
 import HiddenIcon from './HiddenIcon.vue'
+import MoveDownIcon from './MoveDownIcon.vue'
+import MoveUpIcon from './MoveUpIcon.vue'
 import VisibleIcon from './VisibleIcon.vue'
 
 const onSwitch = (group: GroupId, name: string) => {
@@ -29,6 +31,31 @@ const onSwitch = (group: GroupId, name: string) => {
 
         notify(interpolate(() => i18n.value.commands.manageGroups.modal.switched.one, name))
     }
+}
+
+const onMove = (group: GroupId, name: string, offset: -1 | 1) => {
+    const entries = [...groups.value.entries()]
+
+    const aIndex = entries.findIndex((entry) => entry[0] === group)
+    const aEntry = entries[aIndex]
+    if (!aEntry) return
+
+    const bIndex = aIndex + offset
+    const bEntry = entries[bIndex]
+    if (!bEntry) return
+
+    entries[aIndex] = bEntry
+    entries[bIndex] = aEntry
+
+    pushState(
+        interpolate(() => i18n.value.commands.manageGroups.modal.moved, name),
+        {
+            ...state.value,
+            groups: new Map(entries),
+        },
+    )
+
+    notify(interpolate(() => i18n.value.commands.manageGroups.modal.moved, name))
 }
 
 const onDelete = (group: GroupId, name: string) => {
@@ -94,6 +121,20 @@ const onAdd = () => {
                             :is="!view.group || view.group === group ? VisibleIcon : HiddenIcon"
                             class="size-4"
                         />
+                    </button>
+                    <button
+                        class="rounded-full bg-button p-2 shadow-md transition-colors hover:shadow-accent active:bg-accent active:fill-button active:text-button"
+                        :title="i18n.commands.manageGroups.modal.moveUp"
+                        @click="onMove(group, name, -1)"
+                    >
+                        <MoveUpIcon class="size-4" />
+                    </button>
+                    <button
+                        class="rounded-full bg-button p-2 shadow-md transition-colors hover:shadow-accent active:bg-accent active:fill-button active:text-button"
+                        :title="i18n.commands.manageGroups.modal.moveDown"
+                        @click="onMove(group, name, 1)"
+                    >
+                        <MoveDownIcon class="size-4" />
                     </button>
                     <button
                         class="rounded-full bg-button p-2 shadow-md transition-colors hover:shadow-accent active:bg-accent active:fill-button active:text-button"
