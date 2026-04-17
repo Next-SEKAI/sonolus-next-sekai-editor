@@ -1,5 +1,8 @@
 {
   "title": "日本語 (Japanese)",
+  "group": {
+    "default": "デフォルト"
+  },
   "commands": {
     "bgm": {
       "title": "BGM",
@@ -70,8 +73,7 @@
       },
       "switched": {
         "all": "全てのグループに切り替えました",
-        "default": "デフォルトのグループに切り替えました",
-        "other": "{0} のグループに切り替え"
+        "one": "{0} のグループに切り替え"
       }
     },
     "help": {
@@ -570,8 +572,7 @@
         "downRight": "右下"
       },
       "group": {
-        "label": "グループ",
-        "default": "デフォルト"
+        "label": "グループ"
       },
       "hideNotes": {
         "label": "ノーツを非表示"

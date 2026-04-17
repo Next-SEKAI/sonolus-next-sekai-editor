@@ -1,22 +1,26 @@
 import { EngineArchetypeDataName, EngineArchetypeName, type LevelDataEntity } from '@sonolus/core'
 import { getStoreEntities } from '.'
 import type { TimeScaleEntity } from '../../../state/entities/timeScale'
+import type { GroupId, Groups } from '../../../state/groups'
 import type { Store } from '../../../state/store'
 
-export const serializeTimeScaleGroupsToLevelDataEntities = (groupCount: number) =>
-    [...Array(groupCount - 1).keys()].map(
-        (): LevelDataEntity => ({
-            archetype: '#TIMESCALE_GROUP',
-            data: [],
-        }),
+export const serializeTimeScaleGroupsToLevelDataEntities = (groups: Groups) =>
+    new Map(
+        [...groups.keys()].map((id): [GroupId, LevelDataEntity] => [
+            id,
+            {
+                archetype: '#TIMESCALE_GROUP',
+                data: [],
+            },
+        ]),
     )
 
 export const serializeTimeScaleChangesToLevelDataEntities = (
-    timeScaleGroupEntities: LevelDataEntity[],
+    timeScaleGroupEntities: Map<GroupId, LevelDataEntity>,
     store: Store,
     getName: () => string,
 ) => {
-    const timeScalesByGroup = new Map<number, TimeScaleEntity[]>()
+    const timeScalesByGroup = new Map<GroupId, TimeScaleEntity[]>()
 
     for (const timeScale of getStoreEntities(store.grid.timeScale)) {
         const timeScales = timeScalesByGroup.get(timeScale.group)
@@ -30,8 +34,8 @@ export const serializeTimeScaleChangesToLevelDataEntities = (
     const entities: LevelDataEntity[] = []
 
     for (const [group, timeScales] of timeScalesByGroup) {
-        const timeScaleGroup = timeScaleGroupEntities[group]
-        if (!timeScaleGroup) throw new Error(`Unexpected missing group ${group}`)
+        const timeScaleGroup = timeScaleGroupEntities.get(group)
+        if (!timeScaleGroup) throw new Error('Unexpected missing group')
 
         let prev: LevelDataEntity | undefined
         entities.push(

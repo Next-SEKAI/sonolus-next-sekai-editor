@@ -1,5 +1,8 @@
 {
   "title": "Français (French)",
+  "group": {
+    "default": "Par défaut"
+  },
   "commands": {
     "bgm": {
       "title": "Musique",
@@ -65,8 +68,7 @@
       },
       "switched": {
         "all": "Tous les groupes activés",
-        "default": "Groupe par défaut activé",
-        "other": "Groupe {0} activé"
+        "one": "Groupe {0} activé"
       }
     },
     "help": {
@@ -545,8 +547,7 @@
         "downRight": "Bas à Droite"
       },
       "group": {
-        "label": "Groupe",
-        "default": "Par défaut"
+        "label": "Groupe"
       },
       "isAttached": {
         "label": "Attaché"

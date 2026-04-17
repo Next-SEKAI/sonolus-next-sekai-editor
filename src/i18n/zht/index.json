@@ -1,5 +1,8 @@
 {
   "title": "繁體中文 (Traditional Chinese)",
+  "group": {
+    "default": "預設"
+  },
   "commands": {
     "bgm": {
       "title": "BGM",
@@ -65,8 +68,7 @@
       },
       "switched": {
         "all": "已切換到所有圖層",
-        "default": "已切換到預設圖層",
-        "other": "已切換到 {0} 圖層"
+        "one": "已切換到 {0} 圖層"
       }
     },
     "help": {
@@ -545,8 +547,7 @@
         "downRight": "右下"
       },
       "group": {
-        "label": "圖層",
-        "default": "預設"
+        "label": "圖層"
       },
       "isAttached": {
         "label": "連接"

@@ -1,11 +1,16 @@
+import { addToGroups, type Groups } from '../../../state/groups.js'
 import type { Sus } from '../../../sus/parse.js'
 import type { Chart, NoteObject } from '../../index.js'
 
 export const parseSusChart = (sus: Sus) => {
+    const groups: Groups = new Map()
+    const [group] = addToGroups(groups)
+    addToGroups(groups)
+
     const chart: Chart = {
         initialLife: 1000,
         bpms: [],
-        groupCount: 2,
+        groups,
         timeScales: [],
         slides: [],
     }
@@ -85,7 +90,7 @@ export const parseSusChart = (sus: Sus) => {
 
     for (const timeScaleChange of sus.timeScaleChanges) {
         chart.timeScales.push({
-            group: 0,
+            group,
             beat: timeScaleChange.tick / sus.ticksPerBeat,
             timeScale: timeScaleChange.timeScale,
             skip: 0,
@@ -115,7 +120,7 @@ export const parseSusChart = (sus: Sus) => {
 
         chart.slides.push([
             {
-                group: 0,
+                group,
                 beat: note.tick / sus.ticksPerBeat,
                 noteType: note.type === 5 || note.type === 6 ? 'trace' : 'default',
                 isAttached: false,
@@ -143,7 +148,6 @@ export const parseSusChart = (sus: Sus) => {
 
         const slideCriticalMod = criticalMods.has(getKey(startNote))
 
-        const group = 0
         const isFake = false
         const sfx = 'default'
         const connectorType = slide.type === 3 ? 'active' : 'guide'
@@ -314,7 +318,7 @@ export const parseSusChart = (sus: Sus) => {
                     if (tickRemoveMods.has(key)) break
 
                     objects.push({
-                        group: 0,
+                        group,
                         beat,
                         noteType: 'anchor',
                         isAttached: false,

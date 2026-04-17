@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { noteComponents } from '.'
 import { bpms } from '../../../history/bpms'
+import { defaultGroup, groups } from '../../../history/groups'
 import { store } from '../../../history/store'
 import type { NoteEntity } from '../../../state/entities/slides/note'
 import { beatToTime } from '../../../state/integrals/bpms'
@@ -82,7 +83,7 @@ const type = computed(() => {
     <g :transform="`translate(${entity.left}, ${time * ups - 0.4})`">
         <component :is="noteComponents[type]" :entity :is-highlighted="isHighlighted" />
         <text
-            v-if="entity.group && (isHighlighted || isViewRecentlyActive)"
+            v-if="entity.group !== defaultGroup && (isHighlighted || isViewRecentlyActive)"
             :x="entity.size / 2"
             y="0.4"
             font-size="0.4"
@@ -90,7 +91,7 @@ const type = computed(() => {
             dominant-baseline="middle"
             fill="#0aa"
         >
-            #{{ entity.group }}
+            {{ groups.get(entity.group)?.name }}
         </text>
     </g>
 </template>

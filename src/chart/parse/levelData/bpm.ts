@@ -3,7 +3,7 @@ import { EngineArchetypeDataName, EngineArchetypeName } from '@sonolus/core'
 import { getValue, type ParseToChart } from '.'
 import { beatSchema } from './schemas'
 
-export const parseBpmsToChart: ParseToChart = (chart, _, entities) => {
+export const parseBpmsToChart: ParseToChart = (chart, entities) => {
     for (const entity of entities) {
         if (entity.archetype !== EngineArchetypeName.BpmChange) continue
 

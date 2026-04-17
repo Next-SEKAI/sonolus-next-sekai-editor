@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, useTemplateRef, watch, type Ref } from 'vue'
 import { useAutoSave } from '../history/autoSave'
+import { groups } from '../history/groups'
 import { i18n } from '../i18n'
 import { time } from '../time'
 import { interpolate } from '../utils/interpolate'
@@ -40,12 +41,20 @@ watch(time, () => {
     view.h = rect.height
 })
 
+watch([groups, view], () => {
+    if (!view.group) return
+    if (groups.value.has(view.group)) return
+
+    view.group = undefined
+})
+
 const group = computed(() =>
     view.group === undefined
         ? () => i18n.value.statusBar.group.all
-        : view.group
-          ? interpolate(() => i18n.value.statusBar.group.other, `#${view.group}`)
-          : () => i18n.value.statusBar.group.default,
+        : interpolate(
+              () => i18n.value.statusBar.group.one,
+              groups.value.get(view.group)?.name ?? '',
+          ),
 )
 </script>
 

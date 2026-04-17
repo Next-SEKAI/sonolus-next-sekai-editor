@@ -4,6 +4,7 @@ import type { Command } from '..'
 import { levelDataHandle, setLevelDataHandle, state } from '../../../history'
 import { bgm } from '../../../history/bgm'
 import { filename } from '../../../history/filename'
+import { groups } from '../../../history/groups'
 import { store } from '../../../history/store'
 import { i18n } from '../../../i18n'
 import { serializeToLevelData } from '../../../levelData/serialize'
@@ -33,7 +34,7 @@ export const save: Command = {
                     state.value.initialLife,
                     bgm.value.offset,
                     store.value,
-                    state.value.groupCount,
+                    groups.value,
                 )
 
                 const file = gzip(JSON.stringify(levelData), {

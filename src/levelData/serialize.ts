@@ -1,4 +1,5 @@
 import type { LevelData } from '@sonolus/core'
+import type { Groups } from '../state/groups'
 import type { Store } from '../state/store'
 import { serializeToLevelDataEntities } from './entities/serialize'
 
@@ -6,7 +7,7 @@ export const serializeToLevelData = (
     initialLife: number,
     bgmOffset: number,
     store: Store,
-    groupCount: number,
+    groups: Groups,
 ): LevelData => ({
     bgmOffset,
     entities: [
@@ -19,6 +20,6 @@ export const serializeToLevelData = (
                 },
             ],
         },
-        ...serializeToLevelDataEntities(store, groupCount),
+        ...serializeToLevelDataEntities(store, groups),
     ],
 })

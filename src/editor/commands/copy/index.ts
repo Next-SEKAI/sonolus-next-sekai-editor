@@ -1,6 +1,6 @@
 import type { Command } from '..'
 import type { ClipboardData } from '../../../clipboardData/schema'
-import { state } from '../../../history'
+import { groups } from '../../../history/groups'
 import { selectedEntities } from '../../../history/selectedEntities'
 import { store } from '../../../history/store'
 import { i18n } from '../../../i18n'
@@ -34,10 +34,10 @@ export const copy: Command = {
                     initialLife: 1000,
                     bpms: getEntities(entities, 'bpm'),
                     timeScales: getEntities(entities, 'timeScale'),
-                    groupCount: state.value.groupCount,
+                    groups: groups.value,
                     slides: getSlides(entities),
                 }),
-                state.value.groupCount,
+                groups.value,
             ),
         }
         const text = JSON.stringify(data)

@@ -36,7 +36,7 @@ export const useAutoSave = () => {
                             state.initialLife,
                             state.bgm.offset,
                             state.store,
-                            state.groupCount,
+                            state.groups,
                         ),
                         filename.value,
                     ),

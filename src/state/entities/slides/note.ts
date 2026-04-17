@@ -10,13 +10,14 @@ import type {
     NoteSfx,
     NoteType,
 } from '../../../chart'
+import type { GroupId } from '../../groups'
 
 export type NoteEntity = BaseEntity & {
     type: 'note'
     hitbox: object
 
     slideId: SlideId
-    group: number
+    group: GroupId
     noteType: NoteType
     isAttached: boolean
     left: number

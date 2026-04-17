@@ -1,9 +1,7 @@
 import { Type } from '@sinclair/typebox'
-import type { LevelDataEntity } from '@sonolus/core'
-import { getOptionalValue } from '.'
-import type { Chart } from '../..'
+import { getOptionalValue, type ParseToChart } from '.'
 
-export const parseInitializationToChart = (chart: Chart, [entity]: LevelDataEntity[]) => {
+export const parseInitializationToChart: ParseToChart = (chart, [entity]) => {
     if (entity?.archetype !== 'Initialization') return
 
     chart.initialLife = getOptionalValue(entity, 'initialLife', initialLifeSchema) ?? 1000

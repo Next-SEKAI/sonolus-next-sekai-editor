@@ -4,7 +4,12 @@ import { i18n } from '../i18n'
 import { showModal } from '../modals'
 import ConfirmModal from '../modals/ConfirmModal.vue'
 import { createState, type State } from '../state'
+import { addToGroups, type Groups } from '../state/groups'
 import { cleanupWaveform } from '../waveform'
+
+const defaultChartGroups: Groups = new Map()
+addToGroups(defaultChartGroups)
+addToGroups(defaultChartGroups)
 
 const defaultChart: Chart = {
     initialLife: 1000,
@@ -14,7 +19,7 @@ const defaultChart: Chart = {
             bpm: 60,
         },
     ],
-    groupCount: 2,
+    groups: defaultChartGroups,
     timeScales: [],
     slides: [],
 }

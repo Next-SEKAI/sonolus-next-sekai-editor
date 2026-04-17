@@ -1,9 +1,10 @@
 import { type BaseEntity } from '.'
 import type { TimeScaleEase, TimeScaleObject } from '../../chart'
+import type { GroupId } from '../groups'
 
 export type TimeScaleEntity = BaseEntity & {
     type: 'timeScale'
-    group: number
+    group: GroupId
     timeScale: number
     skip: number
     ease: TimeScaleEase
