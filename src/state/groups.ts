@@ -12,9 +12,9 @@ export type GroupProperties = {
 
 let i = 1
 
-export const addToGroups = (groups: Groups) => {
+export const addToGroups = (groups: Groups, name?: string) => {
     const id = i++ as GroupId
-    const name = groups.size
+    name ??= groups.size
         ? `#${
               Math.max(
                   0,
