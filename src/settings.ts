@@ -132,7 +132,7 @@ const settingsProperties = {
                     ['note3', 'note2', 'note1', 'note0', 'note'],
                     ['slide4', 'slide3', 'slide2', 'slide1', 'slide0', 'slide'],
                     ['timeScale', 'bpm'],
-                    ['groupPrev', 'groupNext', 'groupAll'],
+                    ['groupPrev', 'groupNext', 'groupAll', 'manageGroups'],
                     [
                         'scrollLeft',
                         'scrollRight',
@@ -211,7 +211,7 @@ const settingsProperties = {
                 timeScale: 'w',
                 groupPrev: 'e',
                 groupNext: 'r',
-                groupAll: 't',
+                manageGroups: 't',
                 scrollLeft: 'ArrowLeft',
                 scrollRight: 'ArrowRight',
                 scrollUp: 'ArrowUp',

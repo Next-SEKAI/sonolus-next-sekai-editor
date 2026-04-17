@@ -16,6 +16,7 @@ import { groupPrev } from './groups/groupPrev'
 import { help } from './help'
 import { jumpDown } from './jumps/jumpDown'
 import { jumpUp } from './jumps/jumpUp'
+import { manageGroups } from './manageGroups'
 import { createNote, note } from './note'
 import { offset } from './offset'
 import { open } from './open'
@@ -97,6 +98,7 @@ export const commands = {
     bpm,
     timeScale,
 
+    manageGroups,
     groupPrev,
     groupNext,
     groupAll,
