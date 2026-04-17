@@ -87,6 +87,14 @@
                 "title": "Jump Up"
             }
         },
+        "manageGroups": {
+            "title": "Manage groups",
+            "modal": {
+                "title": "Manage Groups",
+                "add": "Add",
+                "added": "Added {0} group"
+            }
+        },
         "note": {
             "title": {
                 "default": "Switch to Note tool",
