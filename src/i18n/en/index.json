@@ -96,6 +96,8 @@
                     "all": "Switched to all groups",
                     "one": "Switched to {0} group"
                 },
+                "delete": "Delete group",
+                "deleted": "Deleted {0} group",
                 "add": "Add",
                 "added": "Added {0} group"
             }
