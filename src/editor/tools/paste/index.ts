@@ -4,12 +4,14 @@ import type { BpmObject, FlickDirection, NoteObject, TimeScaleObject } from '../
 import { parseLevelDataChart } from '../../../chart/parse/levelData'
 import { parseClipboardData } from '../../../clipboardData/parse'
 import { pushState, state } from '../../../history'
+import { defaultGroup, groups } from '../../../history/groups'
 import { i18n } from '../../../i18n'
 import type { Entity } from '../../../state/entities'
 import { toBpmEntity, type BpmEntity } from '../../../state/entities/bpm'
 import { createSlideId } from '../../../state/entities/slides'
 import { toNoteEntity, type NoteEntity } from '../../../state/entities/slides/note'
 import { toTimeScaleEntity, type TimeScaleEntity } from '../../../state/entities/timeScale'
+import type { GroupId } from '../../../state/groups'
 import { addBpm, removeBpm } from '../../../state/mutations/bpm'
 import { addNote } from '../../../state/mutations/slides/note'
 import { addTimeScale, removeTimeScale } from '../../../state/mutations/timeScale'
@@ -154,17 +156,27 @@ const getData = (text: string) => {
         const clipboardData = parseClipboardData(JSON.parse(text))
         const chart = parseLevelDataChart(clipboardData.entities)
 
+        const groupIds = [...groups.value.keys()]
+        const groupMappings = new Map(
+            [...chart.groups.keys()].map((group, index) => [group, groupIds[index]]),
+        )
+
+        const mapGroup = <T extends { group: GroupId }>(object: T) => ({
+            ...object,
+            group: groupMappings.get(object.group) ?? defaultGroup.value,
+        })
+
         return {
             lane: clipboardData.lane,
             beat: clipboardData.beat,
             entities: [
                 ...chart.bpms.map(toBpmEntity),
-                ...chart.timeScales.map(toTimeScaleEntity),
+                ...chart.timeScales.map(mapGroup).map(toTimeScaleEntity),
 
                 ...chart.slides.flatMap((slide) => {
                     const slideId = createSlideId()
 
-                    return slide.map((note) => toNoteEntity(slideId, note))
+                    return slide.map(mapGroup).map((note) => toNoteEntity(slideId, note))
                 }),
             ],
         }
