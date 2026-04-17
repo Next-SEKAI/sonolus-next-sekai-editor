@@ -2,6 +2,7 @@ import { type Static, type TSchema } from '@sinclair/typebox'
 import { Value } from '@sinclair/typebox/value'
 import { type LevelDataEntity } from '@sonolus/core'
 import type { Chart } from '../..'
+import { settings } from '../../../settings'
 import { addToGroups, type GroupId } from '../../../state/groups'
 import { parseBpmsToChart } from './bpm'
 import { parseInitializationToChart } from './initialization'
@@ -57,7 +58,7 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
 
     parseSlidesToChart(chart, entities, getGroup, addGroup)
 
-    while (chart.groups.size < 2) {
+    while (chart.groups.size < (settings.autoAddGroup ? 2 : 1)) {
         addToGroups(chart.groups)
     }
 

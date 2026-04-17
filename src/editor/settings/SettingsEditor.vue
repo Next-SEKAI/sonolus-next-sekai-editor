@@ -59,6 +59,8 @@ watch(
 
         <ToggleField v-model="settings.dragToPanX" :label="i18n.settings.editor.dragToPanX" />
 
+        <ToggleField v-model="settings.autoAddGroup" :label="i18n.settings.editor.autoAddGroup" />
+
         <ToggleField v-model="settings.showGroupName" :label="i18n.settings.editor.showGroupName" />
 
         <ToggleField
