@@ -8,11 +8,12 @@ export type GroupId = number & { [idBrand]: never }
 
 export type GroupProperties = {
     name: string
+    forceNoteSpeed?: number
 }
 
 let i = 1
 
-export const addToGroups = (groups: Groups, name?: string) => {
+export const addToGroups = (groups: Groups, name?: string, forceNoteSpeed?: number) => {
     const id = i++ as GroupId
     name ??= groups.size
         ? `#${
@@ -27,6 +28,7 @@ export const addToGroups = (groups: Groups, name?: string) => {
 
     groups.set(id, {
         name,
+        forceNoteSpeed,
     })
 
     return [id, name] as const

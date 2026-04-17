@@ -12,7 +12,11 @@ export type ParseToChart = (
     chart: Chart,
     entities: LevelDataEntity[],
     getGroup: (entity: LevelDataEntity) => GroupId,
-    addGroup: (name: string | undefined, editorName: string | undefined) => void,
+    addGroup: (
+        name: string | undefined,
+        editorName: string | undefined,
+        forceNoteSpeed: number | undefined,
+    ) => void,
 ) => void
 
 export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
@@ -34,8 +38,12 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
         return id
     }
 
-    const addGroup = (name: string | undefined, editorName: string | undefined) => {
-        const [id] = addToGroups(chart.groups, editorName)
+    const addGroup = (
+        name: string | undefined,
+        editorName: string | undefined,
+        forceNoteSpeed: number | undefined,
+    ) => {
+        const [id] = addToGroups(chart.groups, editorName, forceNoteSpeed)
 
         if (name) {
             groupIds[name] = id

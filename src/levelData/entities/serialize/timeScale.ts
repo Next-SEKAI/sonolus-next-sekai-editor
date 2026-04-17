@@ -6,7 +6,7 @@ import type { Store } from '../../../state/store'
 
 export const serializeTimeScaleGroupsToLevelDataEntities = (groups: Groups) =>
     new Map(
-        [...groups.entries()].map(([id, { name }]): [GroupId, LevelDataEntity] => [
+        [...groups.entries()].map(([id, { name, forceNoteSpeed }]): [GroupId, LevelDataEntity] => [
             id,
             {
                 archetype: '#TIMESCALE_GROUP',
@@ -15,6 +15,14 @@ export const serializeTimeScaleGroupsToLevelDataEntities = (groups: Groups) =>
                         name: 'editorName',
                         ref: name,
                     },
+                    ...(forceNoteSpeed
+                        ? [
+                              {
+                                  name: 'forceNoteSpeed',
+                                  value: forceNoteSpeed,
+                              },
+                          ]
+                        : []),
                 ],
             },
         ]),

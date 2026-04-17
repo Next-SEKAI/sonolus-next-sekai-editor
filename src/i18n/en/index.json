@@ -103,6 +103,7 @@
                     "title": "Edit group properties",
                     "modal": {
                         "title": "Group Properties",
+                        "forceNoteSpeed": "Force Note Speed",
                         "edited": "Edited {0} group properties"
                     }
                 },
