@@ -4,6 +4,7 @@ import { groups } from '../../../../history/groups'
 import { store } from '../../../../history/store'
 import { i18n } from '../../../../i18n'
 import { getStoreEntities } from '../../../../levelData/entities/serialize'
+import { showModal } from '../../../../modals'
 import BaseModal from '../../../../modals/BaseModal.vue'
 import BaseField from '../../../../modals/form/BaseField.vue'
 import { addToGroups, type GroupId } from '../../../../state/groups'
@@ -14,9 +15,11 @@ import { interpolate } from '../../../../utils/interpolate'
 import { notify } from '../../../notification'
 import { updateViewLastActive, view } from '../../../view'
 import DeleteIcon from './DeleteIcon.vue'
+import GroupPropertiesModal from './groupProperties/GroupPropertiesModal.vue'
 import HiddenIcon from './HiddenIcon.vue'
 import MoveDownIcon from './MoveDownIcon.vue'
 import MoveUpIcon from './MoveUpIcon.vue'
+import PropertiesIcon from './PropertiesIcon.vue'
 import VisibleIcon from './VisibleIcon.vue'
 
 const onSwitch = (group: GroupId, name: string) => {
@@ -56,6 +59,12 @@ const onMove = (group: GroupId, name: string, offset: -1 | 1) => {
     )
 
     notify(interpolate(() => i18n.value.commands.manageGroups.modal.moved, name))
+}
+
+const onProperties = (group: GroupId) => {
+    void showModal(GroupPropertiesModal, {
+        group,
+    })
 }
 
 const onDelete = (group: GroupId, name: string) => {
@@ -135,6 +144,13 @@ const onAdd = () => {
                         @click="onMove(group, name, 1)"
                     >
                         <MoveDownIcon class="size-4" />
+                    </button>
+                    <button
+                        class="rounded-full bg-button p-2 shadow-md transition-colors hover:shadow-accent active:bg-accent active:fill-button active:text-button"
+                        :title="i18n.commands.manageGroups.modal.properties.title"
+                        @click="onProperties(group)"
+                    >
+                        <PropertiesIcon class="size-4" />
                     </button>
                     <button
                         class="rounded-full bg-button p-2 shadow-md transition-colors hover:shadow-accent active:bg-accent active:fill-button active:text-button"
