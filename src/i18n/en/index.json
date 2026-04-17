@@ -96,6 +96,9 @@
                     "all": "Switched to all groups",
                     "one": "Switched to {0} group"
                 },
+                "moveUp": "Move group up",
+                "moveDown": "Move group down",
+                "moved": "Moved {0} group",
                 "delete": "Delete group",
                 "deleted": "Deleted {0} group",
                 "add": "Add",
