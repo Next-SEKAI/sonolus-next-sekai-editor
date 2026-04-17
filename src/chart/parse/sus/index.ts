@@ -1,3 +1,4 @@
+import { settings } from '../../../settings.js'
 import { addToGroups, type Groups } from '../../../state/groups.js'
 import type { Sus } from '../../../sus/parse.js'
 import type { Chart, NoteObject } from '../../index.js'
@@ -5,7 +6,7 @@ import type { Chart, NoteObject } from '../../index.js'
 export const parseSusChart = (sus: Sus) => {
     const groups: Groups = new Map()
     const [group] = addToGroups(groups)
-    addToGroups(groups)
+    if (settings.autoAddGroup) addToGroups(groups)
 
     const chart: Chart = {
         initialLife: 1000,

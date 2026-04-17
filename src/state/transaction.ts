@@ -1,4 +1,5 @@
 import type { State } from '.'
+import { settings } from '../settings'
 import type { Entity } from './entities'
 import type { SlideId } from './entities/slides'
 import { addToGroups, type GroupId, type Groups } from './groups'
@@ -28,6 +29,8 @@ export const createTransaction = (state: State) => {
         },
 
         addToGroup: (group: GroupId) => {
+            if (!settings.autoAddGroup) return
+
             lastGroup ??= [...state.groups.keys()].at(-1)
             if (group !== lastGroup) return
 

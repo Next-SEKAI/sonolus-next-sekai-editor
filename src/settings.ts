@@ -116,6 +116,8 @@ const settingsProperties = {
 
     dragToPanX: Type.Boolean(),
 
+    autoAddGroup: Type.Boolean({ default: true }),
+
     showGroupName: Type.Boolean({ default: true }),
 
     showOtherGroups: Type.Boolean({ default: true }),

@@ -364,6 +364,7 @@
             "lockScrollX": "Lock Scroll X",
             "dragToPanY": "Drag to Pan Y",
             "dragToPanX": "Drag to Pan X",
+            "autoAddGroup": "Auto Add Group",
             "showGroupName": "Show Group Name",
             "showOtherGroups": "Show Other Groups"
         },
