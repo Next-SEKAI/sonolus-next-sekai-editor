@@ -91,6 +91,11 @@
             "title": "Manage groups",
             "modal": {
                 "title": "Manage Groups",
+                "switch": "Switch to group",
+                "switched": {
+                    "all": "Switched to all groups",
+                    "one": "Switched to {0} group"
+                },
                 "add": "Add",
                 "added": "Added {0} group"
             }
