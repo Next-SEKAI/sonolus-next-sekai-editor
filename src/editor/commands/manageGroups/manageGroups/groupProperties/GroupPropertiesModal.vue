@@ -4,6 +4,7 @@ import { pushState, state } from '../../../../../history'
 import { groups } from '../../../../../history/groups'
 import { i18n } from '../../../../../i18n'
 import NameField from '../../../../../modals/form/NameField.vue'
+import OptionalNumberField from '../../../../../modals/form/OptionalNumberField.vue'
 import PropertiesModal from '../../../../../modals/form/PropertiesModal.vue'
 import type { GroupId, GroupProperties } from '../../../../../state/groups'
 import { interpolate } from '../../../../../utils/interpolate'
@@ -51,10 +52,18 @@ const createModel = <K extends keyof GroupProperties>(key: K) =>
     })
 
 const name = createModel('name')
+const forceNoteSpeed = createModel('forceNoteSpeed')
 </script>
 
 <template>
     <PropertiesModal :title="i18n.commands.manageGroups.modal.properties.modal.title">
         <NameField v-model="name" />
+        <OptionalNumberField
+            v-model="forceNoteSpeed"
+            :label="i18n.commands.manageGroups.modal.properties.modal.forceNoteSpeed"
+            :min="1"
+            :max="12"
+            step="any"
+        />
     </PropertiesModal>
 </template>

@@ -7,7 +7,11 @@ export const parseTimeScalesToChart: ParseToChart = (chart, entities, getGroup, 
     for (const entity of entities) {
         if (entity.archetype !== '#TIMESCALE_GROUP') continue
 
-        addGroup(entity.name, getOptionalRef(entity, 'editorName'))
+        addGroup(
+            entity.name,
+            getOptionalRef(entity, 'editorName'),
+            getOptionalValue(entity, 'forceNoteSpeed', forceNoteSpeedSchema),
+        )
     }
 
     for (const entity of entities) {
@@ -23,6 +27,8 @@ export const parseTimeScalesToChart: ParseToChart = (chart, entities, getGroup, 
         })
     }
 }
+
+const forceNoteSpeedSchema = Type.Number({ minimum: 1, maximum: 12 })
 
 const valueSchema = Type.Number()
 
