@@ -1,13 +1,13 @@
 import { Type } from '@sinclair/typebox'
 import { EngineArchetypeDataName, EngineArchetypeName } from '@sonolus/core'
-import { getOptionalValue, getValue, type ParseToChart } from '.'
+import { getOptionalRef, getOptionalValue, getValue, type ParseToChart } from '.'
 import { beatSchema } from './schemas'
 
 export const parseTimeScalesToChart: ParseToChart = (chart, entities, getGroup, addGroup) => {
     for (const entity of entities) {
         if (entity.archetype !== '#TIMESCALE_GROUP') continue
 
-        addGroup(entity.name)
+        addGroup(entity.name, getOptionalRef(entity, 'editorName'))
     }
 
     for (const entity of entities) {
