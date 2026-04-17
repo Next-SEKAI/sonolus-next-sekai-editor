@@ -99,6 +99,13 @@
                 "moveUp": "Move group up",
                 "moveDown": "Move group down",
                 "moved": "Moved {0} group",
+                "properties": {
+                    "title": "Edit group properties",
+                    "modal": {
+                        "title": "Group Properties",
+                        "edited": "Edited {0} group properties"
+                    }
+                },
                 "delete": "Delete group",
                 "deleted": "Deleted {0} group",
                 "add": "Add",
@@ -642,6 +649,9 @@
             "key": {
                 "input": "Input Key",
                 "press": "Press a key..."
+            },
+            "name": {
+                "label": "Name"
             },
             "noteType": {
                 "label": "Note Type",
