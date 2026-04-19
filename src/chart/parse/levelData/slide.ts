@@ -3,9 +3,10 @@ import { EngineArchetypeDataName, type LevelDataEntity } from '@sonolus/core'
 import { getOptionalRef, getOptionalValue, getValue, type ParseCtx } from '.'
 import type { GroupId } from '../../groups'
 import type { NoteObject } from '../../note'
+import type { StageId } from '../../stages'
 import { beatSchema } from './schemas'
 
-export const parseSlidesToChart = ({ chart, entities, getGroupId }: ParseCtx) => {
+export const parseSlidesToChart = ({ chart, entities, getGroupId, getStageId }: ParseCtx) => {
     const refs = new Map<string, NoteEntity>()
     const slides = new Map<string, string[]>()
 
@@ -13,7 +14,9 @@ export const parseSlidesToChart = ({ chart, entities, getGroupId }: ParseCtx) =>
         if (!isNoteEntity(entity)) continue
 
         if (!entity.name) {
-            chart.slides.push([toNoteObject(getGroupId(entity), entity, true, undefined)])
+            chart.slides.push([
+                toNoteObject(getGroupId(entity), getStageId(entity), entity, true, undefined),
+            ])
             continue
         }
 
@@ -57,6 +60,7 @@ export const parseSlidesToChart = ({ chart, entities, getGroupId }: ParseCtx) =>
                 .map(({ entity }, i) => {
                     const object = toNoteObject(
                         getGroupId(entity),
+                        getStageId(entity),
                         entity,
                         i === slide.length - 1,
                         prevActiveHead,
@@ -341,6 +345,7 @@ const startsWith = <T extends string, U extends string>(
 
 const toNoteObject = (
     groupId: GroupId,
+    stageId: StageId,
     entity: NoteEntity,
     isLast: boolean,
     prevActiveHead: NoteObject | undefined,
@@ -350,6 +355,7 @@ const toNoteObject = (
 
     const object: NoteObject = {
         groupId,
+        stageId,
         beat: getValue(entity, EngineArchetypeDataName.Beat, beatSchema),
         noteType: 'default',
         isAttached: !!getValue(entity, 'isAttached', isAttachedSchema),

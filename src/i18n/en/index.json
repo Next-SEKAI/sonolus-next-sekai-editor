@@ -113,6 +113,31 @@
                 "added": "Added {0} group"
             }
         },
+        "manageStages": {
+            "title": "Manage stages",
+            "modal": {
+                "title": "Manage Stages",
+                "switch": "Switch to stage",
+                "switched": {
+                    "all": "Switched to all stages",
+                    "one": "Switched to {0} stage"
+                },
+                "moveUp": "Move stage up",
+                "moveDown": "Move stage down",
+                "moved": "Moved {0} stage",
+                "properties": {
+                    "title": "Edit stage properties",
+                    "modal": {
+                        "title": "Stage Properties",
+                        "edited": "Edited {0} stage properties"
+                    }
+                },
+                "delete": "Delete stage",
+                "deleted": "Deleted {0} stage",
+                "add": "Add",
+                "added": "Added {0} stage"
+            }
+        },
         "note": {
             "title": {
                 "default": "Switch to Note tool",
@@ -209,6 +234,21 @@
             },
             "speedUp": {
                 "title": "Speed Up"
+            }
+        },
+        "stages": {
+            "stageAll": {
+                "title": "Switch to all stages"
+            },
+            "stagePrev": {
+                "title": "Switch to previous stage"
+            },
+            "stageNext": {
+                "title": "Switch to next stage"
+            },
+            "switched": {
+                "all": "Switched to all stages",
+                "one": "Switched to {0} stage"
             }
         },
         "stop": {
@@ -374,7 +414,9 @@
             "dragToPanX": "Drag to Pan X",
             "autoAddGroup": "Auto Add Group",
             "showGroupName": "Show Group Name",
-            "showOtherGroups": "Show Other Groups"
+            "showOtherGroups": "Show Other Groups",
+            "showStageName": "Show Stage Name",
+            "showOtherStages": "Show Other Stages"
         },
         "keyboardShortcuts": {
             "title": "Keyboard Shortcuts"
@@ -443,6 +485,10 @@
         "group": {
             "all": "all groups",
             "one": "{0} group"
+        },
+        "stage": {
+            "all": "all stages",
+            "one": "{0} stage"
         }
     },
     "tools": {
@@ -580,6 +626,11 @@
         "changes": {
             "title": "Changes",
             "message": "Changes to the chart may be lost. Continue?"
+        },
+        "dynamicStages": {
+            "title": "Dynamic Stages",
+            "message": "This feature requires dynamic stages. Do you want to enable dynamic stages?",
+            "enabled": "Enabled dynamic stages"
         }
     },
     "modals": {
@@ -667,6 +718,12 @@
             "isFake": {
                 "label": "Fake"
             },
+            "isFromStart": {
+                "label": "From Start"
+            },
+            "isUntilEnd": {
+                "label": "Until End"
+            },
             "left": {
                 "label": "Lane"
             },
@@ -708,6 +765,9 @@
             },
             "skip": {
                 "label": "Skip (beats)"
+            },
+            "stage": {
+                "label": "Stage"
             },
             "timeScale": {
                 "label": "Time Scale"

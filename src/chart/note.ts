@@ -1,4 +1,5 @@
 import type { GroupId } from './groups'
+import type { StageId } from './stages'
 
 export type NoteType = 'default' | 'trace' | 'anchor' | 'damage' | 'forceTick' | 'forceNonTick'
 
@@ -42,6 +43,7 @@ export type ConnectorLayer = 'top' | 'bottom'
 
 export type NoteObject = {
     groupId: GroupId
+    stageId: StageId
     beat: number
     noteType: NoteType
     isAttached: boolean

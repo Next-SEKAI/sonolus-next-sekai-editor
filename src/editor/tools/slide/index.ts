@@ -4,6 +4,7 @@ import type { NoteObject } from '../../../chart/note'
 import { pushState, replaceState, state } from '../../../history'
 import { defaultGroupId } from '../../../history/groups'
 import { selectedEntities } from '../../../history/selectedEntities'
+import { defaultStageId } from '../../../history/stages'
 import { store } from '../../../history/store'
 import { i18n } from '../../../i18n'
 import { showModal } from '../../../modals'
@@ -80,6 +81,7 @@ export const slide: Tool = {
                 creating: [
                     toNoteEntity(getSelectedSlideId() ?? createSlideId(), {
                         groupId: view.groupId ?? defaultGroupId.value,
+                        stageId: view.stageId ?? defaultStageId.value,
                         beat,
                         left: lane,
                         ...getPropertiesFromSelection(beat),
@@ -140,6 +142,7 @@ export const slide: Tool = {
         } else {
             add(getSelectedSlideId() ?? createSlideId(), {
                 groupId: view.groupId ?? defaultGroupId.value,
+                stageId: view.stageId ?? defaultStageId.value,
                 beat,
                 left: lane,
                 ...getPropertiesFromSelection(beat),
@@ -210,6 +213,7 @@ export const slide: Tool = {
                     creating: [
                         toNoteEntity(getSelectedSlideId() ?? createSlideId(), {
                             groupId: view.groupId ?? defaultGroupId.value,
+                            stageId: view.stageId ?? defaultStageId.value,
                             beat,
                             ...getPropertiesFromSelection(beat),
                             left,
@@ -274,6 +278,7 @@ export const slide: Tool = {
 
                 add(getSelectedSlideId() ?? createSlideId(), {
                     groupId: view.groupId ?? defaultGroupId.value,
+                    stageId: view.stageId ?? defaultStageId.value,
                     beat,
                     ...getPropertiesFromSelection(beat),
                     left,

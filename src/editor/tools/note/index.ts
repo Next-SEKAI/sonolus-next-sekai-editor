@@ -4,6 +4,7 @@ import type { NoteObject } from '../../../chart/note'
 import { pushState, replaceState, state } from '../../../history'
 import { defaultGroupId } from '../../../history/groups'
 import { selectedEntities } from '../../../history/selectedEntities'
+import { defaultStageId } from '../../../history/stages'
 import { i18n } from '../../../i18n'
 import { showModal } from '../../../modals'
 import { settings } from '../../../settings'
@@ -78,6 +79,7 @@ export const note: Tool = {
                 creating: [
                     toNoteEntity(createSlideId(), {
                         groupId: view.groupId ?? defaultGroupId.value,
+                        stageId: view.stageId ?? defaultStageId.value,
                         beat,
                         left: lane,
                         ...getPropertiesFromSelection(),
@@ -138,6 +140,7 @@ export const note: Tool = {
         } else {
             add({
                 groupId: view.groupId ?? defaultGroupId.value,
+                stageId: view.stageId ?? defaultStageId.value,
                 beat,
                 left: lane,
                 ...getPropertiesFromSelection(),
@@ -208,6 +211,7 @@ export const note: Tool = {
                     creating: [
                         toNoteEntity(createSlideId(), {
                             groupId: view.groupId ?? defaultGroupId.value,
+                            stageId: view.stageId ?? defaultStageId.value,
                             beat,
                             ...getPropertiesFromSelection(),
                             left,
@@ -272,6 +276,7 @@ export const note: Tool = {
 
                 add({
                     groupId: view.groupId ?? defaultGroupId.value,
+                    stageId: view.stageId ?? defaultStageId.value,
                     beat,
                     ...getPropertiesFromSelection(),
                     left,
@@ -310,6 +315,7 @@ export const note: Tool = {
 export const editNote = (entity: NoteEntity, object: Partial<NoteObject>) => {
     edit(entity, {
         groupId: object.groupId ?? entity.groupId,
+        stageId: object.stageId ?? entity.stageId,
         beat: object.beat ?? entity.beat,
         noteType: object.noteType ?? entity.noteType,
         isAttached: object.isAttached ?? entity.isAttached,
@@ -342,6 +348,7 @@ export const editSelectedNote = (
 ) => {
     return replaceNote(transaction, entity, {
         groupId: object.groupId ?? entity.groupId,
+        stageId: object.stageId ?? entity.stageId,
         beat: object.beat ?? entity.beat,
         noteType: object.noteType ?? entity.noteType,
         isAttached: object.isAttached ?? entity.isAttached,

@@ -27,19 +27,8 @@ const getLayer = (entity: Entity) => {
             return layers.connector[entity.head.connectorLayer][entity.head.connectorType]
     }
 }
-</script>
 
-<script setup lang="ts">
-import { computed } from 'vue'
-import { entityComponents } from '.'
-import { beats, keys } from '..'
-import { selectedEntities } from '../../history/selectedEntities'
-import { cullAllEntities } from '../../history/store'
-import { settings } from '../../settings'
-import type { Entity } from '../../state/entities'
-import { hoveredEntities, view } from '../view'
-
-const isEntityVisible = (entity: Entity) => {
+const isEntityVisibleByGroup = (entity: Entity) => {
     if (view.groupId === undefined) return true
 
     switch (entity.type) {
@@ -55,6 +44,34 @@ const isEntityVisible = (entity: Entity) => {
             )
     }
 }
+
+const isEntityVisibleByStage = (entity: Entity) => {
+    if (view.stageId === undefined) return true
+
+    switch (entity.type) {
+        case 'bpm':
+        case 'timeScale':
+            return true
+        case 'note':
+            return entity.stageId === view.stageId
+        case 'connector':
+            return (
+                entity.attachHead.stageId === view.stageId ||
+                entity.attachTail.stageId === view.stageId
+            )
+    }
+}
+</script>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import { entityComponents } from '.'
+import { beats, keys } from '..'
+import { selectedEntities } from '../../history/selectedEntities'
+import { cullAllEntities } from '../../history/store'
+import { settings } from '../../settings'
+import type { Entity } from '../../state/entities'
+import { hoveredEntities, view } from '../view'
 
 const culledEntities = computed(() => [...cullAllEntities(keys.value.min, keys.value.max)])
 
@@ -76,12 +93,17 @@ const visibleEntityInfos = computed(() => {
         entity,
         isSelected: selectedEntities.value.includes(entity),
         isHovered: hoveredEntities.value.includes(entity),
-        isVisible: isEntityVisible(entity),
+        isVisibleByGroup: isEntityVisibleByGroup(entity),
+        isVisibleByStage: isEntityVisibleByStage(entity),
         layer: getLayer(entity),
     }))
 
     if (!settings.showOtherGroups) {
-        entities = entities.filter((entity) => entity.isVisible)
+        entities = entities.filter((entity) => entity.isVisibleByGroup)
+    }
+
+    if (!settings.showOtherStages) {
+        entities = entities.filter((entity) => entity.isVisibleByStage)
     }
 
     return entities.sort(
@@ -94,10 +116,16 @@ const visibleEntityInfos = computed(() => {
 <template>
     <component
         :is="entityComponents[entity.type]"
-        v-for="{ entity, isSelected, isHovered, isVisible } in visibleEntityInfos"
+        v-for="{
+            entity,
+            isSelected,
+            isHovered,
+            isVisibleByGroup,
+            isVisibleByStage,
+        } in visibleEntityInfos"
         :key="entity as never"
         :entity="entity as never"
         :is-highlighted="isSelected || isHovered"
-        :opacity="isVisible ? 1 : 0.25"
+        :opacity="isVisibleByGroup && isVisibleByStage ? 1 : 0.25"
     />
 </template>

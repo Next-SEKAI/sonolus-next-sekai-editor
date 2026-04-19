@@ -34,9 +34,11 @@ export const useAutoSave = () => {
                     serializeAutoSave(
                         serializeToLevelData(
                             state.initialLife,
+                            state.isDynamicStages,
                             state.bgm.offset,
                             state.store,
                             state.groups,
+                            state.stages,
                         ),
                         filename.value,
                     ),

@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { computed, useTemplateRef, watch, type Ref } from 'vue'
 import { useAutoSave } from '../history/autoSave'
+import { isDynamicStages } from '../history/dynamicStages.ts'
 import { groups } from '../history/groups'
+import { stages } from '../history/stages'
 import { i18n } from '../i18n'
 import { time } from '../time'
 import { interpolateRaw } from '../utils/interpolate'
@@ -56,12 +58,35 @@ watch([groups, brushProperties], () => {
     brushProperties.value.groupId = undefined
 })
 
+watch([stages, view], () => {
+    if (!view.stageId) return
+    if (isDynamicStages.value && stages.value.has(view.stageId)) return
+
+    view.stageId = undefined
+})
+
+watch([stages, brushProperties], () => {
+    if (!brushProperties.value.stageId) return
+    if (isDynamicStages.value && stages.value.has(brushProperties.value.stageId)) return
+
+    brushProperties.value.stageId = undefined
+})
+
 const group = computed(() =>
     view.groupId === undefined
         ? i18n.value.statusBar.group.all
         : interpolateRaw(
               i18n.value.statusBar.group.one,
               groups.value.get(view.groupId)?.name ?? '',
+          ),
+)
+
+const stage = computed(() =>
+    view.stageId === undefined
+        ? i18n.value.statusBar.stage.all
+        : interpolateRaw(
+              i18n.value.statusBar.stage.one,
+              stages.value.get(view.stageId)?.name ?? '',
           ),
 )
 </script>
@@ -113,6 +138,7 @@ const group = computed(() =>
         </div>
         <div class="z-10 flex gap-4 bg-preview px-2 py-1 text-xs text-white/50">
             <span class="flex-grow">{{ tool.title() }}</span>
+            <span v-if="isDynamicStages">{{ stage }}</span>
             <span>{{ group }}</span>
             <span>1/{{ view.division }}</span>
         </div>

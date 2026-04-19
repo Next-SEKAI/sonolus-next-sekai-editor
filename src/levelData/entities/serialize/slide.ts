@@ -1,10 +1,12 @@
 import { EngineArchetypeDataName, type LevelDataEntity } from '@sonolus/core'
 import type { GroupId } from '../../../chart/groups'
+import type { StageId } from '../../../chart/stages'
 import type { NoteEntity } from '../../../state/entities/slides/note'
 import type { Store } from '../../../state/store'
 
 export const serializeSlidesToLevelDataEntities = (
     groupEntities: Map<GroupId, LevelDataEntity>,
+    stageEntities: Map<StageId, LevelDataEntity> | undefined,
     store: Store,
     getName: () => string,
 ) => {
@@ -27,6 +29,12 @@ export const serializeSlidesToLevelDataEntities = (
             const timeScaleGroup = groupEntities.get(note.groupId)
             if (!timeScaleGroup) throw new Error('Unexpected missing group')
 
+            let stage: LevelDataEntity | undefined
+            if (stageEntities) {
+                stage = stageEntities.get(note.stageId)
+                if (!stage) throw new Error('Unexpected missing stage')
+            }
+
             const entity: LevelDataEntity = {
                 archetype: '',
                 data: [
@@ -34,6 +42,14 @@ export const serializeSlidesToLevelDataEntities = (
                         name: '#TIMESCALE_GROUP',
                         ref: (timeScaleGroup.name ??= getName()),
                     },
+                    ...(stage
+                        ? [
+                              {
+                                  name: 'stage',
+                                  ref: (stage.name ??= getName()),
+                              },
+                          ]
+                        : []),
                     {
                         name: EngineArchetypeDataName.Beat,
                         value: note.beat,

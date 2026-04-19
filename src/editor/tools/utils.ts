@@ -66,7 +66,18 @@ export const toSelection = (startLane: number, startTime: number, x: number, y: 
     }
 }
 
-const isVisible = (entity: Entity) =>
-    view.groupId === undefined ||
-    entity.type === 'bpm' ||
-    (entity.type !== 'connector' && entity.groupId === view.groupId)
+const isVisible = (entity: Entity) => {
+    switch (entity.type) {
+        case 'bpm':
+            return true
+        case 'timeScale':
+            return view.groupId === undefined || entity.groupId === view.groupId
+        case 'note':
+            return (
+                (view.groupId === undefined || entity.groupId === view.groupId) &&
+                (view.stageId === undefined || entity.stageId === view.stageId)
+            )
+        case 'connector':
+            return false
+    }
+}

@@ -17,6 +17,7 @@ import { help } from './help'
 import { jumpDown } from './jumps/jumpDown'
 import { jumpUp } from './jumps/jumpUp'
 import { manageGroups } from './manageGroups'
+import { manageStages } from './manageStages'
 import { createNote, note } from './note'
 import { offset } from './offset'
 import { open } from './open'
@@ -38,6 +39,9 @@ import { createSlide, slide } from './slide'
 import { snapping } from './snapping'
 import { speedDown } from './speeds/speedDown'
 import { speedUp } from './speeds/speedUp'
+import { stageAll } from './stages/stageAll'
+import { stageNext } from './stages/stageNext'
+import { stagePrev } from './stages/stagePrev'
 import { stop } from './stop'
 import { timeScale } from './timeScale'
 import { toggleBgmVolume } from './toggleVolume/bgm'
@@ -106,6 +110,11 @@ export const commands = {
     groupPrev,
     groupNext,
     groupAll,
+
+    manageStages,
+    stagePrev,
+    stageNext,
+    stageAll,
 
     scrollLeft,
     scrollRight,

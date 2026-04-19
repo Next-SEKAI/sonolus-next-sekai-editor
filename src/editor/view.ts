@@ -1,6 +1,7 @@
 import { computed, shallowReactive, watch } from 'vue'
 import { times } from '.'
 import type { GroupId } from '../chart/groups'
+import type { StageId } from '../chart/stages'
 import { bpms } from '../history/bpms'
 import { settings } from '../settings'
 import type { Entity } from '../state/entities'
@@ -33,6 +34,7 @@ export const view = shallowReactive({
     snapping: 'absolute' as 'absolute' | 'relative',
 
     groupId: optional<GroupId>(),
+    stageId: optional<StageId>(),
 
     pointer: {
         x: 0,

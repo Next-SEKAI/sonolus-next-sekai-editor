@@ -4,10 +4,12 @@ import type { BpmObject } from '../../../chart/bpm'
 import type { GroupId } from '../../../chart/groups'
 import type { FlickDirection, NoteObject } from '../../../chart/note'
 import { parseLevelDataChart } from '../../../chart/parse/levelData'
+import type { StageId } from '../../../chart/stages'
 import type { TimeScaleObject } from '../../../chart/timeScale'
 import { parseClipboardData } from '../../../clipboardData/parse'
 import { pushState, state } from '../../../history'
 import { defaultGroupId, groups } from '../../../history/groups'
+import { defaultStageId, stages } from '../../../history/stages'
 import { i18n } from '../../../i18n'
 import type { Entity } from '../../../state/entities'
 import { toBpmEntity, type BpmEntity } from '../../../state/entities/bpm'
@@ -163,9 +165,19 @@ const getData = (text: string) => {
             [...chart.groups.keys()].map((id, index) => [id, groupIds[index]]),
         )
 
+        const stageIds = [...stages.value.keys()]
+        const stageMappings = new Map(
+            [...chart.stages.keys()].map((id, index) => [id, stageIds[index]]),
+        )
+
         const mapGroupId = <T extends { groupId: GroupId }>(object: T) => ({
             ...object,
             groupId: groupMappings.get(object.groupId) ?? defaultGroupId.value,
+        })
+
+        const mapStageId = <T extends { stageId: StageId }>(object: T) => ({
+            ...object,
+            stageId: stageMappings.get(object.stageId) ?? defaultStageId.value,
         })
 
         return {
@@ -178,7 +190,10 @@ const getData = (text: string) => {
                 ...chart.slides.flatMap((slide) => {
                     const slideId = createSlideId()
 
-                    return slide.map(mapGroupId).map((note) => toNoteEntity(slideId, note))
+                    return slide
+                        .map(mapGroupId)
+                        .map(mapStageId)
+                        .map((note) => toNoteEntity(slideId, note))
                 }),
             ],
         }
@@ -225,6 +240,7 @@ const toMovedNoteObject = (
 ): NoteObject => ({
     ...entity,
     groupId: view.groupId ?? entity.groupId,
+    stageId: view.stageId ?? entity.stageId,
     beat,
     left: flip
         ? -(entity.left + entity.size) + align(startLane) + align(lane)

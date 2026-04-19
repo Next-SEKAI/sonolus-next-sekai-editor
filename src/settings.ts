@@ -123,6 +123,10 @@ const settingsProperties = {
 
     showOtherGroups: Type.Boolean({ default: true }),
 
+    showStageName: Type.Boolean({ default: true }),
+
+    showOtherStages: Type.Boolean({ default: true }),
+
     toolbar: Type.Transform(
         Type.Array(
             Type.Transform(Type.Array(Type.String()))
@@ -147,6 +151,7 @@ const settingsProperties = {
                     ['slide4', 'slide3', 'slide2', 'slide1', 'slide0', 'slide'],
                     ['timeScale', 'bpm'],
                     ['groupPrev', 'groupNext', 'groupAll', 'manageGroups'],
+                    ['stagePrev', 'stageNext', 'stageAll', 'manageStages'],
                     [
                         'scrollLeft',
                         'scrollRight',
@@ -224,6 +229,7 @@ const settingsProperties = {
                 bpm: 'q',
                 timeScale: 'w',
                 manageGroups: 'e',
+                manageStages: 'r',
                 scrollLeft: 'ArrowLeft',
                 scrollRight: 'ArrowRight',
                 scrollUp: 'ArrowUp',

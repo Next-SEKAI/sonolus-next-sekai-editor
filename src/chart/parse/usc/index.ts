@@ -2,12 +2,18 @@ import type { Chart } from '../..'
 import { settings } from '../../../settings'
 import type { UscObject } from '../../../usc/objects/schema'
 import { addToGroups } from '../../groups'
+import { addDefaultStageToStages, type Stages } from '../../stages'
 
 export const parseUscChart = (objects: UscObject[]) => {
+    const stages: Stages = new Map()
+    const [stageId] = addDefaultStageToStages(stages)
+
     const chart: Chart = {
         initialLife: 1000,
+        isDynamicStages: false,
         bpms: [],
         groups: new Map(),
+        stages,
         timeScales: [],
         slides: [],
     }
@@ -48,6 +54,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                 chart.slides.push([
                     {
                         groupId: getGroupId(object.timeScaleGroup),
+                        stageId,
                         beat: object.beat,
                         noteType: object.trace ? 'trace' : 'default',
                         isAttached: false,
@@ -73,6 +80,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                 chart.slides.push(
                     object.connections.map((connection) => ({
                         groupId: getGroupId(connection.timeScaleGroup ?? 0),
+                        stageId,
                         beat: connection.beat,
                         noteType:
                             connection.type === 'start' || connection.type === 'end'
@@ -109,6 +117,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                 chart.slides.push(
                     object.midpoints.map((midpoint, i) => ({
                         groupId: getGroupId(midpoint.timeScaleGroup),
+                        stageId,
                         beat: midpoint.beat,
                         noteType: 'anchor',
                         isAttached: false,
@@ -136,6 +145,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                 chart.slides.push([
                     {
                         groupId: getGroupId(object.timeScaleGroup),
+                        stageId,
                         beat: object.beat,
                         noteType: 'damage',
                         isAttached: false,
