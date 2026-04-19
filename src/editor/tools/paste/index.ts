@@ -4,7 +4,7 @@ import type { BpmObject, FlickDirection, NoteObject, TimeScaleObject } from '../
 import { parseLevelDataChart } from '../../../chart/parse/levelData'
 import { parseClipboardData } from '../../../clipboardData/parse'
 import { pushState, state } from '../../../history'
-import { defaultGroup, groups } from '../../../history/groups'
+import { defaultGroupId, groups } from '../../../history/groups'
 import { i18n } from '../../../i18n'
 import type { Entity } from '../../../state/entities'
 import { toBpmEntity, type BpmEntity } from '../../../state/entities/bpm'
@@ -158,12 +158,12 @@ const getData = (text: string) => {
 
         const groupIds = [...groups.value.keys()]
         const groupMappings = new Map(
-            [...chart.groups.keys()].map((group, index) => [group, groupIds[index]]),
+            [...chart.groups.keys()].map((id, index) => [id, groupIds[index]]),
         )
 
-        const mapGroup = <T extends { group: GroupId }>(object: T) => ({
+        const mapGroupId = <T extends { groupId: GroupId }>(object: T) => ({
             ...object,
-            group: groupMappings.get(object.group) ?? defaultGroup.value,
+            groupId: groupMappings.get(object.groupId) ?? defaultGroupId.value,
         })
 
         return {
@@ -171,12 +171,12 @@ const getData = (text: string) => {
             beat: clipboardData.beat,
             entities: [
                 ...chart.bpms.map(toBpmEntity),
-                ...chart.timeScales.map(mapGroup).map(toTimeScaleEntity),
+                ...chart.timeScales.map(mapGroupId).map(toTimeScaleEntity),
 
                 ...chart.slides.flatMap((slide) => {
                     const slideId = createSlideId()
 
-                    return slide.map(mapGroup).map((note) => toNoteEntity(slideId, note))
+                    return slide.map(mapGroupId).map((note) => toNoteEntity(slideId, note))
                 }),
             ],
         }
@@ -199,7 +199,7 @@ const toMovedBpmObject = (entity: BpmEntity, beat: number): BpmObject => ({
 })
 
 const toMovedTimeScaleObject = (entity: TimeScaleEntity, beat: number): TimeScaleObject => ({
-    group: view.group ?? entity.group,
+    groupId: view.groupId ?? entity.groupId,
     beat,
     timeScale: entity.timeScale,
     skip: entity.skip,
@@ -225,7 +225,7 @@ const toMovedNoteObject = (
     flip: boolean,
 ): NoteObject => ({
     ...entity,
-    group: view.group ?? entity.group,
+    groupId: view.groupId ?? entity.groupId,
     beat,
     left: flip
         ? -(entity.left + entity.size) + align(startLane) + align(lane)
@@ -278,7 +278,7 @@ const pastes: {
         const object = toMovedTimeScaleObject(entity, beat)
 
         const overlap = getInStoreGrid(transaction.store.grid, 'timeScale', object.beat)?.find(
-            (entity) => entity.beat === object.beat && entity.group === object.group,
+            (entity) => entity.beat === object.beat && entity.groupId === object.groupId,
         )
         if (overlap) removeTimeScale(transaction, overlap)
 

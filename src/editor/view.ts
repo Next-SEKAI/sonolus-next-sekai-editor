@@ -32,7 +32,7 @@ export const view = shallowReactive({
     division: 4,
     snapping: 'absolute' as 'absolute' | 'relative',
 
-    group: optional<GroupId>(),
+    groupId: optional<GroupId>(),
 
     pointer: {
         x: 0,

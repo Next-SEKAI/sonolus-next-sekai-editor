@@ -16,7 +16,7 @@ export type BpmObject = {
 export type TimeScaleEase = 'none' | 'linear'
 
 export type TimeScaleObject = {
-    group: GroupId
+    groupId: GroupId
     beat: number
     timeScale: number
     skip: number
@@ -65,7 +65,7 @@ export type ConnectorGuideColor =
 export type ConnectorLayer = 'top' | 'bottom'
 
 export type NoteObject = {
-    group: GroupId
+    groupId: GroupId
     beat: number
     noteType: NoteType
     isAttached: boolean

@@ -6,7 +6,7 @@ import type { Transaction } from '../transaction'
 export const addTimeScale = ({ store, addToGroup }: Transaction, object: TimeScaleObject) => {
     const entity = toTimeScaleEntity(object)
     addToStoreGrid(store.grid, entity, entity.beat)
-    addToGroup(object.group)
+    addToGroup(object.groupId)
 
     return [entity]
 }

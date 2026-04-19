@@ -58,6 +58,6 @@ export const toSelection = (startLane: number, startTime: number, x: number, y: 
 }
 
 const isVisible = (entity: Entity) =>
-    view.group === undefined ||
+    view.groupId === undefined ||
     entity.type === 'bpm' ||
-    (entity.type !== 'connector' && entity.group === view.group)
+    (entity.type !== 'connector' && entity.groupId === view.groupId)

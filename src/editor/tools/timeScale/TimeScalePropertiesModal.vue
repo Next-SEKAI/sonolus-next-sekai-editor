@@ -17,7 +17,7 @@ const timeScale = createModel('timeScale')
 const skip = createModel('skip')
 const ease = createModel('ease')
 const hideNotes = createModel('hideNotes')
-const group = createModel('group')
+const groupId = createModel('groupId')
 const beat = createModel('beat')
 </script>
 
@@ -27,7 +27,7 @@ const beat = createModel('beat')
         <MultiSkipField v-model="skip" />
         <MultiTimeScaleEaseField v-model="ease" />
         <MultiHideNotesField v-model="hideNotes" />
-        <MultiGroupField v-model="group" />
+        <MultiGroupField v-model="groupId" />
         <MultiBeatField v-if="entities.length === 1" v-model="beat" />
     </PropertiesModal>
 </template>

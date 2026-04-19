@@ -14,23 +14,23 @@ export const groupPrev: Command = {
 
     execute() {
         const ids = [...groups.value.keys()]
-        const index = view.group ? ids.indexOf(view.group) : -1
+        const index = view.groupId ? ids.indexOf(view.groupId) : -1
 
         if (index < 0) {
-            view.group = ids.at(-1)
+            view.groupId = ids.at(-1)
         } else if (index === 0) {
-            view.group = undefined
+            view.groupId = undefined
         } else {
-            view.group = ids[index - 1]
+            view.groupId = ids[index - 1]
         }
         updateViewLastActive()
 
         notify(
-            view.group === undefined
+            view.groupId === undefined
                 ? () => i18n.value.commands.groups.switched.all
                 : interpolate(
                       () => i18n.value.commands.groups.switched.one,
-                      groups.value.get(view.group)?.name ?? '',
+                      groups.value.get(view.groupId)?.name ?? '',
                   ),
         )
     },

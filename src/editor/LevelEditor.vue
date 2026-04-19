@@ -42,18 +42,18 @@ watch(time, () => {
 })
 
 watch([groups, view], () => {
-    if (!view.group) return
-    if (groups.value.has(view.group)) return
+    if (!view.groupId) return
+    if (groups.value.has(view.groupId)) return
 
-    view.group = undefined
+    view.groupId = undefined
 })
 
 const group = computed(() =>
-    view.group === undefined
+    view.groupId === undefined
         ? () => i18n.value.statusBar.group.all
         : interpolate(
               () => i18n.value.statusBar.group.one,
-              groups.value.get(view.group)?.name ?? '',
+              groups.value.get(view.groupId)?.name ?? '',
           ),
 )
 </script>

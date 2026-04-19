@@ -31,7 +31,7 @@ const { entities, types, noteFields, createModel } = useSelectedEntitiesProperti
 
 const beat = createModel('beat')
 const bpm = createModel('bpm')
-const group = createModel('group')
+const groupId = createModel('groupId')
 const timeScale = createModel('timeScale')
 const skip = createModel('skip')
 const ease = createModel('ease')
@@ -64,7 +64,7 @@ const connectorLayer = createModel('connectorLayer')
             <MultiTimeScaleEaseField v-if="types.timeScale" v-model="ease" />
             <MultiHideNotesField v-if="types.timeScale" v-model="hideNotes" />
             <MultiNoteTypeField v-if="types.note" v-model="noteType" />
-            <MultiGroupField v-if="types.timeScale || types.note" v-model="group" />
+            <MultiGroupField v-if="types.timeScale || types.note" v-model="groupId" />
             <MultiBeatField
                 v-if="entities.length === 1 || (!types.bpm && !types.timeScale)"
                 v-model="beat"

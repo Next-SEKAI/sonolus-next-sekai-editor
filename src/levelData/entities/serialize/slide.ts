@@ -24,7 +24,7 @@ export const serializeSlidesToLevelDataEntities = (
     for (const infos of store.slides.info.values()) {
         let prev: LevelDataEntity | undefined
         for (const [i, { note }] of infos.entries()) {
-            const timeScaleGroup = timeScaleGroupEntities.get(note.group)
+            const timeScaleGroup = timeScaleGroupEntities.get(note.groupId)
             if (!timeScaleGroup) throw new Error('Unexpected missing group')
 
             const entity: LevelDataEntity = {

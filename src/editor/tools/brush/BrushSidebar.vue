@@ -26,7 +26,7 @@ import { useProperties } from '../../utils/properties'
 
 const createModel = useProperties(brushProperties)
 
-const group = createModel('group')
+const groupId = createModel('groupId')
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')
 const size = createModel('size')
@@ -51,7 +51,7 @@ const hideNotes = createModel('hideNotes')
 <template>
     <BaseSidebar :title="i18n.tools.brush.sidebar.title">
         <OptionalNoteTypeField v-model="noteType" />
-        <OptionalGroupField v-model="group" />
+        <OptionalGroupField v-model="groupId" />
         <OptionalIsAttachedField v-model="isAttached" />
         <OptionalSizeField v-model="size" />
         <OptionalIsCriticalField v-model="isCritical" />
