@@ -4,7 +4,7 @@ import type { GroupId } from '../groups'
 
 export type TimeScaleEntity = BaseEntity & {
     type: 'timeScale'
-    group: GroupId
+    groupId: GroupId
     timeScale: number
     skip: number
     ease: TimeScaleEase
@@ -20,7 +20,7 @@ export const toTimeScaleEntity = (object: TimeScaleObject): TimeScaleEntity => (
         h: 0.4,
     },
 
-    group: object.group,
+    groupId: object.groupId,
     beat: object.beat,
     timeScale: object.timeScale,
     skip: object.skip,

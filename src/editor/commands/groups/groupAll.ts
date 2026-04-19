@@ -11,7 +11,7 @@ export const groupAll: Command = {
     },
 
     execute() {
-        view.group = undefined
+        view.groupId = undefined
         updateViewLastActive()
 
         notify(() => i18n.value.commands.groups.switched.all)

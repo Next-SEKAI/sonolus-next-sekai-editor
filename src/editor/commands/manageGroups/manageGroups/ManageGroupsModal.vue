@@ -22,24 +22,24 @@ import MoveUpIcon from './MoveUpIcon.vue'
 import PropertiesIcon from './PropertiesIcon.vue'
 import VisibleIcon from './VisibleIcon.vue'
 
-const onSwitch = (group: GroupId, name: string) => {
-    if (view.group === group) {
-        view.group = undefined
+const onSwitch = (groupId: GroupId, name: string) => {
+    if (view.groupId === groupId) {
+        view.groupId = undefined
         updateViewLastActive()
 
         notify(() => i18n.value.commands.manageGroups.modal.switched.all)
     } else {
-        view.group = group
+        view.groupId = groupId
         updateViewLastActive()
 
         notify(interpolate(() => i18n.value.commands.manageGroups.modal.switched.one, name))
     }
 }
 
-const onMove = (group: GroupId, name: string, offset: -1 | 1) => {
+const onMove = (groupId: GroupId, name: string, offset: -1 | 1) => {
     const entries = [...groups.value.entries()]
 
-    const aIndex = entries.findIndex((entry) => entry[0] === group)
+    const aIndex = entries.findIndex(([id]) => id === groupId)
     const aEntry = entries[aIndex]
     if (!aEntry) return
 
@@ -61,23 +61,23 @@ const onMove = (group: GroupId, name: string, offset: -1 | 1) => {
     notify(interpolate(() => i18n.value.commands.manageGroups.modal.moved, name))
 }
 
-const onProperties = (group: GroupId) => {
+const onProperties = (groupId: GroupId) => {
     void showModal(GroupPropertiesModal, {
-        group,
+        groupId,
     })
 }
 
-const onDelete = (group: GroupId, name: string) => {
+const onDelete = (groupId: GroupId, name: string) => {
     const transaction = createTransaction(state.value)
 
     for (const entity of getStoreEntities(store.value.grid.timeScale)) {
-        if (entity.group !== group) continue
+        if (entity.groupId !== groupId) continue
 
         removeTimeScale(transaction, entity)
     }
 
     for (const entity of getStoreEntities(store.value.grid.note)) {
-        if (entity.group !== group) continue
+        if (entity.groupId !== groupId) continue
 
         removeNote(transaction, entity)
     }
@@ -85,7 +85,7 @@ const onDelete = (group: GroupId, name: string) => {
     const newState = transaction.commit([])
 
     newState.groups = new Map(newState.groups)
-    newState.groups.delete(group)
+    newState.groups.delete(groupId)
     if (!newState.groups.size) addToGroups(newState.groups)
 
     pushState(
@@ -119,43 +119,45 @@ const onAdd = () => {
 <template>
     <BaseModal :title="i18n.commands.manageGroups.modal.title">
         <div class="flex flex-col gap-2">
-            <BaseField v-for="[group, { name }] in groups" :key="group" :label="name">
+            <BaseField v-for="[groupId, { name }] in groups" :key="groupId" :label="name">
                 <div class="flex gap-1">
                     <button
                         class="rounded-full bg-button p-2 shadow-md transition-colors hover:shadow-accent active:bg-accent active:fill-button active:text-button"
                         :title="i18n.commands.manageGroups.modal.switch"
-                        @click="onSwitch(group, name)"
+                        @click="onSwitch(groupId, name)"
                     >
                         <component
-                            :is="!view.group || view.group === group ? VisibleIcon : HiddenIcon"
+                            :is="
+                                !view.groupId || view.groupId === groupId ? VisibleIcon : HiddenIcon
+                            "
                             class="size-4"
                         />
                     </button>
                     <button
                         class="rounded-full bg-button p-2 shadow-md transition-colors hover:shadow-accent active:bg-accent active:fill-button active:text-button"
                         :title="i18n.commands.manageGroups.modal.moveUp"
-                        @click="onMove(group, name, -1)"
+                        @click="onMove(groupId, name, -1)"
                     >
                         <MoveUpIcon class="size-4" />
                     </button>
                     <button
                         class="rounded-full bg-button p-2 shadow-md transition-colors hover:shadow-accent active:bg-accent active:fill-button active:text-button"
                         :title="i18n.commands.manageGroups.modal.moveDown"
-                        @click="onMove(group, name, 1)"
+                        @click="onMove(groupId, name, 1)"
                     >
                         <MoveDownIcon class="size-4" />
                     </button>
                     <button
                         class="rounded-full bg-button p-2 shadow-md transition-colors hover:shadow-accent active:bg-accent active:fill-button active:text-button"
                         :title="i18n.commands.manageGroups.modal.properties.title"
-                        @click="onProperties(group)"
+                        @click="onProperties(groupId)"
                     >
                         <PropertiesIcon class="size-4" />
                     </button>
                     <button
                         class="rounded-full bg-button p-2 shadow-md transition-colors hover:shadow-accent active:bg-accent active:fill-button active:text-button"
                         :title="i18n.commands.manageGroups.modal.delete"
-                        @click="onDelete(group, name)"
+                        @click="onDelete(groupId, name)"
                     >
                         <DeleteIcon class="size-4" />
                     </button>

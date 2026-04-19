@@ -36,18 +36,18 @@ export const serializeTimeScaleChangesToLevelDataEntities = (
     const timeScalesByGroup = new Map<GroupId, TimeScaleEntity[]>()
 
     for (const timeScale of getStoreEntities(store.grid.timeScale)) {
-        const timeScales = timeScalesByGroup.get(timeScale.group)
+        const timeScales = timeScalesByGroup.get(timeScale.groupId)
         if (timeScales) {
             timeScales.push(timeScale)
         } else {
-            timeScalesByGroup.set(timeScale.group, [timeScale])
+            timeScalesByGroup.set(timeScale.groupId, [timeScale])
         }
     }
 
     const entities: LevelDataEntity[] = []
 
-    for (const [group, timeScales] of timeScalesByGroup) {
-        const timeScaleGroup = timeScaleGroupEntities.get(group)
+    for (const [groupId, timeScales] of timeScalesByGroup) {
+        const timeScaleGroup = timeScaleGroupEntities.get(groupId)
         if (!timeScaleGroup) throw new Error('Unexpected missing group')
 
         let prev: LevelDataEntity | undefined

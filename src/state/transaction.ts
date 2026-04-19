@@ -28,11 +28,11 @@ export const createTransaction = (state: State) => {
             },
         },
 
-        addToGroup: (group: GroupId) => {
+        addToGroup: (groupId: GroupId) => {
             if (!settings.autoAddGroup) return
 
             lastGroup ??= [...state.groups.keys()].at(-1)
-            if (group !== lastGroup) return
+            if (groupId !== lastGroup) return
 
             groups = new Map(state.groups)
             addToGroups(groups)

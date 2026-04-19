@@ -19,16 +19,19 @@ import type { Entity } from '../../state/entities'
 import { hoveredEntities, view } from '../view'
 
 const isEntityVisible = (entity: Entity) => {
-    if (view.group === undefined) return true
+    if (view.groupId === undefined) return true
 
     switch (entity.type) {
         case 'bpm':
             return true
         case 'timeScale':
         case 'note':
-            return entity.group === view.group
+            return entity.groupId === view.groupId
         case 'connector':
-            return entity.attachHead.group === view.group || entity.attachTail.group === view.group
+            return (
+                entity.attachHead.groupId === view.groupId ||
+                entity.attachTail.groupId === view.groupId
+            )
     }
 }
 

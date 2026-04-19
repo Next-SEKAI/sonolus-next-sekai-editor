@@ -11,7 +11,7 @@ export const addNote = (
 ) => {
     const note = toNoteEntity(slideId, object)
     addToStoreGrid(store.grid, note, note.beat)
-    addToGroup(note.group)
+    addToGroup(note.groupId)
 
     const notes = store.slides.note.get(slideId)
     store.slides.note.set(slideId, notes ? [...notes, note] : [note])
@@ -29,7 +29,7 @@ export const replaceNote = (
 
     const newNote = toNoteEntity(note.slideId, object)
     addToStoreGrid(store.grid, newNote, newNote.beat)
-    addToGroup(newNote.group)
+    addToGroup(newNote.groupId)
 
     const notes = store.slides.note.get(note.slideId)
     if (!notes) throw new Error('Unexpected notes not found')

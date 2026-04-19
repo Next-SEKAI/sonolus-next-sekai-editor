@@ -11,25 +11,25 @@ import { interpolate } from '../../../../../utils/interpolate'
 import { notify } from '../../../../notification'
 
 const props = defineProps<{
-    group: GroupId
+    groupId: GroupId
 }>()
 
 const createModel = <K extends keyof GroupProperties>(key: K) =>
     computed({
         get: () => {
-            const properties = groups.value.get(props.group)
+            const properties = groups.value.get(props.groupId)
             if (!properties) throw new Error('Unexpected missing group')
 
             return properties[key]
         },
         set: (value) => {
-            const properties = groups.value.get(props.group)
+            const properties = groups.value.get(props.groupId)
             if (!properties) throw new Error('Unexpected missing group')
 
             const newProperties = { ...properties, [key]: value }
 
             const newGroups = new Map(groups.value)
-            newGroups.set(props.group, newProperties)
+            newGroups.set(props.groupId, newProperties)
 
             pushState(
                 interpolate(

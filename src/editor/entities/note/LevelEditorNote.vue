@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { noteComponents } from '.'
 import { bpms } from '../../../history/bpms'
-import { defaultGroup, groups } from '../../../history/groups'
+import { defaultGroupId, groups } from '../../../history/groups'
 import { store } from '../../../history/store'
 import { settings } from '../../../settings'
 import type { NoteEntity } from '../../../state/entities/slides/note'
@@ -86,7 +86,7 @@ const type = computed(() => {
         <text
             v-if="
                 settings.showGroupName &&
-                entity.group !== defaultGroup &&
+                entity.groupId !== defaultGroupId &&
                 (isHighlighted || isViewRecentlyActive)
             "
             :x="entity.size / 2"
@@ -96,7 +96,7 @@ const type = computed(() => {
             dominant-baseline="middle"
             fill="#0aa"
         >
-            {{ groups.get(entity.group)?.name }}
+            {{ groups.get(entity.groupId)?.name }}
         </text>
     </g>
 </template>

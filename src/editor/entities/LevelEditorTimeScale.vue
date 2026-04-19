@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { bpms } from '../../history/bpms'
-import { defaultGroup, groups } from '../../history/groups'
+import { defaultGroupId, groups } from '../../history/groups'
 import { settings } from '../../settings'
 import type { TimeScaleEntity } from '../../state/entities/timeScale'
 import { beatToTime } from '../../state/integrals/bpms'
@@ -37,7 +37,7 @@ const y = computed(() => time.value * ups.value)
         <text
             v-if="
                 settings.showGroupName &&
-                entity.group !== defaultGroup &&
+                entity.groupId !== defaultGroupId &&
                 (isHighlighted || isViewRecentlyActive)
             "
             :x="-6.1"
@@ -47,7 +47,7 @@ const y = computed(() => time.value * ups.value)
             dominant-baseline="middle"
             fill="#0aa"
         >
-            {{ groups.get(entity.group)?.name }}
+            {{ groups.get(entity.groupId)?.name }}
         </text>
     </g>
 </template>

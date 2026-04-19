@@ -5,7 +5,7 @@ import type { Chart, NoteObject } from '../../index.js'
 
 export const parseSusChart = (sus: Sus) => {
     const groups: Groups = new Map()
-    const [group] = addToGroups(groups)
+    const [groupId] = addToGroups(groups)
     if (settings.autoAddGroup) addToGroups(groups)
 
     const chart: Chart = {
@@ -91,7 +91,7 @@ export const parseSusChart = (sus: Sus) => {
 
     for (const timeScaleChange of sus.timeScaleChanges) {
         chart.timeScales.push({
-            group,
+            groupId,
             beat: timeScaleChange.tick / sus.ticksPerBeat,
             timeScale: timeScaleChange.timeScale,
             skip: 0,
@@ -121,7 +121,7 @@ export const parseSusChart = (sus: Sus) => {
 
         chart.slides.push([
             {
-                group,
+                groupId,
                 beat: note.tick / sus.ticksPerBeat,
                 noteType: note.type === 5 || note.type === 6 ? 'trace' : 'default',
                 isAttached: false,
@@ -180,7 +180,7 @@ export const parseSusChart = (sus: Sus) => {
                 case 1: {
                     if (connectorType === 'guide' || slideStartEndRemoveMods.has(key)) {
                         objects.push({
-                            group,
+                            groupId,
                             beat,
                             noteType: 'anchor',
                             isAttached: false,
@@ -201,7 +201,7 @@ export const parseSusChart = (sus: Sus) => {
                         })
                     } else {
                         objects.push({
-                            group,
+                            groupId,
                             beat,
                             noteType: traceMods.has(key) ? 'trace' : 'default',
                             isAttached: false,
@@ -226,7 +226,7 @@ export const parseSusChart = (sus: Sus) => {
                 case 2: {
                     if (connectorType === 'guide' || slideStartEndRemoveMods.has(key)) {
                         objects.push({
-                            group,
+                            groupId,
                             beat,
                             noteType: 'anchor',
                             isAttached: false,
@@ -247,7 +247,7 @@ export const parseSusChart = (sus: Sus) => {
                         })
                     } else {
                         objects.push({
-                            group,
+                            groupId,
                             beat,
                             noteType: traceMods.has(key) ? 'trace' : 'default',
                             isAttached: false,
@@ -272,7 +272,7 @@ export const parseSusChart = (sus: Sus) => {
                 case 3: {
                     if (tickRemoveMods.has(key)) {
                         objects.push({
-                            group,
+                            groupId,
                             beat,
                             noteType: 'default',
                             isAttached: true,
@@ -293,7 +293,7 @@ export const parseSusChart = (sus: Sus) => {
                         })
                     } else {
                         objects.push({
-                            group,
+                            groupId,
                             beat,
                             noteType: traceMods.has(key) ? 'trace' : 'default',
                             isAttached: tickRemoveMods.has(key),
@@ -319,7 +319,7 @@ export const parseSusChart = (sus: Sus) => {
                     if (tickRemoveMods.has(key)) break
 
                     objects.push({
-                        group,
+                        groupId,
                         beat,
                         noteType: 'anchor',
                         isAttached: false,

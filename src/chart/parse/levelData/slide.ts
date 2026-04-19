@@ -5,7 +5,7 @@ import type { NoteObject } from '../..'
 import type { GroupId } from '../../../state/groups'
 import { beatSchema } from './schemas'
 
-export const parseSlidesToChart: ParseToChart = (chart, entities, getGroup) => {
+export const parseSlidesToChart: ParseToChart = ({ chart, entities, getGroupId }) => {
     const refs = new Map<string, NoteEntity>()
     const slides = new Map<string, string[]>()
 
@@ -13,7 +13,7 @@ export const parseSlidesToChart: ParseToChart = (chart, entities, getGroup) => {
         if (!isNoteEntity(entity)) continue
 
         if (!entity.name) {
-            chart.slides.push([toNoteObject(getGroup, entity, true, undefined)])
+            chart.slides.push([toNoteObject(getGroupId(entity), entity, true, undefined)])
             continue
         }
 
@@ -56,7 +56,7 @@ export const parseSlidesToChart: ParseToChart = (chart, entities, getGroup) => {
                 .sort(({ beat: a }, { beat: b }) => a - b)
                 .map(({ entity }, i) => {
                     const object = toNoteObject(
-                        getGroup,
+                        getGroupId(entity),
                         entity,
                         i === slide.length - 1,
                         prevActiveHead,
@@ -338,7 +338,7 @@ const startsWith = <T extends string, U extends string>(
     (name.startsWith(prefix) ? [true, name.slice(prefix.length)] : [false, name]) as never
 
 const toNoteObject = (
-    getGroup: (entity: LevelDataEntity) => GroupId,
+    groupId: GroupId,
     entity: NoteEntity,
     isLast: boolean,
     prevActiveHead: NoteObject | undefined,
@@ -347,7 +347,7 @@ const toNoteObject = (
     const size = getValue(entity, 'size', sizeSchema)
 
     const object: NoteObject = {
-        group: getGroup(entity),
+        groupId,
         beat: getValue(entity, EngineArchetypeDataName.Beat, beatSchema),
         noteType: 'default',
         isAttached: !!getValue(entity, 'isAttached', isAttachedSchema),
