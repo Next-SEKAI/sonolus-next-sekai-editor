@@ -3,8 +3,29 @@ const layers = {
     timeScale: 0,
     bpm: 1,
 
-    connector: 10,
-    note: 11,
+    connector: {
+        bottom: {
+            active: 10,
+            guide: 11,
+        },
+        top: {
+            active: 12,
+            guide: 13,
+        },
+    },
+
+    note: 20,
+}
+
+const getLayer = (entity: Entity) => {
+    switch (entity.type) {
+        case 'bpm':
+        case 'timeScale':
+        case 'note':
+            return layers[entity.type]
+        case 'connector':
+            return layers.connector[entity.head.connectorLayer][entity.head.connectorType]
+    }
 }
 </script>
 
@@ -56,6 +77,7 @@ const visibleEntityInfos = computed(() => {
         isSelected: selectedEntities.value.includes(entity),
         isHovered: hoveredEntities.value.includes(entity),
         isVisible: isEntityVisible(entity),
+        layer: getLayer(entity),
     }))
 
     if (!settings.showOtherGroups) {
@@ -64,9 +86,7 @@ const visibleEntityInfos = computed(() => {
 
     return entities.sort(
         (a, b) =>
-            +a.isSelected - +b.isSelected ||
-            layers[a.entity.type] - layers[b.entity.type] ||
-            b.entity.beat - a.entity.beat,
+            +a.isSelected - +b.isSelected || a.layer - b.layer || b.entity.beat - a.entity.beat,
     )
 })
 </script>
