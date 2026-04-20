@@ -12,6 +12,7 @@ import { serializeToLevelDataEntities } from '../../../levelData/entities/serial
 import type { Entity, EntityOfType, EntityType } from '../../../state/entities'
 import type { RemoveMutation } from '../../../state/mutations'
 import { removeBpm } from '../../../state/mutations/bpm'
+import { removeCameraEventJoint } from '../../../state/mutations/events/camera'
 import { removeNote } from '../../../state/mutations/slides/note'
 import { removeTimeScale } from '../../../state/mutations/timeScale'
 import { createStore } from '../../../state/store/creates'
@@ -39,12 +40,14 @@ export const cut: Command = {
             lane: xToLane(view.pointer.x),
             beat: yToValidBeat(view.pointer.y),
             entities: serializeToLevelDataEntities(
+                initialLife.value,
                 isDynamicStages.value,
                 createStore({
                     initialLife: initialLife.value,
                     isDynamicStages: isDynamicStages.value,
                     bpms: getEntities(entities, 'bpm'),
                     timeScales: getEntities(entities, 'timeScale'),
+                    cameraEvents: getEntities(entities, 'cameraEventJoint'),
                     groups: groups.value,
                     stages: stages.value,
                     slides: getSlides(entities),
@@ -111,6 +114,9 @@ const canRemoves: {
     bpm: (entity) => entity.beat > 0,
     timeScale: undefined,
 
+    cameraEventJoint: undefined,
+    cameraEventConnection: undefined,
+
     note: undefined,
     connector: undefined,
 }
@@ -120,6 +126,9 @@ const removes: {
 } = {
     bpm: removeBpm,
     timeScale: removeTimeScale,
+
+    cameraEventJoint: removeCameraEventJoint,
+    cameraEventConnection: undefined,
 
     note: removeNote,
     connector: undefined,

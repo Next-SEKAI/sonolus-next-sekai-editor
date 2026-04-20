@@ -7,6 +7,7 @@ import type { Entity } from '../../../state/entities'
 import { createTransaction, type Transaction } from '../../../state/transaction'
 import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
+import { editSelectedCameraEvent } from '../../tools/events/camera'
 import { editSelectedNote } from '../../tools/note'
 import { view } from '../../view'
 import FlipIcon from './FlipIcon.vue'
@@ -61,6 +62,14 @@ const flips: {
 } = {
     bpm: undefined,
     timeScale: undefined,
+
+    cameraEventJoint: (transaction, entity) =>
+        editSelectedCameraEvent(transaction, entity, {
+            cameraLeft: -(entity.cameraLeft + entity.cameraSize),
+            cameraZoomTargetLane: -entity.cameraZoomTargetLane,
+            cameraRotation: -entity.cameraRotation,
+        }),
+    cameraEventConnection: undefined,
 
     note: (transaction, entity) =>
         editSelectedNote(transaction, entity, {

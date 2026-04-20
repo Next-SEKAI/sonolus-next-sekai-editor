@@ -80,6 +80,9 @@ const onDelete = (groupId: GroupId, name: string) => {
             removeTimeScale(transaction, entity)
         },
 
+        cameraEventJoint: undefined,
+        cameraEventConnection: undefined,
+
         note(entity) {
             if (entity.groupId !== groupId) return
 

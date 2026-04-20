@@ -75,6 +75,9 @@ const onDelete = (stageId: StageId, name: string) => {
         bpm: undefined,
         timeScale: undefined,
 
+        cameraEventJoint: undefined,
+        cameraEventConnection: undefined,
+
         note(entity) {
             if (entity.stageId !== stageId) return
 

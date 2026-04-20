@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import type { Tool } from '..'
 import type { BpmObject } from '../../../chart/bpm'
+import type { CameraEventObject } from '../../../chart/events/camera'
 import type { GroupId } from '../../../chart/groups'
 import type { FlickDirection, NoteObject } from '../../../chart/note'
 import { parseLevelDataChart } from '../../../chart/parse/levelData'
@@ -8,15 +9,21 @@ import type { StageId } from '../../../chart/stages'
 import type { TimeScaleObject } from '../../../chart/timeScale'
 import { parseClipboardData } from '../../../clipboardData/parse'
 import { pushState, state } from '../../../history'
+import { checkDynamicStages, isDynamicStages } from '../../../history/dynamicStages'
 import { defaultGroupId, groups } from '../../../history/groups'
 import { defaultStageId, stages } from '../../../history/stages'
 import { i18n } from '../../../i18n'
 import type { Entity } from '../../../state/entities'
 import { toBpmEntity, type BpmEntity } from '../../../state/entities/bpm'
+import {
+    toCameraEventJointEntity,
+    type CameraEventJointEntity,
+} from '../../../state/entities/events/joints/camera'
 import { createSlideId } from '../../../state/entities/slides'
 import { toNoteEntity, type NoteEntity } from '../../../state/entities/slides/note'
 import { toTimeScaleEntity, type TimeScaleEntity } from '../../../state/entities/timeScale'
 import { addBpm, removeBpm } from '../../../state/mutations/bpm'
+import { addCameraEventJoint } from '../../../state/mutations/events/camera'
 import { addNote } from '../../../state/mutations/slides/note'
 import { addTimeScale, removeTimeScale } from '../../../state/mutations/timeScale'
 import { getInStoreGrid } from '../../../state/store/grid'
@@ -84,6 +91,10 @@ export const paste: Tool = {
 
         const data = getData(clipboardEntry.text)
         if (!data?.entities.length) return
+
+        if (data.entities.some((entity) => entity.type === 'cameraEventJoint')) {
+            await checkDynamicStages()
+        }
 
         const transaction = createTransaction(state.value)
 
@@ -187,6 +198,8 @@ const getData = (text: string) => {
                 ...chart.bpms.map(toBpmEntity),
                 ...chart.timeScales.map(mapGroupId).map(toTimeScaleEntity),
 
+                ...chart.cameraEvents.map(toCameraEventJointEntity),
+
                 ...chart.slides.flatMap((slide) => {
                     const slideId = createSlideId()
 
@@ -219,6 +232,22 @@ const toMovedTimeScaleObject = (entity: TimeScaleEntity, beat: number): TimeScal
     ...entity,
     groupId: view.groupId ?? entity.groupId,
     beat,
+})
+
+const toMovedCameraEventObject = (
+    entity: CameraEventJointEntity,
+    startLane: number,
+    lane: number,
+    beat: number,
+    flip: boolean,
+): CameraEventObject => ({
+    ...entity,
+    beat,
+    cameraLeft: flip
+        ? -(entity.cameraLeft + entity.cameraSize) + align(startLane) + align(lane)
+        : entity.cameraLeft - align(startLane) + align(lane),
+    cameraZoomTargetLane: flip ? -entity.cameraZoomTargetLane : entity.cameraZoomTargetLane,
+    cameraRotation: flip ? -entity.cameraRotation : entity.cameraRotation,
 })
 
 const flippedFlickDirections: Record<FlickDirection, FlickDirection> = {
@@ -263,6 +292,10 @@ const creates: {
     timeScale: (entity, startLane, lane, beat) =>
         toTimeScaleEntity(toMovedTimeScaleObject(entity, beat)),
 
+    cameraEventJoint: (entity, startLane, lane, beat, flip) =>
+        toCameraEventJointEntity(toMovedCameraEventObject(entity, startLane, lane, beat, flip)),
+    cameraEventConnection: undefined,
+
     note: (entity, startLane, lane, beat, flip) =>
         toNoteEntity(entity.slideId, toMovedNoteObject(entity, startLane, lane, beat, flip)),
     connector: undefined,
@@ -300,6 +333,15 @@ const pastes: {
 
         return addTimeScale(transaction, object)
     },
+
+    cameraEventJoint: (transaction, entity, startLane, lane, beat, flip) => {
+        if (!isDynamicStages.value) return
+
+        const object = toMovedCameraEventObject(entity, startLane, lane, beat, flip)
+
+        return addCameraEventJoint(transaction, object)
+    },
+    cameraEventConnection: undefined,
 
     note: (transaction, entity, startLane, lane, beat, flip) => {
         const object = toMovedNoteObject(entity, startLane, lane, beat, flip)

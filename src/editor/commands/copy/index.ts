@@ -33,12 +33,14 @@ export const copy: Command = {
         const data: ClipboardData = {
             ...getAnchor(entities, view.pointer.x, view.pointer.y),
             entities: serializeToLevelDataEntities(
+                initialLife.value,
                 isDynamicStages.value,
                 createStore({
                     initialLife: initialLife.value,
                     isDynamicStages: isDynamicStages.value,
                     bpms: getEntities(entities, 'bpm'),
                     timeScales: getEntities(entities, 'timeScale'),
+                    cameraEvents: getEntities(entities, 'cameraEventJoint'),
                     groups: groups.value,
                     stages: stages.value,
                     slides: getSlides(entities),

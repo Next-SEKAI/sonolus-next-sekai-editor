@@ -14,6 +14,7 @@ export const parseUscChart = (objects: UscObject[]) => {
         bpms: [],
         groups: new Map(),
         stages,
+        cameraEvents: [],
         timeScales: [],
         slides: [],
     }

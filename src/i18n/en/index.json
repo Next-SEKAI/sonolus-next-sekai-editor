@@ -3,6 +3,9 @@
     "group": {
         "default": "Default"
     },
+    "events": {
+        "cameraEvent": "Camera Event"
+    },
     "commands": {
         "bgm": {
             "title": "BGM",
@@ -295,6 +298,13 @@
         "timeScale": {
             "title": "Switch to Time Scale tool",
             "switched": "Switched to Time Scale tool"
+        },
+        "events": {
+            "title": "Switch to {0} tool",
+            "switched": "Switched to {0} tool",
+            "modal": {
+                "title": "Default {0} Properties"
+            }
         }
     },
     "help": {
@@ -392,6 +402,15 @@
                 "add": "Tap empty space to add.",
                 "move": "Drag 1 Time Scale object to move.",
                 "ctrl": "Use Ctrl key to add objects to selection."
+            },
+            "cameraEventTool": {
+                "title": "Camera Event Tool",
+                "select": "Tap Camera Event objects to select 1 object.",
+                "edit": "Tap 1 Camera Event object to edit.",
+                "add": "Tap empty space to add.",
+                "move": "Drag 1 Camera Event object to move.",
+                "ctrl": "Use Ctrl key to add objects to selection.",
+                "properties": "Switch to Camera Event Tool again to change default properties."
             }
         }
     },
@@ -583,6 +602,21 @@
             "modal": {
                 "title": "Time Scale Properties"
             }
+        },
+        "events": {
+            "adding": "Adding {0} {1} objects",
+            "added": "Added {0} {1} objects",
+            "editing": "Editing {0} {1} objects",
+            "edited": "Edited {0} {1} objects",
+            "moving": "Moving {0} {1} objects",
+            "moved": "Moved {0} {1} objects",
+            "selected": "Selected {0} {1} objects",
+            "modal": {
+                "title": "{0} Properties"
+            },
+            "sidebar": {
+                "title": "Default {0} Properties"
+            }
         }
     },
     "utilities": {
@@ -642,6 +676,32 @@
             "bpm": {
                 "label": "BPM"
             },
+            "cameraLeft": {
+                "label": "Camera Shift Lane"
+            },
+            "cameraRotation": {
+                "label": "Camera Rotation"
+            },
+            "cameraSize": {
+                "label": "Camera Shift Size"
+            },
+            "cameraStageTilt": {
+                "label": "Camera Stage Tilt"
+            },
+            "cameraZoom": {
+                "label": "Camera Zoom"
+            },
+            "cameraZoomTargetLane": {
+                "label": "Camera Zoom Target Lane"
+            },
+            "cameraZoomTargetY": {
+                "label": "Camera Zoom Target Y"
+            },
+            "cameraZoomVerticalAlign": {
+                "label": "Camera Zoom Vertical Align",
+                "default": "Default",
+                "center": "Center"
+            },
             "connectorActiveIsCritical": {
                 "label": "Slide Critical"
             },
@@ -686,6 +746,15 @@
             },
             "copyProperties": {
                 "label": "Copy Properties"
+            },
+            "eventEase": {
+                "label": "Event Ease",
+                "linear": "Linear",
+                "in": "In",
+                "out": "Out",
+                "inOut": "In-Out",
+                "outIn": "Out-In",
+                "none": "None"
             },
             "file": {
                 "select": "Select File..."

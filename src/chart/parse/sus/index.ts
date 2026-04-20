@@ -19,6 +19,7 @@ export const parseSusChart = (sus: Sus) => {
         bpms: [],
         groups,
         stages,
+        cameraEvents: [],
         timeScales: [],
         slides: [],
     }
