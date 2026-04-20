@@ -1,9 +1,9 @@
 import { Type } from '@sinclair/typebox'
 import { EngineArchetypeDataName, EngineArchetypeName } from '@sonolus/core'
-import { getValue, type ParseToChart } from '.'
+import { getValue, type ParseCtx } from '.'
 import { beatSchema } from './schemas'
 
-export const parseBpmsToChart: ParseToChart = ({ chart, entities }) => {
+export const parseBpmsToChart = ({ chart, entities }: ParseCtx) => {
     for (const entity of entities) {
         if (entity.archetype !== EngineArchetypeName.BpmChange) continue
 

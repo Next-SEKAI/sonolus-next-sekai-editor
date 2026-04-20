@@ -1,5 +1,6 @@
 import type { Command } from '..'
 import { pushState, state } from '../../../history'
+import { initialLife } from '../../../history/initialLife'
 import { i18n } from '../../../i18n'
 import { showModal } from '../../../modals'
 import { notify } from '../../notification'
@@ -14,7 +15,7 @@ export const properties: Command = {
 
     async execute() {
         const newInitialLife = await showModal(PropertiesModal, {
-            initialLife: state.value.initialLife,
+            initialLife: initialLife.value,
         })
         if (!newInitialLife) return
 

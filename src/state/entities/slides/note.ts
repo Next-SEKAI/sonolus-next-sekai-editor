@@ -1,5 +1,6 @@
 import type { SlideId } from '.'
 import type { BaseEntity } from '..'
+import type { GroupId } from '../../../chart/groups'
 import type {
     ConnectorEase,
     ConnectorGuideColor,
@@ -9,13 +10,10 @@ import type {
     NoteObject,
     NoteSfx,
     NoteType,
-} from '../../../chart'
-import type { GroupId } from '../../groups'
+} from '../../../chart/note'
 
 export type NoteEntity = BaseEntity & {
     type: 'note'
-    hitbox: object
-
     slideId: SlideId
     groupId: GroupId
     noteType: NoteType

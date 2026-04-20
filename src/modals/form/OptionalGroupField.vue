@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { GroupId } from '../../chart/groups'
 import { groups } from '../../history/groups'
 import { i18n } from '../../i18n'
-import type { GroupId } from '../../state/groups'
 import OptionalSelectField from './OptionalSelectField.vue'
 
 const modelValue = defineModel<GroupId | undefined>({ required: true })

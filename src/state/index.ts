@@ -1,7 +1,7 @@
 import type { Chart } from '../chart'
+import type { Groups } from '../chart/groups'
 import type { Bgm } from './bgm'
 import type { Entity } from './entities'
-import type { Groups } from './groups'
 import { createBpms, type BpmIntegral } from './integrals/bpms'
 import type { Store } from './store'
 import { createStore } from './store/creates'

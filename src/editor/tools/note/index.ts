@@ -1,6 +1,6 @@
 import { computed, ref } from 'vue'
 import type { Tool } from '..'
-import type { NoteObject } from '../../../chart'
+import type { NoteObject } from '../../../chart/note'
 import { pushState, replaceState, state } from '../../../history'
 import { defaultGroupId } from '../../../history/groups'
 import { selectedEntities } from '../../../history/selectedEntities'

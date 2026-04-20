@@ -1,6 +1,7 @@
 import type { Command } from '..'
 import type { ClipboardData } from '../../../clipboardData/schema'
 import { groups } from '../../../history/groups'
+import { initialLife } from '../../../history/initialLife'
 import { selectedEntities } from '../../../history/selectedEntities'
 import { store } from '../../../history/store'
 import { i18n } from '../../../i18n'
@@ -31,7 +32,7 @@ export const copy: Command = {
             ...getAnchor(entities, view.pointer.x, view.pointer.y),
             entities: serializeToLevelDataEntities(
                 createStore({
-                    initialLife: 1000,
+                    initialLife: initialLife.value,
                     bpms: getEntities(entities, 'bpm'),
                     timeScales: getEntities(entities, 'timeScale'),
                     groups: groups.value,

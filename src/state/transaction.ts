@@ -1,8 +1,8 @@
 import type { State } from '.'
+import { addToGroups, type GroupId, type Groups } from '../chart/groups'
 import { settings } from '../settings'
 import type { Entity } from './entities'
 import type { SlideId } from './entities/slides'
-import { addToGroups, type GroupId, type Groups } from './groups'
 import { calculateBpms, type BpmIntegral } from './integrals/bpms'
 import { rebuildSlide } from './mutations/slides'
 

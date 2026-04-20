@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ConnectorGuideColor } from '../../chart'
+import type { ConnectorGuideColor } from '../../chart/note'
 import { i18n } from '../../i18n'
 import MultiSelectField from './MultiSelectField.vue'
 

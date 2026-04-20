@@ -34,7 +34,7 @@ const bpm = createModel('bpm')
 const groupId = createModel('groupId')
 const timeScale = createModel('timeScale')
 const skip = createModel('skip')
-const ease = createModel('ease')
+const timeScaleEase = createModel('timeScaleEase')
 const hideNotes = createModel('hideNotes')
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')
@@ -61,7 +61,7 @@ const connectorLayer = createModel('connectorLayer')
             <MultiBpmField v-if="types.bpm" v-model="bpm" />
             <MultiTimeScaleField v-if="types.timeScale" v-model="timeScale" />
             <MultiSkipField v-if="types.timeScale" v-model="skip" />
-            <MultiTimeScaleEaseField v-if="types.timeScale" v-model="ease" />
+            <MultiTimeScaleEaseField v-if="types.timeScale" v-model="timeScaleEase" />
             <MultiHideNotesField v-if="types.timeScale" v-model="hideNotes" />
             <MultiNoteTypeField v-if="types.note" v-model="noteType" />
             <MultiGroupField v-if="types.timeScale || types.note" v-model="groupId" />

@@ -1,10 +1,11 @@
 import { saveAs } from 'file-saver'
 import { gzip } from 'pako'
 import type { Command } from '..'
-import { levelDataHandle, setLevelDataHandle, state } from '../../../history'
+import { levelDataHandle, setLevelDataHandle } from '../../../history'
 import { bgm } from '../../../history/bgm'
 import { filename } from '../../../history/filename'
 import { groups } from '../../../history/groups'
+import { initialLife } from '../../../history/initialLife'
 import { store } from '../../../history/store'
 import { i18n } from '../../../i18n'
 import { serializeToLevelData } from '../../../levelData/serialize'
@@ -31,7 +32,7 @@ export const save: Command = {
                 const name = filename.value ?? 'LevelData'
 
                 const levelData = serializeToLevelData(
-                    state.value.initialLife,
+                    initialLife.value,
                     bgm.value.offset,
                     store.value,
                     groups.value,

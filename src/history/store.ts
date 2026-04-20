@@ -17,6 +17,14 @@ export const walkAllEntities = (callback: (entity: Entity) => void) => {
     }
 }
 
+export const getAllEntities = () => {
+    const entities = new Set<Entity>()
+
+    walkAllEntities((entity) => entities.add(entity))
+
+    return entities
+}
+
 export const cullEntities = <T extends EntityType>(type: T, minKey: number, maxKey: number) => {
     if (!Number.isFinite(maxKey)) maxKey = minKey
 

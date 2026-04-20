@@ -1,7 +1,7 @@
 import type { Chart } from '../..'
 import { settings } from '../../../settings'
-import { addToGroups } from '../../../state/groups'
 import type { UscObject } from '../../../usc/objects/schema'
+import { addToGroups } from '../../groups'
 
 export const parseUscChart = (objects: UscObject[]) => {
     const chart: Chart = {
@@ -39,7 +39,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                         beat: change.beat,
                         timeScale: change.timeScale,
                         skip: 0,
-                        ease: 'none',
+                        timeScaleEase: 'none',
                         hideNotes: false,
                     })
                 }

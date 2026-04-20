@@ -1,5 +1,5 @@
 import type { Command } from '..'
-import type { FlickDirection } from '../../../chart'
+import type { FlickDirection } from '../../../chart/note'
 import { pushState, state } from '../../../history'
 import { selectedEntities } from '../../../history/selectedEntities'
 import { i18n } from '../../../i18n'
@@ -57,12 +57,15 @@ const flippedFlickDirections: Record<FlickDirection, FlickDirection> = {
 }
 
 const flips: {
-    [T in Entity as T['type']]?: Flip<T>
+    [T in Entity as T['type']]: Flip<T> | undefined
 } = {
+    bpm: undefined,
+    timeScale: undefined,
+
     note: (transaction, entity) =>
         editSelectedNote(transaction, entity, {
-            ...entity,
             left: -(entity.left + entity.size),
             flickDirection: flippedFlickDirections[entity.flickDirection],
         }),
+    connector: undefined,
 }

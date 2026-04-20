@@ -1,11 +1,11 @@
 import { computed, ref, shallowReactive } from 'vue'
 import type { Chart } from '../chart'
+import { addToGroups, type Groups } from '../chart/groups'
 import { i18n } from '../i18n'
 import { showModal } from '../modals'
 import ConfirmModal from '../modals/ConfirmModal.vue'
 import { settings } from '../settings'
 import { createState, type State } from '../state'
-import { addToGroups, type Groups } from '../state/groups'
 import { cleanupWaveform } from '../waveform'
 
 const createDefaultChart = (): Chart => {

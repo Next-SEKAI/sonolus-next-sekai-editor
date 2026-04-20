@@ -1,5 +1,5 @@
 import type { LevelData } from '@sonolus/core'
-import type { Groups } from '../state/groups'
+import type { Groups } from '../chart/groups'
 import type { Store } from '../state/store'
 import { serializeToLevelDataEntities } from './entities/serialize'
 

@@ -1,4 +1,4 @@
-import type { NoteObject } from '../../../chart'
+import type { NoteObject } from '../../../chart/note'
 import type { SlideId } from '../../entities/slides'
 import { toNoteEntity, type NoteEntity } from '../../entities/slides/note'
 import { addToStoreGrid, removeFromStoreGrid } from '../../store/grid'

@@ -3,15 +3,14 @@ import { Value } from '@sinclair/typebox/value'
 import { type LevelDataEntity } from '@sonolus/core'
 import type { Chart } from '../..'
 import { settings } from '../../../settings'
-import { addToGroups, type GroupId, type GroupProperties } from '../../../state/groups'
+import { addToGroups, type GroupId, type GroupObject } from '../../groups'
 import { parseBpmsToChart } from './bpm'
+import { parseGroupsToChart } from './group'
 import { parseInitializationToChart } from './initialization'
 import { parseSlidesToChart } from './slide'
 import { parseTimeScalesToChart } from './timeScale'
 
-export type ParseToChart = (ctx: ParseCtx) => void
-
-type ParseCtx = {
+export type ParseCtx = {
     chart: Chart
     entities: LevelDataEntity[]
 
@@ -19,7 +18,7 @@ type ParseCtx = {
     addGroup: (
         name: string | undefined,
         editorName: string | undefined,
-        properties: Omit<GroupProperties, 'name'>,
+        object: Omit<GroupObject, 'name'>,
     ) => void
 }
 
@@ -45,8 +44,8 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
 
             return id
         },
-        addGroup(name, editorName, properties) {
-            const [id] = addToGroups(chart.groups, editorName, properties)
+        addGroup(name, editorName, object) {
+            const [id] = addToGroups(chart.groups, editorName, object)
 
             if (name) {
                 groupIds[name] = id
@@ -57,13 +56,15 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
     parseInitializationToChart(ctx)
 
     parseBpmsToChart(ctx)
-    parseTimeScalesToChart(ctx)
 
-    parseSlidesToChart(ctx)
-
+    parseGroupsToChart(ctx)
     while (chart.groups.size < (settings.autoAddGroup ? 2 : 1)) {
         addToGroups(chart.groups)
     }
+
+    parseTimeScalesToChart(ctx)
+
+    parseSlidesToChart(ctx)
 
     return chart
 }

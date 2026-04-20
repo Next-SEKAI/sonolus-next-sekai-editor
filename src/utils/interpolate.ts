@@ -6,3 +6,6 @@ export const interpolate =
                 message.replace(`{${index}}`, typeof param === 'string' ? param : param()),
             message(),
         )
+
+export const interpolateRaw = (message: string, ...params: string[]) =>
+    params.reduce((message, param, index) => message.replace(`{${index}}`, param), message)

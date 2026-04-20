@@ -1,17 +1,9 @@
 import { Type } from '@sinclair/typebox'
 import { EngineArchetypeDataName, EngineArchetypeName } from '@sonolus/core'
-import { getOptionalRef, getOptionalValue, getValue, type ParseToChart } from '.'
+import { getOptionalValue, getValue, type ParseCtx } from '.'
 import { beatSchema } from './schemas'
 
-export const parseTimeScalesToChart: ParseToChart = ({ chart, entities, getGroupId, addGroup }) => {
-    for (const entity of entities) {
-        if (entity.archetype !== '#TIMESCALE_GROUP') continue
-
-        addGroup(entity.name, getOptionalRef(entity, 'editorName'), {
-            forceNoteSpeed: getOptionalValue(entity, 'forceNoteSpeed', forceNoteSpeedSchema),
-        })
-    }
-
+export const parseTimeScalesToChart = ({ chart, entities, getGroupId }: ParseCtx) => {
     for (const entity of entities) {
         if (entity.archetype !== EngineArchetypeName.TimeScaleChange) continue
 
@@ -20,13 +12,11 @@ export const parseTimeScalesToChart: ParseToChart = ({ chart, entities, getGroup
             beat: getValue(entity, EngineArchetypeDataName.Beat, beatSchema),
             timeScale: getValue(entity, EngineArchetypeDataName.TimeScale, valueSchema),
             skip: getValue(entity, '#TIMESCALE_SKIP', skipSchema),
-            ease: eases[getValue(entity, '#TIMESCALE_EASE', easeSchema)],
+            timeScaleEase: eases[getValue(entity, '#TIMESCALE_EASE', easeSchema)],
             hideNotes: !!getOptionalValue(entity, 'hideNotes', hideNotesSchema),
         })
     }
 }
-
-const forceNoteSpeedSchema = Type.Number({ minimum: 1, maximum: 12 })
 
 const valueSchema = Type.Number()
 

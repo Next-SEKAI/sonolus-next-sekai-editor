@@ -1,6 +1,6 @@
+import type { GroupId } from '../../../chart/groups'
 import { groups } from '../../../history/groups'
 import { i18n } from '../../../i18n'
-import type { GroupId } from '../../../state/groups'
 import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
 import { updateViewLastActive, view } from '../../view'

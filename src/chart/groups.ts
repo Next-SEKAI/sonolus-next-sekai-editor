@@ -1,12 +1,12 @@
 import { i18n } from '../i18n'
 
-export type Groups = Map<GroupId, GroupProperties>
+export type Groups = Map<GroupId, GroupObject>
 
 declare const idBrand: unique symbol
 
 export type GroupId = number & { [idBrand]: never }
 
-export type GroupProperties = {
+export type GroupObject = {
     name: string
     forceNoteSpeed?: number
 }
@@ -16,7 +16,7 @@ let i = 1
 export const addToGroups = (
     groups: Groups,
     name?: string,
-    properties: Omit<GroupProperties, 'name'> = {},
+    object: Omit<GroupObject, 'name'> = {},
 ) => {
     const id = i++ as GroupId
     name ??= groups.size
@@ -32,7 +32,7 @@ export const addToGroups = (
 
     groups.set(id, {
         name,
-        ...properties,
+        ...object,
     })
 
     return [id, name] as const

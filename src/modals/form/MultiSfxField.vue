@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { NoteSfx } from '../../chart'
+import type { NoteSfx } from '../../chart/note'
 import { i18n } from '../../i18n'
 import MultiSelectField from './MultiSelectField.vue'
 

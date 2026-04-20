@@ -44,7 +44,7 @@ const connectorGuideAlpha = createModel('connectorGuideAlpha')
 const connectorLayer = createModel('connectorLayer')
 const timeScale = createModel('timeScale')
 const skip = createModel('skip')
-const ease = createModel('ease')
+const timeScaleEase = createModel('timeScaleEase')
 const hideNotes = createModel('hideNotes')
 </script>
 
@@ -68,7 +68,7 @@ const hideNotes = createModel('hideNotes')
         <OptionalConnectorLayerField v-model="connectorLayer" />
         <OptionalTimeScaleField v-model="timeScale" />
         <OptionalSkipField v-model="skip" />
-        <OptionalTimeScaleEaseField v-model="ease" />
+        <OptionalTimeScaleEaseField v-model="timeScaleEase" />
         <OptionalHideNotesField v-model="hideNotes" />
     </PropertiesModal>
 </template>

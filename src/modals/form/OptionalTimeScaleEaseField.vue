@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TimeScaleEase } from '../../chart'
+import type { TimeScaleEase } from '../../chart/timeScale'
 import { i18n } from '../../i18n'
 import OptionalToggleField from './OptionalToggleField.vue'
 

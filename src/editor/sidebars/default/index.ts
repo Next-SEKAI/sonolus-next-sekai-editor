@@ -1,4 +1,6 @@
-import type { BpmObject, NoteObject, TimeScaleObject } from '../../../chart'
+import type { BpmObject } from '../../../chart/bpm'
+import type { NoteObject } from '../../../chart/note'
+import type { TimeScaleObject } from '../../../chart/timeScale'
 import { pushState, state } from '../../../history'
 import { selectedEntities } from '../../../history/selectedEntities'
 import { i18n } from '../../../i18n'
@@ -61,7 +63,7 @@ export const editSelectedEditableEntities = (object: EditableObject) => {
 
 let editEntity:
     | {
-          [T in Entity as T['type']]?: (entity: T, object: EditableObject) => void
+          [T in Entity as T['type']]: ((entity: T, object: EditableObject) => void) | undefined
       }
     | undefined
 
@@ -71,15 +73,14 @@ const getEditEntity = () =>
         timeScale: editTimeScale,
 
         note: editNote,
+        connector: undefined,
     })
 
 let editSelectedEntity:
     | {
-          [T in Entity as T['type']]?: (
-              transaction: Transaction,
-              entity: T,
-              object: EditableObject,
-          ) => Entity[]
+          [T in Entity as T['type']]:
+              | ((transaction: Transaction, entity: T, object: EditableObject) => Entity[])
+              | undefined
       }
     | undefined
 
@@ -89,4 +90,5 @@ const getEditSelectedEntity = () =>
         timeScale: editSelectedTimeScale,
 
         note: editSelectedNote,
+        connector: undefined,
     })

@@ -1,7 +1,10 @@
 import { ref } from 'vue'
 import type { Tool } from '..'
-import type { BpmObject, FlickDirection, NoteObject, TimeScaleObject } from '../../../chart'
+import type { BpmObject } from '../../../chart/bpm'
+import type { GroupId } from '../../../chart/groups'
+import type { FlickDirection, NoteObject } from '../../../chart/note'
 import { parseLevelDataChart } from '../../../chart/parse/levelData'
+import type { TimeScaleObject } from '../../../chart/timeScale'
 import { parseClipboardData } from '../../../clipboardData/parse'
 import { pushState, state } from '../../../history'
 import { defaultGroupId, groups } from '../../../history/groups'
@@ -11,7 +14,6 @@ import { toBpmEntity, type BpmEntity } from '../../../state/entities/bpm'
 import { createSlideId } from '../../../state/entities/slides'
 import { toNoteEntity, type NoteEntity } from '../../../state/entities/slides/note'
 import { toTimeScaleEntity, type TimeScaleEntity } from '../../../state/entities/timeScale'
-import type { GroupId } from '../../../state/groups'
 import { addBpm, removeBpm } from '../../../state/mutations/bpm'
 import { addNote } from '../../../state/mutations/slides/note'
 import { addTimeScale, removeTimeScale } from '../../../state/mutations/timeScale'
@@ -194,17 +196,14 @@ export const setToClipboardEntry = async (name: string) => {
 }
 
 const toMovedBpmObject = (entity: BpmEntity, beat: number): BpmObject => ({
+    ...entity,
     beat,
-    bpm: entity.bpm,
 })
 
 const toMovedTimeScaleObject = (entity: TimeScaleEntity, beat: number): TimeScaleObject => ({
+    ...entity,
     groupId: view.groupId ?? entity.groupId,
     beat,
-    timeScale: entity.timeScale,
-    skip: entity.skip,
-    ease: entity.ease,
-    hideNotes: entity.hideNotes,
 })
 
 const flippedFlickDirections: Record<FlickDirection, FlickDirection> = {
@@ -242,7 +241,7 @@ type Create<T extends Entity> = (
 ) => Entity | undefined
 
 const creates: {
-    [T in Entity as T['type']]?: Create<T>
+    [T in Entity as T['type']]: Create<T> | undefined
 } = {
     bpm: (entity, startLane, lane, beat) => toBpmEntity(toMovedBpmObject(entity, beat)),
     timeScale: (entity, startLane, lane, beat) =>
@@ -250,6 +249,7 @@ const creates: {
 
     note: (entity, startLane, lane, beat, flip) =>
         toNoteEntity(entity.slideId, toMovedNoteObject(entity, startLane, lane, beat, flip)),
+    connector: undefined,
 }
 
 type Paste<T extends Entity> = (
@@ -262,7 +262,7 @@ type Paste<T extends Entity> = (
 ) => Entity[] | undefined
 
 const pastes: {
-    [T in Entity as T['type']]?: Paste<T>
+    [T in Entity as T['type']]: Paste<T> | undefined
 } = {
     bpm: (transaction, entity, startLane, lane, beat) => {
         const object = toMovedBpmObject(entity, beat)
@@ -290,4 +290,5 @@ const pastes: {
 
         return addNote(transaction, entity.slideId, object)
     },
+    connector: undefined,
 }

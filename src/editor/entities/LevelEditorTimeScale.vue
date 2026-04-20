@@ -32,7 +32,7 @@ const y = computed(() => time.value * ups.value)
         />
 
         <text :x="-6.1" :y text-anchor="end" dominant-baseline="middle" fill="#ff0">
-            {{ formatTimeScale(entity.timeScale, entity.skip, entity.ease) }}
+            {{ formatTimeScale(entity.timeScale, entity.skip, entity.timeScaleEase) }}
         </text>
         <text
             v-if="

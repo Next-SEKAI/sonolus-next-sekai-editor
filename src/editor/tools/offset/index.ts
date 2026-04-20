@@ -3,6 +3,7 @@ import type { Tool } from '..'
 import { pushState, state } from '../../../history'
 import { bgm } from '../../../history/bgm'
 import { i18n } from '../../../i18n'
+import { align } from '../../../utils/math'
 import { notify } from '../../notification'
 import { yToTime } from '../../view'
 
@@ -32,7 +33,7 @@ export const offset: Tool = {
             ...state.value,
             bgm: {
                 ...bgm.value,
-                offset: Math.round((bgm.value.offset + activeTime - yToTime(y)) * 1000) / 1000,
+                offset: align(bgm.value.offset + activeTime - yToTime(y), 1000),
             },
         })
 

@@ -1,11 +1,11 @@
 import { Type } from '@sinclair/typebox'
 import { EngineArchetypeDataName, type LevelDataEntity } from '@sonolus/core'
-import { getOptionalRef, getOptionalValue, getValue, type ParseToChart } from '.'
-import type { NoteObject } from '../..'
-import type { GroupId } from '../../../state/groups'
+import { getOptionalRef, getOptionalValue, getValue, type ParseCtx } from '.'
+import type { GroupId } from '../../groups'
+import type { NoteObject } from '../../note'
 import { beatSchema } from './schemas'
 
-export const parseSlidesToChart: ParseToChart = ({ chart, entities, getGroupId }) => {
+export const parseSlidesToChart = ({ chart, entities, getGroupId }: ParseCtx) => {
     const refs = new Map<string, NoteEntity>()
     const slides = new Map<string, string[]>()
 

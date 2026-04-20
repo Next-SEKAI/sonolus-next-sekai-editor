@@ -1,5 +1,5 @@
 import type { Tool } from '..'
-import type { BpmObject } from '../../../chart'
+import type { BpmObject } from '../../../chart/bpm'
 import { pushState, replaceState, state } from '../../../history'
 import { selectedEntities } from '../../../history/selectedEntities'
 import { store } from '../../../history/store'

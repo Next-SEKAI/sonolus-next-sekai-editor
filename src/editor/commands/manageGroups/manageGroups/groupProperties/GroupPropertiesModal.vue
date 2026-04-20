@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { GroupId, GroupObject } from '../../../../../chart/groups'
 import { pushState, state } from '../../../../../history'
 import { groups } from '../../../../../history/groups'
 import { i18n } from '../../../../../i18n'
 import NameField from '../../../../../modals/form/NameField.vue'
 import OptionalNumberField from '../../../../../modals/form/OptionalNumberField.vue'
 import PropertiesModal from '../../../../../modals/form/PropertiesModal.vue'
-import type { GroupId, GroupProperties } from '../../../../../state/groups'
 import { interpolate } from '../../../../../utils/interpolate'
 import { notify } from '../../../../notification'
 
@@ -14,27 +14,27 @@ const props = defineProps<{
     groupId: GroupId
 }>()
 
-const createModel = <K extends keyof GroupProperties>(key: K) =>
+const createModel = <K extends keyof GroupObject>(key: K) =>
     computed({
         get: () => {
-            const properties = groups.value.get(props.groupId)
-            if (!properties) throw new Error('Unexpected missing group')
+            const object = groups.value.get(props.groupId)
+            if (!object) throw new Error('Unexpected missing group')
 
-            return properties[key]
+            return object[key]
         },
         set: (value) => {
-            const properties = groups.value.get(props.groupId)
-            if (!properties) throw new Error('Unexpected missing group')
+            const object = groups.value.get(props.groupId)
+            if (!object) throw new Error('Unexpected missing group')
 
-            const newProperties = { ...properties, [key]: value }
+            const newObject = { ...object, [key]: value }
 
             const newGroups = new Map(groups.value)
-            newGroups.set(props.groupId, newProperties)
+            newGroups.set(props.groupId, newObject)
 
             pushState(
                 interpolate(
                     () => i18n.value.commands.manageGroups.modal.properties.modal.edited,
-                    newProperties.name,
+                    newObject.name,
                 ),
                 {
                     ...state.value,
@@ -45,7 +45,7 @@ const createModel = <K extends keyof GroupProperties>(key: K) =>
             notify(
                 interpolate(
                     () => i18n.value.commands.manageGroups.modal.properties.modal.edited,
-                    newProperties.name,
+                    newObject.name,
                 ),
             )
         },

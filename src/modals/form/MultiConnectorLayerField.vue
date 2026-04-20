@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ConnectorLayer } from '../../chart'
+import type { ConnectorLayer } from '../../chart/note'
 import { i18n } from '../../i18n'
 import MultiToggleField from './MultiToggleField.vue'
 

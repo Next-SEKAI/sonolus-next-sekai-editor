@@ -4,7 +4,7 @@ import { useAutoSave } from '../history/autoSave'
 import { groups } from '../history/groups'
 import { i18n } from '../i18n'
 import { time } from '../time'
-import { interpolate } from '../utils/interpolate'
+import { interpolateRaw } from '../utils/interpolate'
 import { controlListeners } from './controls'
 import { useFocusControl } from './controls/focus'
 import { useKeyboardControl } from './controls/keyboard'
@@ -58,9 +58,9 @@ watch([groups, brushProperties], () => {
 
 const group = computed(() =>
     view.groupId === undefined
-        ? () => i18n.value.statusBar.group.all
-        : interpolate(
-              () => i18n.value.statusBar.group.one,
+        ? i18n.value.statusBar.group.all
+        : interpolateRaw(
+              i18n.value.statusBar.group.one,
               groups.value.get(view.groupId)?.name ?? '',
           ),
 )
@@ -113,7 +113,7 @@ const group = computed(() =>
         </div>
         <div class="z-10 flex gap-4 bg-preview px-2 py-1 text-xs text-white/50">
             <span class="flex-grow">{{ tool.title() }}</span>
-            <span>{{ group() }}</span>
+            <span>{{ group }}</span>
             <span>1/{{ view.division }}</span>
         </div>
     </div>

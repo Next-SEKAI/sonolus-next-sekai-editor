@@ -1,13 +1,13 @@
 <script setup lang="ts">
+import { addToGroups, type GroupId } from '../../../../chart/groups'
 import { pushState, state } from '../../../../history'
 import { groups } from '../../../../history/groups'
-import { store } from '../../../../history/store'
+import { getAllEntities } from '../../../../history/store'
 import { i18n } from '../../../../i18n'
-import { getStoreEntities } from '../../../../levelData/entities/serialize'
 import { showModal } from '../../../../modals'
 import BaseModal from '../../../../modals/BaseModal.vue'
 import BaseField from '../../../../modals/form/BaseField.vue'
-import { addToGroups, type GroupId } from '../../../../state/groups'
+import type { Entity } from '../../../../state/entities'
 import { removeNote } from '../../../../state/mutations/slides/note'
 import { removeTimeScale } from '../../../../state/mutations/timeScale'
 import { createTransaction } from '../../../../state/transaction'
@@ -70,16 +70,26 @@ const onProperties = (groupId: GroupId) => {
 const onDelete = (groupId: GroupId, name: string) => {
     const transaction = createTransaction(state.value)
 
-    for (const entity of getStoreEntities(store.value.grid.timeScale)) {
-        if (entity.groupId !== groupId) continue
+    const removes: {
+        [T in Entity as T['type']]: ((entity: T) => void) | undefined
+    } = {
+        bpm: undefined,
+        timeScale(entity) {
+            if (entity.groupId !== groupId) return
 
-        removeTimeScale(transaction, entity)
+            removeTimeScale(transaction, entity)
+        },
+
+        note(entity) {
+            if (entity.groupId !== groupId) return
+
+            removeNote(transaction, entity)
+        },
+        connector: undefined,
     }
 
-    for (const entity of getStoreEntities(store.value.grid.note)) {
-        if (entity.groupId !== groupId) continue
-
-        removeNote(transaction, entity)
+    for (const entity of getAllEntities()) {
+        removes[entity.type]?.(entity as never)
     }
 
     const newState = transaction.commit([])

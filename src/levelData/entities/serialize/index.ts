@@ -1,11 +1,9 @@
-import type { Groups } from '../../../state/groups'
+import type { Groups } from '../../../chart/groups'
 import type { Store } from '../../../state/store'
 import { serializeBpmsToLevelDataEntities } from './bpm'
+import { serializeGroupsToLevelDataEntities } from './group'
 import { serializeSlidesToLevelDataEntities } from './slide'
-import {
-    serializeTimeScaleChangesToLevelDataEntities,
-    serializeTimeScaleGroupsToLevelDataEntities,
-} from './timeScale'
+import { serializeTimeScalesToLevelDataEntities } from './timeScale'
 
 export const serializeToLevelDataEntities = (store: Store, groups: Groups) => {
     let id = 0
@@ -13,21 +11,13 @@ export const serializeToLevelDataEntities = (store: Store, groups: Groups) => {
 
     const bpmEntities = serializeBpmsToLevelDataEntities(store)
 
-    const timeScaleGroupEntities = serializeTimeScaleGroupsToLevelDataEntities(groups)
-    const timeScaleChangeEntities = serializeTimeScaleChangesToLevelDataEntities(
-        timeScaleGroupEntities,
-        store,
-        getName,
-    )
+    const groupEntities = serializeGroupsToLevelDataEntities(groups)
 
-    const slideEntities = serializeSlidesToLevelDataEntities(timeScaleGroupEntities, store, getName)
+    const timeScaleEntities = serializeTimeScalesToLevelDataEntities(groupEntities, store, getName)
 
-    return [
-        ...bpmEntities,
-        ...timeScaleGroupEntities.values(),
-        ...timeScaleChangeEntities,
-        ...slideEntities,
-    ]
+    const slideEntities = serializeSlidesToLevelDataEntities(groupEntities, store, getName)
+
+    return [...bpmEntities, ...groupEntities.values(), ...timeScaleEntities, ...slideEntities]
 }
 
 export const getStoreEntities = <T>(map: Map<number, Set<T>>) => {

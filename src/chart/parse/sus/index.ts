@@ -1,7 +1,8 @@
+import type { Chart } from '../..'
 import { settings } from '../../../settings.js'
-import { addToGroups, type Groups } from '../../../state/groups.js'
 import type { Sus } from '../../../sus/parse.js'
-import type { Chart, NoteObject } from '../../index.js'
+import { addToGroups, type Groups } from '../../groups.js'
+import type { NoteObject } from '../../note.js'
 
 export const parseSusChart = (sus: Sus) => {
     const groups: Groups = new Map()
@@ -95,7 +96,7 @@ export const parseSusChart = (sus: Sus) => {
             beat: timeScaleChange.tick / sus.ticksPerBeat,
             timeScale: timeScaleChange.timeScale,
             skip: 0,
-            ease: 'none',
+            timeScaleEase: 'none',
             hideNotes: false,
         })
     }

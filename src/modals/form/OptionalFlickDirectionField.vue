@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FlickDirection } from '../../chart'
+import type { FlickDirection } from '../../chart/note'
 import { i18n } from '../../i18n'
 import OptionalSelectField from './OptionalSelectField.vue'
 
