@@ -83,7 +83,28 @@ export const timeScale: Tool = {
                 if (selectedEntities.value.includes(entity)) {
                     focusViewAtBeat(entity.beat)
 
-                    if (!isSidebarVisible.value) {
+                    if (isSidebarVisible.value) {
+                        editMoveOrReplace(entity, {
+                            groupId: entity.groupId,
+                            beat: entity.beat,
+                            timeScale: entity.timeScale,
+                            skip: entity.skip,
+                            ...(entity.ease === 'none' && !entity.hideNotes
+                                ? {
+                                      ease: 'linear',
+                                      hideNotes: false,
+                                  }
+                                : entity.ease === 'linear' && !entity.hideNotes
+                                  ? {
+                                        ease: 'none',
+                                        hideNotes: true,
+                                    }
+                                  : {
+                                        ease: 'none',
+                                        hideNotes: false,
+                                    }),
+                        })
+                    } else {
                         void showModal(TimeScalePropertiesModal, {})
                     }
                 } else {
