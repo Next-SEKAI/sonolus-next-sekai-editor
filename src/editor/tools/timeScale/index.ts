@@ -389,7 +389,7 @@ const move = (object: TimeScaleObject, old: TimeScaleEntity) => {
     update(
         () => i18n.value.tools.timeScale.moved,
         (transaction) => {
-            if (old.beat) removeTimeScale(transaction, old)
+            removeTimeScale(transaction, old)
             return addTimeScale(transaction, object)
         },
     )
@@ -399,7 +399,7 @@ const replace = (entity: TimeScaleEntity, object: TimeScaleObject, old: TimeScal
     update(
         () => i18n.value.tools.timeScale.replaced,
         (transaction) => {
-            if (old.beat) removeTimeScale(transaction, old)
+            removeTimeScale(transaction, old)
             removeTimeScale(transaction, entity)
             return addTimeScale(transaction, object)
         },
