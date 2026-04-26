@@ -41,6 +41,7 @@ export const copy: Command = {
                     bpms: getEntities(entities, 'bpm'),
                     timeScales: getEntities(entities, 'timeScale'),
                     cameraEvents: getEntities(entities, 'cameraEventJoint'),
+                    stageMaskEvents: getEntities(entities, 'stageMaskEventJoint'),
                     groups: groups.value,
                     stages: stages.value,
                     slides: getSlides(entities),

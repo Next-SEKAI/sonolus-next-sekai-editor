@@ -2,6 +2,7 @@ import { ref } from 'vue'
 import type { Tool } from '..'
 import type { BpmObject } from '../../../chart/bpm'
 import type { CameraEventObject } from '../../../chart/events/camera'
+import type { StageMaskEventObject } from '../../../chart/events/stage/mask'
 import type { GroupId } from '../../../chart/groups'
 import type { FlickDirection, NoteObject } from '../../../chart/note'
 import { parseLevelDataChart } from '../../../chart/parse/levelData'
@@ -19,11 +20,16 @@ import {
     toCameraEventJointEntity,
     type CameraEventJointEntity,
 } from '../../../state/entities/events/joints/camera'
+import {
+    toStageMaskEventJointEntity,
+    type StageMaskEventJointEntity,
+} from '../../../state/entities/events/joints/stage/mask'
 import { createSlideId } from '../../../state/entities/slides'
 import { toNoteEntity, type NoteEntity } from '../../../state/entities/slides/note'
 import { toTimeScaleEntity, type TimeScaleEntity } from '../../../state/entities/timeScale'
 import { addBpm, removeBpm } from '../../../state/mutations/bpm'
 import { addCameraEventJoint } from '../../../state/mutations/events/camera'
+import { addStageMaskEventJoint } from '../../../state/mutations/events/stage/mask'
 import { addNote } from '../../../state/mutations/slides/note'
 import { addTimeScale, removeTimeScale } from '../../../state/mutations/timeScale'
 import { getInStoreGrid } from '../../../state/store/grid'
@@ -92,7 +98,12 @@ export const paste: Tool = {
         const data = getData(clipboardEntry.text)
         if (!data?.entities.length) return
 
-        if (data.entities.some((entity) => entity.type === 'cameraEventJoint')) {
+        if (
+            data.entities.some(
+                (entity) =>
+                    entity.type === 'cameraEventJoint' || entity.type === 'stageMaskEventJoint',
+            )
+        ) {
             await checkDynamicStages()
         }
 
@@ -200,6 +211,8 @@ const getData = (text: string) => {
 
                 ...chart.cameraEvents.map(toCameraEventJointEntity),
 
+                ...chart.stageMaskEvents.map(mapStageId).map(toStageMaskEventJointEntity),
+
                 ...chart.slides.flatMap((slide) => {
                     const slideId = createSlideId()
 
@@ -250,6 +263,21 @@ const toMovedCameraEventObject = (
     cameraRotation: flip ? -entity.cameraRotation : entity.cameraRotation,
 })
 
+const toMovedStageMaskEventObject = (
+    entity: StageMaskEventJointEntity,
+    startLane: number,
+    lane: number,
+    beat: number,
+    flip: boolean,
+): StageMaskEventObject => ({
+    ...entity,
+    stageId: view.stageId ?? entity.stageId,
+    beat,
+    maskLeft: flip
+        ? -(entity.maskLeft + entity.maskSize) + align(startLane) + align(lane)
+        : entity.maskLeft - align(startLane) + align(lane),
+})
+
 const flippedFlickDirections: Record<FlickDirection, FlickDirection> = {
     none: 'none',
     up: 'up',
@@ -295,6 +323,12 @@ const creates: {
     cameraEventJoint: (entity, startLane, lane, beat, flip) =>
         toCameraEventJointEntity(toMovedCameraEventObject(entity, startLane, lane, beat, flip)),
     cameraEventConnection: undefined,
+
+    stageMaskEventJoint: (entity, startLane, lane, beat, flip) =>
+        toStageMaskEventJointEntity(
+            toMovedStageMaskEventObject(entity, startLane, lane, beat, flip),
+        ),
+    stageMaskEventConnection: undefined,
 
     note: (entity, startLane, lane, beat, flip) =>
         toNoteEntity(entity.slideId, toMovedNoteObject(entity, startLane, lane, beat, flip)),
@@ -342,6 +376,15 @@ const pastes: {
         return addCameraEventJoint(transaction, object)
     },
     cameraEventConnection: undefined,
+
+    stageMaskEventJoint: (transaction, entity, startLane, lane, beat, flip) => {
+        if (!isDynamicStages.value) return
+
+        const object = toMovedStageMaskEventObject(entity, startLane, lane, beat, flip)
+
+        return addStageMaskEventJoint(transaction, object)
+    },
+    stageMaskEventConnection: undefined,
 
     note: (transaction, entity, startLane, lane, beat, flip) => {
         const object = toMovedNoteObject(entity, startLane, lane, beat, flip)

@@ -8,6 +8,7 @@ import { showModal } from '../../../../modals'
 import BaseModal from '../../../../modals/BaseModal.vue'
 import BaseField from '../../../../modals/form/BaseField.vue'
 import type { Entity } from '../../../../state/entities'
+import { removeStageMaskEventJoint } from '../../../../state/mutations/events/stage/mask'
 import { removeNote } from '../../../../state/mutations/slides/note'
 import { createTransaction } from '../../../../state/transaction'
 import { interpolate } from '../../../../utils/interpolate'
@@ -77,6 +78,13 @@ const onDelete = (stageId: StageId, name: string) => {
 
         cameraEventJoint: undefined,
         cameraEventConnection: undefined,
+
+        stageMaskEventJoint(entity) {
+            if (entity.stageId !== stageId) return
+
+            removeStageMaskEventJoint(transaction, entity)
+        },
+        stageMaskEventConnection: undefined,
 
         note(entity) {
             if (entity.stageId !== stageId) return

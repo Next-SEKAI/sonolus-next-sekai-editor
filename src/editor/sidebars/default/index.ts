@@ -1,5 +1,6 @@
 import type { BpmObject } from '../../../chart/bpm'
 import type { CameraEventObject } from '../../../chart/events/camera'
+import type { StageMaskEventObject } from '../../../chart/events/stage/mask'
 import type { NoteObject } from '../../../chart/note'
 import type { TimeScaleObject } from '../../../chart/timeScale'
 import { pushState, state } from '../../../history'
@@ -8,6 +9,7 @@ import { i18n } from '../../../i18n'
 import type { Entity } from '../../../state/entities'
 import type { BpmEntity } from '../../../state/entities/bpm'
 import type { CameraEventJointEntity } from '../../../state/entities/events/joints/camera'
+import type { StageMaskEventJointEntity } from '../../../state/entities/events/joints/stage/mask'
 import type { NoteEntity } from '../../../state/entities/slides/note'
 import type { TimeScaleEntity } from '../../../state/entities/timeScale'
 import { createTransaction, type Transaction } from '../../../state/transaction'
@@ -15,18 +17,27 @@ import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
 import { editBpm, editSelectedBpm } from '../../tools/bpm'
 import { editCameraEvent, editSelectedCameraEvent } from '../../tools/events/camera'
+import { editSelectedStageMaskEvent, editStageMaskEvent } from '../../tools/events/stage/mask'
 import { editNote, editSelectedNote } from '../../tools/note'
 import { editSelectedTimeScale, editTimeScale } from '../../tools/timeScale'
 import { view } from '../../view'
 
-export type EditableObject = Partial<BpmObject & TimeScaleObject & CameraEventObject & NoteObject>
+export type EditableObject = Partial<
+    BpmObject & TimeScaleObject & CameraEventObject & StageMaskEventObject & NoteObject
+>
 
-export type EditableEntity = BpmEntity | TimeScaleEntity | CameraEventJointEntity | NoteEntity
+export type EditableEntity =
+    | BpmEntity
+    | TimeScaleEntity
+    | CameraEventJointEntity
+    | StageMaskEventJointEntity
+    | NoteEntity
 
 export const isEditableEntity = (entity: Entity) =>
     entity.type === 'bpm' ||
     entity.type === 'timeScale' ||
     entity.type === 'cameraEventJoint' ||
+    entity.type === 'stageMaskEventJoint' ||
     entity.type === 'note'
 
 export const editSelectedEditableEntities = (object: EditableObject) => {
@@ -81,6 +92,9 @@ const getEditEntity = () =>
         cameraEventJoint: editCameraEvent,
         cameraEventConnection: undefined,
 
+        stageMaskEventJoint: editStageMaskEvent,
+        stageMaskEventConnection: undefined,
+
         note: editNote,
         connector: undefined,
     })
@@ -100,6 +114,9 @@ const getEditSelectedEntity = () =>
 
         cameraEventJoint: editSelectedCameraEvent,
         cameraEventConnection: undefined,
+
+        stageMaskEventJoint: editSelectedStageMaskEvent,
+        stageMaskEventConnection: undefined,
 
         note: editSelectedNote,
         connector: undefined,

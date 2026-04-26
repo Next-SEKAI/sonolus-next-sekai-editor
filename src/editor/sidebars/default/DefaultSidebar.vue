@@ -29,6 +29,8 @@ import MultiIsConnectorSeparatorField from '../../../modals/form/MultiIsConnecto
 import MultiIsCriticalField from '../../../modals/form/MultiIsCriticalField.vue'
 import MultiIsFakeField from '../../../modals/form/MultiIsFakeField.vue'
 import MultiLeftField from '../../../modals/form/MultiLeftField.vue'
+import MultiMaskLeftField from '../../../modals/form/MultiMaskLeftField.vue'
+import MultiMaskSizeField from '../../../modals/form/MultiMaskSizeField.vue'
 import MultiNoteTypeField from '../../../modals/form/MultiNoteTypeField.vue'
 import MultiSfxField from '../../../modals/form/MultiSfxField.vue'
 import MultiSizeField from '../../../modals/form/MultiSizeField.vue'
@@ -57,6 +59,8 @@ const cameraZoomTargetY = createModel('cameraZoomTargetY')
 const cameraZoomVerticalAlign = createModel('cameraZoomVerticalAlign')
 const cameraRotation = createModel('cameraRotation')
 const cameraStageTilt = createModel('cameraStageTilt')
+const maskLeft = createModel('maskLeft')
+const maskSize = createModel('maskSize')
 const eventEase = createModel('eventEase')
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')
@@ -103,10 +107,18 @@ const connectorIsPassThrough = createModel('connectorIsPassThrough')
             />
             <MultiCameraRotationField v-if="types.cameraEventJoint" v-model="cameraRotation" />
             <MultiCameraStageTiltField v-if="types.cameraEventJoint" v-model="cameraStageTilt" />
-            <MultiEventEaseField v-if="types.cameraEventJoint" v-model="eventEase" />
+            <MultiMaskLeftField v-if="types.stageMaskEventJoint" v-model="maskLeft" />
+            <MultiMaskSizeField v-if="types.stageMaskEventJoint" v-model="maskSize" />
+            <MultiEventEaseField
+                v-if="types.cameraEventJoint || types.stageMaskEventJoint"
+                v-model="eventEase"
+            />
             <MultiNoteTypeField v-if="types.note" v-model="noteType" />
             <MultiGroupField v-if="types.timeScale || types.note" v-model="groupId" />
-            <MultiStageField v-if="isDynamicStages && types.note" v-model="stageId" />
+            <MultiStageField
+                v-if="isDynamicStages && (types.note || types.stageMaskEventJoint)"
+                v-model="stageId"
+            />
             <MultiBeatField
                 v-if="entities.length === 1 || (!types.bpm && !types.timeScale)"
                 v-model="beat"

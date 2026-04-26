@@ -5,6 +5,7 @@ import { bpm } from './bpm'
 import { brush } from './brush'
 import { eraser } from './eraser'
 import { cameraEvent } from './events/camera'
+import { stageMaskEvent } from './events/stage/mask'
 import { note } from './note'
 import { offset } from './offset'
 import { paste } from './paste'
@@ -38,6 +39,7 @@ export const tools = {
     timeScale,
 
     cameraEvent,
+    stageMaskEvent,
 
     offset,
 }

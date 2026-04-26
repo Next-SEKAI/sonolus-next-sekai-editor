@@ -1,6 +1,7 @@
 import { type Tool } from '.'
 import type { BpmObject } from '../../chart/bpm'
 import type { CameraEventObject } from '../../chart/events/camera'
+import type { StageMaskEventObject } from '../../chart/events/stage/mask'
 import type { NoteObject } from '../../chart/note'
 import type { TimeScaleObject } from '../../chart/timeScale'
 import { pushState, replaceState, state } from '../../history'
@@ -12,10 +13,18 @@ import {
     toCameraEventJointEntity,
     type CameraEventJointEntity,
 } from '../../state/entities/events/joints/camera'
+import {
+    toStageMaskEventJointEntity,
+    type StageMaskEventJointEntity,
+} from '../../state/entities/events/joints/stage/mask'
 import { toNoteEntity, type NoteEntity } from '../../state/entities/slides/note'
 import { toTimeScaleEntity, type TimeScaleEntity } from '../../state/entities/timeScale'
 import { addBpm, removeBpm } from '../../state/mutations/bpm'
 import { addCameraEventJoint, removeCameraEventJoint } from '../../state/mutations/events/camera'
+import {
+    addStageMaskEventJoint,
+    removeStageMaskEventJoint,
+} from '../../state/mutations/events/stage/mask'
 import { replaceNote } from '../../state/mutations/slides/note'
 import { addTimeScale, removeTimeScale } from '../../state/mutations/timeScale'
 import { getInStoreGrid } from '../../state/store/grid'
@@ -360,6 +369,39 @@ const toMovedCameraEventObject = (
     }
 }
 
+const toMovedStageMaskEventObject = (
+    entities: Entity[],
+    entity: StageMaskEventJointEntity,
+    startLane: number,
+    lane: number,
+    beat: number,
+    focus: Entity,
+): StageMaskEventObject => {
+    if (
+        focus.type === 'stageMaskEventJoint' &&
+        entities.every((entity) => entity.type === 'stageMaskEventJoint') &&
+        (startLane <= focus.maskLeft + 0.5 || startLane >= focus.maskLeft + focus.maskSize - 0.5)
+    ) {
+        const [maskLeft, maskSize] = resize(
+            entity.maskLeft +
+                (startLane >= focus.maskLeft + focus.maskSize / 2 ? 0 : entity.maskSize),
+            lane,
+        )
+
+        return {
+            ...entity,
+            maskLeft,
+            maskSize,
+        }
+    }
+
+    return {
+        ...entity,
+        beat,
+        maskLeft: entity.maskLeft + offset(startLane, lane),
+    }
+}
+
 const toMovedNoteObject = (
     entities: Entity[],
     entity: NoteEntity,
@@ -417,6 +459,12 @@ const creates: {
         ),
     cameraEventConnection: undefined,
 
+    stageMaskEventJoint: (entities, entity, startLane, lane, beat, focus) =>
+        toStageMaskEventJointEntity(
+            toMovedStageMaskEventObject(entities, entity, startLane, lane, beat, focus),
+        ),
+    stageMaskEventConnection: undefined,
+
     note: (entities, entity, startLane, lane, beat, focus) =>
         toNoteEntity(
             entity.slideId,
@@ -471,6 +519,14 @@ const moves: {
         return addCameraEventJoint(transaction, object)
     },
     cameraEventConnection: undefined,
+
+    stageMaskEventJoint: (transaction, entities, entity, startLane, lane, beat, focus) => {
+        const object = toMovedStageMaskEventObject(entities, entity, startLane, lane, beat, focus)
+
+        removeStageMaskEventJoint(transaction, entity)
+        return addStageMaskEventJoint(transaction, object)
+    },
+    stageMaskEventConnection: undefined,
 
     note: (transaction, entities, entity, startLane, lane, beat, focus) => {
         const object = toMovedNoteObject(entities, entity, startLane, lane, beat, focus)

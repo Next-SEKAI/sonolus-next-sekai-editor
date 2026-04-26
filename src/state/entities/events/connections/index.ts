@@ -2,8 +2,9 @@ import type { BaseEntity } from '../..'
 import type { Range } from '../../../../utils/range'
 import type { EventJointEntity } from '../joints'
 import type { CameraEventConnectionEntity } from './camera'
+import type { StageEventConnectionEntity } from './stage'
 
-export type EventConnectionEntity = GlobalEventConnectionEntity
+export type EventConnectionEntity = GlobalEventConnectionEntity | StageEventConnectionEntity
 
 export type EventConnectionEntityType = EventConnectionEntity['type']
 

@@ -3,6 +3,7 @@ import type { Stages } from '../../../chart/stages'
 import type { Store } from '../../../state/store'
 import { serializeBpmsToLevelDataEntities } from './bpm'
 import { serializeCameraEventsToLevelDataEntities } from './events/camera'
+import { serializeStageMaskEventsToLevelDataEntities } from './events/stage/mask'
 import { serializeGroupsToLevelDataEntities } from './group'
 import { serializeSlidesToLevelDataEntities } from './slide'
 import { serializeStagesToLevelDataEntities } from './stage'
@@ -41,6 +42,13 @@ export const serializeToLevelDataEntities = (
         getName,
     )
 
+    const stageMaskEventEntities = serializeStageMaskEventsToLevelDataEntities(
+        isDynamicStages,
+        stageEntities,
+        store,
+        getName,
+    )
+
     const timeScaleEntities = serializeTimeScalesToLevelDataEntities(groupEntities, store, getName)
 
     const slideEntities = serializeSlidesToLevelDataEntities(
@@ -56,6 +64,7 @@ export const serializeToLevelDataEntities = (
         ...groupEntities.values(),
         ...(stageEntities?.values() ?? []),
         ...cameraEventEntities,
+        ...stageMaskEventEntities,
         ...timeScaleEntities,
         ...slideEntities,
     ]

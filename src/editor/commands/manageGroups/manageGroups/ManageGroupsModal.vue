@@ -83,6 +83,9 @@ const onDelete = (groupId: GroupId, name: string) => {
         cameraEventJoint: undefined,
         cameraEventConnection: undefined,
 
+        stageMaskEventJoint: undefined,
+        stageMaskEventConnection: undefined,
+
         note(entity) {
             if (entity.groupId !== groupId) return
 

@@ -14,6 +14,7 @@ export const addEventJoint = <
     object: T,
     toJointEntity: (object: T) => EntityOfType<U>,
     connectionType: V,
+    matchConnection: ((entity: EntityOfType<V>) => boolean) | undefined,
     toConnectionEntity: (min: EntityOfType<U>, max: EntityOfType<U>) => EntityOfType<V>,
     getRange: () => Range<EntityOfType<U>> | undefined,
     setRange: (range: Range<EntityOfType<U>> | undefined) => void,
@@ -22,7 +23,10 @@ export const addEventJoint = <
     addToStoreGrid(store.grid, joint, joint.beat)
 
     const connection = getInStoreGrid(store.grid, connectionType, joint.beat)?.find(
-        (entity) => entity.min.beat <= joint.beat && entity.max.beat > joint.beat,
+        (entity) =>
+            entity.min.beat <= joint.beat &&
+            entity.max.beat > joint.beat &&
+            (matchConnection?.(entity) ?? true),
     )
     if (connection) {
         removeFromStoreGrid(store.grid, connection, connection.min.beat, connection.max.beat)

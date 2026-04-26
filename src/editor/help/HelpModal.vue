@@ -107,5 +107,14 @@ import HelpSection from './HelpSection.vue'
             <li>{{ i18n.help.modal.cameraEventTool.ctrl }}</li>
             <li>{{ i18n.help.modal.cameraEventTool.properties }}</li>
         </HelpSection>
+
+        <HelpSection :title="i18n.help.modal.stageMaskEventTool.title">
+            <li>{{ i18n.help.modal.stageMaskEventTool.select }}</li>
+            <li>{{ i18n.help.modal.stageMaskEventTool.edit }}</li>
+            <li>{{ i18n.help.modal.stageMaskEventTool.add }}</li>
+            <li>{{ i18n.help.modal.stageMaskEventTool.move }}</li>
+            <li>{{ i18n.help.modal.stageMaskEventTool.ctrl }}</li>
+            <li>{{ i18n.help.modal.stageMaskEventTool.properties }}</li>
+        </HelpSection>
     </BaseModal>
 </template>

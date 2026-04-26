@@ -7,6 +7,7 @@ import { addToGroups, type GroupId, type GroupObject } from '../../groups'
 import { addDefaultStageToStages, addToStages, type StageId, type StageObject } from '../../stages'
 import { parseBpmsToChart } from './bpm'
 import { parseCameraEventsToChart } from './events/camera'
+import { parseStageMaskEventsToChart } from './events/stage/mask'
 import { parseGroupsToChart } from './group'
 import { parseInitializationToChart } from './initialization'
 import { parseSlidesToChart } from './slide'
@@ -29,7 +30,7 @@ export type ParseCtx = {
         name: string | undefined,
         editorName: string | undefined,
         object: Omit<StageObject, 'name'>,
-    ) => void
+    ) => StageId
 }
 
 export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
@@ -40,6 +41,7 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
         groups: new Map(),
         stages: new Map(),
         cameraEvents: [],
+        stageMaskEvents: [],
         timeScales: [],
         slides: [],
     }
@@ -89,6 +91,8 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
             if (name) {
                 stageIds[name] = id
             }
+
+            return id
         },
     }
 
@@ -101,12 +105,14 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
         addToGroups(chart.groups)
     }
 
-    parseStagesToChart(ctx)
+    const { firstMaskRefs } = parseStagesToChart(ctx)
     if (!chart.stages.size) {
         ;[defaultStageId] = addDefaultStageToStages(chart.stages)
     }
 
     parseCameraEventsToChart(ctx, firstCameraRef)
+
+    parseStageMaskEventsToChart(ctx, firstMaskRefs)
 
     parseTimeScalesToChart(ctx)
 

@@ -8,6 +8,7 @@ import { createTransaction, type Transaction } from '../../../state/transaction'
 import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
 import { editSelectedCameraEvent } from '../../tools/events/camera'
+import { editSelectedStageMaskEvent } from '../../tools/events/stage/mask'
 import { editSelectedNote } from '../../tools/note'
 import { view } from '../../view'
 import FlipIcon from './FlipIcon.vue'
@@ -70,6 +71,12 @@ const flips: {
             cameraRotation: -entity.cameraRotation,
         }),
     cameraEventConnection: undefined,
+
+    stageMaskEventJoint: (transaction, entity) =>
+        editSelectedStageMaskEvent(transaction, entity, {
+            maskLeft: -(entity.maskLeft + entity.maskSize),
+        }),
+    stageMaskEventConnection: undefined,
 
     note: (transaction, entity) =>
         editSelectedNote(transaction, entity, {

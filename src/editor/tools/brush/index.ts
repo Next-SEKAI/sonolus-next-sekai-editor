@@ -23,6 +23,7 @@ import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
 import { focusViewAtBeat, setViewHover, view, xToLane, yToTime, yToValidBeat } from '../../view'
 import { editSelectedCameraEvent } from '../events/camera'
+import { editSelectedStageMaskEvent } from '../events/stage/mask'
 import { editSelectedNote } from '../note'
 import { editSelectedTimeScale } from '../timeScale'
 import {
@@ -63,6 +64,7 @@ export type BrushProperties = {
     cameraZoomVerticalAlign?: CameraZoomVerticalAlign
     cameraRotation?: number
     cameraStageTilt?: number
+    maskSize?: number
     eventEase?: EventEase
 }
 
@@ -175,6 +177,9 @@ const applies: {
 
     cameraEventJoint: editSelectedCameraEvent,
     cameraEventConnection: undefined,
+
+    stageMaskEventJoint: editSelectedStageMaskEvent,
+    stageMaskEventConnection: undefined,
 
     note: editSelectedNote,
     connector: undefined,

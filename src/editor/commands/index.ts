@@ -9,6 +9,7 @@ import { division } from './divisions'
 import { divisionCustom } from './divisions/custom'
 import { eraser } from './eraser'
 import { cameraEvent } from './events/camera'
+import { stageMaskEvent } from './events/stage/mask'
 import { flip } from './flip'
 import { fullscreen } from './fullscreen'
 import { groupAll } from './groups/groupAll'
@@ -113,6 +114,7 @@ export const commands = {
     groupAll,
 
     cameraEvent,
+    stageMaskEvent,
 
     manageStages,
     stagePrev,
