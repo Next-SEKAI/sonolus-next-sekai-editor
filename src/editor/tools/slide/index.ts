@@ -27,7 +27,7 @@ import {
     xToValidLane,
     yToValidBeat,
 } from '../../view'
-import { hitEntitiesAtPoint, modifyEntities } from '../utils'
+import { hitEntitiesAtPoint, modifyEntities, offset, resize } from '../utils'
 import SlidePropertiesModal from './SlidePropertiesModal.vue'
 import SlideSidebar from './SlideSidebar.vue'
 
@@ -168,7 +168,7 @@ export const slide: Tool = {
                 active = {
                     type: 'move',
                     entity,
-                    lane: xToValidLane(x),
+                    lane,
                 }
             } else {
                 notify(interpolate(() => i18n.value.tools.slide.editing, '1'))
@@ -176,10 +176,7 @@ export const slide: Tool = {
                 active = {
                     type: 'edit',
                     entity,
-                    lane:
-                        lane > entity.left + entity.size / 2
-                            ? entity.left
-                            : entity.left + entity.size - 1,
+                    lane: entity.left + (lane >= entity.left + entity.size / 2 ? 0 : entity.size),
                 }
             }
         } else {
@@ -201,11 +198,12 @@ export const slide: Tool = {
 
         setViewHover(y)
 
-        const lane = xToValidLane(x)
+        const lane = xToLane(x)
 
         switch (active.type) {
             case 'add': {
                 const beat = yToValidBeat(y)
+                const [left, size] = resize(active.lane, lane, 1)
 
                 view.entities = {
                     hovered: [],
@@ -214,8 +212,8 @@ export const slide: Tool = {
                             groupId: view.groupId ?? defaultGroupId.value,
                             beat,
                             ...getPropertiesFromSelection(beat),
-                            left: Math.min(active.lane, lane),
-                            size: Math.abs(active.lane - lane) + 1,
+                            left,
+                            size,
                         }),
                     ],
                 }
@@ -223,6 +221,8 @@ export const slide: Tool = {
                 break
             }
             case 'edit': {
+                const [left, size] = resize(active.lane, lane, 1)
+
                 view.entities = {
                     hovered: [],
                     creating: [
@@ -230,8 +230,8 @@ export const slide: Tool = {
                             active.entity.slideId,
                             {
                                 ...active.entity,
-                                left: Math.min(active.lane, lane),
-                                size: Math.abs(active.lane - lane) + 1,
+                                left,
+                                size,
                             },
                             active.entity,
                         ),
@@ -250,7 +250,7 @@ export const slide: Tool = {
                             {
                                 ...active.entity,
                                 beat,
-                                left: active.entity.left + lane - active.lane,
+                                left: active.entity.left + offset(active.lane, lane),
                             },
                             active.entity,
                         ),
@@ -265,27 +265,30 @@ export const slide: Tool = {
     dragEnd(x, y) {
         if (!active) return
 
-        const lane = xToValidLane(x)
+        const lane = xToLane(x)
 
         switch (active.type) {
             case 'add': {
                 const beat = yToValidBeat(y)
+                const [left, size] = resize(active.lane, lane, 1)
 
                 add(getSelectedSlideId() ?? createSlideId(), {
                     groupId: view.groupId ?? defaultGroupId.value,
                     beat,
                     ...getPropertiesFromSelection(beat),
-                    left: Math.min(active.lane, lane),
-                    size: Math.abs(active.lane - lane) + 1,
+                    left,
+                    size,
                 })
                 focusViewAtBeat(beat)
                 break
             }
             case 'edit': {
+                const [left, size] = resize(active.lane, lane, 1)
+
                 edit(active.entity, {
                     ...active.entity,
-                    left: Math.min(active.lane, lane),
-                    size: Math.abs(active.lane - lane) + 1,
+                    left,
+                    size,
                 })
                 break
             }
@@ -295,7 +298,7 @@ export const slide: Tool = {
                 move(active.entity, {
                     ...active.entity,
                     beat,
-                    left: active.entity.left + lane - active.lane,
+                    left: active.entity.left + offset(active.lane, lane),
                 })
                 focusViewAtBeat(beat)
                 break

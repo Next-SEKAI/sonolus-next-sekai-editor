@@ -13,11 +13,9 @@ import { addTimeScale, removeTimeScale } from '../../state/mutations/timeScale'
 import { getInStoreGrid } from '../../state/store/grid'
 import { createTransaction, type Transaction } from '../../state/transaction'
 import { interpolate } from '../../utils/interpolate'
-import { align } from '../../utils/math'
 import { notify } from '../notification'
 import {
     focusViewAtBeat,
-    laneToValidLane,
     setViewHover,
     view,
     xToLane,
@@ -29,6 +27,8 @@ import {
     hitAllEntitiesAtPoint,
     hitAllEntitiesInSelection,
     modifyEntities,
+    offset,
+    resize,
     toSelection,
 } from './utils'
 
@@ -328,33 +328,28 @@ const toMovedNoteObject = (
     beat: number,
     focus: Entity,
 ): NoteObject => {
-    if (focus.type === 'note' && entities.every((entity) => entity.type === 'note')) {
-        if (startLane <= focus.left + 0.5) {
-            const a = entity.left + entity.size - 1
-            const b = entity.left + (laneToValidLane(lane) - laneToValidLane(startLane))
+    if (
+        focus.type === 'note' &&
+        entities.every((entity) => entity.type === 'note') &&
+        (startLane <= focus.left + 0.5 || startLane >= focus.left + focus.size - 0.5)
+    ) {
+        const [left, size] = resize(
+            entity.left + (startLane >= focus.left + focus.size / 2 ? 0 : entity.size),
+            lane,
+            1,
+        )
 
-            return {
-                ...entity,
-                left: Math.min(a, b),
-                size: Math.abs(a - b) + 1,
-            }
-        } else if (startLane >= focus.left + focus.size - 0.5) {
-            const a = entity.left
-            const b =
-                entity.left + entity.size - 1 + (laneToValidLane(lane) - laneToValidLane(startLane))
-
-            return {
-                ...entity,
-                left: Math.min(a, b),
-                size: Math.abs(a - b) + 1,
-            }
+        return {
+            ...entity,
+            left,
+            size,
         }
     }
 
     return {
         ...entity,
         beat,
-        left: entity.left + align(lane) - align(startLane),
+        left: entity.left + offset(startLane, lane),
     }
 }
 

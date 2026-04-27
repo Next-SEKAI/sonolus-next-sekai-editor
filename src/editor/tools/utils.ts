@@ -1,7 +1,16 @@
 import { hitAllEntities, hitEntities, store } from '../../history/store'
 import type { Entity, EntityType } from '../../state/entities'
+import { align, clamp } from '../../utils/math'
 import type { Modifiers } from '../controls/gestures/pointer'
 import { view, xToLane, yToTime, type Selection } from '../view'
+
+export const offset = (startLane: number, lane: number) => align(lane - startLane)
+
+export const resize = (anchor: number, lane: number, min = 0, max = Number.POSITIVE_INFINITY) => {
+    const size = clamp(Math.abs(align(lane) - anchor), min, max)
+
+    return [anchor - (lane >= anchor ? 0 : size), size] as const
+}
 
 export const hitEntitiesAtPoint = <T extends EntityType>(type: T, x: number, y: number) =>
     hitEntities(type, xToLane(x - 10), xToLane(x + 10), yToTime(y + 10), yToTime(y - 10)).filter(

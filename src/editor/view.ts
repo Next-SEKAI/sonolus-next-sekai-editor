@@ -276,11 +276,9 @@ export const updateViewLastActive = () => {
     view.lastActive = time.value.now
 }
 
-export const laneToValidLane = (lane: number) => align(lane - 0.5)
-
 export const xToLane = (x: number) => ((x - view.x) / view.w - 0.5) * settings.width + view.lane
 
-export const xToValidLane = (x: number) => laneToValidLane(xToLane(x))
+export const xToValidLane = (x: number) => align(xToLane(x))
 
 export const yToTime = (y: number) => (0.5 * view.h - y + view.y) / settings.pps + view.time
 
