@@ -20,6 +20,8 @@ import MultiConnectorGuideColorField from '../../../modals/form/MultiConnectorGu
 import MultiConnectorIsPassThroughField from '../../../modals/form/MultiConnectorIsPassThroughField.vue'
 import MultiConnectorLayerField from '../../../modals/form/MultiConnectorLayerField.vue'
 import MultiConnectorTypeField from '../../../modals/form/MultiConnectorTypeField.vue'
+import MultiDivisionParityField from '../../../modals/form/MultiDivisionParityField.vue'
+import MultiDivisionSizeField from '../../../modals/form/MultiDivisionSizeField.vue'
 import MultiEventEaseField from '../../../modals/form/MultiEventEaseField.vue'
 import MultiFlickDirectionField from '../../../modals/form/MultiFlickDirectionField.vue'
 import MultiGroupField from '../../../modals/form/MultiGroupField.vue'
@@ -32,12 +34,15 @@ import MultiLeftField from '../../../modals/form/MultiLeftField.vue'
 import MultiMaskLeftField from '../../../modals/form/MultiMaskLeftField.vue'
 import MultiMaskSizeField from '../../../modals/form/MultiMaskSizeField.vue'
 import MultiNoteTypeField from '../../../modals/form/MultiNoteTypeField.vue'
+import MultiPivotLaneField from '../../../modals/form/MultiPivotLaneField.vue'
 import MultiSfxField from '../../../modals/form/MultiSfxField.vue'
 import MultiSizeField from '../../../modals/form/MultiSizeField.vue'
 import MultiSkipField from '../../../modals/form/MultiSkipField.vue'
 import MultiStageField from '../../../modals/form/MultiStageField.vue'
 import MultiTimeScaleEaseField from '../../../modals/form/MultiTimeScaleEaseField.vue'
 import MultiTimeScaleField from '../../../modals/form/MultiTimeScaleField.vue'
+import MultiYOffsetBeatField from '../../../modals/form/MultiYOffsetBeatField.vue'
+import MultiYOffsetField from '../../../modals/form/MultiYOffsetField.vue'
 import { useSelectedEntitiesProperties } from '../../utils/properties'
 import BaseSidebar from '../BaseSidebar.vue'
 
@@ -61,6 +66,11 @@ const cameraRotation = createModel('cameraRotation')
 const cameraStageTilt = createModel('cameraStageTilt')
 const maskLeft = createModel('maskLeft')
 const maskSize = createModel('maskSize')
+const pivotLane = createModel('pivotLane')
+const divisionSize = createModel('divisionSize')
+const divisionParity = createModel('divisionParity')
+const yOffset = createModel('yOffset')
+const yOffsetBeat = createModel('yOffsetBeat')
 const eventEase = createModel('eventEase')
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')
@@ -109,14 +119,26 @@ const connectorIsPassThrough = createModel('connectorIsPassThrough')
             <MultiCameraStageTiltField v-if="types.cameraEventJoint" v-model="cameraStageTilt" />
             <MultiMaskLeftField v-if="types.stageMaskEventJoint" v-model="maskLeft" />
             <MultiMaskSizeField v-if="types.stageMaskEventJoint" v-model="maskSize" />
+            <MultiPivotLaneField v-if="types.stagePivotEventJoint" v-model="pivotLane" />
+            <MultiDivisionSizeField v-if="types.stagePivotEventJoint" v-model="divisionSize" />
+            <MultiDivisionParityField v-if="types.stagePivotEventJoint" v-model="divisionParity" />
+            <MultiYOffsetField v-if="types.stagePivotEventJoint" v-model="yOffset" />
+            <MultiYOffsetBeatField v-if="types.stagePivotEventJoint" v-model="yOffsetBeat" />
             <MultiEventEaseField
-                v-if="types.cameraEventJoint || types.stageMaskEventJoint"
+                v-if="
+                    types.cameraEventJoint ||
+                    types.stageMaskEventJoint ||
+                    types.stagePivotEventJoint
+                "
                 v-model="eventEase"
             />
             <MultiNoteTypeField v-if="types.note" v-model="noteType" />
             <MultiGroupField v-if="types.timeScale || types.note" v-model="groupId" />
             <MultiStageField
-                v-if="isDynamicStages && (types.note || types.stageMaskEventJoint)"
+                v-if="
+                    isDynamicStages &&
+                    (types.note || types.stageMaskEventJoint || types.stagePivotEventJoint)
+                "
                 v-model="stageId"
             />
             <MultiBeatField

@@ -9,6 +9,7 @@ import BaseModal from '../../../../modals/BaseModal.vue'
 import BaseField from '../../../../modals/form/BaseField.vue'
 import type { Entity } from '../../../../state/entities'
 import { removeStageMaskEventJoint } from '../../../../state/mutations/events/stage/mask'
+import { removeStagePivotEventJoint } from '../../../../state/mutations/events/stage/pivot'
 import { removeNote } from '../../../../state/mutations/slides/note'
 import { createTransaction } from '../../../../state/transaction'
 import { interpolate } from '../../../../utils/interpolate'
@@ -85,6 +86,13 @@ const onDelete = (stageId: StageId, name: string) => {
             removeStageMaskEventJoint(transaction, entity)
         },
         stageMaskEventConnection: undefined,
+
+        stagePivotEventJoint(entity) {
+            if (entity.stageId !== stageId) return
+
+            removeStagePivotEventJoint(transaction, entity)
+        },
+        stagePivotEventConnection: undefined,
 
         note(entity) {
             if (entity.stageId !== stageId) return

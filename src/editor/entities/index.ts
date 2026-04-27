@@ -3,6 +3,8 @@ import LevelEditorCameraEventConnection from './events/camera/LevelEditorCameraE
 import LevelEditorCameraEventJoint from './events/camera/LevelEditorCameraEventJoint.vue'
 import LevelEditorStageMaskEventConnection from './events/stage/mask/LevelEditorStageMaskEventConnection.vue'
 import LevelEditorStageMaskEventJoint from './events/stage/mask/LevelEditorStageMaskEventJoint.vue'
+import LevelEditorStagePivotEventConnection from './events/stage/pivot/LevelEditorStagePivotEventConnection.vue'
+import LevelEditorStagePivotEventJoint from './events/stage/pivot/LevelEditorStagePivotEventJoint.vue'
 import LevelEditorBpm from './LevelEditorBpm.vue'
 import LevelEditorTimeScale from './LevelEditorTimeScale.vue'
 import LevelEditorNote from './note/LevelEditorNote.vue'
@@ -16,6 +18,9 @@ export const entityComponents = {
 
     stageMaskEventJoint: LevelEditorStageMaskEventJoint,
     stageMaskEventConnection: LevelEditorStageMaskEventConnection,
+
+    stagePivotEventJoint: LevelEditorStagePivotEventJoint,
+    stagePivotEventConnection: LevelEditorStagePivotEventConnection,
 
     note: LevelEditorNote,
     connector: LevelEditorConnector,

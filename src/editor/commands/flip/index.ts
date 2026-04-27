@@ -9,6 +9,7 @@ import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
 import { editSelectedCameraEvent } from '../../tools/events/camera'
 import { editSelectedStageMaskEvent } from '../../tools/events/stage/mask'
+import { editSelectedStagePivotEvent } from '../../tools/events/stage/pivot'
 import { editSelectedNote } from '../../tools/note'
 import { view } from '../../view'
 import FlipIcon from './FlipIcon.vue'
@@ -77,6 +78,12 @@ const flips: {
             maskLeft: -(entity.maskLeft + entity.maskSize),
         }),
     stageMaskEventConnection: undefined,
+
+    stagePivotEventJoint: (transaction, entity) =>
+        editSelectedStagePivotEvent(transaction, entity, {
+            pivotLane: -entity.pivotLane,
+        }),
+    stagePivotEventConnection: undefined,
 
     note: (transaction, entity) =>
         editSelectedNote(transaction, entity, {

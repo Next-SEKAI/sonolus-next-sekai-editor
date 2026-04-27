@@ -9,6 +9,9 @@ const layers = {
     stageMaskEventConnection: 12,
     stageMaskEventJoint: 13,
 
+    stagePivotEventConnection: 14,
+    stagePivotEventJoint: 15,
+
     connector: {
         bottom: {
             active: 20,
@@ -30,6 +33,8 @@ const getLayer = (entity: Entity) => {
         case 'cameraEventConnection':
         case 'stageMaskEventJoint':
         case 'stageMaskEventConnection':
+        case 'stagePivotEventJoint':
+        case 'stagePivotEventConnection':
         case 'timeScale':
         case 'note':
             return layers[entity.type]
@@ -47,6 +52,8 @@ const isEntityVisibleByGroup = (entity: Entity) => {
         case 'cameraEventConnection':
         case 'stageMaskEventJoint':
         case 'stageMaskEventConnection':
+        case 'stagePivotEventJoint':
+        case 'stagePivotEventConnection':
             return true
         case 'timeScale':
         case 'note':
@@ -70,8 +77,10 @@ const isEntityVisibleByStage = (entity: Entity) => {
             return true
         case 'note':
         case 'stageMaskEventJoint':
+        case 'stagePivotEventJoint':
             return entity.stageId === view.stageId
         case 'stageMaskEventConnection':
+        case 'stagePivotEventConnection':
             return entity.min.stageId === view.stageId
         case 'connector':
             return (
@@ -93,6 +102,7 @@ import type { Entity } from '../../state/entities'
 import { hoveredEntities, view } from '../view'
 import LevelEditorCameraEventInfinity from './events/camera/LevelEditorCameraEventInfinity.vue'
 import LevelEditorStageMaskEventInfinities from './events/stage/mask/LevelEditorStageMaskEventInfinities.vue'
+import LevelEditorStagePivotEventInfinities from './events/stage/pivot/LevelEditorStagePivotEventInfinities.vue'
 
 const culledEntities = computed(() => [...cullAllEntities(keys.value.min, keys.value.max)])
 
@@ -102,11 +112,13 @@ const visibleEntities = computed(() =>
             case 'bpm':
             case 'cameraEventJoint':
             case 'stageMaskEventJoint':
+            case 'stagePivotEventJoint':
             case 'timeScale':
             case 'note':
                 return entity.beat >= beats.value.min && entity.beat <= beats.value.max
             case 'cameraEventConnection':
             case 'stageMaskEventConnection':
+            case 'stagePivotEventConnection':
                 return entity.min.beat <= beats.value.max && entity.max.beat >= beats.value.min
             case 'connector':
                 return entity.head.beat <= beats.value.max && entity.tail.beat >= beats.value.min
@@ -142,6 +154,7 @@ const visibleEntityInfos = computed(() => {
 <template>
     <LevelEditorCameraEventInfinity />
     <LevelEditorStageMaskEventInfinities />
+    <LevelEditorStagePivotEventInfinities />
 
     <component
         :is="entityComponents[entity.type]"

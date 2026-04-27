@@ -4,6 +4,7 @@ import { i18n } from '../i18n/index.ts'
 import ConfirmModal from '../modals/ConfirmModal.vue'
 import { showModal } from '../modals/index.ts'
 import { addStageMaskEventJoint } from '../state/mutations/events/stage/mask'
+import { addStagePivotEventJoint } from '../state/mutations/events/stage/pivot'
 import { createTransaction } from '../state/transaction'
 import { pushState, state } from './index.ts'
 import { selectedEntities } from './selectedEntities'
@@ -30,6 +31,16 @@ export const checkDynamicStages = async () => {
         beat: 0,
         maskLeft: -6,
         maskSize: 12,
+        eventEase: 'linear',
+    })
+    addStagePivotEventJoint(transaction, {
+        stageId: defaultStageId.value,
+        beat: 0,
+        pivotLane: 0,
+        divisionSize: 2,
+        divisionParity: 'even',
+        yOffset: 0,
+        yOffsetBeat: 0,
         eventEase: 'linear',
     })
 
