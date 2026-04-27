@@ -2,6 +2,7 @@ import type { BpmObject } from '../../../chart/bpm'
 import type { CameraEventObject } from '../../../chart/events/camera'
 import type { StageMaskEventObject } from '../../../chart/events/stage/mask'
 import type { StagePivotEventObject } from '../../../chart/events/stage/pivot'
+import type { StageStyleEventObject } from '../../../chart/events/stage/style'
 import type { NoteObject } from '../../../chart/note'
 import type { TimeScaleObject } from '../../../chart/timeScale'
 import { pushState, state } from '../../../history'
@@ -12,6 +13,7 @@ import type { BpmEntity } from '../../../state/entities/bpm'
 import type { CameraEventJointEntity } from '../../../state/entities/events/joints/camera'
 import type { StageMaskEventJointEntity } from '../../../state/entities/events/joints/stage/mask'
 import type { StagePivotEventJointEntity } from '../../../state/entities/events/joints/stage/pivot'
+import type { StageStyleEventJointEntity } from '../../../state/entities/events/joints/stage/style'
 import type { NoteEntity } from '../../../state/entities/slides/note'
 import type { TimeScaleEntity } from '../../../state/entities/timeScale'
 import { createTransaction, type Transaction } from '../../../state/transaction'
@@ -21,6 +23,7 @@ import { editBpm, editSelectedBpm } from '../../tools/bpm'
 import { editCameraEvent, editSelectedCameraEvent } from '../../tools/events/camera'
 import { editSelectedStageMaskEvent, editStageMaskEvent } from '../../tools/events/stage/mask'
 import { editSelectedStagePivotEvent, editStagePivotEvent } from '../../tools/events/stage/pivot'
+import { editSelectedStageStyleEvent, editStageStyleEvent } from '../../tools/events/stage/style'
 import { editNote, editSelectedNote } from '../../tools/note'
 import { editSelectedTimeScale, editTimeScale } from '../../tools/timeScale'
 import { view } from '../../view'
@@ -31,6 +34,7 @@ export type EditableObject = Partial<
         CameraEventObject &
         StageMaskEventObject &
         StagePivotEventObject &
+        StageStyleEventObject &
         NoteObject
 >
 
@@ -40,6 +44,7 @@ export type EditableEntity =
     | CameraEventJointEntity
     | StageMaskEventJointEntity
     | StagePivotEventJointEntity
+    | StageStyleEventJointEntity
     | NoteEntity
 
 export const isEditableEntity = (entity: Entity) =>
@@ -48,6 +53,7 @@ export const isEditableEntity = (entity: Entity) =>
     entity.type === 'cameraEventJoint' ||
     entity.type === 'stageMaskEventJoint' ||
     entity.type === 'stagePivotEventJoint' ||
+    entity.type === 'stageStyleEventJoint' ||
     entity.type === 'note'
 
 export const editSelectedEditableEntities = (object: EditableObject) => {
@@ -108,6 +114,9 @@ const getEditEntity = () =>
         stagePivotEventJoint: editStagePivotEvent,
         stagePivotEventConnection: undefined,
 
+        stageStyleEventJoint: editStageStyleEvent,
+        stageStyleEventConnection: undefined,
+
         note: editNote,
         connector: undefined,
     })
@@ -133,6 +142,9 @@ const getEditSelectedEntity = () =>
 
         stagePivotEventJoint: editSelectedStagePivotEvent,
         stagePivotEventConnection: undefined,
+
+        stageStyleEventJoint: editSelectedStageStyleEvent,
+        stageStyleEventConnection: undefined,
 
         note: editSelectedNote,
         connector: undefined,

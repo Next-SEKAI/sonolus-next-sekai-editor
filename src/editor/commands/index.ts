@@ -11,6 +11,7 @@ import { eraser } from './eraser'
 import { cameraEvent } from './events/camera'
 import { stageMaskEvent } from './events/stage/mask'
 import { stagePivotEvent } from './events/stage/pivot'
+import { stageStyleEvent } from './events/stage/style'
 import { flip } from './flip'
 import { fullscreen } from './fullscreen'
 import { groupAll } from './groups/groupAll'
@@ -117,6 +118,7 @@ export const commands = {
     cameraEvent,
     stageMaskEvent,
     stagePivotEvent,
+    stageStyleEvent,
 
     manageStages,
     stagePrev,

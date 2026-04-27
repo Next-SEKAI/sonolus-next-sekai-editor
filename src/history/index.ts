@@ -32,6 +32,7 @@ const createDefaultChart = (): Chart => {
         cameraEvents: [],
         stageMaskEvents: [],
         stagePivotEvents: [],
+        stageStyleEvents: [],
         timeScales: [],
         slides: [],
     }

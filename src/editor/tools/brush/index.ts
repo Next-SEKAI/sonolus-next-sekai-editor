@@ -3,6 +3,7 @@ import type { Tool } from '..'
 import type { EventEase } from '../../../chart/events'
 import type { CameraZoomVerticalAlign } from '../../../chart/events/camera.ts'
 import type { DivisionParity } from '../../../chart/events/stage/pivot'
+import type { BorderStyle, JudgmentLineColor } from '../../../chart/events/stage/style'
 import type { GroupId } from '../../../chart/groups'
 import type {
     ConnectorEase,
@@ -26,6 +27,7 @@ import { focusViewAtBeat, setViewHover, view, xToLane, yToTime, yToValidBeat } f
 import { editSelectedCameraEvent } from '../events/camera'
 import { editSelectedStageMaskEvent } from '../events/stage/mask'
 import { editSelectedStagePivotEvent } from '../events/stage/pivot'
+import { editSelectedStageStyleEvent } from '../events/stage/style'
 import { editSelectedNote } from '../note'
 import { editSelectedTimeScale } from '../timeScale'
 import {
@@ -71,6 +73,12 @@ export type BrushProperties = {
     divisionParity?: DivisionParity
     yOffset?: number
     yOffsetBeat?: number
+    judgmentLineColor?: JudgmentLineColor
+    leftBorderStyle?: BorderStyle
+    rightBorderStyle?: BorderStyle
+    stageAlpha?: number
+    laneAlpha?: number
+    judgmentLineAlpha?: number
     eventEase?: EventEase
 }
 
@@ -189,6 +197,9 @@ const applies: {
 
     stagePivotEventJoint: editSelectedStagePivotEvent,
     stagePivotEventConnection: undefined,
+
+    stageStyleEventJoint: editSelectedStageStyleEvent,
+    stageStyleEventConnection: undefined,
 
     note: editSelectedNote,
     connector: undefined,

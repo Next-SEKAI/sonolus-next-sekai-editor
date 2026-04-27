@@ -10,6 +10,7 @@ import BaseField from '../../../../modals/form/BaseField.vue'
 import type { Entity } from '../../../../state/entities'
 import { removeStageMaskEventJoint } from '../../../../state/mutations/events/stage/mask'
 import { removeStagePivotEventJoint } from '../../../../state/mutations/events/stage/pivot'
+import { removeStageStyleEventJoint } from '../../../../state/mutations/events/stage/style'
 import { removeNote } from '../../../../state/mutations/slides/note'
 import { createTransaction } from '../../../../state/transaction'
 import { interpolate } from '../../../../utils/interpolate'
@@ -93,6 +94,13 @@ const onDelete = (stageId: StageId, name: string) => {
             removeStagePivotEventJoint(transaction, entity)
         },
         stagePivotEventConnection: undefined,
+
+        stageStyleEventJoint(entity) {
+            if (entity.stageId !== stageId) return
+
+            removeStageStyleEventJoint(transaction, entity)
+        },
+        stageStyleEventConnection: undefined,
 
         note(entity) {
             if (entity.stageId !== stageId) return

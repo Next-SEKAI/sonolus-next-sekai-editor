@@ -9,6 +9,7 @@ import { parseBpmsToChart } from './bpm'
 import { parseCameraEventsToChart } from './events/camera'
 import { parseStageMaskEventsToChart } from './events/stage/mask'
 import { parseStagePivotEventsToChart } from './events/stage/pivot'
+import { parseStageStyleEventsToChart } from './events/stage/style'
 import { parseGroupsToChart } from './group'
 import { parseInitializationToChart } from './initialization'
 import { parseSlidesToChart } from './slide'
@@ -44,6 +45,7 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
         cameraEvents: [],
         stageMaskEvents: [],
         stagePivotEvents: [],
+        stageStyleEvents: [],
         timeScales: [],
         slides: [],
     }
@@ -107,7 +109,7 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
         addToGroups(chart.groups)
     }
 
-    const { firstMaskRefs, firstPivotRefs } = parseStagesToChart(ctx)
+    const { firstMaskRefs, firstPivotRefs, firstStyleRefs } = parseStagesToChart(ctx)
     if (!chart.stages.size) {
         ;[defaultStageId] = addDefaultStageToStages(chart.stages)
     }
@@ -116,6 +118,7 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
 
     parseStageMaskEventsToChart(ctx, firstMaskRefs)
     parseStagePivotEventsToChart(ctx, firstPivotRefs)
+    parseStageStyleEventsToChart(ctx, firstStyleRefs)
 
     parseTimeScalesToChart(ctx)
 

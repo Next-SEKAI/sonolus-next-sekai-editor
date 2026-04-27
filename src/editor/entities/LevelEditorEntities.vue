@@ -12,6 +12,9 @@ const layers = {
     stagePivotEventConnection: 14,
     stagePivotEventJoint: 15,
 
+    stageStyleEventConnection: 16,
+    stageStyleEventJoint: 17,
+
     connector: {
         bottom: {
             active: 20,
@@ -35,6 +38,8 @@ const getLayer = (entity: Entity) => {
         case 'stageMaskEventConnection':
         case 'stagePivotEventJoint':
         case 'stagePivotEventConnection':
+        case 'stageStyleEventJoint':
+        case 'stageStyleEventConnection':
         case 'timeScale':
         case 'note':
             return layers[entity.type]
@@ -54,6 +59,8 @@ const isEntityVisibleByGroup = (entity: Entity) => {
         case 'stageMaskEventConnection':
         case 'stagePivotEventJoint':
         case 'stagePivotEventConnection':
+        case 'stageStyleEventJoint':
+        case 'stageStyleEventConnection':
             return true
         case 'timeScale':
         case 'note':
@@ -78,9 +85,11 @@ const isEntityVisibleByStage = (entity: Entity) => {
         case 'note':
         case 'stageMaskEventJoint':
         case 'stagePivotEventJoint':
+        case 'stageStyleEventJoint':
             return entity.stageId === view.stageId
         case 'stageMaskEventConnection':
         case 'stagePivotEventConnection':
+        case 'stageStyleEventConnection':
             return entity.min.stageId === view.stageId
         case 'connector':
             return (
@@ -113,12 +122,14 @@ const visibleEntities = computed(() =>
             case 'cameraEventJoint':
             case 'stageMaskEventJoint':
             case 'stagePivotEventJoint':
+            case 'stageStyleEventJoint':
             case 'timeScale':
             case 'note':
                 return entity.beat >= beats.value.min && entity.beat <= beats.value.max
             case 'cameraEventConnection':
             case 'stageMaskEventConnection':
             case 'stagePivotEventConnection':
+            case 'stageStyleEventConnection':
                 return entity.min.beat <= beats.value.max && entity.max.beat >= beats.value.min
             case 'connector':
                 return entity.head.beat <= beats.value.max && entity.tail.beat >= beats.value.min

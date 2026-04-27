@@ -27,11 +27,17 @@ import OptionalIsAttachedField from '../../../modals/form/OptionalIsAttachedFiel
 import OptionalIsConnectorSeparatorField from '../../../modals/form/OptionalIsConnectorSeparatorField.vue'
 import OptionalIsCriticalField from '../../../modals/form/OptionalIsCriticalField.vue'
 import OptionalIsFakeField from '../../../modals/form/OptionalIsFakeField.vue'
+import OptionalJudgmentLineAlphaField from '../../../modals/form/OptionalJudgmentLineAlphaField.vue'
+import OptionalJudgmentLineColorField from '../../../modals/form/OptionalJudgmentLineColorField.vue'
+import OptionalLaneAlphaField from '../../../modals/form/OptionalLaneAlphaField.vue'
+import OptionalLeftBorderStyleField from '../../../modals/form/OptionalLeftBorderStyleField.vue'
 import OptionalMaskSizeField from '../../../modals/form/OptionalMaskSizeField.vue'
 import OptionalNoteTypeField from '../../../modals/form/OptionalNoteTypeField.vue'
+import OptionalRightBorderStyleField from '../../../modals/form/OptionalRightBorderStyleField.vue'
 import OptionalSfxField from '../../../modals/form/OptionalSfxField.vue'
 import OptionalSizeField from '../../../modals/form/OptionalSizeField.vue'
 import OptionalSkipField from '../../../modals/form/OptionalSkipField.vue'
+import OptionalStageAlphaField from '../../../modals/form/OptionalStageAlphaField.vue'
 import OptionalStageField from '../../../modals/form/OptionalStageField.vue'
 import OptionalTimeScaleEaseField from '../../../modals/form/OptionalTimeScaleEaseField.vue'
 import OptionalTimeScaleField from '../../../modals/form/OptionalTimeScaleField.vue'
@@ -76,6 +82,12 @@ const divisionSize = createModel('divisionSize')
 const divisionParity = createModel('divisionParity')
 const yOffset = createModel('yOffset')
 const yOffsetBeat = createModel('yOffsetBeat')
+const judgmentLineColor = createModel('judgmentLineColor')
+const leftBorderStyle = createModel('leftBorderStyle')
+const rightBorderStyle = createModel('rightBorderStyle')
+const stageAlpha = createModel('stageAlpha')
+const laneAlpha = createModel('laneAlpha')
+const judgmentLineAlpha = createModel('judgmentLineAlpha')
 const eventEase = createModel('eventEase')
 </script>
 
@@ -118,6 +130,12 @@ const eventEase = createModel('eventEase')
         <OptionalDivisionParityField v-if="isDynamicStages" v-model="divisionParity" />
         <OptionalYOffsetField v-if="isDynamicStages" v-model="yOffset" />
         <OptionalYOffsetBeatField v-if="isDynamicStages" v-model="yOffsetBeat" />
+        <OptionalJudgmentLineColorField v-if="isDynamicStages" v-model="judgmentLineColor" />
+        <OptionalLeftBorderStyleField v-if="isDynamicStages" v-model="leftBorderStyle" />
+        <OptionalRightBorderStyleField v-if="isDynamicStages" v-model="rightBorderStyle" />
+        <OptionalStageAlphaField v-if="isDynamicStages" v-model="stageAlpha" />
+        <OptionalLaneAlphaField v-if="isDynamicStages" v-model="laneAlpha" />
+        <OptionalJudgmentLineAlphaField v-if="isDynamicStages" v-model="judgmentLineAlpha" />
         <OptionalEventEaseField v-if="isDynamicStages" v-model="eventEase" />
     </BaseSidebar>
 </template>

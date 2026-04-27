@@ -151,7 +151,7 @@ const settingsProperties = {
                     ['slide4', 'slide3', 'slide2', 'slide1', 'slide0', 'slide'],
                     ['timeScale', 'bpm'],
                     ['groupPrev', 'groupNext', 'groupAll', 'manageGroups'],
-                    ['stagePivotEvent', 'stageMaskEvent', 'cameraEvent'],
+                    ['stageStyleEvent', 'stagePivotEvent', 'stageMaskEvent', 'cameraEvent'],
                     ['stagePrev', 'stageNext', 'stageAll', 'manageStages'],
                     [
                         'scrollLeft',
