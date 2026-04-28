@@ -8,6 +8,7 @@ import { deselect } from './deselect'
 import { division } from './divisions'
 import { divisionCustom } from './divisions/custom'
 import { eraser } from './eraser'
+import { event } from './events'
 import { cameraEvent } from './events/camera'
 import { stageMaskEvent } from './events/stage/mask'
 import { stagePivotEvent } from './events/stage/pivot'
@@ -115,6 +116,7 @@ export const commands = {
     groupNext,
     groupAll,
 
+    event,
     cameraEvent,
     stageMaskEvent,
     stagePivotEvent,
