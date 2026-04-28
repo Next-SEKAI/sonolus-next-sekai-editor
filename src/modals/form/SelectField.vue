@@ -3,7 +3,7 @@ import BaseField from './BaseField.vue'
 
 defineProps<{
     label: string
-    options: [string, NoInfer<T>][]
+    options: (readonly [string, NoInfer<T>])[]
 }>()
 
 const modelValue = defineModel<T>({ required: true })

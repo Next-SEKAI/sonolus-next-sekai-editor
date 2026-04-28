@@ -419,6 +419,16 @@
             "title": "Object Properties",
             "none": "No object selected",
             "edited": "Edited {0} objects"
+        },
+        "view": {
+            "title": "View",
+            "tool": "Tool",
+            "division": "Division",
+            "snapping": {
+                "label": "Snapping",
+                "absolute": "Absolute",
+                "relative": "Relative"
+            }
         }
     },
     "statusBar": {
