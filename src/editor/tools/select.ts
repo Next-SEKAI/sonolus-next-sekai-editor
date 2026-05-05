@@ -333,9 +333,11 @@ const toMovedNoteObject = (
         entities.every((entity) => entity.type === 'note') &&
         (startLane <= focus.left + 0.5 || startLane >= focus.left + focus.size - 0.5)
     ) {
+        const isLeft = startLane >= focus.left + focus.size / 2
+
         const [left, size] = resize(
-            entity.left + (startLane >= focus.left + focus.size / 2 ? 0 : entity.size),
-            lane,
+            entity.left + (isLeft ? 0 : entity.size),
+            entity.left + (isLeft ? entity.size : 0) + (lane - startLane),
             1,
         )
 
