@@ -100,7 +100,7 @@ export const changePlayerSpeed = (direction: -1 | 1) => {
     notify(interpolate(() => i18n.value.player.changed, `${speed}`))
 }
 
-const speeds = [0.5, 0.75, 1, 1.5, 2]
+const speeds = [0.25, 0.5, 0.75, 1, 1.5, 2]
 
 const getNewSpeed = (direction: -1 | 1) => {
     const index = speeds.indexOf(speed)
