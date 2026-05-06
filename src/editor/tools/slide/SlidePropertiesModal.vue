@@ -6,6 +6,7 @@ import MultiConnectorActiveIsFakeField from '../../../modals/form/MultiConnector
 import MultiConnectorEaseField from '../../../modals/form/MultiConnectorEaseField.vue'
 import MultiConnectorGuideAlphaField from '../../../modals/form/MultiConnectorGuideAlphaField.vue'
 import MultiConnectorGuideColorField from '../../../modals/form/MultiConnectorGuideColorField.vue'
+import MultiConnectorIsPassThroughField from '../../../modals/form/MultiConnectorIsPassThroughField.vue'
 import MultiConnectorLayerField from '../../../modals/form/MultiConnectorLayerField.vue'
 import MultiConnectorTypeField from '../../../modals/form/MultiConnectorTypeField.vue'
 import MultiFlickDirectionField from '../../../modals/form/MultiFlickDirectionField.vue'
@@ -43,6 +44,7 @@ const connectorActiveIsFake = createModel('connectorActiveIsFake')
 const connectorGuideColor = createModel('connectorGuideColor')
 const connectorGuideAlpha = createModel('connectorGuideAlpha')
 const connectorLayer = createModel('connectorLayer')
+const connectorIsPassThrough = createModel('connectorIsPassThrough')
 </script>
 
 <template>
@@ -91,6 +93,10 @@ const connectorLayer = createModel('connectorLayer')
         <MultiConnectorLayerField
             v-if="noteFields.connectorLayer !== false"
             v-model="connectorLayer"
+        />
+        <MultiConnectorIsPassThroughField
+            v-if="noteFields.connectorIsPassThrough !== false"
+            v-model="connectorIsPassThrough"
         />
     </PropertiesModal>
 </template>

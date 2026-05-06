@@ -325,6 +325,8 @@ const connectorLayers = {
     1: 'bottom',
 } as const
 
+const segmentThroughJudgeLineSchema = Type.Number()
+
 const trimStart = <T extends string, U extends string>(
     name: T,
     prefix: U,
@@ -363,6 +365,11 @@ const toNoteObject = (
         connectorGuideAlpha: getValue(entity, 'segmentAlpha', segmentAlphaSchema),
         connectorLayer:
             connectorLayers[getOptionalValue(entity, 'segmentLayer', segmentLayerSchema) ?? 0],
+        connectorIsPassThrough: !!getOptionalValue(
+            entity,
+            'segmentThroughJudgeLine',
+            segmentThroughJudgeLineSchema,
+        ),
     }
 
     const [isFake, archetype1] = startsWith(entity.archetype, 'Fake')

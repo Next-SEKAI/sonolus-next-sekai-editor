@@ -32,6 +32,7 @@ export type NoteEntity = BaseEntity & {
     connectorActiveIsFake: boolean
     connectorGuideColor: ConnectorGuideColor
     connectorGuideAlpha: number
+    connectorIsPassThrough: boolean
 
     useInfoOf?: NoteEntity
 }
@@ -68,6 +69,7 @@ export const toNoteEntity = (
     connectorGuideColor: object.connectorGuideColor,
     connectorGuideAlpha: object.connectorGuideAlpha,
     connectorLayer: object.connectorLayer,
+    connectorIsPassThrough: object.connectorIsPassThrough,
 
     useInfoOf,
 })

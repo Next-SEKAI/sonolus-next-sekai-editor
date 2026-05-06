@@ -140,6 +140,7 @@ export const parseSusChart = (sus: Sus) => {
                 connectorGuideColor: 'green',
                 connectorGuideAlpha: 1,
                 connectorLayer: 'top',
+                connectorIsPassThrough: false,
             },
         ])
     }
@@ -159,6 +160,7 @@ export const parseSusChart = (sus: Sus) => {
         const connectorGuideColor =
             connectorType === 'guide' && slideCriticalMod ? 'yellow' : 'green'
         const connectorLayer = connectorType === 'guide' ? 'bottom' : 'top'
+        const connectorIsPassThrough = false
 
         const objects: NoteObject[] = []
 
@@ -199,6 +201,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorGuideColor,
                             connectorGuideAlpha,
                             connectorLayer,
+                            connectorIsPassThrough,
                         })
                     } else {
                         objects.push({
@@ -220,6 +223,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorGuideColor,
                             connectorGuideAlpha,
                             connectorLayer,
+                            connectorIsPassThrough,
                         })
                     }
                     break
@@ -245,6 +249,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorGuideColor,
                             connectorGuideAlpha,
                             connectorLayer,
+                            connectorIsPassThrough,
                         })
                     } else {
                         objects.push({
@@ -266,6 +271,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorGuideColor,
                             connectorGuideAlpha,
                             connectorLayer,
+                            connectorIsPassThrough,
                         })
                     }
                     break
@@ -291,6 +297,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorGuideColor,
                             connectorGuideAlpha,
                             connectorLayer,
+                            connectorIsPassThrough,
                         })
                     } else {
                         objects.push({
@@ -312,6 +319,7 @@ export const parseSusChart = (sus: Sus) => {
                             connectorGuideColor,
                             connectorGuideAlpha,
                             connectorLayer,
+                            connectorIsPassThrough,
                         })
                     }
                     break
@@ -338,6 +346,7 @@ export const parseSusChart = (sus: Sus) => {
                         connectorGuideColor,
                         connectorGuideAlpha,
                         connectorLayer,
+                        connectorIsPassThrough,
                     })
                     break
                 }

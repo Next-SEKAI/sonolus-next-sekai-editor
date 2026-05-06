@@ -65,6 +65,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                         connectorGuideColor: 'green',
                         connectorGuideAlpha: 1,
                         connectorLayer: 'top',
+                        connectorIsPassThrough: false,
                     },
                 ])
                 break
@@ -100,6 +101,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                         connectorGuideColor: 'green',
                         connectorGuideAlpha: 1,
                         connectorLayer: 'top',
+                        connectorIsPassThrough: false,
                     })),
                 )
                 break
@@ -126,6 +128,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                             ? connectorGuideAlphaStarts
                             : connectorGuideAlphaEnds)[object.fade],
                         connectorLayer: 'top',
+                        connectorIsPassThrough: false,
                     })),
                 )
                 break
@@ -150,6 +153,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                         connectorGuideColor: 'green',
                         connectorGuideAlpha: 1,
                         connectorLayer: 'top',
+                        connectorIsPassThrough: false,
                     },
                 ])
                 break

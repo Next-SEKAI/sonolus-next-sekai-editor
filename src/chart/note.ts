@@ -59,4 +59,5 @@ export type NoteObject = {
     connectorGuideColor: ConnectorGuideColor
     connectorGuideAlpha: number
     connectorLayer: ConnectorLayer
+    connectorIsPassThrough: boolean
 }

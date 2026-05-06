@@ -87,6 +87,10 @@ export const serializeSlidesToLevelDataEntities = (
                         name: 'effectKind',
                         value: sfxs[note.sfx],
                     },
+                    {
+                        name: 'segmentThroughJudgeLine',
+                        value: +note.connectorIsPassThrough,
+                    },
                 ],
             }
             entities.push(entity)

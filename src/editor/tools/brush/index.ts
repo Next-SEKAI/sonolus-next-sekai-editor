@@ -46,6 +46,7 @@ export type BrushProperties = {
     connectorGuideColor?: ConnectorGuideColor
     connectorGuideAlpha?: number
     connectorLayer?: ConnectorLayer
+    connectorIsPassThrough?: boolean
     timeScale?: number
     skip?: number
     timeScaleEase?: TimeScaleEase

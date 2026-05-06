@@ -363,6 +363,10 @@ const getPropertiesFromSelection = (beat: number) => {
             defaultSlideProperties.value.connectorGuideAlpha ?? nearest?.connectorGuideAlpha ?? 1,
         connectorLayer:
             defaultSlideProperties.value.connectorLayer ?? nearest?.connectorLayer ?? 'top',
+        connectorIsPassThrough:
+            defaultSlideProperties.value.connectorIsPassThrough ??
+            nearest?.connectorIsPassThrough ??
+            false,
     }
 }
 

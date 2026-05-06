@@ -151,6 +151,9 @@ export const quickEdit = (properties: DefaultNoteSlideProperties) => {
                 connectorLayer: rotate(value as ConnectorLayer, ['top', 'bottom']),
             })
             break
+        case 'connectorIsPassThrough':
+            editSelectedEditableEntities({ connectorIsPassThrough: !value })
+            break
     }
 }
 
