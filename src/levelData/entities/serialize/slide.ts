@@ -361,4 +361,6 @@ const guideSegmentKinds = {
 const segmentLayers = {
     top: 0,
     bottom: 1,
+    under: 2,
+    over: 3,
 }

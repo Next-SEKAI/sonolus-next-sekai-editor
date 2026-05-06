@@ -774,7 +774,9 @@
             "connectorLayer": {
                 "label": "Connector Layer",
                 "top": "Top",
-                "bottom": "Bottom"
+                "bottom": "Bottom",
+                "under": "Under",
+                "over": "Over"
             },
             "connectorType": {
                 "label": "Connector Type",
