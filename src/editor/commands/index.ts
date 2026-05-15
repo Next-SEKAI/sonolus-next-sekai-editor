@@ -40,6 +40,8 @@ import { speedDown } from './speeds/speedDown'
 import { speedUp } from './speeds/speedUp'
 import { stop } from './stop'
 import { timeScale } from './timeScale'
+import { toggleBgmVolume } from './toggleVolume/bgm'
+import { toggleSfxVolume } from './toggleVolume/sfx'
 import { undo } from './undo'
 import { utilities } from './utilities'
 import { zoomXIn } from './zooms/zoomXIn'
@@ -68,6 +70,8 @@ export const commands = {
     stop,
     speedUp,
     speedDown,
+    toggleBgmVolume,
+    toggleSfxVolume,
     bgm,
     offset,
 
