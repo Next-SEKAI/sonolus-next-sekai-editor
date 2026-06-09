@@ -4,6 +4,7 @@ import type { StageId, StageObject, Stages } from '../../../../../chart/stages'
 import { pushState, state } from '../../../../../history'
 import { stages } from '../../../../../history/stages'
 import { i18n } from '../../../../../i18n'
+import GenerateSimLinesField from '../../../../../modals/form/GenerateSimLinesField.vue'
 import IsFromStartField from '../../../../../modals/form/IsFromStartField.vue'
 import IsUntilEndField from '../../../../../modals/form/IsUntilEndField.vue'
 import NameField from '../../../../../modals/form/NameField.vue'
@@ -55,6 +56,7 @@ const createModel = <K extends keyof StageObject>(key: K) =>
 const name = createModel('name')
 const isFromStart = createModel('isFromStart')
 const isUntilEnd = createModel('isUntilEnd')
+const generateSimLines = createModel('generateSimLines')
 </script>
 
 <template>
@@ -62,5 +64,6 @@ const isUntilEnd = createModel('isUntilEnd')
         <NameField v-model="name" />
         <IsFromStartField v-model="isFromStart" />
         <IsUntilEndField v-model="isUntilEnd" />
+        <GenerateSimLinesField v-model="generateSimLines" />
     </PropertiesModal>
 </template>

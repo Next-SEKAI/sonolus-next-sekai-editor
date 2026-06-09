@@ -1,6 +1,6 @@
 import { EngineArchetypeDataName, type LevelDataEntity } from '@sonolus/core'
 import type { GroupId } from '../../../chart/groups'
-import type { StageId } from '../../../chart/stages'
+import type { StageId, Stages } from '../../../chart/stages'
 import type { NoteEntity } from '../../../state/entities/slides/note'
 import type { Store } from '../../../state/store'
 
@@ -8,6 +8,7 @@ export const serializeSlidesToLevelDataEntities = (
     groupEntities: Map<GroupId, LevelDataEntity>,
     stageEntities: Map<StageId, LevelDataEntity> | undefined,
     store: Store,
+    stages: Stages,
     getName: () => string,
 ) => {
     const entities: LevelDataEntity[] = []
@@ -21,7 +22,19 @@ export const serializeSlidesToLevelDataEntities = (
         return entity
     }
 
-    const allowSimLines = new Map<number, NoteEntity[]>()
+    const partitionedAllowSimLines = new Map<StageId | undefined, Map<number, NoteEntity[]>>()
+    const getAllowSimLines = (stageId: StageId) => {
+        const stage = stages.get(stageId)
+        if (!stage) throw new Error('Unexpected missing stage')
+
+        const id = stageEntities && stage.generateSimLines === 'isolated' ? stageId : undefined
+        const allowSimLines = partitionedAllowSimLines.get(id)
+        if (allowSimLines) return allowSimLines
+
+        const newAllowSimLines = new Map<number, NoteEntity[]>()
+        partitionedAllowSimLines.set(id, newAllowSimLines)
+        return newAllowSimLines
+    }
 
     for (const infos of store.slides.info.values()) {
         let prev: LevelDataEntity | undefined
@@ -169,6 +182,8 @@ export const serializeSlidesToLevelDataEntities = (
                     (!isInActive || isActiveHead || isActiveTail)) ||
                 info.note.noteType === 'forceNonTick'
             ) {
+                const allowSimLines = getAllowSimLines(info.note.stageId)
+
                 const notes = allowSimLines.get(tick)
                 if (notes) {
                     notes.push(info.note)
@@ -281,30 +296,32 @@ export const serializeSlidesToLevelDataEntities = (
         }
     }
 
-    for (const notes of allowSimLines.values()) {
-        if (notes.length < 2) continue
+    for (const allowSimLines of partitionedAllowSimLines.values()) {
+        for (const notes of allowSimLines.values()) {
+            if (notes.length < 2) continue
 
-        notes.sort((a, b) => a.left + a.size / 2 - (b.left + b.size / 2))
+            notes.sort((a, b) => a.left + a.size / 2 - (b.left + b.size / 2))
 
-        let prev: NoteEntity | undefined
-        for (const note of notes) {
-            if (prev) {
-                entities.push({
-                    archetype: 'SimLine',
-                    data: [
-                        {
-                            name: 'left',
-                            ref: (getEntity(prev).name ??= getName()),
-                        },
-                        {
-                            name: 'right',
-                            ref: (getEntity(note).name ??= getName()),
-                        },
-                    ],
-                })
+            let prev: NoteEntity | undefined
+            for (const note of notes) {
+                if (prev) {
+                    entities.push({
+                        archetype: 'SimLine',
+                        data: [
+                            {
+                                name: 'left',
+                                ref: (getEntity(prev).name ??= getName()),
+                            },
+                            {
+                                name: 'right',
+                                ref: (getEntity(note).name ??= getName()),
+                            },
+                        ],
+                    })
+                }
+
+                prev = note
             }
-
-            prev = note
         }
     }
 

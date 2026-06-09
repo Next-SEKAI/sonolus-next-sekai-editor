@@ -816,6 +816,11 @@
                 "downLeft": "Down Left",
                 "downRight": "Down Right"
             },
+            "generateSimLines": {
+                "label": "Generate Sim Lines",
+                "global": "Global",
+                "isolated": "Isolated"
+            },
             "group": {
                 "label": "Group"
             },
