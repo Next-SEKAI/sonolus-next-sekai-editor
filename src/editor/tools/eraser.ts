@@ -5,6 +5,7 @@ import { i18n } from '../../i18n'
 import type { Entity } from '../../state/entities'
 import type { RemoveMutation } from '../../state/mutations'
 import { removeBpm } from '../../state/mutations/bpm'
+import { removeCameraEventJoint } from '../../state/mutations/events/camera'
 import { removeNote } from '../../state/mutations/slides/note'
 import { removeTimeScale } from '../../state/mutations/timeScale'
 import { createTransaction } from '../../state/transaction'
@@ -117,6 +118,9 @@ const canRemoves: {
     bpm: (entity) => entity.beat > 0,
     timeScale: undefined,
 
+    cameraEventJoint: undefined,
+    cameraEventConnection: undefined,
+
     note: undefined,
     connector: undefined,
 }
@@ -126,6 +130,9 @@ const removes: {
 } = {
     bpm: removeBpm,
     timeScale: removeTimeScale,
+
+    cameraEventJoint: removeCameraEventJoint,
+    cameraEventConnection: undefined,
 
     note: removeNote,
     connector: undefined,

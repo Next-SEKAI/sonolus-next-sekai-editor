@@ -1,5 +1,7 @@
 import { ref } from 'vue'
 import type { Tool } from '..'
+import type { EventEase } from '../../../chart/events'
+import type { CameraZoomVerticalAlign } from '../../../chart/events/camera.ts'
 import type { GroupId } from '../../../chart/groups'
 import type {
     ConnectorEase,
@@ -20,6 +22,7 @@ import { createTransaction, type Transaction } from '../../../state/transaction'
 import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
 import { focusViewAtBeat, setViewHover, view, xToLane, yToTime, yToValidBeat } from '../../view'
+import { editSelectedCameraEvent } from '../events/camera'
 import { editSelectedNote } from '../note'
 import { editSelectedTimeScale } from '../timeScale'
 import {
@@ -53,6 +56,14 @@ export type BrushProperties = {
     skip?: number
     timeScaleEase?: TimeScaleEase
     hideNotes?: boolean
+    cameraSize?: number
+    cameraZoom?: number
+    cameraZoomTargetLane?: number
+    cameraZoomTargetY?: number
+    cameraZoomVerticalAlign?: CameraZoomVerticalAlign
+    cameraRotation?: number
+    cameraStageTilt?: number
+    eventEase?: EventEase
 }
 
 export const brushProperties = ref<BrushProperties>({})
@@ -161,6 +172,9 @@ const applies: {
 } = {
     bpm: undefined,
     timeScale: editSelectedTimeScale,
+
+    cameraEventJoint: editSelectedCameraEvent,
+    cameraEventConnection: undefined,
 
     note: editSelectedNote,
     connector: undefined,

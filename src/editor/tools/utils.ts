@@ -69,6 +69,7 @@ export const toSelection = (startLane: number, startTime: number, x: number, y: 
 const isVisible = (entity: Entity) => {
     switch (entity.type) {
         case 'bpm':
+        case 'cameraEventJoint':
             return true
         case 'timeScale':
             return view.groupId === undefined || entity.groupId === view.groupId
@@ -77,6 +78,7 @@ const isVisible = (entity: Entity) => {
                 (view.groupId === undefined || entity.groupId === view.groupId) &&
                 (view.stageId === undefined || entity.stageId === view.stageId)
             )
+        case 'cameraEventConnection':
         case 'connector':
             return false
     }

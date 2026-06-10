@@ -10,6 +10,7 @@ export type Transaction = ReturnType<typeof createTransaction>
 
 export const createTransaction = (state: State) => {
     const grid = createMapObjectTransaction(state.store.grid)
+    const globalEventRanges = { ...state.store.globalEventRanges }
     const slides = createMapObjectTransaction(state.store.slides)
     const dirtySlideIds = new Set<SlideId>()
 
@@ -21,6 +22,7 @@ export const createTransaction = (state: State) => {
     return {
         store: {
             grid: grid.accessor,
+            globalEventRanges,
             slides: slides.accessor,
 
             markDirty(slideId: SlideId) {
@@ -58,6 +60,7 @@ export const createTransaction = (state: State) => {
                         ...state.store.grid,
                         ...grid.value,
                     },
+                    globalEventRanges,
                     slides: {
                         ...state.store.slides,
                         ...slides.value,

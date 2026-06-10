@@ -4,6 +4,7 @@ import { view } from '../view'
 import { bpm } from './bpm'
 import { brush } from './brush'
 import { eraser } from './eraser'
+import { cameraEvent } from './events/camera'
 import { note } from './note'
 import { offset } from './offset'
 import { paste } from './paste'
@@ -35,6 +36,8 @@ export const tools = {
 
     bpm,
     timeScale,
+
+    cameraEvent,
 
     offset,
 }

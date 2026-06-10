@@ -1,4 +1,5 @@
 import type { BpmObject } from '../../../chart/bpm'
+import type { CameraEventObject } from '../../../chart/events/camera'
 import type { NoteObject } from '../../../chart/note'
 import type { TimeScaleObject } from '../../../chart/timeScale'
 import { pushState, state } from '../../../history'
@@ -6,22 +7,27 @@ import { selectedEntities } from '../../../history/selectedEntities'
 import { i18n } from '../../../i18n'
 import type { Entity } from '../../../state/entities'
 import type { BpmEntity } from '../../../state/entities/bpm'
+import type { CameraEventJointEntity } from '../../../state/entities/events/joints/camera'
 import type { NoteEntity } from '../../../state/entities/slides/note'
 import type { TimeScaleEntity } from '../../../state/entities/timeScale'
 import { createTransaction, type Transaction } from '../../../state/transaction'
 import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
 import { editBpm, editSelectedBpm } from '../../tools/bpm'
+import { editCameraEvent, editSelectedCameraEvent } from '../../tools/events/camera'
 import { editNote, editSelectedNote } from '../../tools/note'
 import { editSelectedTimeScale, editTimeScale } from '../../tools/timeScale'
 import { view } from '../../view'
 
-export type EditableObject = Partial<BpmObject & TimeScaleObject & NoteObject>
+export type EditableObject = Partial<BpmObject & TimeScaleObject & CameraEventObject & NoteObject>
 
-export type EditableEntity = BpmEntity | TimeScaleEntity | NoteEntity
+export type EditableEntity = BpmEntity | TimeScaleEntity | CameraEventJointEntity | NoteEntity
 
 export const isEditableEntity = (entity: Entity) =>
-    entity.type === 'bpm' || entity.type === 'timeScale' || entity.type === 'note'
+    entity.type === 'bpm' ||
+    entity.type === 'timeScale' ||
+    entity.type === 'cameraEventJoint' ||
+    entity.type === 'note'
 
 export const editSelectedEditableEntities = (object: EditableObject) => {
     if (selectedEntities.value.length === 1) {
@@ -72,6 +78,9 @@ const getEditEntity = () =>
         bpm: editBpm,
         timeScale: editTimeScale,
 
+        cameraEventJoint: editCameraEvent,
+        cameraEventConnection: undefined,
+
         note: editNote,
         connector: undefined,
     })
@@ -88,6 +97,9 @@ const getEditSelectedEntity = () =>
     (editSelectedEntity ??= {
         bpm: editSelectedBpm,
         timeScale: editSelectedTimeScale,
+
+        cameraEventJoint: editSelectedCameraEvent,
+        cameraEventConnection: undefined,
 
         note: editSelectedNote,
         connector: undefined,

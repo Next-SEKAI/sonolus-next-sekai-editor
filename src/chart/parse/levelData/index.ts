@@ -6,6 +6,7 @@ import { settings } from '../../../settings'
 import { addToGroups, type GroupId, type GroupObject } from '../../groups'
 import { addDefaultStageToStages, addToStages, type StageId, type StageObject } from '../../stages'
 import { parseBpmsToChart } from './bpm'
+import { parseCameraEventsToChart } from './events/camera'
 import { parseGroupsToChart } from './group'
 import { parseInitializationToChart } from './initialization'
 import { parseSlidesToChart } from './slide'
@@ -38,6 +39,7 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
         bpms: [],
         groups: new Map(),
         stages: new Map(),
+        cameraEvents: [],
         timeScales: [],
         slides: [],
     }
@@ -90,7 +92,7 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
         },
     }
 
-    parseInitializationToChart(ctx)
+    const firstCameraRef = parseInitializationToChart(ctx)
 
     parseBpmsToChart(ctx)
 
@@ -103,6 +105,8 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
     if (!chart.stages.size) {
         ;[defaultStageId] = addDefaultStageToStages(chart.stages)
     }
+
+    parseCameraEventsToChart(ctx, firstCameraRef)
 
     parseTimeScalesToChart(ctx)
 

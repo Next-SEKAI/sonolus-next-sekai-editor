@@ -13,16 +13,5 @@ export const serializeToLevelData = (
     stages: Stages,
 ): LevelData => ({
     bgmOffset,
-    entities: [
-        {
-            archetype: 'Initialization',
-            data: [
-                {
-                    name: 'initialLife',
-                    value: initialLife,
-                },
-            ],
-        },
-        ...serializeToLevelDataEntities(isDynamicStages, store, groups, stages),
-    ],
+    entities: serializeToLevelDataEntities(initialLife, isDynamicStages, store, groups, stages),
 })

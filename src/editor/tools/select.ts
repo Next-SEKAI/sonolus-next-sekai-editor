@@ -1,5 +1,6 @@
 import { type Tool } from '.'
 import type { BpmObject } from '../../chart/bpm'
+import type { CameraEventObject } from '../../chart/events/camera'
 import type { NoteObject } from '../../chart/note'
 import type { TimeScaleObject } from '../../chart/timeScale'
 import { pushState, replaceState, state } from '../../history'
@@ -7,9 +8,14 @@ import { selectedEntities } from '../../history/selectedEntities'
 import { i18n } from '../../i18n'
 import type { Entity } from '../../state/entities'
 import { toBpmEntity, type BpmEntity } from '../../state/entities/bpm'
+import {
+    toCameraEventJointEntity,
+    type CameraEventJointEntity,
+} from '../../state/entities/events/joints/camera'
 import { toNoteEntity, type NoteEntity } from '../../state/entities/slides/note'
 import { toTimeScaleEntity, type TimeScaleEntity } from '../../state/entities/timeScale'
 import { addBpm, removeBpm } from '../../state/mutations/bpm'
+import { addCameraEventJoint, removeCameraEventJoint } from '../../state/mutations/events/camera'
 import { replaceNote } from '../../state/mutations/slides/note'
 import { addTimeScale, removeTimeScale } from '../../state/mutations/timeScale'
 import { getInStoreGrid } from '../../state/store/grid'
@@ -318,6 +324,42 @@ const toMovedTimeScaleObject = (entity: TimeScaleEntity, beat: number): TimeScal
     beat,
 })
 
+const toMovedCameraEventObject = (
+    entities: Entity[],
+    entity: CameraEventJointEntity,
+    startLane: number,
+    lane: number,
+    beat: number,
+    focus: Entity,
+): CameraEventObject => {
+    if (
+        focus.type === 'cameraEventJoint' &&
+        entities.every((entity) => entity.type === 'cameraEventJoint') &&
+        (startLane <= focus.cameraLeft + 0.5 ||
+            startLane >= focus.cameraLeft + focus.cameraSize - 0.5)
+    ) {
+        const [cameraLeft, cameraSize] = resize(
+            entity.cameraLeft +
+                (startLane >= focus.cameraLeft + focus.cameraSize / 2 ? 0 : entity.cameraSize),
+            lane,
+            6,
+            24,
+        )
+
+        return {
+            ...entity,
+            cameraLeft,
+            cameraSize,
+        }
+    }
+
+    return {
+        ...entity,
+        beat,
+        cameraLeft: entity.cameraLeft + offset(startLane, lane),
+    }
+}
+
 const toMovedNoteObject = (
     entities: Entity[],
     entity: NoteEntity,
@@ -369,6 +411,12 @@ const creates: {
     timeScale: (entities, entity, startLane, lane, beat) =>
         toTimeScaleEntity(toMovedTimeScaleObject(entity, beat)),
 
+    cameraEventJoint: (entities, entity, startLane, lane, beat, focus) =>
+        toCameraEventJointEntity(
+            toMovedCameraEventObject(entities, entity, startLane, lane, beat, focus),
+        ),
+    cameraEventConnection: undefined,
+
     note: (entities, entity, startLane, lane, beat, focus) =>
         toNoteEntity(
             entity.slideId,
@@ -415,6 +463,14 @@ const moves: {
 
         return addTimeScale(transaction, object)
     },
+
+    cameraEventJoint: (transaction, entities, entity, startLane, lane, beat, focus) => {
+        const object = toMovedCameraEventObject(entities, entity, startLane, lane, beat, focus)
+
+        removeCameraEventJoint(transaction, entity)
+        return addCameraEventJoint(transaction, object)
+    },
+    cameraEventConnection: undefined,
 
     note: (transaction, entities, entity, startLane, lane, beat, focus) => {
         const object = toMovedNoteObject(entities, entity, startLane, lane, beat, focus)

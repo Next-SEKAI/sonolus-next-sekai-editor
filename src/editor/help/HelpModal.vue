@@ -98,5 +98,14 @@ import HelpSection from './HelpSection.vue'
             <li>{{ i18n.help.modal.timeScaleTool.move }}</li>
             <li>{{ i18n.help.modal.timeScaleTool.ctrl }}</li>
         </HelpSection>
+
+        <HelpSection :title="i18n.help.modal.cameraEventTool.title">
+            <li>{{ i18n.help.modal.cameraEventTool.select }}</li>
+            <li>{{ i18n.help.modal.cameraEventTool.edit }}</li>
+            <li>{{ i18n.help.modal.cameraEventTool.add }}</li>
+            <li>{{ i18n.help.modal.cameraEventTool.move }}</li>
+            <li>{{ i18n.help.modal.cameraEventTool.ctrl }}</li>
+            <li>{{ i18n.help.modal.cameraEventTool.properties }}</li>
+        </HelpSection>
     </BaseModal>
 </template>
