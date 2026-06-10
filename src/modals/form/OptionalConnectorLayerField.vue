@@ -1,26 +1,20 @@
 <script setup lang="ts">
 import type { ConnectorLayer } from '../../chart/note'
 import { i18n } from '../../i18n'
-import OptionalToggleField from './OptionalToggleField.vue'
+import OptionalSelectField from './OptionalSelectField.vue'
 
-const modelValue = defineModel<
-    ConnectorLayer | undefined,
-    string,
-    boolean | undefined,
-    boolean | undefined
->({
-    required: true,
-    get: (value) => (value === undefined ? undefined : value !== 'top'),
-    set: (value): ConnectorLayer | undefined =>
-        value === undefined ? undefined : value ? 'bottom' : 'top',
-})
+const modelValue = defineModel<ConnectorLayer | undefined>({ required: true })
 </script>
 
 <template>
-    <OptionalToggleField
+    <OptionalSelectField
         v-model="modelValue"
         :label="i18n.modals.form.connectorLayer.label"
-        :disabled="i18n.modals.form.connectorLayer.top"
-        :enabled="i18n.modals.form.connectorLayer.bottom"
+        :options="[
+            [i18n.modals.form.connectorLayer.top, 'top'],
+            [i18n.modals.form.connectorLayer.bottom, 'bottom'],
+            [i18n.modals.form.connectorLayer.under, 'under'],
+            [i18n.modals.form.connectorLayer.over, 'over'],
+        ]"
     />
 </template>

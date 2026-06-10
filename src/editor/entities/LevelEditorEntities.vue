@@ -16,13 +16,21 @@ const layers = {
     stageStyleEventJoint: 17,
 
     connector: {
-        bottom: {
+        under: {
             active: 20,
             guide: 21,
         },
-        top: {
+        bottom: {
             active: 22,
             guide: 23,
+        },
+        top: {
+            active: 24,
+            guide: 25,
+        },
+        over: {
+            active: 40,
+            guide: 41,
         },
     },
 

@@ -39,7 +39,7 @@ export type ConnectorGuideColor =
     | 'cyan'
     | 'black'
 
-export type ConnectorLayer = 'top' | 'bottom'
+export type ConnectorLayer = 'top' | 'bottom' | 'under' | 'over'
 
 export type NoteObject = {
     groupId: GroupId

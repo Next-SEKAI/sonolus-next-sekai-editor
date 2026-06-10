@@ -322,11 +322,18 @@ const connectorEases = {
 
 const segmentAlphaSchema = Type.Number({ minimum: 0, maximum: 2 })
 
-const segmentLayerSchema = Type.Union([Type.Literal(0), Type.Literal(1)])
+const segmentLayerSchema = Type.Union([
+    Type.Literal(0),
+    Type.Literal(1),
+    Type.Literal(2),
+    Type.Literal(3),
+])
 
 const connectorLayers = {
     0: 'top',
     1: 'bottom',
+    2: 'under',
+    3: 'over',
 } as const
 
 const segmentThroughJudgeLineSchema = Type.Number()
