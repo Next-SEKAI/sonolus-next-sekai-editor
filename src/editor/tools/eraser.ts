@@ -6,6 +6,7 @@ import type { Entity } from '../../state/entities'
 import type { RemoveMutation } from '../../state/mutations'
 import { removeBpm } from '../../state/mutations/bpm'
 import { removeCameraEventJoint } from '../../state/mutations/events/camera'
+import { removeStageMaskEventJoint } from '../../state/mutations/events/stage/mask'
 import { removeNote } from '../../state/mutations/slides/note'
 import { removeTimeScale } from '../../state/mutations/timeScale'
 import { createTransaction } from '../../state/transaction'
@@ -121,6 +122,9 @@ const canRemoves: {
     cameraEventJoint: undefined,
     cameraEventConnection: undefined,
 
+    stageMaskEventJoint: undefined,
+    stageMaskEventConnection: undefined,
+
     note: undefined,
     connector: undefined,
 }
@@ -133,6 +137,9 @@ const removes: {
 
     cameraEventJoint: removeCameraEventJoint,
     cameraEventConnection: undefined,
+
+    stageMaskEventJoint: removeStageMaskEventJoint,
+    stageMaskEventConnection: undefined,
 
     note: removeNote,
     connector: undefined,

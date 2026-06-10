@@ -25,6 +25,7 @@ import OptionalIsAttachedField from '../../../modals/form/OptionalIsAttachedFiel
 import OptionalIsConnectorSeparatorField from '../../../modals/form/OptionalIsConnectorSeparatorField.vue'
 import OptionalIsCriticalField from '../../../modals/form/OptionalIsCriticalField.vue'
 import OptionalIsFakeField from '../../../modals/form/OptionalIsFakeField.vue'
+import OptionalMaskSizeField from '../../../modals/form/OptionalMaskSizeField.vue'
 import OptionalNoteTypeField from '../../../modals/form/OptionalNoteTypeField.vue'
 import OptionalSfxField from '../../../modals/form/OptionalSfxField.vue'
 import OptionalSizeField from '../../../modals/form/OptionalSizeField.vue'
@@ -66,6 +67,7 @@ const cameraZoomTargetY = createModel('cameraZoomTargetY')
 const cameraZoomVerticalAlign = createModel('cameraZoomVerticalAlign')
 const cameraRotation = createModel('cameraRotation')
 const cameraStageTilt = createModel('cameraStageTilt')
+const maskSize = createModel('maskSize')
 const eventEase = createModel('eventEase')
 </script>
 
@@ -103,6 +105,7 @@ const eventEase = createModel('eventEase')
         />
         <OptionalCameraRotationField v-if="isDynamicStages" v-model="cameraRotation" />
         <OptionalCameraStageTiltField v-if="isDynamicStages" v-model="cameraStageTilt" />
+        <OptionalMaskSizeField v-if="isDynamicStages" v-model="maskSize" />
         <OptionalEventEaseField v-if="isDynamicStages" v-model="eventEase" />
     </BaseSidebar>
 </template>

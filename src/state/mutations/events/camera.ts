@@ -13,6 +13,7 @@ export const addCameraEventJoint: AddMutation<CameraEventObject> = ({ store }, o
         object,
         toCameraEventJointEntity,
         'cameraEventConnection',
+        undefined,
         toCameraEventConnectionEntity,
         () => store.globalEventRanges.cameraEventJoint,
         (range) => (store.globalEventRanges.cameraEventJoint = range),

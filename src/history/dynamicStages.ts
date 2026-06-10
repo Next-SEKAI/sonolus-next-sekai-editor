@@ -3,7 +3,11 @@ import { notify } from '../editor/notification.ts'
 import { i18n } from '../i18n/index.ts'
 import ConfirmModal from '../modals/ConfirmModal.vue'
 import { showModal } from '../modals/index.ts'
+import { addStageMaskEventJoint } from '../state/mutations/events/stage/mask'
+import { createTransaction } from '../state/transaction'
 import { pushState, state } from './index.ts'
+import { selectedEntities } from './selectedEntities'
+import { defaultStageId } from './stages'
 
 export const isDynamicStages = computed(() => state.value.isDynamicStages)
 
@@ -19,8 +23,18 @@ export const checkDynamicStages = async () => {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (isDynamicStages.value) return true
 
+    const transaction = createTransaction(state.value)
+
+    addStageMaskEventJoint(transaction, {
+        stageId: defaultStageId.value,
+        beat: 0,
+        maskLeft: -6,
+        maskSize: 12,
+        eventEase: 'linear',
+    })
+
     pushState(() => i18n.value.history.dynamicStages.enabled, {
-        ...state.value,
+        ...transaction.commit(selectedEntities.value),
         isDynamicStages: true,
     })
 

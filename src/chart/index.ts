@@ -1,5 +1,6 @@
 import type { BpmObject } from './bpm'
 import type { CameraEventObject } from './events/camera'
+import type { StageMaskEventObject } from './events/stage/mask'
 import type { Groups } from './groups'
 import type { NoteObject } from './note'
 import type { Stages } from './stages'
@@ -12,6 +13,7 @@ export type Chart = {
     groups: Groups
     stages: Stages
     cameraEvents: CameraEventObject[]
+    stageMaskEvents: StageMaskEventObject[]
     timeScales: TimeScaleObject[]
     slides: NoteObject[][]
 }

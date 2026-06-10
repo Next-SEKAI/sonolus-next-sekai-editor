@@ -6,6 +6,9 @@ const layers = {
     cameraEventConnection: 10,
     cameraEventJoint: 11,
 
+    stageMaskEventConnection: 12,
+    stageMaskEventJoint: 13,
+
     connector: {
         bottom: {
             active: 20,
@@ -25,6 +28,8 @@ const getLayer = (entity: Entity) => {
         case 'bpm':
         case 'cameraEventJoint':
         case 'cameraEventConnection':
+        case 'stageMaskEventJoint':
+        case 'stageMaskEventConnection':
         case 'timeScale':
         case 'note':
             return layers[entity.type]
@@ -40,6 +45,8 @@ const isEntityVisibleByGroup = (entity: Entity) => {
         case 'bpm':
         case 'cameraEventJoint':
         case 'cameraEventConnection':
+        case 'stageMaskEventJoint':
+        case 'stageMaskEventConnection':
             return true
         case 'timeScale':
         case 'note':
@@ -62,7 +69,10 @@ const isEntityVisibleByStage = (entity: Entity) => {
         case 'timeScale':
             return true
         case 'note':
+        case 'stageMaskEventJoint':
             return entity.stageId === view.stageId
+        case 'stageMaskEventConnection':
+            return entity.min.stageId === view.stageId
         case 'connector':
             return (
                 entity.attachHead.stageId === view.stageId ||
@@ -82,6 +92,7 @@ import { settings } from '../../settings'
 import type { Entity } from '../../state/entities'
 import { hoveredEntities, view } from '../view'
 import LevelEditorCameraEventInfinity from './events/camera/LevelEditorCameraEventInfinity.vue'
+import LevelEditorStageMaskEventInfinities from './events/stage/mask/LevelEditorStageMaskEventInfinities.vue'
 
 const culledEntities = computed(() => [...cullAllEntities(keys.value.min, keys.value.max)])
 
@@ -90,10 +101,12 @@ const visibleEntities = computed(() =>
         switch (entity.type) {
             case 'bpm':
             case 'cameraEventJoint':
+            case 'stageMaskEventJoint':
             case 'timeScale':
             case 'note':
                 return entity.beat >= beats.value.min && entity.beat <= beats.value.max
             case 'cameraEventConnection':
+            case 'stageMaskEventConnection':
                 return entity.min.beat <= beats.value.max && entity.max.beat >= beats.value.min
             case 'connector':
                 return entity.head.beat <= beats.value.max && entity.tail.beat >= beats.value.min
@@ -128,6 +141,7 @@ const visibleEntityInfos = computed(() => {
 
 <template>
     <LevelEditorCameraEventInfinity />
+    <LevelEditorStageMaskEventInfinities />
 
     <component
         :is="entityComponents[entity.type]"

@@ -4,7 +4,8 @@
         "default": "Default"
     },
     "events": {
-        "cameraEvent": "Camera Event"
+        "cameraEvent": "Camera Event",
+        "stageMaskEvent": "Stage Mask Event"
     },
     "commands": {
         "bgm": {
@@ -411,6 +412,15 @@
                 "move": "Drag 1 Camera Event object to move.",
                 "ctrl": "Use Ctrl key to add objects to selection.",
                 "properties": "Switch to Camera Event Tool again to change default properties."
+            },
+            "stageMaskEventTool": {
+                "title": "Stage Mask Event Tool",
+                "select": "Tap Stage Mask Event objects to select 1 object.",
+                "edit": "Tap 1 Stage Mask Event object to edit.",
+                "add": "Tap empty space to add.",
+                "move": "Drag 1 Stage Mask Event object to move.",
+                "ctrl": "Use Ctrl key to add objects to selection.",
+                "properties": "Switch to Stage Mask Event Tool again to change default properties."
             }
         }
     },
@@ -799,6 +809,12 @@
             "key": {
                 "input": "Input Key",
                 "press": "Press a key..."
+            },
+            "maskLeft": {
+                "label": "Mask Lane"
+            },
+            "maskSize": {
+                "label": "Mask Size"
             },
             "name": {
                 "label": "Name"
