@@ -4,10 +4,13 @@ declare const idBrand: unique symbol
 
 export type StageId = number & { [idBrand]: never }
 
+export type GenerateSimLines = 'global' | 'isolated'
+
 export type StageObject = {
     name: string
     isFromStart: boolean
     isUntilEnd: boolean
+    generateSimLines: GenerateSimLines
 }
 
 let i = 1
@@ -18,6 +21,7 @@ export const addToStages = (
     object: Omit<StageObject, 'name'> = {
         isFromStart: false,
         isUntilEnd: false,
+        generateSimLines: 'global',
     },
 ) => {
     const id = i++ as StageId
@@ -42,4 +46,5 @@ export const addDefaultStageToStages = (stages: Stages) =>
     addToStages(stages, undefined, {
         isFromStart: true,
         isUntilEnd: true,
+        generateSimLines: 'global',
     })

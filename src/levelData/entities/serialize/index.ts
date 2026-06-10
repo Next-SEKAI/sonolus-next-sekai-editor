@@ -69,6 +69,7 @@ export const serializeToLevelDataEntities = (
         groupEntities,
         stageEntities,
         store,
+        stages,
         getName,
     )
 

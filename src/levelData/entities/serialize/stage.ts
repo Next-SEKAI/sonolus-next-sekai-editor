@@ -5,27 +5,34 @@ export const serializeStagesToLevelDataEntities = (isDynamicStages: boolean, sta
     if (!isDynamicStages) return
 
     return new Map(
-        [...stages.entries()].map(
-            ([id, { name, isFromStart, isUntilEnd }]): [StageId, LevelDataEntity] => [
-                id,
-                {
-                    archetype: 'Stage',
-                    data: [
-                        {
-                            name: 'editorName',
-                            ref: name,
-                        },
-                        {
-                            name: 'fromStart',
-                            value: +isFromStart,
-                        },
-                        {
-                            name: 'untilEnd',
-                            value: +isUntilEnd,
-                        },
-                    ],
-                },
-            ],
-        ),
+        [...stages.entries()].map(([id, stage]): [StageId, LevelDataEntity] => [
+            id,
+            {
+                archetype: 'Stage',
+                data: [
+                    {
+                        name: 'editorName',
+                        ref: stage.name,
+                    },
+                    {
+                        name: 'fromStart',
+                        value: +stage.isFromStart,
+                    },
+                    {
+                        name: 'untilEnd',
+                        value: +stage.isUntilEnd,
+                    },
+                    {
+                        name: 'generateSimLines',
+                        value: generateSimLines[stage.generateSimLines],
+                    },
+                ],
+            },
+        ]),
     )
+}
+
+const generateSimLines = {
+    global: 0,
+    isolated: 1,
 }
