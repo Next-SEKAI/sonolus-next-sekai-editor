@@ -4,6 +4,7 @@
         "default": "Default"
     },
     "events": {
+        "event": "event",
         "cameraEvent": "Camera Event",
         "stageMaskEvent": "Stage Mask Event",
         "stagePivotEvent": "Stage Pivot Event",
