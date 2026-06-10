@@ -30,14 +30,20 @@ import MultiIsAttachedField from '../../../modals/form/MultiIsAttachedField.vue'
 import MultiIsConnectorSeparatorField from '../../../modals/form/MultiIsConnectorSeparatorField.vue'
 import MultiIsCriticalField from '../../../modals/form/MultiIsCriticalField.vue'
 import MultiIsFakeField from '../../../modals/form/MultiIsFakeField.vue'
+import MultiJudgmentLineAlphaField from '../../../modals/form/MultiJudgmentLineAlphaField.vue'
+import MultiJudgmentLineColorField from '../../../modals/form/MultiJudgmentLineColorField.vue'
+import MultiLaneAlphaField from '../../../modals/form/MultiLaneAlphaField.vue'
+import MultiLeftBorderStyleField from '../../../modals/form/MultiLeftBorderStyleField.vue'
 import MultiLeftField from '../../../modals/form/MultiLeftField.vue'
 import MultiMaskLeftField from '../../../modals/form/MultiMaskLeftField.vue'
 import MultiMaskSizeField from '../../../modals/form/MultiMaskSizeField.vue'
 import MultiNoteTypeField from '../../../modals/form/MultiNoteTypeField.vue'
 import MultiPivotLaneField from '../../../modals/form/MultiPivotLaneField.vue'
+import MultiRightBorderStyleField from '../../../modals/form/MultiRightBorderStyleField.vue'
 import MultiSfxField from '../../../modals/form/MultiSfxField.vue'
 import MultiSizeField from '../../../modals/form/MultiSizeField.vue'
 import MultiSkipField from '../../../modals/form/MultiSkipField.vue'
+import MultiStageAlphaField from '../../../modals/form/MultiStageAlphaField.vue'
 import MultiStageField from '../../../modals/form/MultiStageField.vue'
 import MultiTimeScaleEaseField from '../../../modals/form/MultiTimeScaleEaseField.vue'
 import MultiTimeScaleField from '../../../modals/form/MultiTimeScaleField.vue'
@@ -71,6 +77,12 @@ const divisionSize = createModel('divisionSize')
 const divisionParity = createModel('divisionParity')
 const yOffset = createModel('yOffset')
 const yOffsetBeat = createModel('yOffsetBeat')
+const judgmentLineColor = createModel('judgmentLineColor')
+const leftBorderStyle = createModel('leftBorderStyle')
+const rightBorderStyle = createModel('rightBorderStyle')
+const stageAlpha = createModel('stageAlpha')
+const laneAlpha = createModel('laneAlpha')
+const judgmentLineAlpha = createModel('judgmentLineAlpha')
 const eventEase = createModel('eventEase')
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')
@@ -124,11 +136,30 @@ const connectorIsPassThrough = createModel('connectorIsPassThrough')
             <MultiDivisionParityField v-if="types.stagePivotEventJoint" v-model="divisionParity" />
             <MultiYOffsetField v-if="types.stagePivotEventJoint" v-model="yOffset" />
             <MultiYOffsetBeatField v-if="types.stagePivotEventJoint" v-model="yOffsetBeat" />
+            <MultiJudgmentLineColorField
+                v-if="types.stageStyleEventJoint"
+                v-model="judgmentLineColor"
+            />
+            <MultiLeftBorderStyleField
+                v-if="types.stageStyleEventJoint"
+                v-model="leftBorderStyle"
+            />
+            <MultiRightBorderStyleField
+                v-if="types.stageStyleEventJoint"
+                v-model="rightBorderStyle"
+            />
+            <MultiStageAlphaField v-if="types.stageStyleEventJoint" v-model="stageAlpha" />
+            <MultiLaneAlphaField v-if="types.stageStyleEventJoint" v-model="laneAlpha" />
+            <MultiJudgmentLineAlphaField
+                v-if="types.stageStyleEventJoint"
+                v-model="judgmentLineAlpha"
+            />
             <MultiEventEaseField
                 v-if="
                     types.cameraEventJoint ||
                     types.stageMaskEventJoint ||
-                    types.stagePivotEventJoint
+                    types.stagePivotEventJoint ||
+                    types.stageStyleEventJoint
                 "
                 v-model="eventEase"
             />
@@ -137,7 +168,10 @@ const connectorIsPassThrough = createModel('connectorIsPassThrough')
             <MultiStageField
                 v-if="
                     isDynamicStages &&
-                    (types.note || types.stageMaskEventJoint || types.stagePivotEventJoint)
+                    (types.note ||
+                        types.stageMaskEventJoint ||
+                        types.stagePivotEventJoint ||
+                        types.stageStyleEventJoint)
                 "
                 v-model="stageId"
             />

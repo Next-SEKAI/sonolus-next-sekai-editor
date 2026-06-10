@@ -125,5 +125,14 @@ import HelpSection from './HelpSection.vue'
             <li>{{ i18n.help.modal.stagePivotEventTool.ctrl }}</li>
             <li>{{ i18n.help.modal.stagePivotEventTool.properties }}</li>
         </HelpSection>
+
+        <HelpSection :title="i18n.help.modal.stageStyleEventTool.title">
+            <li>{{ i18n.help.modal.stageStyleEventTool.select }}</li>
+            <li>{{ i18n.help.modal.stageStyleEventTool.edit }}</li>
+            <li>{{ i18n.help.modal.stageStyleEventTool.add }}</li>
+            <li>{{ i18n.help.modal.stageStyleEventTool.move }}</li>
+            <li>{{ i18n.help.modal.stageStyleEventTool.ctrl }}</li>
+            <li>{{ i18n.help.modal.stageStyleEventTool.properties }}</li>
+        </HelpSection>
     </BaseModal>
 </template>

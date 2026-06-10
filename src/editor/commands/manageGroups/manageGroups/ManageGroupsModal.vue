@@ -89,6 +89,9 @@ const onDelete = (groupId: GroupId, name: string) => {
         stagePivotEventJoint: undefined,
         stagePivotEventConnection: undefined,
 
+        stageStyleEventJoint: undefined,
+        stageStyleEventConnection: undefined,
+
         note(entity) {
             if (entity.groupId !== groupId) return
 

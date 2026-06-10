@@ -7,6 +7,7 @@ import { eraser } from './eraser'
 import { cameraEvent } from './events/camera'
 import { stageMaskEvent } from './events/stage/mask'
 import { stagePivotEvent } from './events/stage/pivot'
+import { stageStyleEvent } from './events/stage/style'
 import { note } from './note'
 import { offset } from './offset'
 import { paste } from './paste'
@@ -42,6 +43,7 @@ export const tools = {
     cameraEvent,
     stageMaskEvent,
     stagePivotEvent,
+    stageStyleEvent,
 
     offset,
 }

@@ -3,6 +3,7 @@ import type { BpmObject } from '../../chart/bpm'
 import type { CameraEventObject } from '../../chart/events/camera'
 import type { StageMaskEventObject } from '../../chart/events/stage/mask'
 import type { StagePivotEventObject } from '../../chart/events/stage/pivot'
+import type { StageStyleEventObject } from '../../chart/events/stage/style'
 import type { NoteObject } from '../../chart/note'
 import type { TimeScaleObject } from '../../chart/timeScale'
 import { pushState, replaceState, state } from '../../history'
@@ -22,6 +23,10 @@ import {
     toStagePivotEventJointEntity,
     type StagePivotEventJointEntity,
 } from '../../state/entities/events/joints/stage/pivot'
+import {
+    toStageStyleEventJointEntity,
+    type StageStyleEventJointEntity,
+} from '../../state/entities/events/joints/stage/style'
 import { toNoteEntity, type NoteEntity } from '../../state/entities/slides/note'
 import { toTimeScaleEntity, type TimeScaleEntity } from '../../state/entities/timeScale'
 import { addBpm, removeBpm } from '../../state/mutations/bpm'
@@ -34,6 +39,10 @@ import {
     addStagePivotEventJoint,
     removeStagePivotEventJoint,
 } from '../../state/mutations/events/stage/pivot'
+import {
+    addStageStyleEventJoint,
+    removeStageStyleEventJoint,
+} from '../../state/mutations/events/stage/style'
 import { replaceNote } from '../../state/mutations/slides/note'
 import { addTimeScale, removeTimeScale } from '../../state/mutations/timeScale'
 import { getInStoreGrid } from '../../state/store/grid'
@@ -422,6 +431,14 @@ const toMovedStagePivotEventObject = (
     pivotLane: entity.pivotLane + offset(startLane, lane),
 })
 
+const toMovedStageStyleEventObject = (
+    entity: StageStyleEventJointEntity,
+    beat: number,
+): StageStyleEventObject => ({
+    ...entity,
+    beat,
+})
+
 const toMovedNoteObject = (
     entities: Entity[],
     entity: NoteEntity,
@@ -488,6 +505,10 @@ const creates: {
     stagePivotEventJoint: (entities, entity, startLane, lane, beat) =>
         toStagePivotEventJointEntity(toMovedStagePivotEventObject(entity, startLane, lane, beat)),
     stagePivotEventConnection: undefined,
+
+    stageStyleEventJoint: (entities, entity, startLane, lane, beat) =>
+        toStageStyleEventJointEntity(toMovedStageStyleEventObject(entity, beat)),
+    stageStyleEventConnection: undefined,
 
     note: (entities, entity, startLane, lane, beat, focus) =>
         toNoteEntity(
@@ -559,6 +580,14 @@ const moves: {
         return addStagePivotEventJoint(transaction, object)
     },
     stagePivotEventConnection: undefined,
+
+    stageStyleEventJoint: (transaction, entities, entity, startLane, lane, beat) => {
+        const object = toMovedStageStyleEventObject(entity, beat)
+
+        removeStageStyleEventJoint(transaction, entity)
+        return addStageStyleEventJoint(transaction, object)
+    },
+    stageStyleEventConnection: undefined,
 
     note: (transaction, entities, entity, startLane, lane, beat, focus) => {
         const object = toMovedNoteObject(entities, entity, startLane, lane, beat, focus)

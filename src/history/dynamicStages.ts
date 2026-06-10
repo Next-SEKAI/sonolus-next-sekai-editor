@@ -5,6 +5,7 @@ import ConfirmModal from '../modals/ConfirmModal.vue'
 import { showModal } from '../modals/index.ts'
 import { addStageMaskEventJoint } from '../state/mutations/events/stage/mask'
 import { addStagePivotEventJoint } from '../state/mutations/events/stage/pivot'
+import { addStageStyleEventJoint } from '../state/mutations/events/stage/style'
 import { createTransaction } from '../state/transaction'
 import { pushState, state } from './index.ts'
 import { selectedEntities } from './selectedEntities'
@@ -41,6 +42,17 @@ export const checkDynamicStages = async () => {
         divisionParity: 'even',
         yOffset: 0,
         yOffsetBeat: 0,
+        eventEase: 'linear',
+    })
+    addStageStyleEventJoint(transaction, {
+        stageId: defaultStageId.value,
+        beat: 0,
+        judgmentLineColor: 'purple',
+        leftBorderStyle: 'default',
+        rightBorderStyle: 'default',
+        stageAlpha: 1,
+        laneAlpha: 1,
+        judgmentLineAlpha: 1,
         eventEase: 'linear',
     })
 

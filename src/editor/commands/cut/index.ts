@@ -15,6 +15,7 @@ import { removeBpm } from '../../../state/mutations/bpm'
 import { removeCameraEventJoint } from '../../../state/mutations/events/camera'
 import { removeStageMaskEventJoint } from '../../../state/mutations/events/stage/mask'
 import { removeStagePivotEventJoint } from '../../../state/mutations/events/stage/pivot'
+import { removeStageStyleEventJoint } from '../../../state/mutations/events/stage/style'
 import { removeNote } from '../../../state/mutations/slides/note'
 import { removeTimeScale } from '../../../state/mutations/timeScale'
 import { createStore } from '../../../state/store/creates'
@@ -52,6 +53,7 @@ export const cut: Command = {
                     cameraEvents: getEntities(entities, 'cameraEventJoint'),
                     stageMaskEvents: getEntities(entities, 'stageMaskEventJoint'),
                     stagePivotEvents: getEntities(entities, 'stagePivotEventJoint'),
+                    stageStyleEvents: getEntities(entities, 'stageStyleEventJoint'),
                     groups: groups.value,
                     stages: stages.value,
                     slides: getSlides(entities),
@@ -127,6 +129,9 @@ const canRemoves: {
     stagePivotEventJoint: undefined,
     stagePivotEventConnection: undefined,
 
+    stageStyleEventJoint: undefined,
+    stageStyleEventConnection: undefined,
+
     note: undefined,
     connector: undefined,
 }
@@ -145,6 +150,9 @@ const removes: {
 
     stagePivotEventJoint: removeStagePivotEventJoint,
     stagePivotEventConnection: undefined,
+
+    stageStyleEventJoint: removeStageStyleEventJoint,
+    stageStyleEventConnection: undefined,
 
     note: removeNote,
     connector: undefined,

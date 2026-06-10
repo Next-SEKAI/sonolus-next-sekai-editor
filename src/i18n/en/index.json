@@ -6,7 +6,8 @@
     "events": {
         "cameraEvent": "Camera Event",
         "stageMaskEvent": "Stage Mask Event",
-        "stagePivotEvent": "Stage Pivot Event"
+        "stagePivotEvent": "Stage Pivot Event",
+        "stageStyleEvent": "Stage Style Event"
     },
     "commands": {
         "bgm": {
@@ -431,6 +432,15 @@
                 "move": "Drag 1 Stage Pivot Event object to move.",
                 "ctrl": "Use Ctrl key to add objects to selection.",
                 "properties": "Switch to Stage Pivot Event Tool again to change default properties."
+            },
+            "stageStyleEventTool": {
+                "title": "Stage Style Event Tool",
+                "select": "Tap Stage Style Event objects to select 1 object.",
+                "edit": "Tap 1 Stage Style Event object to edit.",
+                "add": "Tap empty space to add.",
+                "move": "Drag 1 Stage Style Event object to move.",
+                "ctrl": "Use Ctrl key to add objects to selection.",
+                "properties": "Switch to Stage Style Event Tool again to change default properties."
             }
         }
     },
@@ -693,6 +703,12 @@
             "beat": {
                 "label": "Beat"
             },
+            "borderStyle": {
+                "default": "Default",
+                "light": "Light",
+                "medium": "Medium",
+                "disabled": "Disabled"
+            },
             "bpm": {
                 "label": "BPM"
             },
@@ -821,8 +837,28 @@
             "isUntilEnd": {
                 "label": "Until End"
             },
+            "judgmentLineAlpha": {
+                "label": "Judgment Line Alpha"
+            },
+            "judgmentLineColor": {
+                "label": "Judgment Line Color",
+                "neutral": "Neutral",
+                "red": "Red",
+                "green": "Green",
+                "blue": "Blue",
+                "yellow": "Yellow",
+                "purple": "Purple",
+                "cyan": "Cyan",
+                "black": "Black"
+            },
+            "laneAlpha": {
+                "label": "Lane Alpha"
+            },
             "left": {
                 "label": "Lane"
+            },
+            "leftBorderStyle": {
+                "label": "Border Style (Left)"
             },
             "key": {
                 "input": "Input Key",
@@ -852,6 +888,9 @@
             "preset": {
                 "label": "Preset"
             },
+            "rightBorderStyle": {
+                "label": "Border Style (Right)"
+            },
             "sfx": {
                 "label": "SFX",
                 "default": "Default",
@@ -874,6 +913,9 @@
             },
             "stage": {
                 "label": "Stage"
+            },
+            "stageAlpha": {
+                "label": "Stage Alpha"
             },
             "timeScale": {
                 "label": "Time Scale"

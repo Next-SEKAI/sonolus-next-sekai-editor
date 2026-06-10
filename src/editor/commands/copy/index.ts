@@ -43,6 +43,7 @@ export const copy: Command = {
                     cameraEvents: getEntities(entities, 'cameraEventJoint'),
                     stageMaskEvents: getEntities(entities, 'stageMaskEventJoint'),
                     stagePivotEvents: getEntities(entities, 'stagePivotEventJoint'),
+                    stageStyleEvents: getEntities(entities, 'stageStyleEventJoint'),
                     groups: groups.value,
                     stages: stages.value,
                     slides: getSlides(entities),
