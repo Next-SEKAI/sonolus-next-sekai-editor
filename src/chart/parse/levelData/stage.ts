@@ -4,6 +4,7 @@ import type { StageId } from '../../stages'
 
 export const parseStagesToChart = ({ entities, addStage }: ParseCtx) => {
     const firstMaskRefs = new Map<StageId, string>()
+    const firstPivotRefs = new Map<StageId, string>()
 
     for (const entity of entities) {
         if (entity.archetype !== 'Stage') continue
@@ -21,10 +22,12 @@ export const parseStagesToChart = ({ entities, addStage }: ParseCtx) => {
         }
 
         addRef(firstMaskRefs, 'firstMaskChange')
+        addRef(firstPivotRefs, 'firstPivotChange')
     }
 
     return {
         firstMaskRefs,
+        firstPivotRefs,
     }
 }
 

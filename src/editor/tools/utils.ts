@@ -74,6 +74,7 @@ const isVisible = (entity: Entity) => {
         case 'timeScale':
             return view.groupId === undefined || entity.groupId === view.groupId
         case 'stageMaskEventJoint':
+        case 'stagePivotEventJoint':
             return view.stageId === undefined || entity.stageId === view.stageId
         case 'note':
             return (
@@ -82,6 +83,7 @@ const isVisible = (entity: Entity) => {
             )
         case 'cameraEventConnection':
         case 'stageMaskEventConnection':
+        case 'stagePivotEventConnection':
         case 'connector':
             return false
     }

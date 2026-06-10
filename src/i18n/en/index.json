@@ -5,7 +5,8 @@
     },
     "events": {
         "cameraEvent": "Camera Event",
-        "stageMaskEvent": "Stage Mask Event"
+        "stageMaskEvent": "Stage Mask Event",
+        "stagePivotEvent": "Stage Pivot Event"
     },
     "commands": {
         "bgm": {
@@ -421,6 +422,15 @@
                 "move": "Drag 1 Stage Mask Event object to move.",
                 "ctrl": "Use Ctrl key to add objects to selection.",
                 "properties": "Switch to Stage Mask Event Tool again to change default properties."
+            },
+            "stagePivotEventTool": {
+                "title": "Stage Pivot Event Tool",
+                "select": "Tap Stage Pivot Event objects to select 1 object.",
+                "edit": "Tap 1 Stage Pivot Event object to edit.",
+                "add": "Tap empty space to add.",
+                "move": "Drag 1 Stage Pivot Event object to move.",
+                "ctrl": "Use Ctrl key to add objects to selection.",
+                "properties": "Switch to Stage Pivot Event Tool again to change default properties."
             }
         }
     },
@@ -757,6 +767,14 @@
             "copyProperties": {
                 "label": "Copy Properties"
             },
+            "divisionParity": {
+                "label": "Division Parity",
+                "even": "Even",
+                "odd": "Odd"
+            },
+            "divisionSize": {
+                "label": "Division Size"
+            },
             "eventEase": {
                 "label": "Event Ease",
                 "linear": "Linear",
@@ -828,6 +846,9 @@
                 "forceTick": "Force Tick",
                 "forceNonTick": "Force Non Tick"
             },
+            "pivotLane": {
+                "label": "Pivot Lane"
+            },
             "preset": {
                 "label": "Preset"
             },
@@ -865,6 +886,12 @@
             "toggle": {
                 "enabled": "Enabled",
                 "disabled": "Disabled"
+            },
+            "yOffset": {
+                "label": "Y Offset"
+            },
+            "yOffsetBeat": {
+                "label": "Y Offset (Beat)"
             }
         },
         "confirm": {

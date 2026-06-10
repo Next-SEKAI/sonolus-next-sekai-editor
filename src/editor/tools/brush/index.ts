@@ -2,6 +2,7 @@ import { ref } from 'vue'
 import type { Tool } from '..'
 import type { EventEase } from '../../../chart/events'
 import type { CameraZoomVerticalAlign } from '../../../chart/events/camera.ts'
+import type { DivisionParity } from '../../../chart/events/stage/pivot'
 import type { GroupId } from '../../../chart/groups'
 import type {
     ConnectorEase,
@@ -24,6 +25,7 @@ import { notify } from '../../notification'
 import { focusViewAtBeat, setViewHover, view, xToLane, yToTime, yToValidBeat } from '../../view'
 import { editSelectedCameraEvent } from '../events/camera'
 import { editSelectedStageMaskEvent } from '../events/stage/mask'
+import { editSelectedStagePivotEvent } from '../events/stage/pivot'
 import { editSelectedNote } from '../note'
 import { editSelectedTimeScale } from '../timeScale'
 import {
@@ -65,6 +67,10 @@ export type BrushProperties = {
     cameraRotation?: number
     cameraStageTilt?: number
     maskSize?: number
+    divisionSize?: number
+    divisionParity?: DivisionParity
+    yOffset?: number
+    yOffsetBeat?: number
     eventEase?: EventEase
 }
 
@@ -180,6 +186,9 @@ const applies: {
 
     stageMaskEventJoint: editSelectedStageMaskEvent,
     stageMaskEventConnection: undefined,
+
+    stagePivotEventJoint: editSelectedStagePivotEvent,
+    stagePivotEventConnection: undefined,
 
     note: editSelectedNote,
     connector: undefined,

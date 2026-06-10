@@ -3,6 +3,7 @@ import type { Chart } from '../../../chart'
 import { createStoreBpms } from './bpm'
 import { createStoreCameraEvents } from './events/camera'
 import { createStoreStageMaskEvents } from './events/stage/mask'
+import { createStoreStagePivotEvents } from './events/stage/pivot'
 import { createStoreSlides } from './slide'
 import { createStoreTimeScales } from './timeScale'
 
@@ -18,12 +19,16 @@ export const createStore = (chart: Chart) => {
             stageMaskEventJoint: new Map(),
             stageMaskEventConnection: new Map(),
 
+            stagePivotEventJoint: new Map(),
+            stagePivotEventConnection: new Map(),
+
             note: new Map(),
             connector: new Map(),
         },
         globalEventRanges: {},
         stageEventRanges: {
             stageMaskEventJoint: new Map(),
+            stagePivotEventJoint: new Map(),
         },
         slides: {
             note: new Map(),
@@ -38,6 +43,7 @@ export const createStore = (chart: Chart) => {
     createStoreCameraEvents(store, chart)
 
     createStoreStageMaskEvents(store, chart)
+    createStoreStagePivotEvents(store, chart)
 
     createStoreSlides(store, chart)
 

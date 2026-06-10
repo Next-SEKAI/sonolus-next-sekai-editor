@@ -2,8 +2,11 @@ import type { BaseEntity } from '../../..'
 import type { Range } from '../../../../../utils/range'
 import type { StageEventJointEntity } from '../../joints/stage'
 import type { StageMaskEventConnectionEntity } from './mask'
+import type { StagePivotEventConnectionEntity } from './pivot'
 
-export type StageEventConnectionEntity = StageMaskEventConnectionEntity
+export type StageEventConnectionEntity =
+    | StageMaskEventConnectionEntity
+    | StagePivotEventConnectionEntity
 
 export type StageEventConnectionEntityType = StageEventConnectionEntity['type']
 

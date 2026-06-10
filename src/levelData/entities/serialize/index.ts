@@ -4,6 +4,7 @@ import type { Store } from '../../../state/store'
 import { serializeBpmsToLevelDataEntities } from './bpm'
 import { serializeCameraEventsToLevelDataEntities } from './events/camera'
 import { serializeStageMaskEventsToLevelDataEntities } from './events/stage/mask'
+import { serializeStagePivotEventsToLevelDataEntities } from './events/stage/pivot'
 import { serializeGroupsToLevelDataEntities } from './group'
 import { serializeSlidesToLevelDataEntities } from './slide'
 import { serializeStagesToLevelDataEntities } from './stage'
@@ -48,6 +49,12 @@ export const serializeToLevelDataEntities = (
         store,
         getName,
     )
+    const stagePivotEventEntities = serializeStagePivotEventsToLevelDataEntities(
+        isDynamicStages,
+        stageEntities,
+        store,
+        getName,
+    )
 
     const timeScaleEntities = serializeTimeScalesToLevelDataEntities(groupEntities, store, getName)
 
@@ -65,6 +72,7 @@ export const serializeToLevelDataEntities = (
         ...(stageEntities?.values() ?? []),
         ...cameraEventEntities,
         ...stageMaskEventEntities,
+        ...stagePivotEventEntities,
         ...timeScaleEntities,
         ...slideEntities,
     ]

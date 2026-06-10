@@ -17,6 +17,8 @@ import OptionalConnectorGuideColorField from '../../../modals/form/OptionalConne
 import OptionalConnectorIsPassThroughField from '../../../modals/form/OptionalConnectorIsPassThroughField.vue'
 import OptionalConnectorLayerField from '../../../modals/form/OptionalConnectorLayerField.vue'
 import OptionalConnectorTypeField from '../../../modals/form/OptionalConnectorTypeField.vue'
+import OptionalDivisionParityField from '../../../modals/form/OptionalDivisionParityField.vue'
+import OptionalDivisionSizeField from '../../../modals/form/OptionalDivisionSizeField.vue'
 import OptionalEventEaseField from '../../../modals/form/OptionalEventEaseField.vue'
 import OptionalFlickDirectionField from '../../../modals/form/OptionalFlickDirectionField.vue'
 import OptionalGroupField from '../../../modals/form/OptionalGroupField.vue'
@@ -33,6 +35,8 @@ import OptionalSkipField from '../../../modals/form/OptionalSkipField.vue'
 import OptionalStageField from '../../../modals/form/OptionalStageField.vue'
 import OptionalTimeScaleEaseField from '../../../modals/form/OptionalTimeScaleEaseField.vue'
 import OptionalTimeScaleField from '../../../modals/form/OptionalTimeScaleField.vue'
+import OptionalYOffsetBeatField from '../../../modals/form/OptionalYOffsetBeatField.vue'
+import OptionalYOffsetField from '../../../modals/form/OptionalYOffsetField.vue'
 import BaseSidebar from '../../sidebars/BaseSidebar.vue'
 import { useProperties } from '../../utils/properties'
 
@@ -68,6 +72,10 @@ const cameraZoomVerticalAlign = createModel('cameraZoomVerticalAlign')
 const cameraRotation = createModel('cameraRotation')
 const cameraStageTilt = createModel('cameraStageTilt')
 const maskSize = createModel('maskSize')
+const divisionSize = createModel('divisionSize')
+const divisionParity = createModel('divisionParity')
+const yOffset = createModel('yOffset')
+const yOffsetBeat = createModel('yOffsetBeat')
 const eventEase = createModel('eventEase')
 </script>
 
@@ -106,6 +114,10 @@ const eventEase = createModel('eventEase')
         <OptionalCameraRotationField v-if="isDynamicStages" v-model="cameraRotation" />
         <OptionalCameraStageTiltField v-if="isDynamicStages" v-model="cameraStageTilt" />
         <OptionalMaskSizeField v-if="isDynamicStages" v-model="maskSize" />
+        <OptionalDivisionSizeField v-if="isDynamicStages" v-model="divisionSize" />
+        <OptionalDivisionParityField v-if="isDynamicStages" v-model="divisionParity" />
+        <OptionalYOffsetField v-if="isDynamicStages" v-model="yOffset" />
+        <OptionalYOffsetBeatField v-if="isDynamicStages" v-model="yOffsetBeat" />
         <OptionalEventEaseField v-if="isDynamicStages" v-model="eventEase" />
     </BaseSidebar>
 </template>
