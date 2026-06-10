@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { isDynamicStages } from '../../../history/dynamicStages.ts'
 import { i18n } from '../../../i18n'
 import OptionalGroupField from '../../../modals/form/OptionalGroupField.vue'
+import OptionalStageField from '../../../modals/form/OptionalStageField.vue'
 import SelectField from '../../../modals/form/SelectField.vue'
 import ToggleField from '../../../modals/form/ToggleField.vue'
 import { entries } from '../../../utils/object'
 import { commands } from '../../commands'
 import { switchToGroup } from '../../commands/groups'
+import { switchToStage } from '../../commands/stages'
 import { toolName, tools } from '../../tools'
 import { view } from '../../view'
 import BaseSidebar from '../BaseSidebar.vue'
@@ -25,6 +28,11 @@ const toolOptions = computed(() =>
 const groupId = computed({
     get: () => view.groupId,
     set: switchToGroup,
+})
+
+const stageId = computed({
+    get: () => view.stageId,
+    set: switchToStage,
 })
 
 const divisions = [1, 2, 3, 4, 6, 8, 12, 16]
@@ -68,6 +76,7 @@ const snapping = computed({
     <BaseSidebar :title="i18n.sidebars.view.title">
         <SelectField v-model="tool" :label="i18n.sidebars.view.tool" :options="toolOptions" />
         <OptionalGroupField v-model="groupId" />
+        <OptionalStageField v-if="isDynamicStages" v-model="stageId" />
         <SelectField
             v-model="division"
             :label="i18n.sidebars.view.division"

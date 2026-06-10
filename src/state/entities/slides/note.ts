@@ -11,11 +11,13 @@ import type {
     NoteSfx,
     NoteType,
 } from '../../../chart/note'
+import type { StageId } from '../../../chart/stages'
 
 export type NoteEntity = BaseEntity & {
     type: 'note'
     slideId: SlideId
     groupId: GroupId
+    stageId: StageId
     noteType: NoteType
     isAttached: boolean
     left: number
@@ -52,6 +54,7 @@ export const toNoteEntity = (
 
     slideId,
     groupId: object.groupId,
+    stageId: object.stageId,
     beat: object.beat,
     noteType: object.noteType,
     isAttached: object.isAttached,

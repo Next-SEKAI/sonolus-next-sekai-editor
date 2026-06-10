@@ -4,10 +4,12 @@ import { type LevelDataEntity } from '@sonolus/core'
 import type { Chart } from '../..'
 import { settings } from '../../../settings'
 import { addToGroups, type GroupId, type GroupObject } from '../../groups'
+import { addDefaultStageToStages, addToStages, type StageId, type StageObject } from '../../stages'
 import { parseBpmsToChart } from './bpm'
 import { parseGroupsToChart } from './group'
 import { parseInitializationToChart } from './initialization'
 import { parseSlidesToChart } from './slide'
+import { parseStagesToChart } from './stage'
 import { parseTimeScalesToChart } from './timeScale'
 
 export type ParseCtx = {
@@ -20,18 +22,29 @@ export type ParseCtx = {
         editorName: string | undefined,
         object: Omit<GroupObject, 'name'>,
     ) => void
+
+    getStageId: (entity: LevelDataEntity) => StageId
+    addStage: (
+        name: string | undefined,
+        editorName: string | undefined,
+        object: Omit<StageObject, 'name'>,
+    ) => void
 }
 
 export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
     const chart: Chart = {
         initialLife: 1000,
+        isDynamicStages: false,
         bpms: [],
         groups: new Map(),
+        stages: new Map(),
         timeScales: [],
         slides: [],
     }
 
     const groupIds: Record<string, GroupId> = {}
+    const stageIds: Record<string, StageId> = {}
+    let defaultStageId: StageId
 
     const ctx: ParseCtx = {
         chart,
@@ -51,6 +64,30 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
                 groupIds[name] = id
             }
         },
+
+        getStageId(entity) {
+            const ref = getOptionalRef(entity, 'stage')
+            if (chart.isDynamicStages) {
+                if (ref === undefined) throw new Error(`Invalid level: data stage not found`)
+
+                const id = stageIds[ref]
+                if (!id) throw new Error(`Invalid level: ref "${ref}" not found`)
+
+                return id
+            } else {
+                if (ref !== undefined) throw new Error(`Invalid level: ref "${ref}" not found`)
+
+                return defaultStageId
+            }
+        },
+        addStage(name, editorName, object) {
+            chart.isDynamicStages = true
+            const [id] = addToStages(chart.stages, editorName, object)
+
+            if (name) {
+                stageIds[name] = id
+            }
+        },
     }
 
     parseInitializationToChart(ctx)
@@ -60,6 +97,11 @@ export const parseLevelDataChart = (entities: LevelDataEntity[]): Chart => {
     parseGroupsToChart(ctx)
     while (chart.groups.size < (settings.autoAddGroup ? 2 : 1)) {
         addToGroups(chart.groups)
+    }
+
+    parseStagesToChart(ctx)
+    if (!chart.stages.size) {
+        ;[defaultStageId] = addDefaultStageToStages(chart.stages)
     }
 
     parseTimeScalesToChart(ctx)

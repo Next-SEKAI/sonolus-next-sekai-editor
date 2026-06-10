@@ -3,9 +3,11 @@ import { gzip } from 'pako'
 import type { Command } from '..'
 import { levelDataHandle, setLevelDataHandle } from '../../../history'
 import { bgm } from '../../../history/bgm'
+import { isDynamicStages } from '../../../history/dynamicStages.ts'
 import { filename } from '../../../history/filename'
 import { groups } from '../../../history/groups'
 import { initialLife } from '../../../history/initialLife'
+import { stages } from '../../../history/stages'
 import { store } from '../../../history/store'
 import { i18n } from '../../../i18n'
 import { serializeToLevelData } from '../../../levelData/serialize'
@@ -33,9 +35,11 @@ export const save: Command = {
 
                 const levelData = serializeToLevelData(
                     initialLife.value,
+                    isDynamicStages.value,
                     bgm.value.offset,
                     store.value,
                     groups.value,
+                    stages.value,
                 )
 
                 const file = gzip(JSON.stringify(levelData), {

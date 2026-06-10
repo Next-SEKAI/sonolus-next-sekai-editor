@@ -67,5 +67,12 @@ watch(
             v-model="settings.showOtherGroups"
             :label="i18n.settings.editor.showOtherGroups"
         />
+
+        <ToggleField v-model="settings.showStageName" :label="i18n.settings.editor.showStageName" />
+
+        <ToggleField
+            v-model="settings.showOtherStages"
+            :label="i18n.settings.editor.showOtherStages"
+        />
     </SettingsSection>
 </template>

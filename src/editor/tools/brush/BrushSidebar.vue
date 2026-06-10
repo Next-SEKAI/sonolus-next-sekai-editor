@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { brushProperties } from '.'
+import { isDynamicStages } from '../../../history/dynamicStages.ts'
 import { i18n } from '../../../i18n'
 import OptionalConnectorActiveIsCriticalField from '../../../modals/form/OptionalConnectorActiveIsCriticalField.vue'
 import OptionalConnectorActiveIsFakeField from '../../../modals/form/OptionalConnectorActiveIsFakeField.vue'
@@ -20,6 +21,7 @@ import OptionalNoteTypeField from '../../../modals/form/OptionalNoteTypeField.vu
 import OptionalSfxField from '../../../modals/form/OptionalSfxField.vue'
 import OptionalSizeField from '../../../modals/form/OptionalSizeField.vue'
 import OptionalSkipField from '../../../modals/form/OptionalSkipField.vue'
+import OptionalStageField from '../../../modals/form/OptionalStageField.vue'
 import OptionalTimeScaleEaseField from '../../../modals/form/OptionalTimeScaleEaseField.vue'
 import OptionalTimeScaleField from '../../../modals/form/OptionalTimeScaleField.vue'
 import BaseSidebar from '../../sidebars/BaseSidebar.vue'
@@ -28,6 +30,7 @@ import { useProperties } from '../../utils/properties'
 const createModel = useProperties(brushProperties)
 
 const groupId = createModel('groupId')
+const stageId = createModel('stageId')
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')
 const size = createModel('size')
@@ -54,6 +57,7 @@ const hideNotes = createModel('hideNotes')
     <BaseSidebar :title="i18n.tools.brush.sidebar.title">
         <OptionalNoteTypeField v-model="noteType" />
         <OptionalGroupField v-model="groupId" />
+        <OptionalStageField v-if="isDynamicStages" v-model="stageId" />
         <OptionalIsAttachedField v-model="isAttached" />
         <OptionalSizeField v-model="size" />
         <OptionalIsCriticalField v-model="isCritical" />

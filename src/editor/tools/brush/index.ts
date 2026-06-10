@@ -10,6 +10,7 @@ import type {
     NoteSfx,
     NoteType,
 } from '../../../chart/note'
+import type { StageId } from '../../../chart/stages'
 import type { TimeScaleEase } from '../../../chart/timeScale'
 import { pushState, replaceState, state } from '../../../history'
 import { selectedEntities } from '../../../history/selectedEntities'
@@ -31,6 +32,7 @@ import BrushSidebar from './BrushSidebar.vue'
 
 export type BrushProperties = {
     groupId?: GroupId
+    stageId?: StageId
     noteType?: NoteType
     isAttached?: boolean
     size?: number

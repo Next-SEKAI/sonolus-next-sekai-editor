@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { isEditableEntity } from '.'
+import { isDynamicStages } from '../../../history/dynamicStages.ts'
 import { i18n } from '../../../i18n'
 import MultiBeatField from '../../../modals/form/MultiBeatField.vue'
 import MultiBpmField from '../../../modals/form/MultiBpmField.vue'
@@ -23,6 +24,7 @@ import MultiNoteTypeField from '../../../modals/form/MultiNoteTypeField.vue'
 import MultiSfxField from '../../../modals/form/MultiSfxField.vue'
 import MultiSizeField from '../../../modals/form/MultiSizeField.vue'
 import MultiSkipField from '../../../modals/form/MultiSkipField.vue'
+import MultiStageField from '../../../modals/form/MultiStageField.vue'
 import MultiTimeScaleEaseField from '../../../modals/form/MultiTimeScaleEaseField.vue'
 import MultiTimeScaleField from '../../../modals/form/MultiTimeScaleField.vue'
 import { useSelectedEntitiesProperties } from '../../utils/properties'
@@ -33,6 +35,7 @@ const { entities, types, noteFields, createModel } = useSelectedEntitiesProperti
 const beat = createModel('beat')
 const bpm = createModel('bpm')
 const groupId = createModel('groupId')
+const stageId = createModel('stageId')
 const timeScale = createModel('timeScale')
 const skip = createModel('skip')
 const timeScaleEase = createModel('timeScaleEase')
@@ -67,6 +70,7 @@ const connectorIsPassThrough = createModel('connectorIsPassThrough')
             <MultiHideNotesField v-if="types.timeScale" v-model="hideNotes" />
             <MultiNoteTypeField v-if="types.note" v-model="noteType" />
             <MultiGroupField v-if="types.timeScale || types.note" v-model="groupId" />
+            <MultiStageField v-if="isDynamicStages && types.note" v-model="stageId" />
             <MultiBeatField
                 v-if="entities.length === 1 || (!types.bpm && !types.timeScale)"
                 v-model="beat"

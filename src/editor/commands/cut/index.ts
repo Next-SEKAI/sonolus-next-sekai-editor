@@ -1,9 +1,11 @@
 import type { Command } from '..'
 import type { ClipboardData } from '../../../clipboardData/schema'
 import { pushState, replaceState, state } from '../../../history'
+import { isDynamicStages } from '../../../history/dynamicStages.ts'
 import { groups } from '../../../history/groups'
 import { initialLife } from '../../../history/initialLife'
 import { selectedEntities } from '../../../history/selectedEntities'
+import { stages } from '../../../history/stages'
 import { store } from '../../../history/store'
 import { i18n } from '../../../i18n'
 import { serializeToLevelDataEntities } from '../../../levelData/entities/serialize'
@@ -37,14 +39,18 @@ export const cut: Command = {
             lane: xToLane(view.pointer.x),
             beat: yToValidBeat(view.pointer.y),
             entities: serializeToLevelDataEntities(
+                isDynamicStages.value,
                 createStore({
                     initialLife: initialLife.value,
+                    isDynamicStages: isDynamicStages.value,
                     bpms: getEntities(entities, 'bpm'),
                     timeScales: getEntities(entities, 'timeScale'),
                     groups: groups.value,
+                    stages: stages.value,
                     slides: getSlides(entities),
                 }),
                 groups.value,
+                stages.value,
             ),
         }
         const text = JSON.stringify(data)

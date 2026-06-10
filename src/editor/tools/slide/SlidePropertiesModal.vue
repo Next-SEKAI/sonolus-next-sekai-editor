@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { isDynamicStages } from '../../../history/dynamicStages.ts'
 import { i18n } from '../../../i18n'
 import MultiBeatField from '../../../modals/form/MultiBeatField.vue'
 import MultiConnectorActiveIsCriticalField from '../../../modals/form/MultiConnectorActiveIsCriticalField.vue'
@@ -19,6 +20,7 @@ import MultiLeftField from '../../../modals/form/MultiLeftField.vue'
 import MultiNoteTypeField from '../../../modals/form/MultiNoteTypeField.vue'
 import MultiSfxField from '../../../modals/form/MultiSfxField.vue'
 import MultiSizeField from '../../../modals/form/MultiSizeField.vue'
+import MultiStageField from '../../../modals/form/MultiStageField.vue'
 import PropertiesModal from '../../../modals/form/PropertiesModal.vue'
 import { useSelectedEntitiesProperties } from '../../utils/properties'
 
@@ -28,6 +30,7 @@ const { noteFields, createModel } = useSelectedEntitiesProperties(
 
 const noteType = createModel('noteType')
 const groupId = createModel('groupId')
+const stageId = createModel('stageId')
 const beat = createModel('beat')
 const isAttached = createModel('isAttached')
 const left = createModel('left')
@@ -51,6 +54,7 @@ const connectorIsPassThrough = createModel('connectorIsPassThrough')
     <PropertiesModal :title="i18n.tools.slide.modal.title">
         <MultiNoteTypeField v-model="noteType" />
         <MultiGroupField v-model="groupId" />
+        <MultiStageField v-if="isDynamicStages" v-model="stageId" />
         <MultiBeatField v-model="beat" />
         <MultiIsAttachedField v-if="noteFields.isAttached !== false" v-model="isAttached" />
         <MultiLeftField v-if="noteFields.left !== false" v-model="left" />

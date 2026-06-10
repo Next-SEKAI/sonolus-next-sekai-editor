@@ -1,6 +1,8 @@
 import { computed, ref, shallowReactive } from 'vue'
 import type { Chart } from '../chart'
 import { addToGroups, type Groups } from '../chart/groups'
+import { addDefaultStageToStages, type Stages } from '../chart/stages'
+import { switchToolTo } from '../editor/tools'
 import { i18n } from '../i18n'
 import { showModal } from '../modals'
 import ConfirmModal from '../modals/ConfirmModal.vue'
@@ -13,8 +15,12 @@ const createDefaultChart = (): Chart => {
     addToGroups(groups)
     if (settings.autoAddGroup) addToGroups(groups)
 
+    const stages: Stages = new Map()
+    addDefaultStageToStages(stages)
+
     return {
         initialLife: 1000,
+        isDynamicStages: false,
         bpms: [
             {
                 beat: 0,
@@ -22,6 +28,7 @@ const createDefaultChart = (): Chart => {
             },
         ],
         groups,
+        stages,
         timeScales: [],
         slides: [],
     }
@@ -109,6 +116,8 @@ export const resetState = (
     setLevelDataHandle(handle)
 
     cleanupWaveform()
+
+    switchToolTo('select')
 }
 
 export const setLevelDataHandle = (handle: FileSystemFileHandle | undefined) => {
