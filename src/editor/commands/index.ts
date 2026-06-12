@@ -53,6 +53,14 @@ import { toggleBgmVolume } from './toggleVolume/bgm'
 import { toggleSfxVolume } from './toggleVolume/sfx'
 import { undo } from './undo'
 import { utilities } from './utilities'
+import { bpmVisibility } from './visibilities/bpm'
+import { cameraEventVisibility } from './visibilities/cameraEvent'
+import { cycleVisibilities } from './visibilities/cycle'
+import { noteVisibility } from './visibilities/note'
+import { stageMaskEventVisibility } from './visibilities/stageMaskEvent'
+import { stagePivotEventVisibility } from './visibilities/stagePivotEvent'
+import { stageStyleEventVisibility } from './visibilities/stageStyleEvent'
+import { timeScaleVisibility } from './visibilities/timeScale'
 import { zoomXIn } from './zooms/zoomXIn'
 import { zoomXOut } from './zooms/zoomXOut'
 import { zoomYIn } from './zooms/zoomYIn'
@@ -135,6 +143,15 @@ export const commands = {
     scrollPageDown,
     jumpUp,
     jumpDown,
+
+    cycleVisibilities,
+    noteVisibility,
+    cameraEventVisibility,
+    stageMaskEventVisibility,
+    stagePivotEventVisibility,
+    stageStyleEventVisibility,
+    timeScaleVisibility,
+    bpmVisibility,
 
     division1: division(1),
     division2: division(2),

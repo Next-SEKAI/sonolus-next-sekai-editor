@@ -67,6 +67,8 @@ export const toSelection = (startLane: number, startTime: number, x: number, y: 
 }
 
 const isVisible = (entity: Entity) => {
+    if (!view.visibilities[entity.type]) return false
+
     switch (entity.type) {
         case 'bpm':
         case 'cameraEventJoint':

@@ -5,11 +5,15 @@ import { settings } from '../../../../../settings'
 import { view } from '../../../../view'
 import LevelEditorStagePivotEventInfinity from './LevelEditorStagePivotEventInfinity.vue'
 
+const isEventVisible = computed(() => view.visibilities.stagePivotEventConnection)
+
 const ranges = computed(() =>
     [...store.value.stageEventRanges.stagePivotEventJoint].map(([id, range]) => ({
         id,
         range,
-        isVisible: view.stageId === undefined || range.min.stageId === view.stageId,
+        isVisible:
+            isEventVisible.value &&
+            (view.stageId === undefined || range.min.stageId === view.stageId),
     })),
 )
 </script>

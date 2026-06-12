@@ -36,6 +36,26 @@ export const view = shallowReactive({
     groupId: optional<GroupId>(),
     stageId: optional<StageId>(),
 
+    visibilities: {
+        bpm: true,
+        timeScale: true,
+
+        cameraEventJoint: true,
+        cameraEventConnection: true,
+
+        stageMaskEventJoint: true,
+        stageMaskEventConnection: true,
+
+        stagePivotEventJoint: true,
+        stagePivotEventConnection: true,
+
+        stageStyleEventJoint: true,
+        stageStyleEventConnection: true,
+
+        note: true,
+        connector: true,
+    },
+
     pointer: {
         x: 0,
         y: 0,

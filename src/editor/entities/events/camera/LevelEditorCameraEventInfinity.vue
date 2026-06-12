@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { bpms } from '../../../../history/bpms'
 import { store } from '../../../../history/store'
 import { beatToTime } from '../../../../state/integrals/bpms'
-import { ups, viewBox } from '../../../view'
+import { ups, view, viewBox } from '../../../view'
 
 const range = computed(() => store.value.globalEventRanges.cameraEventJoint)
 
@@ -18,10 +18,12 @@ const timeMax = computed(() => beatToTime(bpms.value, range.value?.max.beat ?? 0
 
 const yMin = computed(() => timeMin.value * ups.value)
 const yMax = computed(() => timeMax.value * ups.value)
+
+const isEventVisible = computed(() => view.visibilities.cameraEventConnection)
 </script>
 
 <template>
-    <g v-if="range" stroke="#f00" stroke-opacity="0.5">
+    <g v-if="range" stroke="#f00" stroke-opacity="0.5" :opacity="isEventVisible ? 1 : 0.25">
         <line :x1="xMinL" :x2="xMinL" :y1="0" :y2="yMin" />
         <line :x1="xMinR" :x2="xMinR" :y1="0" :y2="yMin" />
         <line :x1="xMaxL" :x2="xMaxL" :y1="yMax" :y2="viewBox.t" />
