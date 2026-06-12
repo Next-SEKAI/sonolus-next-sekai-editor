@@ -1,6 +1,6 @@
 import type { Command } from '..'
 import { i18n } from '../../../i18n'
-import { togglePlayerBgmVolume } from '../../../player'
+import { isBgmEnabled } from '../../../player'
 import { interpolate } from '../../../utils/interpolate'
 import { notify } from '../../notification'
 import ToggleVolumeIcon from './ToggleVolumeIcon.vue'
@@ -12,10 +12,15 @@ export const toggleBgmVolume: Command = {
     ),
     icon: {
         is: ToggleVolumeIcon,
+        props: {
+            get state() {
+                return isBgmEnabled.value
+            },
+        },
     },
 
     execute() {
-        togglePlayerBgmVolume()
+        isBgmEnabled.value = !isBgmEnabled.value
 
         notify(
             interpolate(
