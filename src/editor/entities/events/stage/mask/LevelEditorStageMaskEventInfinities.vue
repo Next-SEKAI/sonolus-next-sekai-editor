@@ -5,11 +5,15 @@ import { settings } from '../../../../../settings'
 import { view } from '../../../../view'
 import LevelEditorStageMaskEventInfinity from './LevelEditorStageMaskEventInfinity.vue'
 
+const isEventVisible = computed(() => view.visibilities.stageMaskEventConnection)
+
 const ranges = computed(() =>
     [...store.value.stageEventRanges.stageMaskEventJoint].map(([id, range]) => ({
         id,
         range,
-        isVisible: view.stageId === undefined || range.min.stageId === view.stageId,
+        isVisible:
+            isEventVisible.value &&
+            (view.stageId === undefined || range.min.stageId === view.stageId),
     })),
 )
 </script>

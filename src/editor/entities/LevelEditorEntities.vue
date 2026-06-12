@@ -106,6 +106,12 @@ const isEntityVisibleByStage = (entity: Entity) => {
             )
     }
 }
+
+const infinities = [
+    ['cameraEventConnection', LevelEditorCameraEventInfinity] as const,
+    ['stageMaskEventConnection', LevelEditorStageMaskEventInfinities] as const,
+    ['stagePivotEventConnection', LevelEditorStagePivotEventInfinities] as const,
+]
 </script>
 
 <script setup lang="ts">
@@ -120,6 +126,10 @@ import { hoveredEntities, view } from '../view'
 import LevelEditorCameraEventInfinity from './events/camera/LevelEditorCameraEventInfinity.vue'
 import LevelEditorStageMaskEventInfinities from './events/stage/mask/LevelEditorStageMaskEventInfinities.vue'
 import LevelEditorStagePivotEventInfinities from './events/stage/pivot/LevelEditorStagePivotEventInfinities.vue'
+
+const sortedInfinities = computed(() =>
+    infinities.sort(([a], [b]) => +view.visibilities[a] - +view.visibilities[b]),
+)
 
 const culledEntities = computed(() => [...cullAllEntities(keys.value.min, keys.value.max)])
 
@@ -165,15 +175,16 @@ const visibleEntityInfos = computed(() => {
 
     return entities.sort(
         (a, b) =>
-            +a.isSelected - +b.isSelected || a.layer - b.layer || b.entity.beat - a.entity.beat,
+            +a.isSelected - +b.isSelected ||
+            +view.visibilities[a.entity.type] - +view.visibilities[b.entity.type] ||
+            a.layer - b.layer ||
+            b.entity.beat - a.entity.beat,
     )
 })
 </script>
 
 <template>
-    <LevelEditorCameraEventInfinity />
-    <LevelEditorStageMaskEventInfinities />
-    <LevelEditorStagePivotEventInfinities />
+    <component :is="component" v-for="[type, component] in sortedInfinities" :key="type" />
 
     <component
         :is="entityComponents[entity.type]"
@@ -187,6 +198,6 @@ const visibleEntityInfos = computed(() => {
         :key="entity as never"
         :entity="entity as never"
         :is-highlighted="isSelected || isHovered"
-        :opacity="isVisibleByGroup && isVisibleByStage ? 1 : 0.25"
+        :opacity="view.visibilities[entity.type] && isVisibleByGroup && isVisibleByStage ? 1 : 0.25"
     />
 </template>

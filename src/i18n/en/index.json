@@ -277,6 +277,25 @@
         "utilities": {
             "title": "Utilities"
         },
+        "visibilities": {
+            "cycle": {
+                "title": "Cycle Object Visibilities",
+                "cycled": "Cycled object visibilities"
+            },
+            "toggle": {
+                "title": "Toggle {0} Visibility",
+                "toggled": "Toggled {0} visibility",
+                "types": {
+                    "note": "Note",
+                    "cameraEvent": "Camera Event",
+                    "stageMaskEvent": "Stage Mask Event",
+                    "stagePivotEvent": "Stage Pivot Event",
+                    "stageStyleEvent": "Stage Style Event",
+                    "timeScale": "Time Scale",
+                    "bpm": "BPM"
+                }
+            }
+        },
         "zooms": {
             "zoomXIn": {
                 "title": "Zoom in X",
