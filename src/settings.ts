@@ -111,7 +111,7 @@ const settingsProperties = {
 
     waveform: Type.Union([Type.Literal('volume'), Type.Literal('fft'), Type.Literal('off')]),
 
-    lockScrollX: Type.Boolean({ default: true }),
+    maxScrollX: Type.Number({ minimum: 0 }),
 
     dragToPanY: Type.Boolean({ default: true }),
 

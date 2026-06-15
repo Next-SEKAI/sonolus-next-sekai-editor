@@ -53,7 +53,11 @@ watch(
             ]"
         />
 
-        <ToggleField v-model="settings.lockScrollX" :label="i18n.settings.editor.lockScrollX" />
+        <NumberField
+            v-model="settings.maxScrollX"
+            :label="i18n.settings.editor.maxScrollX"
+            :min="0"
+        />
 
         <ToggleField v-model="settings.dragToPanY" :label="i18n.settings.editor.dragToPanY" />
 

@@ -127,7 +127,7 @@ export const drag = (quickScroll: boolean): Recognizer<1> => {
                 const dx = p.x - active.sx
                 const dy = p.y - active.sy
 
-                if (!settings.lockScrollX) scrollViewXBy(-dx)
+                scrollViewXBy(-dx)
                 scrollViewYBy(dy)
 
                 updates.push({
@@ -142,14 +142,12 @@ export const drag = (quickScroll: boolean): Recognizer<1> => {
 
         reset() {
             if (active?.type === 'scroll' && settings.touchScrollInertia) {
-                if (!settings.lockScrollX) {
-                    const dx = updates
-                        .filter(({ t }) => time.value.now - t <= 0.1)
-                        .reduce((sum, { dx }) => sum + dx, 0)
-                    view.scrollingX = {
-                        type: 'inertia',
-                        value: -dx / 0.1,
-                    }
+                const dx = updates
+                    .filter(({ t }) => time.value.now - t <= 0.1)
+                    .reduce((sum, { dx }) => sum + dx, 0)
+                view.scrollingX = {
+                    type: 'inertia',
+                    value: -dx / 0.1,
                 }
 
                 const dy = updates
