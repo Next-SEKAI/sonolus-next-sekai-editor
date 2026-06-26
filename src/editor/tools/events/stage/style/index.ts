@@ -24,7 +24,14 @@ import { createTransaction, type Transaction } from '../../../../../state/transa
 import { interpolate } from '../../../../../utils/interpolate'
 import { notify } from '../../../../notification'
 import { isSidebarVisible } from '../../../../sidebars'
-import { focusViewAtBeat, setViewHover, snapYToBeat, view, yToValidBeat } from '../../../../view'
+import {
+    focusViewAtBeat,
+    setViewHover,
+    snapYToBeat,
+    view,
+    xToValidLane,
+    yToValidBeat,
+} from '../../../../view'
 import { hitEntitiesAtPoint } from '../../../utils'
 import StageStyleEventPropertiesModal from './StageStyleEventPropertiesModal.vue'
 import StageStyleEventSidebar from './StageStyleEventSidebar.vue'
@@ -59,7 +66,7 @@ export const stageStyleEvent: Tool = {
     sidebar: StageStyleEventSidebar,
 
     hover(x, y) {
-        const [entity, beat] = tryFind(x, y)
+        const [entity, beat, lane] = tryFind(x, y)
         if (entity) {
             view.entities = {
                 hovered: [entity],
@@ -72,6 +79,7 @@ export const stageStyleEvent: Tool = {
                     toStageStyleEventJointEntity({
                         stageId: view.stageId ?? defaultStageId.value,
                         beat,
+                        editorLane: lane,
                         ...getPropertiesFromSelection(),
                     }),
                 ],
@@ -80,7 +88,7 @@ export const stageStyleEvent: Tool = {
     },
 
     tap(x, y, modifiers) {
-        const [entity, beat] = tryFind(x, y)
+        const [entity, beat, lane] = tryFind(x, y)
         if (entity) {
             if (modifiers.ctrl) {
                 const selectedStageStyleEventJointEntities: Entity[] =
@@ -154,6 +162,7 @@ export const stageStyleEvent: Tool = {
             add({
                 stageId: view.stageId ?? defaultStageId.value,
                 beat,
+                editorLane: lane,
                 ...getPropertiesFromSelection(),
             })
             focusViewAtBeat(beat)
@@ -209,6 +218,8 @@ export const stageStyleEvent: Tool = {
 
         setViewHover(y)
 
+        const lane = xToValidLane(x)
+
         switch (active.type) {
             case 'add': {
                 const beat = yToValidBeat(y)
@@ -219,6 +230,7 @@ export const stageStyleEvent: Tool = {
                         toStageStyleEventJointEntity({
                             stageId: view.stageId ?? defaultStageId.value,
                             beat,
+                            editorLane: lane,
                             ...getPropertiesFromSelection(),
                         }),
                     ],
@@ -235,6 +247,7 @@ export const stageStyleEvent: Tool = {
                         toStageStyleEventJointEntity({
                             ...active.entity,
                             beat,
+                            editorLane: lane,
                         }),
                     ],
                 }
@@ -247,6 +260,8 @@ export const stageStyleEvent: Tool = {
     dragEnd(x, y) {
         if (!active) return
 
+        const lane = xToValidLane(x)
+
         switch (active.type) {
             case 'add': {
                 const beat = yToValidBeat(y)
@@ -254,6 +269,7 @@ export const stageStyleEvent: Tool = {
                 add({
                     stageId: view.stageId ?? defaultStageId.value,
                     beat,
+                    editorLane: lane,
                     ...getPropertiesFromSelection(),
                 })
                 focusViewAtBeat(beat)
@@ -265,6 +281,7 @@ export const stageStyleEvent: Tool = {
                 move(active.entity, {
                     ...active.entity,
                     beat,
+                    editorLane: lane,
                 })
                 focusViewAtBeat(beat)
                 break
@@ -282,6 +299,7 @@ export const editStageStyleEvent = (
     edit(entity, {
         stageId: object.stageId ?? entity.stageId,
         beat: object.beat ?? entity.beat,
+        editorLane: object.editorLane ?? entity.editorLane,
         judgmentLineColor: object.judgmentLineColor ?? entity.judgmentLineColor,
         leftBorderStyle: object.leftBorderStyle ?? entity.leftBorderStyle,
         rightBorderStyle: object.rightBorderStyle ?? entity.rightBorderStyle,
@@ -301,6 +319,7 @@ export const editSelectedStageStyleEvent = (
     return addStageStyleEventJoint(transaction, {
         stageId: object.stageId ?? entity.stageId,
         beat: object.beat ?? entity.beat,
+        editorLane: object.editorLane ?? entity.editorLane,
         judgmentLineColor: object.judgmentLineColor ?? entity.judgmentLineColor,
         leftBorderStyle: object.leftBorderStyle ?? entity.leftBorderStyle,
         rightBorderStyle: object.rightBorderStyle ?? entity.rightBorderStyle,
@@ -357,12 +376,15 @@ const getPropertiesFromSelection = () => {
     }
 }
 
-const tryFind = (x: number, y: number): [StageStyleEventJointEntity] | [undefined, number] => {
+const tryFind = (
+    x: number,
+    y: number,
+): [StageStyleEventJointEntity] | [undefined, number, number] => {
     const [hit] = hitEntitiesAtPoint('stageStyleEventJoint', x, y).sort(
         (a, b) => +selectedEntities.value.includes(b) - +selectedEntities.value.includes(a),
     )
 
-    return hit ? [hit] : [undefined, yToValidBeat(y)]
+    return hit ? [hit] : [undefined, yToValidBeat(y), xToValidLane(x)]
 }
 
 const update = (message: () => string, action: (transaction: Transaction) => Entity[]) => {

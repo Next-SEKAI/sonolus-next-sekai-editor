@@ -32,7 +32,7 @@ export const flip: Command = {
         const transaction = createTransaction(state.value)
 
         const flippedEntities = entities.flatMap(
-            (entity) => flips[entity.type]?.(transaction, entity as never) ?? [entity],
+            (entity) => flips[entity.type]?.(transaction, entities, entity as never) ?? [entity],
         )
 
         pushState(
@@ -48,7 +48,7 @@ export const flip: Command = {
     },
 }
 
-type Flip<T> = (transaction: Transaction, entity: T) => Entity[]
+type Flip<T> = (transaction: Transaction, entities: Entity[], entity: T) => Entity[]
 
 const flippedFlickDirections: Record<FlickDirection, FlickDirection> = {
     none: 'none',
@@ -66,7 +66,7 @@ const flips: {
     bpm: undefined,
     timeScale: undefined,
 
-    cameraEventJoint: (transaction, entity) =>
+    cameraEventJoint: (transaction, entities, entity) =>
         editSelectedCameraEvent(transaction, entity, {
             cameraLeft: -(entity.cameraLeft + entity.cameraSize),
             cameraZoomTargetLane: -entity.cameraZoomTargetLane,
@@ -74,26 +74,29 @@ const flips: {
         }),
     cameraEventConnection: undefined,
 
-    stageMaskEventJoint: (transaction, entity) =>
+    stageMaskEventJoint: (transaction, entities, entity) =>
         editSelectedStageMaskEvent(transaction, entity, {
             maskLeft: -(entity.maskLeft + entity.maskSize),
         }),
     stageMaskEventConnection: undefined,
 
-    stagePivotEventJoint: (transaction, entity) =>
+    stagePivotEventJoint: (transaction, entities, entity) =>
         editSelectedStagePivotEvent(transaction, entity, {
             pivotLane: -entity.pivotLane,
         }),
     stagePivotEventConnection: undefined,
 
-    stageStyleEventJoint: (transaction, entity) =>
+    stageStyleEventJoint: (transaction, entities, entity) =>
         editSelectedStageStyleEvent(transaction, entity, {
+            editorLane: entities.every((entity) => entity.type === 'stageStyleEventJoint')
+                ? -entity.editorLane
+                : entity.editorLane,
             leftBorderStyle: entity.rightBorderStyle,
             rightBorderStyle: entity.leftBorderStyle,
         }),
     stageStyleEventConnection: undefined,
 
-    note: (transaction, entity) =>
+    note: (transaction, entities, entity) =>
         editSelectedNote(transaction, entity, {
             left: -(entity.left + entity.size),
             flickDirection: flippedFlickDirections[entity.flickDirection],

@@ -7,6 +7,7 @@ import type {
 
 export type StageStyleEventJointEntity = BaseStageEventJointEntity & {
     type: 'stageStyleEventJoint'
+    editorLane: number
     judgmentLineColor: JudgmentLineColor
     leftBorderStyle: BorderStyle
     rightBorderStyle: BorderStyle
@@ -20,14 +21,15 @@ export const toStageStyleEventJointEntity = (
 ): StageStyleEventJointEntity => ({
     type: 'stageStyleEventJoint',
     hitbox: {
-        lane: 0,
+        lane: object.editorLane,
         beat: object.beat,
-        w: 6,
+        w: 0.2,
         h: 0.2,
     },
 
     stageId: object.stageId,
     beat: object.beat,
+    editorLane: object.editorLane,
     judgmentLineColor: object.judgmentLineColor,
     leftBorderStyle: object.leftBorderStyle,
     rightBorderStyle: object.rightBorderStyle,

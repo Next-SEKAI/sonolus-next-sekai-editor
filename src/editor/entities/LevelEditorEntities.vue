@@ -111,6 +111,7 @@ const infinities = [
     ['cameraEventConnection', LevelEditorCameraEventInfinity] as const,
     ['stageMaskEventConnection', LevelEditorStageMaskEventInfinities] as const,
     ['stagePivotEventConnection', LevelEditorStagePivotEventInfinities] as const,
+    ['stageStyleEventConnection', LevelEditorStageStyleEventInfinities] as const,
 ]
 </script>
 
@@ -126,6 +127,7 @@ import { hoveredEntities, view } from '../view'
 import LevelEditorCameraEventInfinity from './events/camera/LevelEditorCameraEventInfinity.vue'
 import LevelEditorStageMaskEventInfinities from './events/stage/mask/LevelEditorStageMaskEventInfinities.vue'
 import LevelEditorStagePivotEventInfinities from './events/stage/pivot/LevelEditorStagePivotEventInfinities.vue'
+import LevelEditorStageStyleEventInfinities from './events/stage/style/LevelEditorStageStyleEventInfinities.vue'
 
 const sortedInfinities = computed(() =>
     infinities.sort(([a], [b]) => +view.visibilities[a] - +view.visibilities[b]),

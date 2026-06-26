@@ -813,6 +813,9 @@
             "divisionSize": {
                 "label": "Division Size"
             },
+            "editorLane": {
+                "label": "Editor Lane"
+            },
             "eventEase": {
                 "label": "Event Ease",
                 "linear": "Linear",
