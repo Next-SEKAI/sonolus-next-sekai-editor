@@ -1,10 +1,13 @@
 import { name } from '../package.json'
 
-export const storageGet = (key: string): unknown => {
+export const storageGet = (key: string, defaultValue: unknown): unknown => {
     try {
-        return JSON.parse(localStorage.getItem(`${name}.${key}`) ?? 'null')
+        const value = localStorage.getItem(`${name}.${key}`)
+        if (value === null) return defaultValue
+
+        return JSON.parse(value)
     } catch {
-        return null
+        return defaultValue
     }
 }
 

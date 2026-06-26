@@ -1,4 +1,4 @@
-import { Type, type Static } from '@sinclair/typebox'
+import Type from 'typebox'
 import { levelDataSchema } from '../../levelData/schema'
 
 const v1Schema = Type.Object({
@@ -9,4 +9,4 @@ const v1Schema = Type.Object({
 
 export const autoSaveSchema = Type.Union([v1Schema, levelDataSchema])
 
-export type AutoSave = Static<typeof v1Schema>
+export type AutoSave = Type.Static<typeof v1Schema>

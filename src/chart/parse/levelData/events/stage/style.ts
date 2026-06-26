@@ -1,5 +1,5 @@
-import { Type } from '@sinclair/typebox'
 import { EngineArchetypeDataName } from '@sonolus/core'
+import Type from 'typebox'
 import { parseStageEvents } from '.'
 import { getEventRefs } from '..'
 import { getValue, type ParseCtx } from '../..'

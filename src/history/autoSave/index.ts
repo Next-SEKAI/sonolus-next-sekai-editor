@@ -47,7 +47,7 @@ export const useAutoSave = () => {
         },
     )
 
-    const data = storageGet('autoSave.levelData')
+    const data = storageGet('autoSave.levelData', undefined)
     if (data) {
         void showModal(LoadingModal, {
             title: () => i18n.value.history.autoSave.title,

@@ -1,4 +1,4 @@
-import { Type } from '@sinclair/typebox'
+import Type from 'typebox'
 import { getOptionalRef, getOptionalValue, type ParseCtx } from '.'
 
 export const parseInitializationToChart = ({ chart, entities: [entity] }: ParseCtx) => {

@@ -1,5 +1,5 @@
-import { Type, type Static } from '@sinclair/typebox'
 import type { LevelData } from '@sonolus/core'
+import Type from 'typebox'
 import { levelDataEntitiesSchema } from './entities/schema'
 
 export const levelDataSchema = Type.Object({
@@ -7,5 +7,5 @@ export const levelDataSchema = Type.Object({
     entities: levelDataEntitiesSchema,
 })
 
-type _LevelData = Static<typeof levelDataSchema>
+type _LevelData = Type.Static<typeof levelDataSchema>
 type _Test<T extends LevelData = _LevelData, U extends _LevelData = LevelData> = [T, U]

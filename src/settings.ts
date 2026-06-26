@@ -1,5 +1,5 @@
-import { Type, type Static, type StaticDecode, type TSchema, type TString } from '@sinclair/typebox'
-import { Value } from '@sinclair/typebox/value'
+import Type from 'typebox'
+import Value from 'typebox/value'
 import { shallowRef, watch } from 'vue'
 import { isCommandName, type CommandName } from './editor/commands'
 import { defaultLocale } from './i18n/locale'
@@ -8,7 +8,7 @@ import { storageGet, storageRemove, storageSet } from './storage'
 import { clamp } from './utils/math'
 
 const number = (def: number, min: number, max: number) =>
-    Type.Transform(Type.Number({ default: def }))
+    Type.Codec(Type.Number({ default: def }))
         .Decode((value) => clamp(value, min, max))
         .Encode((value) => value)
 
@@ -81,7 +81,7 @@ const defaultNoteSlidePropertiesSchema = Type.Intersect([
     }),
 ])
 
-export type DefaultNoteSlideProperties = Static<typeof defaultNoteSlidePropertiesSchema>
+export type DefaultNoteSlideProperties = Type.Static<typeof defaultNoteSlidePropertiesSchema>
 
 const settingsProperties = {
     showSidebar: Type.Boolean({ default: true }),
@@ -103,7 +103,7 @@ const settingsProperties = {
     locale: Type.Union(
         Object.keys(localizations).map((locale) => Type.Literal(locale)),
         { default: defaultLocale },
-    ) as never as TString,
+    ) as never as Type.TString,
 
     autoSave: Type.Boolean({ default: true }),
 
@@ -127,9 +127,9 @@ const settingsProperties = {
 
     showOtherStages: Type.Boolean({ default: true }),
 
-    toolbar: Type.Transform(
+    toolbar: Type.Codec(
         Type.Array(
-            Type.Transform(Type.Array(Type.String()))
+            Type.Codec(Type.Array(Type.String()))
                 .Decode((values) => values.filter(isCommandName))
                 .Encode((values) => values),
             {
@@ -219,7 +219,7 @@ const settingsProperties = {
 
     touchScrollInertia: Type.Boolean({ default: true }),
 
-    keyboardShortcuts: Type.Transform(
+    keyboardShortcuts: Type.Codec(
         Type.Record(Type.String(), Type.String(), {
             default: {
                 open: 'o',
@@ -334,8 +334,8 @@ const settingsProperties = {
     }),
 }
 
-const normalize = <T extends TSchema>(schema: T, value: unknown) =>
-    Value.Decode(schema, Value.Cast(schema, value))
+const normalize = <T extends Type.TSchema>(schema: T, value: unknown) =>
+    Value.Decode(schema, Value.Repair(schema, value))
 
 export const settings = Object.defineProperties(
     {},
@@ -343,7 +343,7 @@ export const settings = Object.defineProperties(
         Object.entries(settingsProperties).map(([key, schema]) => {
             const defaultValue = Value.Create(schema)
 
-            const prop = shallowRef(normalize(schema, storageGet(key)))
+            const prop = shallowRef(normalize(schema, storageGet(key, defaultValue)))
             watch(prop, (value) => {
                 if (Value.Equal(value, defaultValue)) {
                     storageRemove(key)
@@ -363,5 +363,5 @@ export const settings = Object.defineProperties(
         }),
     ),
 ) as {
-    [K in keyof typeof settingsProperties]: StaticDecode<(typeof settingsProperties)[K]>
+    [K in keyof typeof settingsProperties]: Type.StaticDecode<(typeof settingsProperties)[K]>
 }

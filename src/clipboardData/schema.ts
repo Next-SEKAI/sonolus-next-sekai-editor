@@ -1,4 +1,4 @@
-import { Type, type Static } from '@sinclair/typebox'
+import Type from 'typebox'
 import { levelDataEntitiesSchema } from '../levelData/entities/schema'
 
 export const clipboardDataSchema = Type.Object({
@@ -7,4 +7,4 @@ export const clipboardDataSchema = Type.Object({
     entities: levelDataEntitiesSchema,
 })
 
-export type ClipboardData = Static<typeof clipboardDataSchema>
+export type ClipboardData = Type.Static<typeof clipboardDataSchema>
