@@ -346,9 +346,18 @@ const toMovedBpmObject = (entity: BpmEntity, beat: number): BpmObject => ({
     beat,
 })
 
-const toMovedTimeScaleObject = (entity: TimeScaleEntity, beat: number): TimeScaleObject => ({
+const toMovedTimeScaleObject = (
+    entities: Entity[],
+    entity: TimeScaleEntity,
+    startLane: number,
+    lane: number,
+    beat: number,
+): TimeScaleObject => ({
     ...entity,
     beat,
+    editorLane: entities.every((entity) => entity.type === 'timeScale')
+        ? entity.editorLane + offset(startLane, lane)
+        : entity.editorLane,
 })
 
 const toMovedCameraEventObject = (
@@ -494,7 +503,7 @@ const creates: {
 } = {
     bpm: (entities, entity, startLane, lane, beat) => toBpmEntity(toMovedBpmObject(entity, beat)),
     timeScale: (entities, entity, startLane, lane, beat) =>
-        toTimeScaleEntity(toMovedTimeScaleObject(entity, beat)),
+        toTimeScaleEntity(toMovedTimeScaleObject(entities, entity, startLane, lane, beat)),
 
     cameraEventJoint: (entities, entity, startLane, lane, beat, focus) =>
         toCameraEventJointEntity(
@@ -553,7 +562,7 @@ const moves: {
         return addBpm(transaction, object)
     },
     timeScale: (transaction, entities, entity, startLane, lane, beat) => {
-        const object = toMovedTimeScaleObject(entity, beat)
+        const object = toMovedTimeScaleObject(entities, entity, startLane, lane, beat)
 
         removeTimeScale(transaction, entity)
 

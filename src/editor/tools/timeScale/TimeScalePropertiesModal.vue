@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { i18n } from '../../../i18n'
 import MultiBeatField from '../../../modals/form/MultiBeatField.vue'
+import MultiEditorLaneField from '../../../modals/form/MultiEditorLaneField.vue'
 import MultiGroupField from '../../../modals/form/MultiGroupField.vue'
 import MultiHideNotesField from '../../../modals/form/MultiHideNotesField.vue'
 import MultiSkipField from '../../../modals/form/MultiSkipField.vue'
@@ -19,6 +20,7 @@ const timeScaleEase = createModel('timeScaleEase')
 const hideNotes = createModel('hideNotes')
 const groupId = createModel('groupId')
 const beat = createModel('beat')
+const editorLane = createModel('editorLane')
 </script>
 
 <template>
@@ -29,5 +31,6 @@ const beat = createModel('beat')
         <MultiHideNotesField v-model="hideNotes" />
         <MultiGroupField v-model="groupId" />
         <MultiBeatField v-if="entities.length === 1" v-model="beat" />
+        <MultiEditorLaneField v-model="editorLane" />
     </PropertiesModal>
 </template>

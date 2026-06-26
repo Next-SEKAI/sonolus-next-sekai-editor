@@ -104,6 +104,7 @@ export const parseSusChart = (sus: Sus) => {
         chart.timeScales.push({
             groupId,
             beat: timeScaleChange.tick / sus.ticksPerBeat,
+            editorLane: -6,
             timeScale: timeScaleChange.timeScale,
             skip: 0,
             timeScaleEase: 'none',
