@@ -25,6 +25,10 @@ export const serializeStageStyleEventsToLevelDataEntities = (
                     value: joint.beat,
                 },
                 {
+                    name: 'editorLane',
+                    value: joint.editorLane,
+                },
+                {
                     name: 'judgeLineColor',
                     value: judgmentLineColors[joint.judgmentLineColor],
                 },

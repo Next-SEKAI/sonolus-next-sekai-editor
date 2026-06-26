@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { i18n } from '../../../../../i18n'
 import MultiBeatField from '../../../../../modals/form/MultiBeatField.vue'
+import MultiEditorLaneField from '../../../../../modals/form/MultiEditorLaneField.vue'
 import MultiEventEaseField from '../../../../../modals/form/MultiEventEaseField.vue'
 import MultiJudgmentLineAlphaField from '../../../../../modals/form/MultiJudgmentLineAlphaField.vue'
 import MultiJudgmentLineColorField from '../../../../../modals/form/MultiJudgmentLineColorField.vue'
@@ -26,6 +27,7 @@ const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
 const eventEase = createModel('eventEase')
 const beat = createModel('beat')
+const editorLane = createModel('editorLane')
 </script>
 
 <template>
@@ -41,5 +43,6 @@ const beat = createModel('beat')
         <MultiJudgmentLineAlphaField v-model="judgmentLineAlpha" />
         <MultiEventEaseField v-model="eventEase" />
         <MultiBeatField v-model="beat" />
+        <MultiEditorLaneField v-model="editorLane" />
     </PropertiesModal>
 </template>

@@ -47,6 +47,7 @@ export const checkDynamicStages = async () => {
     addStageStyleEventJoint(transaction, {
         stageId: defaultStageId.value,
         beat: 0,
+        editorLane: 0,
         judgmentLineColor: 'purple',
         leftBorderStyle: 'default',
         rightBorderStyle: 'default',

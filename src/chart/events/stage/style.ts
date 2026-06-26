@@ -16,6 +16,7 @@ export type BorderStyle = 'default' | 'light' | 'medium' | 'disabled'
 export type StageStyleEventObject = {
     stageId: StageId
     beat: number
+    editorLane: number
     judgmentLineColor: JudgmentLineColor
     leftBorderStyle: BorderStyle
     rightBorderStyle: BorderStyle

@@ -2,7 +2,7 @@ import { EngineArchetypeDataName } from '@sonolus/core'
 import Type from 'typebox'
 import { parseStageEvents } from '.'
 import { getEventRefs } from '..'
-import { getValue, type ParseCtx } from '../..'
+import { getOptionalValue, getValue, type ParseCtx } from '../..'
 import type { StageId } from '../../../../stages'
 import { beatSchema } from '../../schemas'
 import { eventEases, eventEaseSchema } from '../schemas'
@@ -20,6 +20,7 @@ export const parseStageStyleEventsToChart = (
     parseStageEvents(refs, firstRefs, chart.stageStyleEvents, (stageId, entity) => ({
         stageId,
         beat: getValue(entity, EngineArchetypeDataName.Beat, beatSchema),
+        editorLane: getOptionalValue(entity, 'editorLane', editorLaneSchema) ?? 0,
         judgmentLineColor:
             judgmentLineColors[getValue(entity, 'judgeLineColor', judgmentLineColorSchema)],
         leftBorderStyle: borderStyles[getValue(entity, 'leftBorderStyle', borderStyleSchema)],
@@ -30,6 +31,8 @@ export const parseStageStyleEventsToChart = (
         eventEase: eventEases[getValue(entity, 'ease', eventEaseSchema)],
     }))
 }
+
+const editorLaneSchema = Type.Number()
 
 const judgmentLineColorSchema = Type.Union([
     Type.Literal(0),

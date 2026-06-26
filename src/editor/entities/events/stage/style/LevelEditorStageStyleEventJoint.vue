@@ -15,6 +15,7 @@ const props = defineProps<{
 
 const time = computed(() => beatToTime(bpms.value, props.entity.beat))
 
+const x = computed(() => props.entity.editorLane)
 const y = computed(() => time.value * ups.value)
 
 const stage = computed(
@@ -27,8 +28,8 @@ const stage = computed(
 </script>
 
 <template>
-    <g :transform="`translate(0, ${y})`">
-        <line :x1="-6" :x2="6" stroke="#0ff" stroke-opacity="0.5" />
+    <g :transform="`translate(${x}, ${y})`">
+        <circle r="0.1" stroke="#fff" fill="#0ff" />
         <text
             v-if="stage"
             font-size="0.4"

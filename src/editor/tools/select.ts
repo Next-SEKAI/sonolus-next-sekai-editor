@@ -432,11 +432,17 @@ const toMovedStagePivotEventObject = (
 })
 
 const toMovedStageStyleEventObject = (
+    entities: Entity[],
     entity: StageStyleEventJointEntity,
+    startLane: number,
+    lane: number,
     beat: number,
 ): StageStyleEventObject => ({
     ...entity,
     beat,
+    editorLane: entities.every((entity) => entity.type === 'stageStyleEventJoint')
+        ? entity.editorLane + offset(startLane, lane)
+        : entity.editorLane,
 })
 
 const toMovedNoteObject = (
@@ -507,7 +513,9 @@ const creates: {
     stagePivotEventConnection: undefined,
 
     stageStyleEventJoint: (entities, entity, startLane, lane, beat) =>
-        toStageStyleEventJointEntity(toMovedStageStyleEventObject(entity, beat)),
+        toStageStyleEventJointEntity(
+            toMovedStageStyleEventObject(entities, entity, startLane, lane, beat),
+        ),
     stageStyleEventConnection: undefined,
 
     note: (entities, entity, startLane, lane, beat, focus) =>
@@ -582,7 +590,7 @@ const moves: {
     stagePivotEventConnection: undefined,
 
     stageStyleEventJoint: (transaction, entities, entity, startLane, lane, beat) => {
-        const object = toMovedStageStyleEventObject(entity, beat)
+        const object = toMovedStageStyleEventObject(entities, entity, startLane, lane, beat)
 
         removeStageStyleEventJoint(transaction, entity)
         return addStageStyleEventJoint(transaction, object)

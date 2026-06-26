@@ -22,6 +22,7 @@ import MultiConnectorLayerField from '../../../modals/form/MultiConnectorLayerFi
 import MultiConnectorTypeField from '../../../modals/form/MultiConnectorTypeField.vue'
 import MultiDivisionParityField from '../../../modals/form/MultiDivisionParityField.vue'
 import MultiDivisionSizeField from '../../../modals/form/MultiDivisionSizeField.vue'
+import MultiEditorLaneField from '../../../modals/form/MultiEditorLaneField.vue'
 import MultiEventEaseField from '../../../modals/form/MultiEventEaseField.vue'
 import MultiFlickDirectionField from '../../../modals/form/MultiFlickDirectionField.vue'
 import MultiGroupField from '../../../modals/form/MultiGroupField.vue'
@@ -55,6 +56,7 @@ import BaseSidebar from '../BaseSidebar.vue'
 const { entities, types, noteFields, createModel } = useSelectedEntitiesProperties(isEditableEntity)
 
 const beat = createModel('beat')
+const editorLane = createModel('editorLane')
 const bpm = createModel('bpm')
 const groupId = createModel('groupId')
 const stageId = createModel('stageId')
@@ -179,6 +181,7 @@ const connectorIsPassThrough = createModel('connectorIsPassThrough')
                 v-if="entities.length === 1 || (!types.bpm && !types.timeScale)"
                 v-model="beat"
             />
+            <MultiEditorLaneField v-if="types.stageStyleEventJoint" v-model="editorLane" />
             <MultiIsAttachedField
                 v-if="types.note && noteFields.isAttached !== false"
                 v-model="isAttached"
