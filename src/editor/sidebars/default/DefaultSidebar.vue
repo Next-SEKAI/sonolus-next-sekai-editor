@@ -181,7 +181,10 @@ const connectorIsPassThrough = createModel('connectorIsPassThrough')
                 v-if="entities.length === 1 || (!types.bpm && !types.timeScale)"
                 v-model="beat"
             />
-            <MultiEditorLaneField v-if="types.stageStyleEventJoint" v-model="editorLane" />
+            <MultiEditorLaneField
+                v-if="types.timeScale || types.stageStyleEventJoint"
+                v-model="editorLane"
+            />
             <MultiIsAttachedField
                 v-if="types.note && noteFields.isAttached !== false"
                 v-model="isAttached"

@@ -260,10 +260,22 @@ const toMovedBpmObject = (entity: BpmEntity, beat: number): BpmObject => ({
     beat,
 })
 
-const toMovedTimeScaleObject = (entity: TimeScaleEntity, beat: number): TimeScaleObject => ({
+const toMovedTimeScaleObject = (
+    entities: Entity[],
+    entity: TimeScaleEntity,
+    startLane: number,
+    lane: number,
+    beat: number,
+    flip: boolean,
+): TimeScaleObject => ({
     ...entity,
     groupId: view.groupId ?? entity.groupId,
     beat,
+    editorLane: entities.every((entity) => entity.type === 'timeScale')
+        ? flip
+            ? -entity.editorLane + align(startLane) + align(lane)
+            : entity.editorLane - align(startLane) + align(lane)
+        : entity.editorLane,
 })
 
 const toMovedCameraEventObject = (
@@ -372,8 +384,8 @@ const creates: {
     [T in Entity as T['type']]: Create<T> | undefined
 } = {
     bpm: (entities, entity, startLane, lane, beat) => toBpmEntity(toMovedBpmObject(entity, beat)),
-    timeScale: (entities, entity, startLane, lane, beat) =>
-        toTimeScaleEntity(toMovedTimeScaleObject(entity, beat)),
+    timeScale: (entities, entity, startLane, lane, beat, flip) =>
+        toTimeScaleEntity(toMovedTimeScaleObject(entities, entity, startLane, lane, beat, flip)),
 
     cameraEventJoint: (entities, entity, startLane, lane, beat, flip) =>
         toCameraEventJointEntity(toMovedCameraEventObject(entity, startLane, lane, beat, flip)),
@@ -425,8 +437,8 @@ const pastes: {
 
         return addBpm(transaction, object)
     },
-    timeScale: (transaction, entities, entity, startLane, lane, beat) => {
-        const object = toMovedTimeScaleObject(entity, beat)
+    timeScale: (transaction, entities, entity, startLane, lane, beat, flip) => {
+        const object = toMovedTimeScaleObject(entities, entity, startLane, lane, beat, flip)
 
         const overlap = getInStoreGrid(transaction.store.grid, 'timeScale', object.beat)?.find(
             (entity) => entity.beat === object.beat && entity.groupId === object.groupId,

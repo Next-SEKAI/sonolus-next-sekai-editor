@@ -12,6 +12,7 @@ import { editSelectedStageMaskEvent } from '../../tools/events/stage/mask'
 import { editSelectedStagePivotEvent } from '../../tools/events/stage/pivot'
 import { editSelectedStageStyleEvent } from '../../tools/events/stage/style'
 import { editSelectedNote } from '../../tools/note'
+import { editSelectedTimeScale } from '../../tools/timeScale/index.ts'
 import { view } from '../../view'
 import FlipIcon from './FlipIcon.vue'
 
@@ -64,7 +65,12 @@ const flips: {
     [T in Entity as T['type']]: Flip<T> | undefined
 } = {
     bpm: undefined,
-    timeScale: undefined,
+    timeScale: (transaction, entities, entity) =>
+        editSelectedTimeScale(transaction, entity, {
+            editorLane: entities.every((entity) => entity.type === 'timeScale')
+                ? -entity.editorLane
+                : entity.editorLane,
+        }),
 
     cameraEventJoint: (transaction, entities, entity) =>
         editSelectedCameraEvent(transaction, entity, {

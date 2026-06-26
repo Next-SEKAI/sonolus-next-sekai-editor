@@ -47,6 +47,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                     chart.timeScales.push({
                         groupId: getGroupId(timeScaleGroups.indexOf(object)),
                         beat: change.beat,
+                        editorLane: -6,
                         timeScale: change.timeScale,
                         skip: 0,
                         timeScaleEase: 'none',
