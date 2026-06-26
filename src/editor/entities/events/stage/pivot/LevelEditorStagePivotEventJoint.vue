@@ -33,7 +33,7 @@ const stage = computed(
         <text
             v-if="stage"
             font-size="0.4"
-            text-anchor="start"
+            text-anchor="middle"
             dominant-baseline="middle"
             fill="#a0a"
         >
