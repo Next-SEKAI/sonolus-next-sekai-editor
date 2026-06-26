@@ -1,5 +1,5 @@
-import { Type, type Static } from '@sinclair/typebox'
 import type { LevelDataEntity } from '@sonolus/core'
+import Type from 'typebox'
 
 const levelDataEntitySchema = Type.Object({
     name: Type.Optional(Type.String()),
@@ -18,7 +18,7 @@ const levelDataEntitySchema = Type.Object({
     ),
 })
 
-type _LevelDataEntity = Static<typeof levelDataEntitySchema>
+type _LevelDataEntity = Type.Static<typeof levelDataEntitySchema>
 type _Test<
     T extends LevelDataEntity = _LevelDataEntity,
     U extends _LevelDataEntity = LevelDataEntity,

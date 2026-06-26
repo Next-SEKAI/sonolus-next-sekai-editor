@@ -1,5 +1,5 @@
-import { Type } from '@sinclair/typebox'
 import { EngineArchetypeDataName, type LevelDataEntity } from '@sonolus/core'
+import Type from 'typebox'
 import { getOptionalRef, getOptionalValue, getValue, type ParseCtx } from '.'
 import type { GroupId } from '../../groups'
 import type { NoteObject } from '../../note'

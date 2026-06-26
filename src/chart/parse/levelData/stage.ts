@@ -1,4 +1,4 @@
-import { Type } from '@sinclair/typebox'
+import Type from 'typebox'
 import { getOptionalRef, getOptionalValue, getValue, type ParseCtx } from '.'
 import type { StageId } from '../../stages'
 

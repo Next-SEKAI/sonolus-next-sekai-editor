@@ -1,4 +1,4 @@
-import { Type, type Static } from '@sinclair/typebox'
+import Type from 'typebox'
 import { uscObjectSchema } from './objects/schema'
 
 export const uscSchema = Type.Object({
@@ -9,4 +9,4 @@ export const uscSchema = Type.Object({
     }),
 })
 
-export type Usc = Static<typeof uscSchema>
+export type Usc = Type.Static<typeof uscSchema>

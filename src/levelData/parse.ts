@@ -1,5 +1,5 @@
-import { Value } from '@sinclair/typebox/value'
 import type { LevelData } from '@sonolus/core'
+import Value from 'typebox/value'
 import { levelDataSchema } from './schema'
 
 export const parseLevelData = (data: unknown): LevelData => {

@@ -1,6 +1,6 @@
-import { Value } from '@sinclair/typebox/value'
 import type { LevelData } from '@sonolus/core'
 import { ungzip } from 'pako'
+import Value from 'typebox/value'
 import { parseLevelData } from '../../levelData/parse'
 import { autoSaveSchema } from './schema'
 

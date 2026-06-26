@@ -31,6 +31,7 @@ export const view = shallowReactive({
     h: 0,
 
     division: 4,
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     snapping: 'absolute' as 'absolute' | 'relative',
 
     groupId: optional<GroupId>(),

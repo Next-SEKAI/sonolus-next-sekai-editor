@@ -1,4 +1,4 @@
-import { Type, type Static } from '@sinclair/typebox'
+import Type from 'typebox'
 
 const uscBpmChangeSchema = Type.Object({
     type: Type.Literal('bpm'),
@@ -147,4 +147,4 @@ export const uscObjectSchema = Type.Union([
     uscDamageNoteSchema,
 ])
 
-export type UscObject = Static<typeof uscObjectSchema>
+export type UscObject = Type.Static<typeof uscObjectSchema>
