@@ -152,6 +152,7 @@ const settingsProperties = {
                     ['timeScale', 'bpm'],
                     ['groupPrev', 'groupNext', 'groupAll', 'manageGroups'],
                     [
+                        'stageTransformEvent',
                         'stageStyleEvent',
                         'stagePivotEvent',
                         'stageMaskEvent',
@@ -172,6 +173,7 @@ const settingsProperties = {
                     [
                         'bpmVisibility',
                         'timeScaleVisibility',
+                        'stageTransformEventVisibility',
                         'stageStyleEventVisibility',
                         'stagePivotEventVisibility',
                         'stageMaskEventVisibility',

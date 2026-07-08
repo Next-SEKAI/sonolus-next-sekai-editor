@@ -13,6 +13,7 @@ import { cameraEvent } from './events/camera'
 import { stageMaskEvent } from './events/stage/mask'
 import { stagePivotEvent } from './events/stage/pivot'
 import { stageStyleEvent } from './events/stage/style'
+import { stageTransformEvent } from './events/stage/transform'
 import { flip } from './flip'
 import { fullscreen } from './fullscreen'
 import { groupAll } from './groups/groupAll'
@@ -60,6 +61,7 @@ import { noteVisibility } from './visibilities/note'
 import { stageMaskEventVisibility } from './visibilities/stageMaskEvent'
 import { stagePivotEventVisibility } from './visibilities/stagePivotEvent'
 import { stageStyleEventVisibility } from './visibilities/stageStyleEvent'
+import { stageTransformEventVisibility } from './visibilities/stageTransformEvent'
 import { timeScaleVisibility } from './visibilities/timeScale'
 import { zoomXIn } from './zooms/zoomXIn'
 import { zoomXOut } from './zooms/zoomXOut'
@@ -129,6 +131,7 @@ export const commands = {
     stageMaskEvent,
     stagePivotEvent,
     stageStyleEvent,
+    stageTransformEvent,
 
     manageStages,
     stagePrev,
@@ -150,6 +153,7 @@ export const commands = {
     stageMaskEventVisibility,
     stagePivotEventVisibility,
     stageStyleEventVisibility,
+    stageTransformEventVisibility,
     timeScaleVisibility,
     bpmVisibility,
 

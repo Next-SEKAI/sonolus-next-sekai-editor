@@ -6,6 +6,7 @@ export const parseStagesToChart = ({ entities, addStage }: ParseCtx) => {
     const firstMaskRefs = new Map<StageId, string>()
     const firstPivotRefs = new Map<StageId, string>()
     const firstStyleRefs = new Map<StageId, string>()
+    const firstTransformRefs = new Map<StageId, string>()
 
     for (const entity of entities) {
         if (entity.archetype !== 'Stage') continue
@@ -29,12 +30,14 @@ export const parseStagesToChart = ({ entities, addStage }: ParseCtx) => {
         addRef(firstMaskRefs, 'firstMaskChange')
         addRef(firstPivotRefs, 'firstPivotChange')
         addRef(firstStyleRefs, 'firstStyleChange')
+        addRef(firstTransformRefs, 'firstTransformChange')
     }
 
     return {
         firstMaskRefs,
         firstPivotRefs,
         firstStyleRefs,
+        firstTransformRefs,
     }
 }
 

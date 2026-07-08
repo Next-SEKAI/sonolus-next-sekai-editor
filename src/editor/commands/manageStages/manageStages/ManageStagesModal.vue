@@ -11,6 +11,7 @@ import type { Entity } from '../../../../state/entities'
 import { removeStageMaskEventJoint } from '../../../../state/mutations/events/stage/mask'
 import { removeStagePivotEventJoint } from '../../../../state/mutations/events/stage/pivot'
 import { removeStageStyleEventJoint } from '../../../../state/mutations/events/stage/style'
+import { removeStageTransformEventJoint } from '../../../../state/mutations/events/stage/transform.ts'
 import { removeNote } from '../../../../state/mutations/slides/note'
 import { createTransaction } from '../../../../state/transaction'
 import { interpolate } from '../../../../utils/interpolate'
@@ -101,6 +102,13 @@ const onDelete = (stageId: StageId, name: string) => {
             removeStageStyleEventJoint(transaction, entity)
         },
         stageStyleEventConnection: undefined,
+
+        stageTransformEventJoint(entity) {
+            if (entity.stageId !== stageId) return
+
+            removeStageTransformEventJoint(transaction, entity)
+        },
+        stageTransformEventConnection: undefined,
 
         note(entity) {
             if (entity.stageId !== stageId) return

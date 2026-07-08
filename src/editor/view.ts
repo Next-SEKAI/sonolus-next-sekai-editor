@@ -53,6 +53,9 @@ export const view = shallowReactive({
         stageStyleEventJoint: true,
         stageStyleEventConnection: true,
 
+        stageTransformEventJoint: true,
+        stageTransformEventConnection: true,
+
         note: true,
         connector: true,
     },

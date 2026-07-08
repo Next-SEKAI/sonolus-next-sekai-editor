@@ -2,6 +2,7 @@
 import { brushProperties } from '.'
 import { isDynamicStages } from '../../../history/dynamicStages.ts'
 import { i18n } from '../../../i18n'
+import OptionalAnchorField from '../../../modals/form/OptionalAnchorField.vue'
 import OptionalCameraRotationField from '../../../modals/form/OptionalCameraRotationField.vue'
 import OptionalCameraSizeField from '../../../modals/form/OptionalCameraSizeField.vue'
 import OptionalCameraStageTiltField from '../../../modals/form/OptionalCameraStageTiltField.vue'
@@ -34,6 +35,7 @@ import OptionalLeftBorderStyleField from '../../../modals/form/OptionalLeftBorde
 import OptionalMaskSizeField from '../../../modals/form/OptionalMaskSizeField.vue'
 import OptionalNoteTypeField from '../../../modals/form/OptionalNoteTypeField.vue'
 import OptionalRightBorderStyleField from '../../../modals/form/OptionalRightBorderStyleField.vue'
+import OptionalRotationField from '../../../modals/form/OptionalRotationField.vue'
 import OptionalSfxField from '../../../modals/form/OptionalSfxField.vue'
 import OptionalSizeField from '../../../modals/form/OptionalSizeField.vue'
 import OptionalSkipField from '../../../modals/form/OptionalSkipField.vue'
@@ -43,6 +45,7 @@ import OptionalTimeScaleEaseField from '../../../modals/form/OptionalTimeScaleEa
 import OptionalTimeScaleField from '../../../modals/form/OptionalTimeScaleField.vue'
 import OptionalYOffsetBeatField from '../../../modals/form/OptionalYOffsetBeatField.vue'
 import OptionalYOffsetField from '../../../modals/form/OptionalYOffsetField.vue'
+import OptionalYTranslationField from '../../../modals/form/OptionalYTranslationField.vue'
 import BaseSidebar from '../../sidebars/BaseSidebar.vue'
 import { useProperties } from '../../utils/properties'
 
@@ -88,6 +91,9 @@ const rightBorderStyle = createModel('rightBorderStyle')
 const stageAlpha = createModel('stageAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
+const rotation = createModel('rotation')
+const yTranslation = createModel('yTranslation')
+const anchor = createModel('anchor')
 const eventEase = createModel('eventEase')
 </script>
 
@@ -136,6 +142,9 @@ const eventEase = createModel('eventEase')
         <OptionalStageAlphaField v-if="isDynamicStages" v-model="stageAlpha" />
         <OptionalLaneAlphaField v-if="isDynamicStages" v-model="laneAlpha" />
         <OptionalJudgmentLineAlphaField v-if="isDynamicStages" v-model="judgmentLineAlpha" />
+        <OptionalRotationField v-if="isDynamicStages" v-model="rotation" />
+        <OptionalYTranslationField v-if="isDynamicStages" v-model="yTranslation" />
+        <OptionalAnchorField v-if="isDynamicStages" v-model="anchor" />
         <OptionalEventEaseField v-if="isDynamicStages" v-model="eventEase" />
     </BaseSidebar>
 </template>

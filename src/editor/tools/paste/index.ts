@@ -5,6 +5,7 @@ import type { CameraEventObject } from '../../../chart/events/camera'
 import type { StageMaskEventObject } from '../../../chart/events/stage/mask'
 import type { StagePivotEventObject } from '../../../chart/events/stage/pivot'
 import type { StageStyleEventObject } from '../../../chart/events/stage/style'
+import type { StageTransformEventObject } from '../../../chart/events/stage/transform.ts'
 import type { GroupId } from '../../../chart/groups'
 import type { FlickDirection, NoteObject } from '../../../chart/note'
 import { parseLevelDataChart } from '../../../chart/parse/levelData'
@@ -34,6 +35,10 @@ import {
     toStageStyleEventJointEntity,
     type StageStyleEventJointEntity,
 } from '../../../state/entities/events/joints/stage/style'
+import {
+    toStageTransformEventJointEntity,
+    type StageTransformEventJointEntity,
+} from '../../../state/entities/events/joints/stage/transform.ts'
 import { createSlideId } from '../../../state/entities/slides'
 import { toNoteEntity, type NoteEntity } from '../../../state/entities/slides/note'
 import { toTimeScaleEntity, type TimeScaleEntity } from '../../../state/entities/timeScale'
@@ -42,6 +47,7 @@ import { addCameraEventJoint } from '../../../state/mutations/events/camera'
 import { addStageMaskEventJoint } from '../../../state/mutations/events/stage/mask'
 import { addStagePivotEventJoint } from '../../../state/mutations/events/stage/pivot'
 import { addStageStyleEventJoint } from '../../../state/mutations/events/stage/style'
+import { addStageTransformEventJoint } from '../../../state/mutations/events/stage/transform.ts'
 import { addNote } from '../../../state/mutations/slides/note'
 import { addTimeScale, removeTimeScale } from '../../../state/mutations/timeScale'
 import { getInStoreGrid } from '../../../state/store/grid'
@@ -117,7 +123,8 @@ export const paste: Tool = {
                     entity.type === 'cameraEventJoint' ||
                     entity.type === 'stageMaskEventJoint' ||
                     entity.type === 'stagePivotEventJoint' ||
-                    entity.type === 'stageStyleEventJoint',
+                    entity.type === 'stageStyleEventJoint' ||
+                    entity.type === 'stageTransformEventJoint',
             )
         ) {
             await checkDynamicStages()
@@ -231,6 +238,7 @@ const getData = (text: string) => {
                 ...chart.stageMaskEvents.map(mapStageId).map(toStageMaskEventJointEntity),
                 ...chart.stagePivotEvents.map(mapStageId).map(toStagePivotEventJointEntity),
                 ...chart.stageStyleEvents.map(mapStageId).map(toStageStyleEventJointEntity),
+                ...chart.stageTransformEvents.map(mapStageId).map(toStageTransformEventJointEntity),
 
                 ...chart.slides.flatMap((slide) => {
                     const slideId = createSlideId()
@@ -344,6 +352,21 @@ const toMovedStageStyleEventObject = (
     rightBorderStyle: flip ? entity.leftBorderStyle : entity.rightBorderStyle,
 })
 
+const toMovedStageTransformEventObject = (
+    entity: StageTransformEventJointEntity,
+    startLane: number,
+    lane: number,
+    beat: number,
+    flip: boolean,
+): StageTransformEventObject => ({
+    ...entity,
+    stageId: view.stageId ?? entity.stageId,
+    beat,
+    xTranslation: flip
+        ? -entity.xTranslation + align(startLane) + align(lane)
+        : entity.xTranslation - align(startLane) + align(lane),
+})
+
 const flippedFlickDirections: Record<FlickDirection, FlickDirection> = {
     none: 'none',
     up: 'up',
@@ -408,6 +431,12 @@ const creates: {
             toMovedStageStyleEventObject(entities, entity, startLane, lane, beat, flip),
         ),
     stageStyleEventConnection: undefined,
+
+    stageTransformEventJoint: (entities, entity, startLane, lane, beat, flip) =>
+        toStageTransformEventJointEntity(
+            toMovedStageTransformEventObject(entity, startLane, lane, beat, flip),
+        ),
+    stageTransformEventConnection: undefined,
 
     note: (entities, entity, startLane, lane, beat, flip) =>
         toNoteEntity(entity.slideId, toMovedNoteObject(entity, startLane, lane, beat, flip)),
@@ -483,6 +512,15 @@ const pastes: {
         return addStageStyleEventJoint(transaction, object)
     },
     stageStyleEventConnection: undefined,
+
+    stageTransformEventJoint: (transaction, entities, entity, startLane, lane, beat, flip) => {
+        if (!isDynamicStages.value) return
+
+        const object = toMovedStageTransformEventObject(entity, startLane, lane, beat, flip)
+
+        return addStageTransformEventJoint(transaction, object)
+    },
+    stageTransformEventConnection: undefined,
 
     note: (transaction, entities, entity, startLane, lane, beat, flip) => {
         const object = toMovedNoteObject(entity, startLane, lane, beat, flip)

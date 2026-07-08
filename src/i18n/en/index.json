@@ -8,7 +8,8 @@
         "cameraEvent": "Camera Event",
         "stageMaskEvent": "Stage Mask Event",
         "stagePivotEvent": "Stage Pivot Event",
-        "stageStyleEvent": "Stage Style Event"
+        "stageStyleEvent": "Stage Style Event",
+        "stageTransformEvent": "Stage Transform Event"
     },
     "commands": {
         "bgm": {
@@ -291,6 +292,7 @@
                     "stageMaskEvent": "Stage Mask Event",
                     "stagePivotEvent": "Stage Pivot Event",
                     "stageStyleEvent": "Stage Style Event",
+                    "stageTransformEvent": "Stage Transform Event",
                     "timeScale": "Time Scale",
                     "bpm": "BPM"
                 }
@@ -461,6 +463,15 @@
                 "move": "Drag 1 Stage Style Event object to move.",
                 "ctrl": "Use Ctrl key to add objects to selection.",
                 "properties": "Switch to Stage Style Event Tool again to change default properties."
+            },
+            "stageTransformEventTool": {
+                "title": "Stage Transform Event Tool",
+                "select": "Tap Stage Transform Event objects to select 1 object.",
+                "edit": "Tap 1 Stage Transform Event object to edit.",
+                "add": "Tap empty space to add.",
+                "move": "Drag 1 Stage Transform Event object to move.",
+                "ctrl": "Use Ctrl key to add objects to selection.",
+                "properties": "Switch to Stage Transform Event Tool again to change default properties."
             }
         }
     },
@@ -720,6 +731,11 @@
     "modals": {
         "form": {
             "confirm": "Confirm",
+            "anchor": {
+                "label": "Anchor",
+                "default": "Default",
+                "center": "Center"
+            },
             "beat": {
                 "label": "Beat"
             },
@@ -921,6 +937,9 @@
             "rightBorderStyle": {
                 "label": "Border Style (Right)"
             },
+            "rotation": {
+                "label": "Rotation"
+            },
             "sfx": {
                 "label": "SFX",
                 "default": "Default",
@@ -958,6 +977,12 @@
             "toggle": {
                 "enabled": "Enabled",
                 "disabled": "Disabled"
+            },
+            "xTranslation": {
+                "label": "X Translation"
+            },
+            "yTranslation": {
+                "label": "Y Translation"
             },
             "yOffset": {
                 "label": "Y Offset"

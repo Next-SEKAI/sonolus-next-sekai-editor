@@ -9,6 +9,7 @@ import { removeCameraEventJoint } from '../../state/mutations/events/camera'
 import { removeStageMaskEventJoint } from '../../state/mutations/events/stage/mask'
 import { removeStagePivotEventJoint } from '../../state/mutations/events/stage/pivot'
 import { removeStageStyleEventJoint } from '../../state/mutations/events/stage/style'
+import { removeStageTransformEventJoint } from '../../state/mutations/events/stage/transform'
 import { removeNote } from '../../state/mutations/slides/note'
 import { removeTimeScale } from '../../state/mutations/timeScale'
 import { createTransaction } from '../../state/transaction'
@@ -133,6 +134,9 @@ const canRemoves: {
     stageStyleEventJoint: undefined,
     stageStyleEventConnection: undefined,
 
+    stageTransformEventJoint: undefined,
+    stageTransformEventConnection: undefined,
+
     note: undefined,
     connector: undefined,
 }
@@ -151,6 +155,9 @@ const removes: {
 
     stagePivotEventJoint: removeStagePivotEventJoint,
     stagePivotEventConnection: undefined,
+
+    stageTransformEventJoint: removeStageTransformEventJoint,
+    stageTransformEventConnection: undefined,
 
     stageStyleEventJoint: removeStageStyleEventJoint,
     stageStyleEventConnection: undefined,

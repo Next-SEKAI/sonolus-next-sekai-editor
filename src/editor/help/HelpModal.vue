@@ -134,5 +134,14 @@ import HelpSection from './HelpSection.vue'
             <li>{{ i18n.help.modal.stageStyleEventTool.ctrl }}</li>
             <li>{{ i18n.help.modal.stageStyleEventTool.properties }}</li>
         </HelpSection>
+
+        <HelpSection :title="i18n.help.modal.stageTransformEventTool.title">
+            <li>{{ i18n.help.modal.stageTransformEventTool.select }}</li>
+            <li>{{ i18n.help.modal.stageTransformEventTool.edit }}</li>
+            <li>{{ i18n.help.modal.stageTransformEventTool.add }}</li>
+            <li>{{ i18n.help.modal.stageTransformEventTool.move }}</li>
+            <li>{{ i18n.help.modal.stageTransformEventTool.ctrl }}</li>
+            <li>{{ i18n.help.modal.stageTransformEventTool.properties }}</li>
+        </HelpSection>
     </BaseModal>
 </template>

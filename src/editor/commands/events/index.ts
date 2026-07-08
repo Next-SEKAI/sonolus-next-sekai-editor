@@ -23,7 +23,8 @@ export const event: Command = {
             cameraEvent: 'stageMaskEvent',
             stageMaskEvent: 'stagePivotEvent',
             stagePivotEvent: 'stageStyleEvent',
-            stageStyleEvent: 'cameraEvent',
+            stageStyleEvent: 'stageTransformEvent',
+            stageTransformEvent: 'cameraEvent',
         }
 
         void commands[(prev = next[toolName.value] ?? prev)].execute()
