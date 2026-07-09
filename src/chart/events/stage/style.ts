@@ -11,6 +11,8 @@ export type JudgmentLineColor =
     | 'cyan'
     | 'black'
 
+export type JudgmentLineStyle = 'default' | 'singleLine'
+
 export type BorderStyle = 'default' | 'light' | 'medium' | 'disabled'
 
 export type StageStyleEventObject = {
@@ -18,10 +20,13 @@ export type StageStyleEventObject = {
     beat: number
     editorLane: number
     judgmentLineColor: JudgmentLineColor
+    judgmentLineStyle: JudgmentLineStyle
     leftBorderStyle: BorderStyle
     rightBorderStyle: BorderStyle
+    isFullWidth: boolean
     stageAlpha: number
     laneAlpha: number
     judgmentLineAlpha: number
+    divisionLineAlpha: number
     eventEase: EventEase
 }

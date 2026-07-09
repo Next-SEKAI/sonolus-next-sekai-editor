@@ -826,6 +826,9 @@
             "copyProperties": {
                 "label": "Copy Properties"
             },
+            "divisionLineAlpha": {
+                "label": "Division Line Alpha"
+            },
             "divisionParity": {
                 "label": "Division Parity",
                 "even": "Even",
@@ -885,6 +888,9 @@
             "isFromStart": {
                 "label": "From Start"
             },
+            "isFullWidth": {
+                "label": "Full Width"
+            },
             "isUntilEnd": {
                 "label": "Until End"
             },
@@ -901,6 +907,11 @@
                 "purple": "Purple",
                 "cyan": "Cyan",
                 "black": "Black"
+            },
+            "judgmentLineStyle": {
+                "label": "Judgment Line Style",
+                "default": "Default",
+                "singleLine": "Single Line"
             },
             "laneAlpha": {
                 "label": "Lane Alpha"

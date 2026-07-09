@@ -4,6 +4,7 @@ import type { EventEase } from '../../../../../chart/events'
 import type {
     BorderStyle,
     JudgmentLineColor,
+    JudgmentLineStyle,
     StageStyleEventObject,
 } from '../../../../../chart/events/stage/style'
 import { pushState, replaceState, state } from '../../../../../history'
@@ -38,11 +39,14 @@ import StageStyleEventSidebar from './StageStyleEventSidebar.vue'
 
 type DefaultStageStyleEventProperties = {
     judgmentLineColor?: JudgmentLineColor
+    judgmentLineStyle?: JudgmentLineStyle
     leftBorderStyle?: BorderStyle
     rightBorderStyle?: BorderStyle
+    isFullWidth?: boolean
     stageAlpha?: number
     laneAlpha?: number
     judgmentLineAlpha?: number
+    divisionLineAlpha?: number
     eventEase?: EventEase
     copyProperties: boolean
 }
@@ -301,11 +305,14 @@ export const editStageStyleEvent = (
         beat: object.beat ?? entity.beat,
         editorLane: object.editorLane ?? entity.editorLane,
         judgmentLineColor: object.judgmentLineColor ?? entity.judgmentLineColor,
+        judgmentLineStyle: object.judgmentLineStyle ?? entity.judgmentLineStyle,
         leftBorderStyle: object.leftBorderStyle ?? entity.leftBorderStyle,
         rightBorderStyle: object.rightBorderStyle ?? entity.rightBorderStyle,
+        isFullWidth: object.isFullWidth ?? entity.isFullWidth,
         stageAlpha: object.stageAlpha ?? entity.stageAlpha,
         laneAlpha: object.laneAlpha ?? entity.laneAlpha,
         judgmentLineAlpha: object.judgmentLineAlpha ?? entity.judgmentLineAlpha,
+        divisionLineAlpha: object.divisionLineAlpha ?? entity.divisionLineAlpha,
         eventEase: object.eventEase ?? entity.eventEase,
     })
 }
@@ -321,11 +328,14 @@ export const editSelectedStageStyleEvent = (
         beat: object.beat ?? entity.beat,
         editorLane: object.editorLane ?? entity.editorLane,
         judgmentLineColor: object.judgmentLineColor ?? entity.judgmentLineColor,
+        judgmentLineStyle: object.judgmentLineStyle ?? entity.judgmentLineStyle,
         leftBorderStyle: object.leftBorderStyle ?? entity.leftBorderStyle,
         rightBorderStyle: object.rightBorderStyle ?? entity.rightBorderStyle,
+        isFullWidth: object.isFullWidth ?? entity.isFullWidth,
         stageAlpha: object.stageAlpha ?? entity.stageAlpha,
         laneAlpha: object.laneAlpha ?? entity.laneAlpha,
         judgmentLineAlpha: object.judgmentLineAlpha ?? entity.judgmentLineAlpha,
+        divisionLineAlpha: object.divisionLineAlpha ?? entity.divisionLineAlpha,
         eventEase: object.eventEase ?? entity.eventEase,
     })
 }
@@ -349,6 +359,10 @@ const getPropertiesFromSelection = () => {
             defaultStageStyleEventProperties.value.judgmentLineColor ??
             stageStyleEventJoint?.judgmentLineColor ??
             'purple',
+        judgmentLineStyle:
+            defaultStageStyleEventProperties.value.judgmentLineStyle ??
+            stageStyleEventJoint?.judgmentLineStyle ??
+            'default',
         leftBorderStyle:
             defaultStageStyleEventProperties.value.leftBorderStyle ??
             stageStyleEventJoint?.leftBorderStyle ??
@@ -357,6 +371,10 @@ const getPropertiesFromSelection = () => {
             defaultStageStyleEventProperties.value.rightBorderStyle ??
             stageStyleEventJoint?.rightBorderStyle ??
             'default',
+        isFullWidth:
+            defaultStageStyleEventProperties.value.isFullWidth ??
+            stageStyleEventJoint?.isFullWidth ??
+            false,
         stageAlpha:
             defaultStageStyleEventProperties.value.stageAlpha ??
             stageStyleEventJoint?.stageAlpha ??
@@ -368,6 +386,10 @@ const getPropertiesFromSelection = () => {
         judgmentLineAlpha:
             defaultStageStyleEventProperties.value.judgmentLineAlpha ??
             stageStyleEventJoint?.judgmentLineAlpha ??
+            1,
+        divisionLineAlpha:
+            defaultStageStyleEventProperties.value.divisionLineAlpha ??
+            stageStyleEventJoint?.divisionLineAlpha ??
             1,
         eventEase:
             defaultStageStyleEventProperties.value.eventEase ??

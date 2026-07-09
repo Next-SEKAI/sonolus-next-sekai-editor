@@ -3,7 +3,11 @@ import type { Tool } from '..'
 import type { EventEase } from '../../../chart/events'
 import type { CameraZoomVerticalAlign } from '../../../chart/events/camera.ts'
 import type { DivisionParity } from '../../../chart/events/stage/pivot'
-import type { BorderStyle, JudgmentLineColor } from '../../../chart/events/stage/style'
+import type {
+    BorderStyle,
+    JudgmentLineColor,
+    JudgmentLineStyle,
+} from '../../../chart/events/stage/style'
 import type { Anchor } from '../../../chart/events/stage/transform.ts'
 import type { GroupId } from '../../../chart/groups'
 import type {
@@ -78,11 +82,14 @@ export type BrushProperties = {
     yOffset?: number
     yOffsetBeat?: number
     judgmentLineColor?: JudgmentLineColor
+    judgmentLineStyle?: JudgmentLineStyle
     leftBorderStyle?: BorderStyle
     rightBorderStyle?: BorderStyle
+    isFullWidth?: boolean
     stageAlpha?: number
     laneAlpha?: number
     judgmentLineAlpha?: number
+    divisionLineAlpha?: number
     rotation?: number
     yTranslation?: number
     anchor?: Anchor
