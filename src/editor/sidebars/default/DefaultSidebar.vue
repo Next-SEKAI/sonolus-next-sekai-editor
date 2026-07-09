@@ -111,6 +111,7 @@ const connectorGuideColor = createModel('connectorGuideColor')
 const connectorGuideAlpha = createModel('connectorGuideAlpha')
 const connectorLayer = createModel('connectorLayer')
 const connectorIsPassThrough = createModel('connectorIsPassThrough')
+const connectorPresentation = createModel('connectorPresentation')
 </script>
 
 <template>
@@ -250,6 +251,10 @@ const connectorIsPassThrough = createModel('connectorIsPassThrough')
             <MultiConnectorIsPassThroughField
                 v-if="types.note && noteFields.connectorIsPassThrough !== false"
                 v-model="connectorIsPassThrough"
+            />
+            <MultiConnectorPresentationField
+                v-if="types.note && noteFields.connectorPresentation !== false"
+                v-model="connectorPresentation"
             />
         </template>
     </BaseSidebar>

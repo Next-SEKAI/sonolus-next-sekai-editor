@@ -79,6 +79,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                         connectorGuideAlpha: 1,
                         connectorLayer: 'top',
                         connectorIsPassThrough: false,
+                        connectorPresentation: 'default',
                     },
                 ])
                 break
@@ -116,6 +117,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                         connectorGuideAlpha: 1,
                         connectorLayer: 'top',
                         connectorIsPassThrough: false,
+                        connectorPresentation: 'default',
                     })),
                 )
                 break
@@ -144,6 +146,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                             : connectorGuideAlphaEnds)[object.fade],
                         connectorLayer: 'top',
                         connectorIsPassThrough: false,
+                        connectorPresentation: 'default',
                     })),
                 )
                 break
@@ -170,6 +173,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                         connectorGuideAlpha: 1,
                         connectorLayer: 'top',
                         connectorIsPassThrough: false,
+                        connectorPresentation: 'default',
                     },
                 ])
                 break

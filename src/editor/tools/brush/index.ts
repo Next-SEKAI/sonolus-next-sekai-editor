@@ -10,6 +10,7 @@ import type {
     ConnectorEase,
     ConnectorGuideColor,
     ConnectorLayer,
+    ConnectorPresentation,
     ConnectorType,
     FlickDirection,
     NoteSfx,
@@ -59,6 +60,7 @@ export type BrushProperties = {
     connectorGuideAlpha?: number
     connectorLayer?: ConnectorLayer
     connectorIsPassThrough?: boolean
+    connectorPresentation?: ConnectorPresentation
     timeScale?: number
     skip?: number
     timeScaleEase?: TimeScaleEase

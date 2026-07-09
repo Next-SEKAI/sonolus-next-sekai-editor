@@ -8,6 +8,7 @@ import OptionalConnectorGuideAlphaField from '../../../modals/form/OptionalConne
 import OptionalConnectorGuideColorField from '../../../modals/form/OptionalConnectorGuideColorField.vue'
 import OptionalConnectorIsPassThroughField from '../../../modals/form/OptionalConnectorIsPassThroughField.vue'
 import OptionalConnectorLayerField from '../../../modals/form/OptionalConnectorLayerField.vue'
+import OptionalConnectorPresentationField from '../../../modals/form/OptionalConnectorPresentationField.vue'
 import OptionalConnectorTypeField from '../../../modals/form/OptionalConnectorTypeField.vue'
 import OptionalFlickDirectionField from '../../../modals/form/OptionalFlickDirectionField.vue'
 import OptionalIsAttachedField from '../../../modals/form/OptionalIsAttachedField.vue'
@@ -41,6 +42,7 @@ const connectorGuideColor = createModel('connectorGuideColor')
 const connectorGuideAlpha = createModel('connectorGuideAlpha')
 const connectorLayer = createModel('connectorLayer')
 const connectorIsPassThrough = createModel('connectorIsPassThrough')
+const connectorPresentation = createModel('connectorPresentation')
 const copyProperties = createModel('copyProperties')
 </script>
 
@@ -66,6 +68,7 @@ const copyProperties = createModel('copyProperties')
         <OptionalConnectorGuideAlphaField v-model="connectorGuideAlpha" />
         <OptionalConnectorLayerField v-model="connectorLayer" />
         <OptionalConnectorIsPassThroughField v-model="connectorIsPassThrough" />
+        <OptionalConnectorPresentationField v-model="connectorPresentation" />
         <CopyPropertiesField v-model="copyProperties" />
     </PropertiesModal>
 </template>

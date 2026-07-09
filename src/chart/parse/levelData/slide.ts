@@ -336,6 +336,13 @@ const connectorLayers = {
     3: 'over',
 } as const
 
+const segmentPresentationSchema = Type.Union([Type.Literal(0), Type.Literal(1)])
+
+const connectorPresentations = {
+    0: 'default',
+    1: 'fullscreen',
+} as const
+
 const segmentThroughJudgeLineSchema = Type.Number()
 
 const trimStart = <T extends string, U extends string>(
@@ -383,6 +390,10 @@ const toNoteObject = (
             'segmentThroughJudgeLine',
             segmentThroughJudgeLineSchema,
         ),
+        connectorPresentation:
+            connectorPresentations[
+                getOptionalValue(entity, 'segmentPresentation', segmentPresentationSchema) ?? 0
+            ],
     }
 
     const [isFake, archetype1] = startsWith(entity.archetype, 'Fake')

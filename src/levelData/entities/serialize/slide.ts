@@ -120,6 +120,10 @@ export const serializeSlidesToLevelDataEntities = (
                         name: 'segmentThroughJudgeLine',
                         value: +note.connectorIsPassThrough,
                     },
+                    {
+                        name: 'segmentPresentation',
+                        value: segmentPresentations[note.connectorPresentation],
+                    },
                 ],
             }
             entities.push(entity)
@@ -380,4 +384,9 @@ const segmentLayers = {
     bottom: 1,
     under: 2,
     over: 3,
+}
+
+const segmentPresentations = {
+    default: 0,
+    fullscreen: 1,
 }

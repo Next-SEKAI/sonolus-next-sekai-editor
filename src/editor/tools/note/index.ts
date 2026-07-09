@@ -338,6 +338,7 @@ export const editNote = (entity: NoteEntity, object: Partial<NoteObject>) => {
         connectorGuideAlpha: object.connectorGuideAlpha ?? entity.connectorGuideAlpha,
         connectorLayer: object.connectorLayer ?? entity.connectorLayer,
         connectorIsPassThrough: object.connectorIsPassThrough ?? entity.connectorIsPassThrough,
+        connectorPresentation: object.connectorPresentation ?? entity.connectorPresentation,
     })
 }
 
@@ -371,6 +372,7 @@ export const editSelectedNote = (
         connectorGuideAlpha: object.connectorGuideAlpha ?? entity.connectorGuideAlpha,
         connectorLayer: object.connectorLayer ?? entity.connectorLayer,
         connectorIsPassThrough: object.connectorIsPassThrough ?? entity.connectorIsPassThrough,
+        connectorPresentation: object.connectorPresentation ?? entity.connectorPresentation,
     })
 }
 
@@ -412,6 +414,7 @@ const getPropertiesFromSelection = () => {
         connectorGuideAlpha: defaultNoteProperties.value.connectorGuideAlpha ?? 1,
         connectorLayer: defaultNoteProperties.value.connectorLayer ?? 'top',
         connectorIsPassThrough: defaultNoteProperties.value.connectorIsPassThrough ?? false,
+        connectorPresentation: defaultNoteProperties.value.connectorPresentation ?? 'default',
     }
 }
 
