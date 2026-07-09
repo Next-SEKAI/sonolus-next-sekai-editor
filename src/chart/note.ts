@@ -4,13 +4,7 @@ import type { StageId } from './stages'
 export type NoteType = 'default' | 'trace' | 'anchor' | 'damage' | 'forceTick' | 'forceNonTick'
 
 export type FlickDirection =
-    | 'none'
-    | 'up'
-    | 'upLeft'
-    | 'upRight'
-    | 'down'
-    | 'downLeft'
-    | 'downRight'
+    'none' | 'up' | 'upLeft' | 'upRight' | 'down' | 'downLeft' | 'downRight'
 
 export type NoteSfx =
     | 'default'
@@ -30,14 +24,7 @@ export type ConnectorType = 'active' | 'guide'
 export type ConnectorEase = 'linear' | 'in' | 'out' | 'inOut' | 'outIn' | 'none'
 
 export type ConnectorGuideColor =
-    | 'neutral'
-    | 'red'
-    | 'green'
-    | 'blue'
-    | 'yellow'
-    | 'purple'
-    | 'cyan'
-    | 'black'
+    'neutral' | 'red' | 'green' | 'blue' | 'yellow' | 'purple' | 'cyan' | 'black'
 
 export type ConnectorLayer = 'top' | 'bottom' | 'under' | 'over'
 
