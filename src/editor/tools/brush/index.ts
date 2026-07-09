@@ -4,6 +4,7 @@ import type { EventEase } from '../../../chart/events'
 import type { CameraZoomVerticalAlign } from '../../../chart/events/camera.ts'
 import type { DivisionParity } from '../../../chart/events/stage/pivot'
 import type { BorderStyle, JudgmentLineColor } from '../../../chart/events/stage/style'
+import type { Anchor } from '../../../chart/events/stage/transform.ts'
 import type { GroupId } from '../../../chart/groups'
 import type {
     ConnectorEase,
@@ -28,6 +29,7 @@ import { editSelectedCameraEvent } from '../events/camera'
 import { editSelectedStageMaskEvent } from '../events/stage/mask'
 import { editSelectedStagePivotEvent } from '../events/stage/pivot'
 import { editSelectedStageStyleEvent } from '../events/stage/style'
+import { editSelectedStageTransformEvent } from '../events/stage/transform/index.ts'
 import { editSelectedNote } from '../note'
 import { editSelectedTimeScale } from '../timeScale'
 import {
@@ -79,6 +81,9 @@ export type BrushProperties = {
     stageAlpha?: number
     laneAlpha?: number
     judgmentLineAlpha?: number
+    rotation?: number
+    yTranslation?: number
+    anchor?: Anchor
     eventEase?: EventEase
 }
 
@@ -200,6 +205,9 @@ const applies: {
 
     stageStyleEventJoint: editSelectedStageStyleEvent,
     stageStyleEventConnection: undefined,
+
+    stageTransformEventJoint: editSelectedStageTransformEvent,
+    stageTransformEventConnection: undefined,
 
     note: editSelectedNote,
     connector: undefined,

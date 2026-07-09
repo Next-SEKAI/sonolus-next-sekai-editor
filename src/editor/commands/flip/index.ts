@@ -11,6 +11,7 @@ import { editSelectedCameraEvent } from '../../tools/events/camera'
 import { editSelectedStageMaskEvent } from '../../tools/events/stage/mask'
 import { editSelectedStagePivotEvent } from '../../tools/events/stage/pivot'
 import { editSelectedStageStyleEvent } from '../../tools/events/stage/style'
+import { editSelectedStageTransformEvent } from '../../tools/events/stage/transform/index.ts'
 import { editSelectedNote } from '../../tools/note'
 import { editSelectedTimeScale } from '../../tools/timeScale/index.ts'
 import { view } from '../../view'
@@ -101,6 +102,12 @@ const flips: {
             rightBorderStyle: entity.leftBorderStyle,
         }),
     stageStyleEventConnection: undefined,
+
+    stageTransformEventJoint: (transaction, entities, entity) =>
+        editSelectedStageTransformEvent(transaction, entity, {
+            xTranslation: -entity.xTranslation,
+        }),
+    stageTransformEventConnection: undefined,
 
     note: (transaction, entities, entity) =>
         editSelectedNote(transaction, entity, {

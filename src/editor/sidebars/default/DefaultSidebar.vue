@@ -2,6 +2,7 @@
 import { isEditableEntity } from '.'
 import { isDynamicStages } from '../../../history/dynamicStages.ts'
 import { i18n } from '../../../i18n'
+import MultiAnchorField from '../../../modals/form/MultiAnchorField.vue'
 import MultiBeatField from '../../../modals/form/MultiBeatField.vue'
 import MultiBpmField from '../../../modals/form/MultiBpmField.vue'
 import MultiCameraLeftField from '../../../modals/form/MultiCameraLeftField.vue'
@@ -41,6 +42,7 @@ import MultiMaskSizeField from '../../../modals/form/MultiMaskSizeField.vue'
 import MultiNoteTypeField from '../../../modals/form/MultiNoteTypeField.vue'
 import MultiPivotLaneField from '../../../modals/form/MultiPivotLaneField.vue'
 import MultiRightBorderStyleField from '../../../modals/form/MultiRightBorderStyleField.vue'
+import MultiRotationField from '../../../modals/form/MultiRotationField.vue'
 import MultiSfxField from '../../../modals/form/MultiSfxField.vue'
 import MultiSizeField from '../../../modals/form/MultiSizeField.vue'
 import MultiSkipField from '../../../modals/form/MultiSkipField.vue'
@@ -48,8 +50,10 @@ import MultiStageAlphaField from '../../../modals/form/MultiStageAlphaField.vue'
 import MultiStageField from '../../../modals/form/MultiStageField.vue'
 import MultiTimeScaleEaseField from '../../../modals/form/MultiTimeScaleEaseField.vue'
 import MultiTimeScaleField from '../../../modals/form/MultiTimeScaleField.vue'
+import MultiXTranslationField from '../../../modals/form/MultiXTranslationField.vue'
 import MultiYOffsetBeatField from '../../../modals/form/MultiYOffsetBeatField.vue'
 import MultiYOffsetField from '../../../modals/form/MultiYOffsetField.vue'
+import MultiYTranslationField from '../../../modals/form/MultiYTranslationField.vue'
 import { useSelectedEntitiesProperties } from '../../utils/properties'
 import BaseSidebar from '../BaseSidebar.vue'
 
@@ -85,6 +89,10 @@ const rightBorderStyle = createModel('rightBorderStyle')
 const stageAlpha = createModel('stageAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
+const rotation = createModel('rotation')
+const xTranslation = createModel('xTranslation')
+const yTranslation = createModel('yTranslation')
+const anchor = createModel('anchor')
 const eventEase = createModel('eventEase')
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')
@@ -156,12 +164,17 @@ const connectorIsPassThrough = createModel('connectorIsPassThrough')
                 v-if="types.stageStyleEventJoint"
                 v-model="judgmentLineAlpha"
             />
+            <MultiRotationField v-if="types.stageTransformEventJoint" v-model="rotation" />
+            <MultiXTranslationField v-if="types.stageTransformEventJoint" v-model="xTranslation" />
+            <MultiYTranslationField v-if="types.stageTransformEventJoint" v-model="yTranslation" />
+            <MultiAnchorField v-if="types.stageTransformEventJoint" v-model="anchor" />
             <MultiEventEaseField
                 v-if="
                     types.cameraEventJoint ||
                     types.stageMaskEventJoint ||
                     types.stagePivotEventJoint ||
-                    types.stageStyleEventJoint
+                    types.stageStyleEventJoint ||
+                    types.stageTransformEventJoint
                 "
                 v-model="eventEase"
             />
@@ -173,7 +186,8 @@ const connectorIsPassThrough = createModel('connectorIsPassThrough')
                     (types.note ||
                         types.stageMaskEventJoint ||
                         types.stagePivotEventJoint ||
-                        types.stageStyleEventJoint)
+                        types.stageStyleEventJoint ||
+                        types.stageTransformEventJoint)
                 "
                 v-model="stageId"
             />

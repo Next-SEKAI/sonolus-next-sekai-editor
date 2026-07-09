@@ -23,6 +23,7 @@ export const parseSusChart = (sus: Sus) => {
         stageMaskEvents: [],
         stagePivotEvents: [],
         stageStyleEvents: [],
+        stageTransformEvents: [],
         timeScales: [],
         slides: [],
     }

@@ -18,6 +18,7 @@ export const parseUscChart = (objects: UscObject[]) => {
         stageMaskEvents: [],
         stagePivotEvents: [],
         stageStyleEvents: [],
+        stageTransformEvents: [],
         timeScales: [],
         slides: [],
     }

@@ -18,6 +18,7 @@ export const dynamicStagesVisibilityTypes = {
     stageMaskEvent: ['stageMaskEventJoint', 'stageMaskEventConnection'],
     stagePivotEvent: ['stagePivotEventJoint', 'stagePivotEventConnection'],
     stageStyleEvent: ['stageStyleEventJoint', 'stageStyleEventConnection'],
+    stageTransformEvent: ['stageTransformEventJoint', 'stageTransformEventConnection'],
     timeScale: ['timeScale'],
     bpm: ['bpm'],
 } satisfies Record<string, EntityType[]>

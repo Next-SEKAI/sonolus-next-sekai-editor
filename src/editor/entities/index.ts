@@ -7,6 +7,8 @@ import LevelEditorStagePivotEventConnection from './events/stage/pivot/LevelEdit
 import LevelEditorStagePivotEventJoint from './events/stage/pivot/LevelEditorStagePivotEventJoint.vue'
 import LevelEditorStageStyleEventConnection from './events/stage/style/LevelEditorStageStyleEventConnection.vue'
 import LevelEditorStageStyleEventJoint from './events/stage/style/LevelEditorStageStyleEventJoint.vue'
+import LevelEditorStageTransformEventConnection from './events/stage/transform/LevelEditorStageTransformEventConnection.vue'
+import LevelEditorStageTransformEventJoint from './events/stage/transform/LevelEditorStageTransformEventJoint.vue'
 import LevelEditorBpm from './LevelEditorBpm.vue'
 import LevelEditorTimeScale from './LevelEditorTimeScale.vue'
 import LevelEditorNote from './note/LevelEditorNote.vue'
@@ -26,6 +28,9 @@ export const entityComponents = {
 
     stageStyleEventJoint: LevelEditorStageStyleEventJoint,
     stageStyleEventConnection: LevelEditorStageStyleEventConnection,
+
+    stageTransformEventJoint: LevelEditorStageTransformEventJoint,
+    stageTransformEventConnection: LevelEditorStageTransformEventConnection,
 
     note: LevelEditorNote,
     connector: LevelEditorConnector,

@@ -78,6 +78,7 @@ const isVisible = (entity: Entity) => {
         case 'stageMaskEventJoint':
         case 'stagePivotEventJoint':
         case 'stageStyleEventJoint':
+        case 'stageTransformEventJoint':
             return view.stageId === undefined || entity.stageId === view.stageId
         case 'note':
             return (
@@ -88,6 +89,7 @@ const isVisible = (entity: Entity) => {
         case 'stageMaskEventConnection':
         case 'stagePivotEventConnection':
         case 'stageStyleEventConnection':
+        case 'stageTransformEventConnection':
         case 'connector':
             return false
     }

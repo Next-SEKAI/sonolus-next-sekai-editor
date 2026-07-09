@@ -15,6 +15,9 @@ const layers = {
     stageStyleEventConnection: 16,
     stageStyleEventJoint: 17,
 
+    stageTransformEventConnection: 18,
+    stageTransformEventJoint: 19,
+
     connector: {
         under: {
             active: 20,
@@ -48,6 +51,8 @@ const getLayer = (entity: Entity) => {
         case 'stagePivotEventConnection':
         case 'stageStyleEventJoint':
         case 'stageStyleEventConnection':
+        case 'stageTransformEventJoint':
+        case 'stageTransformEventConnection':
         case 'timeScale':
         case 'note':
             return layers[entity.type]
@@ -69,6 +74,8 @@ const isEntityVisibleByGroup = (entity: Entity) => {
         case 'stagePivotEventConnection':
         case 'stageStyleEventJoint':
         case 'stageStyleEventConnection':
+        case 'stageTransformEventJoint':
+        case 'stageTransformEventConnection':
             return true
         case 'timeScale':
         case 'note':
@@ -94,10 +101,12 @@ const isEntityVisibleByStage = (entity: Entity) => {
         case 'stageMaskEventJoint':
         case 'stagePivotEventJoint':
         case 'stageStyleEventJoint':
+        case 'stageTransformEventJoint':
             return entity.stageId === view.stageId
         case 'stageMaskEventConnection':
         case 'stagePivotEventConnection':
         case 'stageStyleEventConnection':
+        case 'stageTransformEventConnection':
             return entity.min.stageId === view.stageId
         case 'connector':
             return (
@@ -112,6 +121,7 @@ const infinities = [
     ['stageMaskEventConnection', LevelEditorStageMaskEventInfinities] as const,
     ['stagePivotEventConnection', LevelEditorStagePivotEventInfinities] as const,
     ['stageStyleEventConnection', LevelEditorStageStyleEventInfinities] as const,
+    ['stageTransformEventConnection', LevelEditorStageTransformEventInfinities] as const,
 ]
 </script>
 
@@ -128,6 +138,7 @@ import LevelEditorCameraEventInfinity from './events/camera/LevelEditorCameraEve
 import LevelEditorStageMaskEventInfinities from './events/stage/mask/LevelEditorStageMaskEventInfinities.vue'
 import LevelEditorStagePivotEventInfinities from './events/stage/pivot/LevelEditorStagePivotEventInfinities.vue'
 import LevelEditorStageStyleEventInfinities from './events/stage/style/LevelEditorStageStyleEventInfinities.vue'
+import LevelEditorStageTransformEventInfinities from './events/stage/transform/LevelEditorStageTransformEventInfinities.vue'
 
 const sortedInfinities = computed(() =>
     infinities.sort(([a], [b]) => +view.visibilities[a] - +view.visibilities[b]),
@@ -143,6 +154,7 @@ const visibleEntities = computed(() =>
             case 'stageMaskEventJoint':
             case 'stagePivotEventJoint':
             case 'stageStyleEventJoint':
+            case 'stageTransformEventJoint':
             case 'timeScale':
             case 'note':
                 return entity.beat >= beats.value.min && entity.beat <= beats.value.max
@@ -150,6 +162,7 @@ const visibleEntities = computed(() =>
             case 'stageMaskEventConnection':
             case 'stagePivotEventConnection':
             case 'stageStyleEventConnection':
+            case 'stageTransformEventConnection':
                 return entity.min.beat <= beats.value.max && entity.max.beat >= beats.value.min
             case 'connector':
                 return entity.head.beat <= beats.value.max && entity.tail.beat >= beats.value.min

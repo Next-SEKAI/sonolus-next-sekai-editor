@@ -3,6 +3,7 @@ import type { CameraEventObject } from './events/camera'
 import type { StageMaskEventObject } from './events/stage/mask'
 import type { StagePivotEventObject } from './events/stage/pivot'
 import type { StageStyleEventObject } from './events/stage/style'
+import type { StageTransformEventObject } from './events/stage/transform'
 import type { Groups } from './groups'
 import type { NoteObject } from './note'
 import type { Stages } from './stages'
@@ -18,6 +19,7 @@ export type Chart = {
     stageMaskEvents: StageMaskEventObject[]
     stagePivotEvents: StagePivotEventObject[]
     stageStyleEvents: StageStyleEventObject[]
+    stageTransformEvents: StageTransformEventObject[]
     timeScales: TimeScaleObject[]
     slides: NoteObject[][]
 }

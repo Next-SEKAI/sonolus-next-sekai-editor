@@ -4,11 +4,13 @@ import type { StageEventJointEntity } from '../../joints/stage'
 import type { StageMaskEventConnectionEntity } from './mask'
 import type { StagePivotEventConnectionEntity } from './pivot'
 import type { StageStyleEventConnectionEntity } from './style'
+import type { StageTransformEventConnectionEntity } from './transform'
 
 export type StageEventConnectionEntity =
     | StageMaskEventConnectionEntity
     | StagePivotEventConnectionEntity
     | StageStyleEventConnectionEntity
+    | StageTransformEventConnectionEntity
 
 export type StageEventConnectionEntityType = StageEventConnectionEntity['type']
 
