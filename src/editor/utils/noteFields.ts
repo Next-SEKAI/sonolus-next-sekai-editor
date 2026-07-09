@@ -18,6 +18,7 @@ export type NoteFields = {
     connectorGuideAlpha: boolean
     connectorLayer: boolean
     connectorIsPassThrough: boolean
+    connectorPresentation: boolean
 }
 
 export const getNoteFields = (note: NoteEntity): NoteFields => {
@@ -56,5 +57,6 @@ export const getNoteFields = (note: NoteEntity): NoteFields => {
         connectorGuideAlpha: isInGuide && (isGuideHead || note.isConnectorSeparator || isGuideTail),
         connectorLayer: (isFirst || note.isConnectorSeparator) && !isLast,
         connectorIsPassThrough: (isFirst || note.isConnectorSeparator) && !isLast,
+        connectorPresentation: (isFirst || note.isConnectorSeparator) && !isLast,
     }
 }

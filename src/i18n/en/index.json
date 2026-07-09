@@ -813,6 +813,11 @@
                 "under": "Under",
                 "over": "Over"
             },
+            "connectorPresentation": {
+                "label": "Connector Presentation",
+                "default": "Default",
+                "fullscreen": "Fullscreen"
+            },
             "connectorType": {
                 "label": "Connector Type",
                 "active": "Slide",

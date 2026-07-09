@@ -41,6 +41,8 @@ export type ConnectorGuideColor =
 
 export type ConnectorLayer = 'top' | 'bottom' | 'under' | 'over'
 
+export type ConnectorPresentation = 'default' | 'fullscreen'
+
 export type NoteObject = {
     groupId: GroupId
     stageId: StageId
@@ -62,4 +64,5 @@ export type NoteObject = {
     connectorGuideAlpha: number
     connectorLayer: ConnectorLayer
     connectorIsPassThrough: boolean
+    connectorPresentation: ConnectorPresentation
 }

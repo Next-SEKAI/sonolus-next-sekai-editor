@@ -372,6 +372,10 @@ const getPropertiesFromSelection = (beat: number) => {
             defaultSlideProperties.value.connectorIsPassThrough ??
             nearest?.connectorIsPassThrough ??
             false,
+        connectorPresentation:
+            defaultSlideProperties.value.connectorPresentation ??
+            nearest?.connectorPresentation ??
+            'default',
     }
 }
 

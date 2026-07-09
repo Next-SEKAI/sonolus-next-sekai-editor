@@ -5,6 +5,7 @@ import type {
     ConnectorEase,
     ConnectorGuideColor,
     ConnectorLayer,
+    ConnectorPresentation,
     ConnectorType,
     FlickDirection,
     NoteObject,
@@ -35,6 +36,7 @@ export type NoteEntity = BaseEntity & {
     connectorGuideColor: ConnectorGuideColor
     connectorGuideAlpha: number
     connectorIsPassThrough: boolean
+    connectorPresentation: ConnectorPresentation
 
     useInfoOf?: NoteEntity
 }
@@ -73,6 +75,7 @@ export const toNoteEntity = (
     connectorGuideAlpha: object.connectorGuideAlpha,
     connectorLayer: object.connectorLayer,
     connectorIsPassThrough: object.connectorIsPassThrough,
+    connectorPresentation: object.connectorPresentation,
 
     useInfoOf,
 })

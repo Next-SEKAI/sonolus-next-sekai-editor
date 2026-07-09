@@ -2,6 +2,7 @@ import type {
     ConnectorEase,
     ConnectorGuideColor,
     ConnectorLayer,
+    ConnectorPresentation,
     ConnectorType,
     FlickDirection,
     NoteSfx,
@@ -153,6 +154,14 @@ export const quickEdit = (properties: DefaultNoteSlideProperties) => {
             break
         case 'connectorIsPassThrough':
             editSelectedEditableEntities({ connectorIsPassThrough: !value })
+            break
+        case 'connectorPresentation':
+            editSelectedEditableEntities({
+                connectorPresentation: rotate(value as ConnectorPresentation, [
+                    'default',
+                    'fullscreen',
+                ]),
+            })
             break
     }
 }
