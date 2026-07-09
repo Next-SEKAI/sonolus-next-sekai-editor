@@ -21,6 +21,7 @@ import MultiConnectorGuideColorField from '../../../modals/form/MultiConnectorGu
 import MultiConnectorIsPassThroughField from '../../../modals/form/MultiConnectorIsPassThroughField.vue'
 import MultiConnectorLayerField from '../../../modals/form/MultiConnectorLayerField.vue'
 import MultiConnectorTypeField from '../../../modals/form/MultiConnectorTypeField.vue'
+import MultiDivisionLineAlphaField from '../../../modals/form/MultiDivisionLineAlphaField.vue'
 import MultiDivisionParityField from '../../../modals/form/MultiDivisionParityField.vue'
 import MultiDivisionSizeField from '../../../modals/form/MultiDivisionSizeField.vue'
 import MultiEditorLaneField from '../../../modals/form/MultiEditorLaneField.vue'
@@ -32,8 +33,10 @@ import MultiIsAttachedField from '../../../modals/form/MultiIsAttachedField.vue'
 import MultiIsConnectorSeparatorField from '../../../modals/form/MultiIsConnectorSeparatorField.vue'
 import MultiIsCriticalField from '../../../modals/form/MultiIsCriticalField.vue'
 import MultiIsFakeField from '../../../modals/form/MultiIsFakeField.vue'
+import MultiIsFullWidthField from '../../../modals/form/MultiIsFullWidthField.vue'
 import MultiJudgmentLineAlphaField from '../../../modals/form/MultiJudgmentLineAlphaField.vue'
 import MultiJudgmentLineColorField from '../../../modals/form/MultiJudgmentLineColorField.vue'
+import MultiJudgmentLineStyleField from '../../../modals/form/MultiJudgmentLineStyleField.vue'
 import MultiLaneAlphaField from '../../../modals/form/MultiLaneAlphaField.vue'
 import MultiLeftBorderStyleField from '../../../modals/form/MultiLeftBorderStyleField.vue'
 import MultiLeftField from '../../../modals/form/MultiLeftField.vue'
@@ -84,11 +87,14 @@ const divisionParity = createModel('divisionParity')
 const yOffset = createModel('yOffset')
 const yOffsetBeat = createModel('yOffsetBeat')
 const judgmentLineColor = createModel('judgmentLineColor')
+const judgmentLineStyle = createModel('judgmentLineStyle')
 const leftBorderStyle = createModel('leftBorderStyle')
 const rightBorderStyle = createModel('rightBorderStyle')
+const isFullWidth = createModel('isFullWidth')
 const stageAlpha = createModel('stageAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
+const divisionLineAlpha = createModel('divisionLineAlpha')
 const rotation = createModel('rotation')
 const xTranslation = createModel('xTranslation')
 const yTranslation = createModel('yTranslation')
@@ -151,6 +157,10 @@ const connectorPresentation = createModel('connectorPresentation')
                 v-if="types.stageStyleEventJoint"
                 v-model="judgmentLineColor"
             />
+            <MultiJudgmentLineStyleField
+                v-if="types.stageStyleEventJoint"
+                v-model="judgmentLineStyle"
+            />
             <MultiLeftBorderStyleField
                 v-if="types.stageStyleEventJoint"
                 v-model="leftBorderStyle"
@@ -159,11 +169,16 @@ const connectorPresentation = createModel('connectorPresentation')
                 v-if="types.stageStyleEventJoint"
                 v-model="rightBorderStyle"
             />
+            <MultiIsFullWidthField v-if="types.stageStyleEventJoint" v-model="isFullWidth" />
             <MultiStageAlphaField v-if="types.stageStyleEventJoint" v-model="stageAlpha" />
             <MultiLaneAlphaField v-if="types.stageStyleEventJoint" v-model="laneAlpha" />
             <MultiJudgmentLineAlphaField
                 v-if="types.stageStyleEventJoint"
                 v-model="judgmentLineAlpha"
+            />
+            <MultiDivisionLineAlphaField
+                v-if="types.stageStyleEventJoint"
+                v-model="divisionLineAlpha"
             />
             <MultiRotationField v-if="types.stageTransformEventJoint" v-model="rotation" />
             <MultiXTranslationField v-if="types.stageTransformEventJoint" v-model="xTranslation" />

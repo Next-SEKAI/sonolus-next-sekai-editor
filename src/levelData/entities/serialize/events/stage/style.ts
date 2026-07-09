@@ -33,12 +33,20 @@ export const serializeStageStyleEventsToLevelDataEntities = (
                     value: judgmentLineColors[joint.judgmentLineColor],
                 },
                 {
+                    name: 'judgeLineStyle',
+                    value: judgeLineStyles[joint.judgmentLineStyle],
+                },
+                {
                     name: 'leftBorderStyle',
                     value: borderStyles[joint.leftBorderStyle],
                 },
                 {
                     name: 'rightBorderStyle',
                     value: borderStyles[joint.rightBorderStyle],
+                },
+                {
+                    name: 'fullWidth',
+                    value: +joint.isFullWidth,
                 },
                 {
                     name: 'alpha',
@@ -51,6 +59,10 @@ export const serializeStageStyleEventsToLevelDataEntities = (
                 {
                     name: 'judgeLineAlpha',
                     value: joint.judgmentLineAlpha,
+                },
+                {
+                    name: 'divisionLineAlpha',
+                    value: joint.divisionLineAlpha,
                 },
                 {
                     name: 'ease',
@@ -72,6 +84,11 @@ const judgmentLineColors = {
     purple: 5,
     cyan: 6,
     black: 7,
+}
+
+const judgeLineStyles = {
+    default: 0,
+    singleLine: 1,
 }
 
 const borderStyles = {

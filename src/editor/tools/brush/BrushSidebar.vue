@@ -19,6 +19,7 @@ import OptionalConnectorIsPassThroughField from '../../../modals/form/OptionalCo
 import OptionalConnectorLayerField from '../../../modals/form/OptionalConnectorLayerField.vue'
 import OptionalConnectorPresentationField from '../../../modals/form/OptionalConnectorPresentationField.vue'
 import OptionalConnectorTypeField from '../../../modals/form/OptionalConnectorTypeField.vue'
+import OptionalDivisionLineAlphaField from '../../../modals/form/OptionalDivisionLineAlphaField.vue'
 import OptionalDivisionParityField from '../../../modals/form/OptionalDivisionParityField.vue'
 import OptionalDivisionSizeField from '../../../modals/form/OptionalDivisionSizeField.vue'
 import OptionalEventEaseField from '../../../modals/form/OptionalEventEaseField.vue'
@@ -29,8 +30,10 @@ import OptionalIsAttachedField from '../../../modals/form/OptionalIsAttachedFiel
 import OptionalIsConnectorSeparatorField from '../../../modals/form/OptionalIsConnectorSeparatorField.vue'
 import OptionalIsCriticalField from '../../../modals/form/OptionalIsCriticalField.vue'
 import OptionalIsFakeField from '../../../modals/form/OptionalIsFakeField.vue'
+import OptionalIsFullWidthField from '../../../modals/form/OptionalIsFullWidthField.vue'
 import OptionalJudgmentLineAlphaField from '../../../modals/form/OptionalJudgmentLineAlphaField.vue'
 import OptionalJudgmentLineColorField from '../../../modals/form/OptionalJudgmentLineColorField.vue'
+import OptionalJudgmentLineStyleField from '../../../modals/form/OptionalJudgmentLineStyleField.vue'
 import OptionalLaneAlphaField from '../../../modals/form/OptionalLaneAlphaField.vue'
 import OptionalLeftBorderStyleField from '../../../modals/form/OptionalLeftBorderStyleField.vue'
 import OptionalMaskSizeField from '../../../modals/form/OptionalMaskSizeField.vue'
@@ -88,11 +91,14 @@ const divisionParity = createModel('divisionParity')
 const yOffset = createModel('yOffset')
 const yOffsetBeat = createModel('yOffsetBeat')
 const judgmentLineColor = createModel('judgmentLineColor')
+const judgmentLineStyle = createModel('judgmentLineStyle')
 const leftBorderStyle = createModel('leftBorderStyle')
 const rightBorderStyle = createModel('rightBorderStyle')
+const isFullWidth = createModel('isFullWidth')
 const stageAlpha = createModel('stageAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
+const divisionLineAlpha = createModel('divisionLineAlpha')
 const rotation = createModel('rotation')
 const yTranslation = createModel('yTranslation')
 const anchor = createModel('anchor')
@@ -140,11 +146,14 @@ const eventEase = createModel('eventEase')
         <OptionalYOffsetField v-if="isDynamicStages" v-model="yOffset" />
         <OptionalYOffsetBeatField v-if="isDynamicStages" v-model="yOffsetBeat" />
         <OptionalJudgmentLineColorField v-if="isDynamicStages" v-model="judgmentLineColor" />
+        <OptionalJudgmentLineStyleField v-if="isDynamicStages" v-model="judgmentLineStyle" />
         <OptionalLeftBorderStyleField v-if="isDynamicStages" v-model="leftBorderStyle" />
         <OptionalRightBorderStyleField v-if="isDynamicStages" v-model="rightBorderStyle" />
+        <OptionalIsFullWidthField v-if="isDynamicStages" v-model="isFullWidth" />
         <OptionalStageAlphaField v-if="isDynamicStages" v-model="stageAlpha" />
         <OptionalLaneAlphaField v-if="isDynamicStages" v-model="laneAlpha" />
         <OptionalJudgmentLineAlphaField v-if="isDynamicStages" v-model="judgmentLineAlpha" />
+        <OptionalDivisionLineAlphaField v-if="isDynamicStages" v-model="divisionLineAlpha" />
         <OptionalRotationField v-if="isDynamicStages" v-model="rotation" />
         <OptionalYTranslationField v-if="isDynamicStages" v-model="yTranslation" />
         <OptionalAnchorField v-if="isDynamicStages" v-model="anchor" />

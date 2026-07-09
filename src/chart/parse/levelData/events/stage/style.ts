@@ -23,11 +23,17 @@ export const parseStageStyleEventsToChart = (
         editorLane: getOptionalValue(entity, 'editorLane', editorLaneSchema) ?? 0,
         judgmentLineColor:
             judgmentLineColors[getValue(entity, 'judgeLineColor', judgmentLineColorSchema)],
+        judgmentLineStyle:
+            judgmentLineStyles[
+                getOptionalValue(entity, 'judgeLineStyle', judgeLineStyleSchema) ?? 0
+            ],
         leftBorderStyle: borderStyles[getValue(entity, 'leftBorderStyle', borderStyleSchema)],
         rightBorderStyle: borderStyles[getValue(entity, 'rightBorderStyle', borderStyleSchema)],
+        isFullWidth: !!getOptionalValue(entity, 'fullWidth', fullWidthSchema),
         stageAlpha: getValue(entity, 'alpha', alphaSchema),
         laneAlpha: getValue(entity, 'laneAlpha', alphaSchema),
         judgmentLineAlpha: getValue(entity, 'judgeLineAlpha', alphaSchema),
+        divisionLineAlpha: getOptionalValue(entity, 'divisionLineAlpha', alphaSchema) ?? 1,
         eventEase: eventEases[getValue(entity, 'ease', eventEaseSchema)],
     }))
 }
@@ -56,6 +62,13 @@ const judgmentLineColors = {
     7: 'black',
 } as const
 
+const judgeLineStyleSchema = Type.Union([Type.Literal(0), Type.Literal(1)])
+
+const judgmentLineStyles = {
+    0: 'default',
+    1: 'singleLine',
+} as const
+
 const borderStyleSchema = Type.Union([
     Type.Literal(0),
     Type.Literal(1),
@@ -69,5 +82,7 @@ const borderStyles = {
     2: 'disabled',
     3: 'medium',
 } as const
+
+const fullWidthSchema = Type.Number()
 
 const alphaSchema = Type.Number({ minimum: 0, maximum: 1 })

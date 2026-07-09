@@ -2,6 +2,7 @@ import type { BaseStageEventJointEntity } from '.'
 import type {
     BorderStyle,
     JudgmentLineColor,
+    JudgmentLineStyle,
     StageStyleEventObject,
 } from '../../../../../chart/events/stage/style'
 
@@ -9,11 +10,14 @@ export type StageStyleEventJointEntity = BaseStageEventJointEntity & {
     type: 'stageStyleEventJoint'
     editorLane: number
     judgmentLineColor: JudgmentLineColor
+    judgmentLineStyle: JudgmentLineStyle
     leftBorderStyle: BorderStyle
     rightBorderStyle: BorderStyle
+    isFullWidth: boolean
     stageAlpha: number
     laneAlpha: number
     judgmentLineAlpha: number
+    divisionLineAlpha: number
 }
 
 export const toStageStyleEventJointEntity = (
@@ -31,10 +35,13 @@ export const toStageStyleEventJointEntity = (
     beat: object.beat,
     editorLane: object.editorLane,
     judgmentLineColor: object.judgmentLineColor,
+    judgmentLineStyle: object.judgmentLineStyle,
     leftBorderStyle: object.leftBorderStyle,
     rightBorderStyle: object.rightBorderStyle,
+    isFullWidth: object.isFullWidth,
     stageAlpha: object.stageAlpha,
     laneAlpha: object.laneAlpha,
     judgmentLineAlpha: object.judgmentLineAlpha,
+    divisionLineAlpha: object.divisionLineAlpha,
     eventEase: object.eventEase,
 })

@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { i18n } from '../../../../../i18n'
 import MultiBeatField from '../../../../../modals/form/MultiBeatField.vue'
+import MultiDivisionLineAlphaField from '../../../../../modals/form/MultiDivisionLineAlphaField.vue'
 import MultiEditorLaneField from '../../../../../modals/form/MultiEditorLaneField.vue'
 import MultiEventEaseField from '../../../../../modals/form/MultiEventEaseField.vue'
+import MultiIsFullWidthField from '../../../../../modals/form/MultiIsFullWidthField.vue'
 import MultiJudgmentLineAlphaField from '../../../../../modals/form/MultiJudgmentLineAlphaField.vue'
 import MultiJudgmentLineColorField from '../../../../../modals/form/MultiJudgmentLineColorField.vue'
+import MultiJudgmentLineStyleField from '../../../../../modals/form/MultiJudgmentLineStyleField.vue'
 import MultiLaneAlphaField from '../../../../../modals/form/MultiLaneAlphaField.vue'
 import MultiLeftBorderStyleField from '../../../../../modals/form/MultiLeftBorderStyleField.vue'
 import MultiRightBorderStyleField from '../../../../../modals/form/MultiRightBorderStyleField.vue'
@@ -20,11 +23,14 @@ const { createModel } = useSelectedEntitiesProperties(
 
 const stageId = createModel('stageId')
 const judgmentLineColor = createModel('judgmentLineColor')
+const judgmentLineStyle = createModel('judgmentLineStyle')
 const leftBorderStyle = createModel('leftBorderStyle')
 const rightBorderStyle = createModel('rightBorderStyle')
+const isFullWidth = createModel('isFullWidth')
 const stageAlpha = createModel('stageAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
+const divisionLineAlpha = createModel('divisionLineAlpha')
 const eventEase = createModel('eventEase')
 const beat = createModel('beat')
 const editorLane = createModel('editorLane')
@@ -36,11 +42,14 @@ const editorLane = createModel('editorLane')
     >
         <MultiStageField v-model="stageId" />
         <MultiJudgmentLineColorField v-model="judgmentLineColor" />
+        <MultiJudgmentLineStyleField v-model="judgmentLineStyle" />
         <MultiLeftBorderStyleField v-model="leftBorderStyle" />
         <MultiRightBorderStyleField v-model="rightBorderStyle" />
+        <MultiIsFullWidthField v-model="isFullWidth" />
         <MultiStageAlphaField v-model="stageAlpha" />
         <MultiLaneAlphaField v-model="laneAlpha" />
         <MultiJudgmentLineAlphaField v-model="judgmentLineAlpha" />
+        <MultiDivisionLineAlphaField v-model="divisionLineAlpha" />
         <MultiEventEaseField v-model="eventEase" />
         <MultiBeatField v-model="beat" />
         <MultiEditorLaneField v-model="editorLane" />

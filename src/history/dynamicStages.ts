@@ -49,11 +49,14 @@ export const checkDynamicStages = async () => {
         beat: 0,
         editorLane: 0,
         judgmentLineColor: 'purple',
+        judgmentLineStyle: 'default',
         leftBorderStyle: 'default',
         rightBorderStyle: 'default',
+        isFullWidth: false,
         stageAlpha: 1,
         laneAlpha: 1,
         judgmentLineAlpha: 1,
+        divisionLineAlpha: 1,
         eventEase: 'linear',
     })
 
