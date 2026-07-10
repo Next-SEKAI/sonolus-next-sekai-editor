@@ -2,14 +2,7 @@ import type { EventEase } from '..'
 import type { StageId } from '../../stages'
 
 export type JudgmentLineColor =
-    | 'neutral'
-    | 'red'
-    | 'green'
-    | 'blue'
-    | 'yellow'
-    | 'purple'
-    | 'cyan'
-    | 'black'
+    'neutral' | 'red' | 'green' | 'blue' | 'yellow' | 'purple' | 'cyan' | 'black'
 
 export type JudgmentLineStyle = 'default' | 'singleLine'
 

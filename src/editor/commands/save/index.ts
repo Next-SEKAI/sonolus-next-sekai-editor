@@ -44,7 +44,7 @@ export const save: Command = {
 
                 const file = gzip(JSON.stringify(levelData), {
                     level: 9,
-                }) as Uint8Array<ArrayBuffer>
+                })
                 const blob = new Blob([file], {
                     type: 'application/octet-stream',
                 })
