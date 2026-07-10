@@ -177,6 +177,7 @@ const visibleEntityInfos = computed(() => {
         isHovered: hoveredEntities.value.includes(entity),
         isVisibleByGroup: isEntityVisibleByGroup(entity),
         isVisibleByStage: isEntityVisibleByStage(entity),
+        isVisibleByType: view.visibilities[entity.type],
         layer: getLayer(entity),
     }))
 
@@ -188,10 +189,15 @@ const visibleEntityInfos = computed(() => {
         entities = entities.filter((entity) => entity.isVisibleByStage)
     }
 
+    if (!settings.showOtherObjects) {
+        entities = entities.filter((entity) => entity.isVisibleByType)
+    }
+
     return entities.sort(
         (a, b) =>
             +a.isSelected - +b.isSelected ||
-            +view.visibilities[a.entity.type] - +view.visibilities[b.entity.type] ||
+            +(a.isVisibleByGroup && a.isVisibleByStage && a.isVisibleByType) -
+                +(b.isVisibleByGroup && b.isVisibleByStage && b.isVisibleByType) ||
             a.layer - b.layer ||
             b.entity.beat - a.entity.beat,
     )
@@ -209,10 +215,11 @@ const visibleEntityInfos = computed(() => {
             isHovered,
             isVisibleByGroup,
             isVisibleByStage,
+            isVisibleByType,
         } in visibleEntityInfos"
         :key="entity as never"
         :entity="entity as never"
         :is-highlighted="isSelected || isHovered"
-        :opacity="view.visibilities[entity.type] && isVisibleByGroup && isVisibleByStage ? 1 : 0.25"
+        :opacity="isVisibleByGroup && isVisibleByStage && isVisibleByType ? 1 : 0.25"
     />
 </template>
