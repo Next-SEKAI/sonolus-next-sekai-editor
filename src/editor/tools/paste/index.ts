@@ -59,14 +59,16 @@ import { notify } from '../../notification'
 import { view, xToLane, yToBeatOffset } from '../../view'
 import PasteSidebar from './PasteSidebar.vue'
 
+type ClipboardData = {
+    lane: number
+    beat: number
+    entities: Entity[]
+}
+
 export type ClipboardEntry = {
     name: string
     text: string
-    data?: {
-        lane: number
-        beat: number
-        entities: Entity[]
-    }
+    data?: ClipboardData
 }
 
 let i = 0
@@ -74,6 +76,8 @@ let clipboardEntry: ClipboardEntry | undefined
 const clipboardEntries: ClipboardEntry[] = []
 
 export const clipboardEntryNames = ref<string[]>([])
+
+let active: ClipboardData | undefined
 
 export const paste: Tool = {
     title: () => i18n.value.tools.paste.title,
@@ -164,6 +168,127 @@ export const paste: Tool = {
         }
 
         notify(interpolate(() => i18n.value.tools.paste.pasted, `${selectedEntities.length}`))
+    },
+
+    dragStart(x, y, modifiers) {
+        if (!clipboardEntry) return false
+
+        const data = getData(clipboardEntry.text)
+        if (!data?.entities.length) return false
+
+        active = data
+
+        const lane = xToLane(x)
+        const beatOffset = yToBeatOffset(y, active.beat)
+
+        const creating: Entity[] = []
+        for (const entity of active.entities) {
+            const beat = entity.beat + beatOffset
+            if (beat < 0) continue
+
+            const result = creates[entity.type]?.(
+                active.entities,
+                entity as never,
+                active.lane,
+                lane,
+                beat,
+                modifiers.shift,
+            )
+            if (!result) continue
+
+            creating.push(result)
+        }
+
+        view.entities = {
+            hovered: [],
+            creating,
+        }
+
+        return true
+    },
+
+    dragUpdate(x, y, modifiers) {
+        if (!active) return false
+
+        const lane = xToLane(x)
+        const beatOffset = yToBeatOffset(y, active.beat)
+
+        const creating: Entity[] = []
+        for (const entity of active.entities) {
+            const beat = entity.beat + beatOffset
+            if (beat < 0) continue
+
+            const result = creates[entity.type]?.(
+                active.entities,
+                entity as never,
+                active.lane,
+                lane,
+                beat,
+                modifiers.shift,
+            )
+            if (!result) continue
+
+            creating.push(result)
+        }
+
+        view.entities = {
+            hovered: [],
+            creating,
+        }
+    },
+
+    async dragEnd(x, y, modifiers) {
+        if (!active) return
+
+        if (
+            active.entities.some(
+                (entity) =>
+                    entity.type === 'cameraEventJoint' ||
+                    entity.type === 'stageMaskEventJoint' ||
+                    entity.type === 'stagePivotEventJoint' ||
+                    entity.type === 'stageStyleEventJoint' ||
+                    entity.type === 'stageTransformEventJoint',
+            )
+        ) {
+            await checkDynamicStages()
+        }
+
+        const transaction = createTransaction(state.value)
+
+        const lane = xToLane(x)
+        const beatOffset = yToBeatOffset(y, active.beat)
+
+        const selectedEntities: Entity[] = []
+        for (const entity of active.entities) {
+            const beat = entity.beat + beatOffset
+            if (beat < 0) continue
+
+            const result = pastes[entity.type]?.(
+                transaction,
+                active.entities,
+                entity as never,
+                active.lane,
+                lane,
+                beat,
+                modifiers.shift,
+            )
+            if (!result) continue
+
+            selectedEntities.push(...result)
+        }
+
+        pushState(
+            interpolate(() => i18n.value.tools.paste.pasted, `${selectedEntities.length}`),
+            transaction.commit(selectedEntities),
+        )
+        view.entities = {
+            hovered: [],
+            creating: [],
+        }
+
+        notify(interpolate(() => i18n.value.tools.paste.pasted, `${selectedEntities.length}`))
+
+        active = undefined
     },
 }
 
