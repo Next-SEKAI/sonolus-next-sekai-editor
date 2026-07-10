@@ -105,6 +105,7 @@ const flips: {
 
     stageTransformEventJoint: (transaction, entities, entity) =>
         editSelectedStageTransformEvent(transaction, entity, {
+            rotation: -entity.rotation,
             xTranslation: -entity.xTranslation,
         }),
     stageTransformEventConnection: undefined,
