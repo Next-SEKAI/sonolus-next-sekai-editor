@@ -72,7 +72,12 @@ const defaultNoteSlidePropertiesSchema = Type.Intersect([
                 Type.Literal('black'),
             ]),
             connectorGuideAlpha: Type.Number(),
-            connectorLayer: Type.Union([Type.Literal('top'), Type.Literal('bottom')]),
+            connectorLayer: Type.Union([
+                Type.Literal('top'),
+                Type.Literal('bottom'),
+                Type.Literal('under'),
+                Type.Literal('over'),
+            ]),
             connectorIsPassThrough: Type.Boolean(),
             connectorPresentation: Type.Union([
                 Type.Literal('default'),

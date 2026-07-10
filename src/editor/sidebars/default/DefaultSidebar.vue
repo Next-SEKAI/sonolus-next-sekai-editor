@@ -20,6 +20,7 @@ import MultiConnectorGuideAlphaField from '../../../modals/form/MultiConnectorGu
 import MultiConnectorGuideColorField from '../../../modals/form/MultiConnectorGuideColorField.vue'
 import MultiConnectorIsPassThroughField from '../../../modals/form/MultiConnectorIsPassThroughField.vue'
 import MultiConnectorLayerField from '../../../modals/form/MultiConnectorLayerField.vue'
+import MultiConnectorPresentationField from '../../../modals/form/MultiConnectorPresentationField.vue'
 import MultiConnectorTypeField from '../../../modals/form/MultiConnectorTypeField.vue'
 import MultiDivisionLineAlphaField from '../../../modals/form/MultiDivisionLineAlphaField.vue'
 import MultiDivisionParityField from '../../../modals/form/MultiDivisionParityField.vue'
