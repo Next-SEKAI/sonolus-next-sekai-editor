@@ -1,8 +1,15 @@
 {
   "title": "한국어(Korean)",
   "group": {
+    "default": "기본"
   },
   "events": {
+    "event": "이벤트",
+    "cameraEvent": "카메라 이벤트",
+    "stageMaskEvent": "스테이지 마스크 이벤트",
+    "stagePivotEvent": "스테이지 피벗 이벤트",
+    "stageStyleEvent": "스테이지 스타일 이벤트",
+    "stageTransformEvent": "스테이지 변형 이벤트"
   },
   "commands": {
     "bgm": {
@@ -12,7 +19,8 @@
         "file": "파일",
         "offset": "오프셋(밀리초)",
         "loading": "파일 불러오는 중...",
-        "decoding": "오디오 디코딩 중..."
+        "decoding": "오디오 디코딩 중...",
+        "generating": "파형 생성 중..."
       }
     },
     "brush": {
@@ -57,6 +65,9 @@
       "flipped": "객체 {0}개 뒤집음"
     },
     "fullscreen": {
+      "title": "전체 화면",
+      "toggled": "전체 화면 전환됨",
+      "unsupported": "사용하시는 기기에서는 전체 화면 모드가 지원되지 않습니다."
     },
     "groups": {
       "groupAll": {
@@ -69,7 +80,8 @@
         "title": "다음 그룹으로 변경"
       },
       "switched": {
-        "all": "모든 그룹으로 변경됨"
+        "all": "모든 그룹으로 변경됨",
+        "one": "{0}번 그룹으로 전환됨"
       }
     },
     "help": {
@@ -84,23 +96,54 @@
       }
     },
     "manageGroups": {
+      "title": "그룹 관리",
       "modal": {
+        "title": "그룹 관리",
+        "switch": "그룹 전환",
         "switched": {
+          "all": "모든 그룹으로 전환됨",
+          "one": "{0}번 그룹으로 전환됨"
         },
+        "moveUp": "그룹을 위로 이동",
+        "moveDown": "그룹을 아래로 이동",
+        "moved": "{0}번 그룹 이동됨",
         "properties": {
+          "title": "그룹 속성 편집",
           "modal": {
+            "title": "그룹 속성",
+            "forceNoteSpeed": "노트 속도 강제",
+            "edited": "{0}번 그룹 속성 편집됨"
           }
-        }
+        },
+        "delete": "그룹 삭제",
+        "deleted": "{0}번 그룹 삭제됨",
+        "add": "추가",
+        "added": "{0}번 그룹 추가됨"
       }
     },
     "manageStages": {
+      "title": "스테이지 관리",
       "modal": {
+        "title": "스테이지 관리",
+        "switch": "스테이지 전환",
         "switched": {
+          "all": "모든 스테이지 전환됨",
+          "one": "{0}번 스테이지로 전환됨"
         },
+        "moveUp": "다음 스테이지로 변경",
+        "moveDown": "이전 스테이지로 변경",
+        "moved": "{0}번 스테이지 이동됨",
         "properties": {
+          "title": "스테이지 속성 편집",
           "modal": {
+            "title": "스테이지 속성",
+            "edited": "{0}번 스테이지 속성 편집됨"
           }
-        }
+        },
+        "delete": "스테이지 삭제",
+        "deleted": "{0}번 스테이지 삭제됨",
+        "add": "추가",
+        "added": "{0}번 스테이지 추가됨"
       }
     },
     "note": {
@@ -114,6 +157,8 @@
       }
     },
     "offset": {
+      "title": "오프셋 도구로 전환",
+      "switched": "오프셋 도구로 전환됨"
     },
     "open": {
       "title": "열기",
@@ -129,7 +174,10 @@
       "title": "플레이"
     },
     "properties": {
+      "title": "속성",
+      "changed": "속성 변경됨",
       "modal": {
+        "life": "Life"
       }
     },
     "redo": {
@@ -198,19 +246,28 @@
     },
     "stages": {
       "stageAll": {
+        "title": "모든 스테이지 전환"
       },
       "stagePrev": {
+        "title": "이전 스테이지로 전환"
       },
       "stageNext": {
+        "title": "다음 스테이지로 전환"
       },
       "switched": {
+        "all": "모든 스테이지 전환됨",
+        "one": "{0}번 스테이지로 전환됨"
       }
     },
     "stop": {
       "title": "정지"
     },
     "toggleVolume": {
+      "title": "{} 켜기/끄기",
+      "toggled": "{0} 음량 전환됨",
       "type": {
+        "bgm": "배경음악",
+        "sfx": "효과음"
       }
     },
     "undo": {
@@ -223,9 +280,21 @@
     },
     "visibilities": {
       "cycle": {
+        "title": "객체 표시 순환",
+        "cycled": "객체 표시 순환됨"
       },
       "toggle": {
+        "title": "{0} 표시 여부 전환",
+        "toggled": "{0} 표시 전환됨",
         "types": {
+          "note": "노트",
+          "cameraEvent": "카메라 이벤트",
+          "stageMaskEvent": "스테이지 마스크 이벤트",
+          "stagePivotEvent": "스테이지 피벗 이벤트",
+          "stageStyleEvent": "스테이지 스타일 이벤트",
+          "stageTransformEvent": "스테이지 변형 이벤트",
+          "timeScale": "시간 배율",
+          "bpm": "BPM"
         }
       }
     },
@@ -252,9 +321,14 @@
       "switched": "BPM 도구로 변경됨"
     },
     "timeScale": {
+      "title": "시간 배율 도구로 변경",
+      "switched": "시간 배율 도구로 변경됨"
     },
     "events": {
+      "title": "{0} 도구로 전환",
+      "switched": "{0} 도구로 전환됨",
       "modal": {
+        "title": "기본 {0} 속성"
       }
     }
   },
@@ -262,10 +336,27 @@
     "modal": {
       "title": "도움말",
       "touchscreen": {
-        "title": "터치스크린"
+        "title": "터치스크린",
+        "tap": "한 손가락 탭: 탭",
+        "drag": "한 손가락 드래그: 드래그",
+        "quickScroll": "빠른 스크롤 영역에서 한 손가락 드래그: 스크롤",
+        "deselect": "두 손가락으로 탭하여 선택을 해제하세요.",
+        "scrollY": "두 손가락 수직 드래그: 스크롤",
+        "scrollX": "두 손가락 수평 드래그: 스크롤",
+        "zoomY": "두 손가락 수직 핀치: Y축 확대/축소",
+        "zoomX": "두 손가락 수평 핀치: X축 확대/축소",
+        "play": "세 손가락으로 탭하여 재생하세요."
       },
       "mouse": {
-        "title": "마우스"
+        "title": "마우스",
+        "tapPrimary": "왼쪽 클릭: 주 도구로 탭",
+        "dragPrimary": "왼쪽 클릭 + 드래그: 주 도구로 드래그",
+        "tapSecondary": "오른쪽 클릭: 보조 도구로 탭",
+        "dragSecondary": "오른쪽 클릭 + 드래그: 보조 도구로 드래그",
+        "scrollY": "휠 스크롤: 수직 스크롤",
+        "scrollX": "Shift + 휠 스크롤: 수평 스크롤",
+        "zoomY": "Ctrl + 휠 스크롤: 세로 확대/축소",
+        "zoomX": "Ctrl + Shift + 휠 스크롤: 가로 확대/축소"
       },
       "keyboard": {
         "title": "키보드",
@@ -311,22 +402,76 @@
         "properties": "노트 도구를 다시 눌러 프리셋이나 기본 속성을 변경합니다."
       },
       "slideTool": {
-        "title": "슬라이드 도구"
+        "title": "슬라이드 도구",
+        "select": "노트 개체 탭: 개체 1개 선택",
+        "edit": "노트 개체 1개 탭: 편집",
+        "add": "빈 공간 탭: 추가",
+        "connect": "노트 개체 1개 선택 후 빈 공간 탭: 연결",
+        "move": "노트 개체 1개 드래그: 이동",
+        "ctrl": "Ctrl 키: 선택 항목에 개체 추가",
+        "shift": "Shift 키: 모든 관련 노트 개체에 적용",
+        "properties": "슬라이드 도구 다시 선택: 프리셋 또는 기본 속성 변경"
       },
       "bpmTool": {
-        "title": "BPM 도구"
+        "title": "BPM 도구",
+        "select": "BPM 개체 탭: 개체 1개 선택",
+        "edit": "BPM 개체 1개 탭: 편집",
+        "add": "빈 공간 탭: 추가",
+        "move": "BPM 개체 1개 드래그: 이동",
+        "ctrl": "Ctrl 키: 선택 항목에 개체 추가"
       },
       "timeScaleTool": {
+        "title": "시간 배율 도구",
+        "select": "시간 배율 탭: 객체 1개 선택",
+        "edit": "시간 배율 객체 1개 탭: 편집",
+        "add": "빈 공간 탭: 추가",
+        "move": "시간 배율 객체 1개 드래그: 이동",
+        "ctrl": "Ctrl 키: 선택 항목에 개체 추가"
       },
       "cameraEventTool": {
+        "title": "카메라 이벤트 도구",
+        "select": "카메라 이벤트 객체를 눌러 1개를 선택합니다.",
+        "edit": "카메라 이벤트 객체 1개를 눌러 편집합니다.",
+        "add": "추가하려면 빈 공간을 탭하세요.",
+        "move": "카메라 이벤트 객체 1개를 드래그하여 이동합니다.",
+        "ctrl": "Ctrl 키를 누른 채 객체를 선택하면 선택 항목에 추가됩니다.",
+        "properties": "기본 속성을 변경하려면 카메라 이벤트 도구를 다시 선택합니다."
       },
       "stageMaskEventTool": {
+        "title": "스테이지 마스크 이벤트 도구",
+        "select": "스테이지 마스크 이벤트 객체를 탭하여 객체 1개를 선택합니다.",
+        "edit": "스테이지 마스크 이벤트 객체 1개를 눌러 편집합니다.",
+        "add": "추가하려면 빈 공간을 탭하세요.",
+        "move": "드래그하여 스테이지 마스트 이벤트 객체를 이동합니다.",
+        "ctrl": "Ctrl 키를 누른 채 객체를 선택하면 선택 항목에 추가됩니다.",
+        "properties": "기본 속성을 변경하려면 스테이지 마스크 이벤트 도구를 다시 선택합니다."
       },
       "stagePivotEventTool": {
+        "title": "스테이지 피벗 이벤트 도구",
+        "select": "스테이지 피벗 이벤트 객체를 눌러 1개를 선택합니다.",
+        "edit": "스테이지 피벗 이벤트 객체 1개를 눌러 편집합니다.",
+        "add": "추가하려면 빈 공간을 탭하세요.",
+        "move": "스테이지 피벗 이벤트 객체 1개를 드래그하여 이동합니다.",
+        "ctrl": "Ctrl 키를 누른 채 객체를 선택하면 선택 항목에 추가됩니다.",
+        "properties": "기본 속성을 변경하려면 스테이지 피벗 이벤트 도구를 다시 선택합니다."
       },
       "stageStyleEventTool": {
+        "title": "스테이지 스타일 이벤트 도구",
+        "select": "스테이지 스타일 이벤트 객체를 눌러 1개를 선택합니다.",
+        "edit": "스테이지 스타일 이벤트 객체 1개를 선택하여 편집합니다.",
+        "add": "추가하려면 빈 공간을 탭하세요.",
+        "move": "스테이지 스타일 이벤트 객체 1개를 드래그하여 이동합니다.",
+        "ctrl": "Ctrl 키를 누른 채 객체를 선택하면 선택 항목에 추가됩니다.",
+        "properties": "기본 속성을 변경하려면 스테이지 스타일 이벤트 도구를 다시 선택합니다."
       },
       "stageTransformEventTool": {
+        "title": "스테이지 변형 이벤트 도구",
+        "select": "스테이지 변형 이벤트 객체를 눌러 1개를 선택합니다.",
+        "edit": "스테이지 변형 이벤트 객체 1개를 눌러 편집합니다.",
+        "add": "추가하려면 빈 공간을 탭하세요.",
+        "move": "스테이지 변형 이벤트 객체 1개를 드래그하여 이동합니다.",
+        "ctrl": "Ctrl 키를 누른 채 객체를 선택하면 선택 항목에 추가됩니다.",
+        "properties": "기본 속성을 변경하려면 스테이지 변형 이벤트 도구를 다시 선택합니다."
       }
     }
   },
@@ -338,11 +483,21 @@
       "autoSave": "자동 저장",
       "autoSaveDelay": "자동 저장 주기",
       "waveformVisualization": {
+        "title": "파형 시각화",
         "off": "꺼짐",
-        "volume": "음량"
+        "fft": "FFT",
+        "volume": "음량",
+        "changed": "변경된 파형 설정을 적용하려면 BGM 파일을 다시 불러와야 합니다."
       },
+      "maxScrollX": "최대 스크롤 X",
       "dragToPanY": "드래그하여 Y 움직이기",
-      "dragToPanX": "드래그하여 X 움직이기"
+      "dragToPanX": "드래그하여 X 움직이기",
+      "autoAddGroup": "자동 그룹 추가",
+      "showGroupName": "그룹 이름 표시",
+      "showOtherGroups": "다른 그룹 보기",
+      "showStageName": "스테이지 이름 보이기",
+      "showOtherStages": "다른 스테이지 보기",
+      "showOtherObjects": "다른 객체 표시"
     },
     "keyboardShortcuts": {
       "title": "키보드 단축키"
@@ -361,9 +516,13 @@
       "bgmVolume": "배경 음량",
       "sfxVolume": "효과 음량",
       "startPosition": {
+        "title": "재생 시작 위치",
+        "view": "현재 화면",
+        "cursor": "마우스 위치"
       },
       "follow": "따라가기",
-      "followPosition": "따라가기 위치"
+      "followPosition": "따라가기 위치",
+      "previewDuration": "미리보기 시간(밀리초 ms)"
     },
     "preview": {
       "title": "미리보기",
@@ -382,41 +541,75 @@
     },
     "touch": {
       "title": "터치",
+      "quickScrollZone": "빠른 스크롤 영역",
       "scrollInertia": "스크롤 관성"
     }
   },
   "sidebars": {
     "default": {
       "title": "객체 속성",
-      "none": "선택된 객체 없음"
+      "none": "선택된 객체 없음",
+      "edited": "{0}개 ​​객체 편집됨"
     },
     "view": {
+      "title": "보기",
+      "tool": "도구",
+      "division": "분할",
       "snapping": {
+        "label": "스냅",
+        "absolute": "절대",
+        "relative": "상대"
       }
     }
   },
   "statusBar": {
     "group": {
+      "all": "모든 그룹",
+      "one": "{0}번 그룹"
     },
     "stage": {
+      "all": "모든 스테이지",
+      "one": "{0}번 스테이지"
     }
   },
   "tools": {
     "bpm": {
+      "title": "BPM",
+      "adding": "{0}개의 BPM 객체 추가",
+      "added": "{0}개의 BPM 객체가 추가됨",
+      "edited": "{0}개의 BPM 객체가 편집됨",
+      "moving": "{0} BPM 객체 이동",
+      "moved": "{0}개의 BPM 객체 이동됨",
+      "replaced": "{0}개의 BPM 객체 교체됨.",
+      "selected": "선택된 {0}개의 BPM 객체",
       "modal": {
         "title": "BPM 속성"
       }
     },
     "brush": {
+      "title": "브러시",
       "deselected": "모든 객체 선택 해제됨",
+      "brushing": "{0}개 객체에 브러시 적용",
+      "brushed": "{0}개 객체에 브러시 적용됨",
       "sidebar": {
         "title": "붓 속성"
       }
     },
     "eraser": {
-      "deselected": "모든 객체 선택 해제됨"
+      "title": "지우개",
+      "deselected": "모든 객체 선택 해제됨",
+      "erasing": "{0}개 ​​객체 지우기",
+      "erased": "{0}개 객체 삭제됨"
     },
     "note": {
+      "title": "노트 #{0}",
+      "adding": "{0}개의 노트 객체 추가",
+      "added": "{0}개의 노트 객체 추가됨",
+      "editing": "{0}개 노트 객체 편집",
+      "edited": "{0}개 노트 객체 편집됨",
+      "moving": "{0}개의 노트 객체 이동됨",
+      "moved": "{0}개 노트 객체 이동됨",
+      "selected": "{0}개의 노트 객체 선택됨",
       "modal": {
         "title": "노트 속성"
       },
@@ -425,16 +618,33 @@
       }
     },
     "offset": {
+      "title": "오프셋",
+      "changed": "BGM 오프셋 변경됨"
     },
     "paste": {
+      "title": "붙여넣기",
+      "pasted": "{0}개의 객체 붙여넣음",
       "sidebar": {
         "title": "클립보드 기록"
       }
     },
     "select": {
-      "deselected": "모든 객체 선택 해제됨"
+      "title": "선택",
+      "deselected": "모든 객체 선택 해제됨",
+      "selecting": "{0}개 ​​객체 선택",
+      "selected": "{0}개의 객체 선택됨",
+      "moving": "{0}개 객체 이동",
+      "moved": "{0}개의 객체 이동됨"
     },
     "slide": {
+      "title": "슬라이드 #{0}",
+      "adding": "{0}개 노트 객체 추가",
+      "added": "{0}개의 노트 객체 추가됨",
+      "editing": "{0}개 노트 객체 편집",
+      "edited": "{0}개의 노트 객체 편집됨",
+      "moving": "{0}개 노트 객체 이동",
+      "moved": "{0}개의 노트 객체 이동됨",
+      "selected": "{0}개의 노트 객체 선택됨",
       "modal": {
         "title": "노트 속성"
       },
@@ -443,13 +653,31 @@
       }
     },
     "timeScale": {
+      "title": "시간 배율",
+      "adding": "{0}개 시간 배율 객체 추가",
+      "added": "{0}개의 시간 배율 객체 추가됨",
+      "edited": "{0}개의 시간 배율 객체 편집됨",
+      "moving": "{0}개 시간 배율 객체 이동",
+      "moved": "{0}개의 시간 배율 객체 이동됨",
+      "replaced": "{0}개의 시간 배율 객체 교체됨",
+      "selected": "{0}개의 시간 배율 객체 선택됨",
       "modal": {
+        "title": "시간 배율 속성"
       }
     },
     "events": {
+      "adding": "{0}개의 {1} 객체 추가",
+      "added": "{0}개의 {1} 객체 추가됨",
+      "editing": "{0}개의 {1} 객체 편집",
+      "edited": "{0}개의 {1} 객체 편집됨",
+      "moving": "{0}개의 {1} 객체 이동",
+      "moved": "{0}개의 {1} 객체 이동됨",
+      "selected": "{0}개의 {1} 객체 선택됨",
       "modal": {
+        "title": "{0} 속성"
       },
       "sidebar": {
+        "title": "기본 {0} 속성"
       }
     }
   },
@@ -496,42 +724,70 @@
       "message": "채보의 변경 사항을 잃습니다. 계속하시겠습니까?"
     },
     "dynamicStages": {
+      "title": "동적 스테이지",
+      "message": "이 기능을 사용하려면 동적 스테이지가 필요합니다. 동적 스테이지를 활성화하시겠습니까?",
+      "enabled": "동적 스테이지 활성화"
     }
   },
   "modals": {
     "form": {
       "confirm": "확인",
       "anchor": {
+        "label": "앵커",
+        "default": "기본",
+        "center": "중심"
       },
       "beat": {
         "label": "비트"
       },
       "borderStyle": {
+        "default": "기본",
+        "light": "얇음",
+        "medium": "보통",
+        "disabled": "비활성화"
       },
       "bpm": {
         "label": "BPM"
       },
       "cameraLeft": {
+        "label": "카메라 이동 레인"
       },
       "cameraRotation": {
+        "label": "카메라 회전"
       },
       "cameraSize": {
+        "label": "카메라 이동 크기"
       },
       "cameraStageTilt": {
+        "label": "카메라 스테이지 기울기"
       },
       "cameraZoom": {
+        "label": "카메라 줌"
       },
       "cameraZoomTargetLane": {
+        "label": "카메라 줌 대상 레인"
       },
       "cameraZoomTargetY": {
+        "label": "카메라 줌 대상 Y"
       },
       "cameraZoomVerticalAlign": {
+        "label": "카메라 줌 세로 정렬",
+        "default": "기본",
+        "center": "중심"
       },
       "connectorActiveIsCritical": {
+        "label": "크리티컬 슬라이드"
       },
       "connectorActiveIsFake": {
+        "label": "가짜 슬라이"
       },
       "connectorEase": {
+        "label": "커넥터 이징",
+        "linear": "선형",
+        "in": "In",
+        "out": "Out",
+        "inOut": "In-Out",
+        "outIn": "Out-In",
         "none": "없음"
       },
       "connectorGuideAlpha": {
@@ -539,6 +795,7 @@
       },
       "connectorGuideColor": {
         "label": "가이드 색상",
+        "neutral": "하양",
         "red": "빨강",
         "green": "초록",
         "blue": "파랑",
@@ -548,26 +805,50 @@
         "black": "검정"
       },
       "connectorIsPassThrough": {
+        "label": "커넥터 판정선 관통"
       },
       "connectorLayer": {
+        "label": "커넥터 레이어",
+        "top": "위",
+        "bottom": "아래",
+        "under": "최하단",
+        "over": "최상단"
       },
       "connectorPresentation": {
+        "label": "커넥터 표시 방식",
+        "default": "기본",
+        "fullscreen": "전체 화면"
       },
       "connectorType": {
+        "label": "커넥터 유형",
         "active": "슬라이드",
         "guide": "가이드"
       },
       "copyProperties": {
+        "label": "속성 복사"
       },
       "divisionLineAlpha": {
+        "label": "구분선 불투명도"
       },
       "divisionParity": {
+        "label": "분할 홀짝",
+        "even": "짝수",
+        "odd": "홀수"
       },
       "divisionSize": {
+        "label": "분할 간격"
       },
       "editorLane": {
+        "label": "레인 편집기"
       },
       "eventEase": {
+        "label": "이벤트 이징",
+        "linear": "선형",
+        "in": "In",
+        "out": "Out",
+        "inOut": "In-Out",
+        "outIn": "Out-In",
+        "none": "없음"
       },
       "file": {
         "select": "파일 선택..."
@@ -583,15 +864,21 @@
         "downRight": "우측 하단"
       },
       "generateSimLines": {
+        "label": "동시 입력 라인 생성",
+        "global": "전역",
+        "isolated": "독립"
       },
       "group": {
         "label": "그룹"
       },
       "hideNotes": {
+        "label": "노트 숨기기"
       },
       "isAttached": {
+        "label": "위치 종속"
       },
       "isConnectorSeparator": {
+        "label": "분리 지점"
       },
       "isCritical": {
         "label": "크리티컬"
@@ -600,50 +887,89 @@
         "label": "페이크"
       },
       "isFromStart": {
+        "label": "처음부터"
       },
       "isFullWidth": {
+        "label": "최대 너비"
       },
       "isUntilEnd": {
+        "label": "끝까지"
       },
       "judgmentLineAlpha": {
+        "label": "판정선 불투명도"
       },
       "judgmentLineColor": {
+        "label": "판정선 색상",
+        "neutral": "하양",
+        "red": "빨강",
+        "green": "초록",
+        "blue": "파랑",
+        "yellow": "노랑",
+        "purple": "보라",
+        "cyan": "청록",
+        "black": "검정"
       },
       "judgmentLineStyle": {
+        "label": "판정선 스타일",
+        "default": "기본",
+        "singleLine": "단일 선"
       },
       "laneAlpha": {
+        "label": "레인 불투명도"
       },
       "left": {
         "label": "레인"
       },
       "leftBorderStyle": {
+        "label": "테두리 스타일 (왼쪽)"
       },
       "key": {
         "input": "입력 키",
         "press": "키 입력..."
       },
       "maskLeft": {
+        "label": "레인 마스크"
       },
       "maskSize": {
+        "label": "사이즈 마스크"
       },
       "name": {
+        "label": "이름"
       },
       "noteType": {
         "label": "노트 유형",
         "default": "기본",
         "trace": "트레이스",
-        "anchor": "앵커"
+        "anchor": "앵커",
+        "damage": "대미지",
+        "forceTick": "틱 노트로 고정",
+        "forceNonTick": "일반 노트로 고정"
       },
       "pivotLane": {
+        "label": "피벗 레인"
       },
       "preset": {
         "label": "프리셋"
       },
       "rightBorderStyle": {
+        "label": "테두리 스타일 (오른쪽)"
       },
       "rotation": {
+        "label": "회전"
       },
       "sfx": {
+        "label": "효과음",
+        "default": "기본",
+        "none": "없음",
+        "normalTap": "탭",
+        "criticalTap": "탭 (크리티컬)",
+        "normalFlick": "플릭",
+        "criticalFlick": "플릭 (크리티컬)",
+        "normalTrace": "트레이스",
+        "criticalTrace": "트레이스 (크리티컬)",
+        "normalTick": "틱",
+        "criticalTick": "틱 (크리티컬)",
+        "damage": "대미지"
       },
       "size": {
         "label": "크기"
@@ -652,12 +978,16 @@
         "label": "건너뛰기(비트)"
       },
       "stage": {
+        "label": "스테이지"
       },
       "stageAlpha": {
+        "label": "스테이지 불투명도"
       },
       "timeScale": {
+        "label": "시간 배율"
       },
       "timeScaleEase": {
+        "label": "시간 배율 이징",
         "none": "없음",
         "linear": "선형"
       },
@@ -666,12 +996,16 @@
         "disabled": "비활성화됨"
       },
       "xTranslation": {
+        "label": "X축 이동"
       },
       "yTranslation": {
+        "label": "Y축 이동"
       },
       "yOffset": {
+        "label": "Y 오프셋"
       },
       "yOffsetBeat": {
+        "label": "Y 오프셋(비트)"
       }
     },
     "confirm": {
