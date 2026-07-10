@@ -362,6 +362,7 @@ const toMovedStageTransformEventObject = (
     ...entity,
     stageId: view.stageId ?? entity.stageId,
     beat,
+    rotation: flip ? -entity.rotation : entity.rotation,
     xTranslation: flip
         ? -entity.xTranslation + align(startLane) + align(lane)
         : entity.xTranslation - align(startLane) + align(lane),
