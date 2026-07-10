@@ -78,5 +78,10 @@ watch(
             v-model="settings.showOtherStages"
             :label="i18n.settings.editor.showOtherStages"
         />
+
+        <ToggleField
+            v-model="settings.showOtherObjects"
+            :label="i18n.settings.editor.showOtherObjects"
+        />
     </SettingsSection>
 </template>

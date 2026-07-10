@@ -496,7 +496,8 @@
             "showGroupName": "Show Group Name",
             "showOtherGroups": "Show Other Groups",
             "showStageName": "Show Stage Name",
-            "showOtherStages": "Show Other Stages"
+            "showOtherStages": "Show Other Stages",
+            "showOtherObjects": "Show Other Objects"
         },
         "keyboardShortcuts": {
             "title": "Keyboard Shortcuts"
