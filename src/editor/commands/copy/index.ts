@@ -1,5 +1,5 @@
 import type { Command } from '..'
-import type { ClipboardData } from '../../../clipboardData/schema'
+import { setClipboardData } from '../../../clipboard/index.ts'
 import { isDynamicStages } from '../../../history/dynamicStages.ts'
 import { groups } from '../../../history/groups'
 import { initialLife } from '../../../history/initialLife'
@@ -22,7 +22,7 @@ export const copy: Command = {
         is: CopyIcon,
     },
 
-    async execute() {
+    execute() {
         const entities = selectedEntities.value
 
         if (!entities.length) {
@@ -30,7 +30,7 @@ export const copy: Command = {
             return
         }
 
-        const data: ClipboardData = {
+        setClipboardData({
             ...getAnchor(entities, view.pointer.x, view.pointer.y),
             entities: serializeToLevelDataEntities(
                 initialLife.value,
@@ -52,10 +52,7 @@ export const copy: Command = {
                 groups.value,
                 stages.value,
             ),
-        }
-        const text = JSON.stringify(data)
-
-        await navigator.clipboard.writeText(text)
+        })
 
         notify(interpolate(() => i18n.value.commands.copy.copied, `${entities.length}`))
     },

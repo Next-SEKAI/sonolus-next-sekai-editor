@@ -1,5 +1,5 @@
 import Type from 'typebox'
-import { levelDataEntitiesSchema } from '../levelData/entities/schema'
+import { levelDataEntitiesSchema } from '../../levelData/entities/schema'
 
 export const clipboardDataSchema = Type.Object({
     lane: Type.Number(),

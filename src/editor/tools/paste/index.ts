@@ -1,4 +1,3 @@
-import { ref } from 'vue'
 import type { Tool } from '..'
 import type { BpmObject } from '../../../chart/bpm'
 import type { CameraEventObject } from '../../../chart/events/camera'
@@ -7,11 +6,11 @@ import type { StagePivotEventObject } from '../../../chart/events/stage/pivot'
 import type { StageStyleEventObject } from '../../../chart/events/stage/style'
 import type { StageTransformEventObject } from '../../../chart/events/stage/transform.ts'
 import type { GroupId } from '../../../chart/groups'
+import type { Chart } from '../../../chart/index.ts'
 import type { FlickDirection, NoteObject } from '../../../chart/note'
-import { parseLevelDataChart } from '../../../chart/parse/levelData'
 import type { StageId } from '../../../chart/stages'
 import type { TimeScaleObject } from '../../../chart/timeScale'
-import { parseClipboardData } from '../../../clipboardData/parse'
+import { clipboardEntry, updateClipboard } from '../../../clipboard/index.ts'
 import { pushState, state } from '../../../history'
 import { checkDynamicStages, isDynamicStages } from '../../../history/dynamicStages'
 import { defaultGroupId, groups } from '../../../history/groups'
@@ -54,51 +53,43 @@ import { getInStoreGrid } from '../../../state/store/grid'
 import { createTransaction, type Transaction } from '../../../state/transaction'
 import { interpolate } from '../../../utils/interpolate'
 import { align } from '../../../utils/math'
-import { timeout } from '../../../utils/promise'
 import { notify } from '../../notification'
 import { view, xToLane, yToBeatOffset } from '../../view'
 import PasteSidebar from './PasteSidebar.vue'
 
-type ClipboardData = {
-    lane: number
-    beat: number
-    entities: Entity[]
-}
-
-export type ClipboardEntry = {
-    name: string
-    text: string
-    data?: ClipboardData
-}
-
-let i = 0
-let clipboardEntry: ClipboardEntry | undefined
-const clipboardEntries: ClipboardEntry[] = []
-
-export const clipboardEntryNames = ref<string[]>([])
-
-let active: ClipboardData | undefined
+let active:
+    | {
+          lane: number
+          beat: number
+          entities: Entity[]
+      }
+    | undefined
 
 export const paste: Tool = {
     title: () => i18n.value.tools.paste.title,
     sidebar: PasteSidebar,
 
-    async hover(x, y, modifiers) {
-        await updateClipboard()
-        if (!clipboardEntry?.data?.entities.length) return
+    hover(x, y, modifiers) {
+        void updateClipboard()
+
+        const data = clipboardEntry.value?.data
+        if (!data) return
+
+        const entities = cachedTransform(data.chart)
+        if (!entities.length) return
 
         const lane = xToLane(x)
-        const beatOffset = yToBeatOffset(y, clipboardEntry.data.beat)
+        const beatOffset = yToBeatOffset(y, data.beat)
 
         const creating: Entity[] = []
-        for (const entity of clipboardEntry.data.entities) {
+        for (const entity of entities) {
             const beat = entity.beat + beatOffset
             if (beat < 0) continue
 
             const result = creates[entity.type]?.(
-                clipboardEntry.data.entities,
+                entities,
                 entity as never,
-                clipboardEntry.data.lane,
+                data.lane,
                 lane,
                 beat,
                 modifiers.shift,
@@ -115,14 +106,14 @@ export const paste: Tool = {
     },
 
     async tap(x, y, modifiers) {
-        await updateClipboard()
-        if (!clipboardEntry) return
+        const data = clipboardEntry.value?.data
+        if (!data) return
 
-        const data = getData(clipboardEntry.text)
-        if (!data?.entities.length) return
+        const entities = transform(data.chart)
+        if (!entities.length) return
 
         if (
-            data.entities.some(
+            entities.some(
                 (entity) =>
                     entity.type === 'cameraEventJoint' ||
                     entity.type === 'stageMaskEventJoint' ||
@@ -140,13 +131,13 @@ export const paste: Tool = {
         const beatOffset = yToBeatOffset(y, data.beat)
 
         const selectedEntities: Entity[] = []
-        for (const entity of data.entities) {
+        for (const entity of entities) {
             const beat = entity.beat + beatOffset
             if (beat < 0) continue
 
             const result = pastes[entity.type]?.(
                 transaction,
-                data.entities,
+                entities,
                 entity as never,
                 data.lane,
                 lane,
@@ -171,12 +162,17 @@ export const paste: Tool = {
     },
 
     dragStart(x, y, modifiers) {
-        if (!clipboardEntry) return false
+        const data = clipboardEntry.value?.data
+        if (!data) return false
 
-        const data = getData(clipboardEntry.text)
-        if (!data?.entities.length) return false
+        const entities = transform(data.chart)
+        if (!entities.length) return false
 
-        active = data
+        active = {
+            lane: data.lane,
+            beat: data.beat,
+            entities,
+        }
 
         const lane = xToLane(x)
         const beatOffset = yToBeatOffset(y, active.beat)
@@ -292,100 +288,65 @@ export const paste: Tool = {
     },
 }
 
-export const updateClipboard = async () => {
-    const text = await getText()
-    if (!text) return
-    if (clipboardEntry?.text === text) return
+const transform = (chart: Chart) => {
+    const groupIds = [...groups.value.keys()]
+    const groupMappings = new Map(
+        [...chart.groups.keys()].map((id, index) => [id, groupIds[index]]),
+    )
 
-    clipboardEntry = clipboardEntries.find((entry) => entry.text === text)
-    if (clipboardEntry) {
-        clipboardEntries.splice(clipboardEntries.indexOf(clipboardEntry), 1)
-        clipboardEntries.unshift(clipboardEntry)
-        clipboardEntryNames.value = clipboardEntries.map(({ name }) => name)
-        return
-    }
+    const stageIds = [...stages.value.keys()]
+    const stageMappings = new Map(
+        [...chart.stages.keys()].map((id, index) => [id, stageIds[index]]),
+    )
 
-    const data = getData(text)
-    clipboardEntry = {
-        name: data ? `#${++i} (${data.entities.length})` : '',
-        text,
-        data,
-    }
-    if (clipboardEntry.data) {
-        clipboardEntries.unshift(clipboardEntry)
-        if (clipboardEntries.length > 10) clipboardEntries.pop()
-        clipboardEntryNames.value = clipboardEntries.map(({ name }) => name)
-    }
+    const mapGroupId = <T extends { groupId: GroupId }>(object: T) => ({
+        ...object,
+        groupId: groupMappings.get(object.groupId) ?? defaultGroupId.value,
+    })
+
+    const mapStageId = <T extends { stageId: StageId }>(object: T) => ({
+        ...object,
+        stageId: stageMappings.get(object.stageId) ?? defaultStageId.value,
+    })
+
+    return [
+        ...chart.bpms.map(toBpmEntity),
+        ...chart.timeScales.map(mapGroupId).map(toTimeScaleEntity),
+
+        ...chart.cameraEvents.map(toCameraEventJointEntity),
+
+        ...chart.stageMaskEvents.map(mapStageId).map(toStageMaskEventJointEntity),
+        ...chart.stagePivotEvents.map(mapStageId).map(toStagePivotEventJointEntity),
+        ...chart.stageStyleEvents.map(mapStageId).map(toStageStyleEventJointEntity),
+        ...chart.stageTransformEvents.map(mapStageId).map(toStageTransformEventJointEntity),
+
+        ...chart.slides.flatMap((slide) => {
+            const slideId = createSlideId()
+
+            return slide
+                .map(mapGroupId)
+                .map(mapStageId)
+                .map((note) => toNoteEntity(slideId, note))
+        }),
+    ]
 }
 
-const getText = async () => {
-    try {
-        return await Promise.race([navigator.clipboard.readText(), timeout(50)])
-    } catch {
-        return
-    }
-}
+let transformCache:
+    | {
+          chart: Chart
+          entities: Entity[]
+      }
+    | undefined
 
-const getData = (text: string) => {
-    try {
-        const clipboardData = parseClipboardData(JSON.parse(text))
-        const chart = parseLevelDataChart(clipboardData.entities)
-
-        const groupIds = [...groups.value.keys()]
-        const groupMappings = new Map(
-            [...chart.groups.keys()].map((id, index) => [id, groupIds[index]]),
-        )
-
-        const stageIds = [...stages.value.keys()]
-        const stageMappings = new Map(
-            [...chart.stages.keys()].map((id, index) => [id, stageIds[index]]),
-        )
-
-        const mapGroupId = <T extends { groupId: GroupId }>(object: T) => ({
-            ...object,
-            groupId: groupMappings.get(object.groupId) ?? defaultGroupId.value,
-        })
-
-        const mapStageId = <T extends { stageId: StageId }>(object: T) => ({
-            ...object,
-            stageId: stageMappings.get(object.stageId) ?? defaultStageId.value,
-        })
-
-        return {
-            lane: clipboardData.lane,
-            beat: clipboardData.beat,
-            entities: [
-                ...chart.bpms.map(toBpmEntity),
-                ...chart.timeScales.map(mapGroupId).map(toTimeScaleEntity),
-
-                ...chart.cameraEvents.map(toCameraEventJointEntity),
-
-                ...chart.stageMaskEvents.map(mapStageId).map(toStageMaskEventJointEntity),
-                ...chart.stagePivotEvents.map(mapStageId).map(toStagePivotEventJointEntity),
-                ...chart.stageStyleEvents.map(mapStageId).map(toStageStyleEventJointEntity),
-                ...chart.stageTransformEvents.map(mapStageId).map(toStageTransformEventJointEntity),
-
-                ...chart.slides.flatMap((slide) => {
-                    const slideId = createSlideId()
-
-                    return slide
-                        .map(mapGroupId)
-                        .map(mapStageId)
-                        .map((note) => toNoteEntity(slideId, note))
-                }),
-            ],
+const cachedTransform = (chart: Chart) => {
+    if (transformCache?.chart !== chart) {
+        transformCache = {
+            chart,
+            entities: transform(chart),
         }
-    } catch {
-        return
     }
-}
 
-export const setToClipboardEntry = async (name: string) => {
-    const entry = clipboardEntries.find((entry) => entry.name === name)
-    if (!entry) return
-
-    await navigator.clipboard.writeText(entry.text)
-    await updateClipboard()
+    return transformCache.entities
 }
 
 const toMovedBpmObject = (entity: BpmEntity, beat: number): BpmObject => ({
