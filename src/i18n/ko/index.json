@@ -1,5 +1,5 @@
 {
-  "title": "한국어(Korean)",
+  "title": "한국어 (Korean)",
   "group": {
     "default": "기본"
   },
@@ -234,7 +234,7 @@
     "snapping": {
       "title": "부착 중",
       "absolute": "절대 기준 부착으로 변경",
-      "relative": "절대 기준 부착으로 변경됨"
+      "relative": "상대 기준 부착으로 변경"
     },
     "speeds": {
       "speedDown": {
@@ -263,7 +263,7 @@
       "title": "정지"
     },
     "toggleVolume": {
-      "title": "{} 켜기/끄기",
+      "title": "{0} 켜기/끄기",
       "toggled": "{0} 음량 전환됨",
       "type": {
         "bgm": "배경음악",
