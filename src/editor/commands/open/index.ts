@@ -14,6 +14,7 @@ import { parseUsc } from '../../../usc/parse'
 import { getFilename, pickFileForOpen } from '../../../utils/file'
 import { timeout } from '../../../utils/promise'
 import { notify } from '../../notification'
+import { changeBgm } from '../bgm/index.ts'
 import OpenIcon from './OpenIcon.vue'
 
 export const open: Command = {
@@ -27,6 +28,11 @@ export const open: Command = {
 
         const { file, handle } = await pickFileForOpen('levelData')
         if (!file) return
+
+        if (file.type.startsWith('audio/')) {
+            void changeBgm(file)
+            return
+        }
 
         await showModal(LoadingModal, {
             title: () => i18n.value.commands.open.title,

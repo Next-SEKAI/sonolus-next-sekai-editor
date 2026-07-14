@@ -13,17 +13,22 @@ export const bgm: Command = {
         is: BgmIcon,
     },
 
-    async execute() {
-        const newBgm = await showModal(BgmModal, {
-            bgm: currentBgm.value,
-        })
-        if (!newBgm) return
-
-        pushState(() => i18n.value.commands.bgm.changed, {
-            ...state.value,
-            bgm: newBgm,
-        })
-
-        notify(() => i18n.value.commands.bgm.changed)
+    execute() {
+        void changeBgm()
     },
+}
+
+export const changeBgm = async (file?: File) => {
+    const newBgm = await showModal(BgmModal, {
+        bgm: currentBgm.value,
+        file,
+    })
+    if (!newBgm) return
+
+    pushState(() => i18n.value.commands.bgm.changed, {
+        ...state.value,
+        bgm: newBgm,
+    })
+
+    notify(() => i18n.value.commands.bgm.changed)
 }

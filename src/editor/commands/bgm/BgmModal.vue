@@ -16,6 +16,7 @@ import { createWaveform } from '../../../waveform'
 
 const props = defineProps<{
     bgm: Bgm
+    file?: File
 }>()
 
 const emit = defineEmits<{
@@ -49,6 +50,10 @@ const onSelect = (file: File) => {
             model.waveform = waveform
         },
     })
+}
+
+if (props.file) {
+    onSelect(props.file)
 }
 
 const onSubmit = () => {
