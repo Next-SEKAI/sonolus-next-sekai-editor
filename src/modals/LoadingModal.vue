@@ -23,6 +23,8 @@ onMounted(async () => {
 
         emit('close')
     } catch (error) {
+        console.error(error)
+
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         message.value = () => `${error}`
     }
