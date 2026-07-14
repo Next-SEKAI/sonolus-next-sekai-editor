@@ -11,9 +11,9 @@ defineProps<{
     <rect
         v-if="isHighlighted || isViewRecentlyActive"
         x="0"
-        y="0.2"
+        y="0.15"
         :width="size"
-        height="0.4"
+        height="0.3"
         rx="0.1"
         ry="0.1"
         stroke="#fff"

@@ -99,12 +99,12 @@ const group = computed(
 </script>
 
 <template>
-    <g :transform="`translate(${entity.left}, ${time * ups - 0.4})`">
+    <g :transform="`translate(${entity.left}, ${time * ups - 0.3})`">
         <component :is="noteComponents[type]" :entity :is-highlighted="isHighlighted" />
         <text
             v-if="stage"
             :x="entity.size / 2"
-            y="0.4"
+            y="0.3"
             font-size="0.4"
             :text-anchor="group ? 'end' : 'middle'"
             dominant-baseline="middle"
@@ -115,7 +115,7 @@ const group = computed(
         <text
             v-if="group"
             :x="entity.size / 2"
-            y="0.4"
+            y="0.3"
             font-size="0.4"
             :text-anchor="stage ? 'start' : 'middle'"
             dominant-baseline="middle"

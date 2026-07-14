@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-    <g :transform="`translate(${size / 2}, 0.4)`">
+    <g :transform="`translate(${size / 2}, 0.3)`">
         <polygon points="-0.3,0 0,-0.3 0.3,0 0,0.15" fill="#ffd8f6" />
         <polygon points="-0.25,0 0,-0.25 0,0.1" fill="#fff" />
     </g>
