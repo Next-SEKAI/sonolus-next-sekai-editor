@@ -51,7 +51,7 @@ export const toNoteEntity = (
         lane: object.left + object.size / 2,
         beat: object.beat,
         w: object.size / 2,
-        h: 0.4,
+        h: 0.3,
     },
 
     slideId,

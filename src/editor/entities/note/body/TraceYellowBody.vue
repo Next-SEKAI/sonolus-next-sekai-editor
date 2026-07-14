@@ -5,5 +5,5 @@ defineProps<{
 </script>
 
 <template>
-    <rect x="0" y="0.2" :width="size" height="0.4" rx="0.1" ry="0.1" fill="#fddd86" />
+    <rect x="0" y="0.15" :width="size" height="0.3" rx="0.1" ry="0.1" fill="#fddd86" />
 </template>
