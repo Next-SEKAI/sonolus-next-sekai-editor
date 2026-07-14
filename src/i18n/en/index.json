@@ -717,7 +717,8 @@
         "initialize": "Initialize",
         "autoSave": {
             "title": "Auto Save",
-            "importing": "Importing level..."
+            "importing": "Importing level...",
+            "disabled": "Due to size of your level, auto save is disabled for this level. Please save manually."
         },
         "changes": {
             "title": "Changes",
