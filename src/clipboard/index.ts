@@ -36,7 +36,7 @@ export const updateClipboard = async () => {
 
 export const setClipboardData = (data: ClipboardData) => {
     const text = JSON.stringify(data)
-    if (!updateClipboardEntries(text)) return
+    updateClipboardEntries(text)
 
     void navigator.clipboard.writeText(text)
 }
@@ -53,13 +53,11 @@ const updateClipboardEntries = (text: string) => {
     if (entry) {
         clipboardEntries.value.splice(clipboardEntries.value.indexOf(entry), 1)
         clipboardEntries.value.unshift(markRaw(entry))
-        return false
+        return
     }
 
     clipboardEntries.value.unshift(markRaw(getClipboardEntry(text)))
     if (clipboardEntries.value.length > 10) clipboardEntries.value.pop()
-
-    return true
 }
 
 let i = 0
