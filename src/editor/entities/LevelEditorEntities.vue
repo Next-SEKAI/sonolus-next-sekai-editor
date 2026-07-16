@@ -21,19 +21,23 @@ const layers = {
     connector: {
         under: {
             active: 20,
-            guide: 21,
+            damage: 21,
+            guide: 22,
         },
         bottom: {
-            active: 22,
-            guide: 23,
+            active: 23,
+            damage: 24,
+            guide: 25,
         },
         top: {
-            active: 24,
-            guide: 25,
+            active: 26,
+            damage: 27,
+            guide: 28,
         },
         over: {
             active: 40,
-            guide: 41,
+            damage: 41,
+            guide: 42,
         },
     },
 

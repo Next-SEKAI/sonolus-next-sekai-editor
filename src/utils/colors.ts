@@ -13,3 +13,5 @@ export const guideColors = {
     cyan: '#73acd6',
     black: '#000000',
 }
+
+export const damageColor = '#ff80ff'

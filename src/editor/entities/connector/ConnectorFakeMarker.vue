@@ -39,7 +39,7 @@ const box = computed(() => {
 
 <template>
     <g
-        v-if="entity.segmentHead.connectorType === 'active' && entity.segmentHead.connectorIsFake"
+        v-if="entity.segmentHead.connectorType !== 'guide' && entity.segmentHead.connectorIsFake"
         stroke="#f44"
         stroke-opacity="0.8"
     >

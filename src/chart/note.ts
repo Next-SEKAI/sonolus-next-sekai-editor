@@ -19,7 +19,7 @@ export type NoteSfx =
     | 'criticalTick'
     | 'damage'
 
-export type ConnectorType = 'active' | 'guide'
+export type ConnectorType = 'active' | 'guide' | 'damage'
 
 export type ConnectorEase = 'linear' | 'in' | 'out' | 'inOut' | 'outIn' | 'none'
 

@@ -832,7 +832,8 @@
             "connectorType": {
                 "label": "Connector Type",
                 "active": "Slide",
-                "guide": "Guide"
+                "guide": "Guide",
+                "damage": "Damage"
             },
             "copyProperties": {
                 "label": "Copy Properties"

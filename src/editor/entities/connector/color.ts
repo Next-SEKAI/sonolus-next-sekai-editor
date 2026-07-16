@@ -1,7 +1,7 @@
 import { bpms } from '../../../history/bpms'
 import type { NoteEntity } from '../../../state/entities/slides/note'
 import { beatToTime } from '../../../state/integrals/bpms'
-import { activeColors, guideColors } from '../../../utils/colors'
+import { activeColors, damageColor, guideColors } from '../../../utils/colors'
 import { remap } from '../../../utils/math'
 
 export type Gradient = {
@@ -24,10 +24,15 @@ export const getColor = (
     }
     gradient?: Gradient
 } => {
-    if (segmentHead.connectorType === 'active')
+    if (segmentHead.connectorType !== 'guide')
         return {
             fill: {
-                fill: activeColors[segmentHead.connectorActiveIsCritical ? 'critical' : 'normal'],
+                fill:
+                    segmentHead.connectorType === 'damage'
+                        ? damageColor
+                        : activeColors[
+                              segmentHead.connectorActiveIsCritical ? 'critical' : 'normal'
+                          ],
                 'fill-opacity': 0.8,
             },
         }

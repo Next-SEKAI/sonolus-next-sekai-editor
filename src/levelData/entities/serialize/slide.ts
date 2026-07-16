@@ -102,7 +102,11 @@ export const serializeSlidesToLevelDataEntities = (
                                     : note.connectorActiveIsCritical
                                       ? 2
                                       : 1
-                                : guideSegmentKinds[note.connectorGuideColor],
+                                : note.connectorType === 'damage'
+                                  ? note.connectorIsFake
+                                      ? 53
+                                      : 3
+                                  : guideSegmentKinds[note.connectorGuideColor],
                     },
                     {
                         name: 'segmentAlpha',
@@ -223,23 +227,19 @@ export const serializeSlidesToLevelDataEntities = (
             if (isFirst || isLast || !info.note.isAttached || info.note.isConnectorSeparator) {
                 if (head) {
                     if (
-                        info.segmentHead.connectorType === 'active' &&
+                        info.segmentHead.connectorType !== 'guide' &&
                         !info.segmentHead.connectorIsFake
                     ) {
-                        const headTick = Math.round(head.beat * beatToTicks)
-                        for (
-                            let i = Math.ceil(headTick / ticksPerHidden) * ticksPerHidden;
-                            i < tick;
-                            i += ticksPerHidden
-                        ) {
-                            if (disallowHiddenTicks.has(i)) continue
-
-                            entities.push({
-                                archetype: 'TransientHiddenTickNote',
+                        const addTickNote = (tick: number) => {
+                            const note: LevelDataEntity = {
+                                archetype:
+                                    info.segmentHead.connectorType === 'active'
+                                        ? 'TransientHiddenTickNote'
+                                        : 'TransientHiddenDamageTickNote',
                                 data: [
                                     {
                                         name: EngineArchetypeDataName.Beat,
-                                        value: i / beatToTicks,
+                                        value: tick / beatToTicks,
                                     },
                                     {
                                         name: 'isAttached',
@@ -254,7 +254,36 @@ export const serializeSlidesToLevelDataEntities = (
                                         ref: (getEntity(info.attachTail).name ??= getName()),
                                     },
                                 ],
-                            })
+                            }
+
+                            if (info.segmentHead.connectorType === 'damage') {
+                                if (!info.damageHead) throw new Error('Unexpected missing head')
+                                note.data.push({
+                                    name: 'activeHead',
+                                    ref: (getEntity(info.damageHead).name ??= getName()),
+                                })
+                            }
+
+                            entities.push(note)
+                        }
+
+                        const headTick = Math.round(head.beat * beatToTicks)
+                        for (
+                            let i = Math.ceil(headTick / ticksPerHidden) * ticksPerHidden;
+                            i < tick;
+                            i += ticksPerHidden
+                        ) {
+                            if (
+                                info.segmentHead.connectorType === 'active' &&
+                                disallowHiddenTicks.has(i)
+                            )
+                                continue
+
+                            addTickNote(i)
+                        }
+
+                        if (info.damageTail === info.note) {
+                            addTickNote(tick)
                         }
                     }
 
@@ -280,17 +309,36 @@ export const serializeSlidesToLevelDataEntities = (
                         ],
                     }
 
-                    if (info.activeHead)
-                        connector.data.push({
-                            name: 'activeHead',
-                            ref: (getEntity(info.activeHead).name ??= getName()),
-                        })
+                    switch (info.segmentHead.connectorType) {
+                        case 'active':
+                            if (!info.activeHead) throw new Error('Unexpected missing head')
+                            connector.data.push({
+                                name: 'activeHead',
+                                ref: (getEntity(info.activeHead).name ??= getName()),
+                            })
 
-                    if (info.activeTail)
-                        connector.data.push({
-                            name: 'activeTail',
-                            ref: (getEntity(info.activeTail).name ??= getName()),
-                        })
+                            if (!info.activeTail) throw new Error('Unexpected missing tail')
+                            connector.data.push({
+                                name: 'activeTail',
+                                ref: (getEntity(info.activeTail).name ??= getName()),
+                            })
+                            break
+                        case 'guide':
+                            break
+                        case 'damage':
+                            if (!info.damageHead) throw new Error('Unexpected missing head')
+                            connector.data.push({
+                                name: 'activeHead',
+                                ref: (getEntity(info.damageHead).name ??= getName()),
+                            })
+
+                            if (!info.damageTail) throw new Error('Unexpected missing tail')
+                            connector.data.push({
+                                name: 'activeTail',
+                                ref: (getEntity(info.damageTail).name ??= getName()),
+                            })
+                            break
+                    }
 
                     entities.push(connector)
                 }

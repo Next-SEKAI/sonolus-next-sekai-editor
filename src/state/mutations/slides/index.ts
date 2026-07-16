@@ -32,13 +32,21 @@ export const rebuildSlide = (store: Store, slideId: SlideId, selectedEntities: E
     let activeTail = -1
     let guideHead = -1
     let guideTail = -1
+    let damageHead = -1
+    let damageTail = -1
 
     const rawInfos = notes.map((note, i) => {
         if (i === 0 || note.isConnectorSeparator) {
-            if (note.connectorType === 'active') {
-                if (activeHead === -1) activeHead = i
-            } else {
-                if (guideHead === -1) guideHead = i
+            switch (note.connectorType) {
+                case 'active':
+                    if (activeHead === -1) activeHead = i
+                    break
+                case 'guide':
+                    if (guideHead === -1) guideHead = i
+                    break
+                case 'damage':
+                    if (damageHead === -1) damageHead = i
+                    break
             }
         }
 
@@ -52,15 +60,26 @@ export const rebuildSlide = (store: Store, slideId: SlideId, selectedEntities: E
             activeTail,
             guideHead,
             guideTail,
+            damageHead,
+            damageTail,
         }
 
         if (!note.isAttached) attachHead = i
         if (note.isConnectorSeparator) segmentHead = i
         if (note.isConnectorSeparator) {
-            if (note.connectorType === 'active') {
-                guideHead = -1
-            } else {
-                activeHead = -1
+            switch (note.connectorType) {
+                case 'active':
+                    guideHead = -1
+                    damageHead = -1
+                    break
+                case 'guide':
+                    activeHead = -1
+                    damageHead = -1
+                    break
+                case 'damage':
+                    activeHead = -1
+                    guideHead = -1
+                    break
             }
         }
 
@@ -69,6 +88,7 @@ export const rebuildSlide = (store: Store, slideId: SlideId, selectedEntities: E
 
     activeHead = -1
     guideHead = -1
+    damageHead = -1
 
     for (let i = rawInfos.length - 1; i >= 0; i--) {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -78,25 +98,22 @@ export const rebuildSlide = (store: Store, slideId: SlideId, selectedEntities: E
         if (i === rawInfos.length - 1 || rawInfo.note.isConnectorSeparator) segmentTail = i
         if (activeHead !== rawInfo.activeHead) {
             activeHead = rawInfo.activeHead
-            if (rawInfo.activeHead === -1) {
-                activeTail = -1
-            } else {
-                activeTail = i
-            }
+            activeTail = rawInfo.activeHead === -1 ? -1 : i
         }
         if (guideHead !== rawInfo.guideHead) {
             guideHead = rawInfo.guideHead
-            if (rawInfo.guideHead === -1) {
-                guideTail = -1
-            } else {
-                guideTail = i
-            }
+            guideTail = rawInfo.guideHead === -1 ? -1 : i
+        }
+        if (damageHead !== rawInfo.damageHead) {
+            damageHead = rawInfo.damageHead
+            damageTail = rawInfo.damageHead === -1 ? -1 : i
         }
 
         rawInfo.attachTail = attachTail
         rawInfo.segmentTail = segmentTail
         rawInfo.activeTail = activeTail
         rawInfo.guideTail = guideTail
+        rawInfo.damageTail = damageTail
     }
 
     for (const [i, rawInfo] of rawInfos.entries()) {
@@ -141,6 +158,8 @@ export const rebuildSlide = (store: Store, slideId: SlideId, selectedEntities: E
         activeTail: notes[rawInfo.activeTail],
         guideHead: notes[rawInfo.guideHead],
         guideTail: notes[rawInfo.guideTail],
+        damageHead: notes[rawInfo.damageHead],
+        damageTail: notes[rawInfo.damageTail],
     }))
 
     store.slides.info.set(slideId, infos)

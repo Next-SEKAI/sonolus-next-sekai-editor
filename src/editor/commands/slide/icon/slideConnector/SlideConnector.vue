@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { DefaultNoteSlideProperties } from '../../../../../settings'
-import { activeColors, guideColors } from '../../../../../utils/colors'
+import { activeColors, damageColor, guideColors } from '../../../../../utils/colors'
 
 defineProps<{
     properties: DefaultNoteSlideProperties
@@ -16,11 +16,13 @@ defineProps<{
         :fill="
             properties.connectorType === 'guide'
                 ? guideColors[properties.connectorGuideColor ?? 'green']
-                : activeColors[
-                      (properties.connectorActiveIsCritical ?? properties.isCritical)
-                          ? 'critical'
-                          : 'normal'
-                  ]
+                : properties.connectorType === 'damage'
+                  ? damageColor
+                  : activeColors[
+                        (properties.connectorActiveIsCritical ?? properties.isCritical)
+                            ? 'critical'
+                            : 'normal'
+                    ]
         "
         :fill-opacity="properties.connectorType === 'guide' ? 0.5 : 0.8"
     />

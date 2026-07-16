@@ -106,7 +106,7 @@ export const quickEdit = (properties: DefaultNoteSlideProperties) => {
             break
         case 'connectorType':
             editSelectedEditableEntities({
-                connectorType: rotate(value as ConnectorType, ['active', 'guide']),
+                connectorType: rotate(value as ConnectorType, ['active', 'guide', 'damage']),
             })
             break
         case 'connectorEase':

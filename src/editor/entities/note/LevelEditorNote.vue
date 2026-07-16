@@ -65,11 +65,11 @@ const type = computed(() => {
     if (isActive) {
         if (!infos.value[i]) return 'tail'
 
-        if (entity.isConnectorSeparator && entity.connectorType === 'guide') return 'tail'
+        if (entity.isConnectorSeparator && entity.connectorType !== 'active') return 'tail'
 
         return 'tick'
     } else if (!infos.value[i - 1]) {
-        if (entity.connectorType === 'guide') return 'single'
+        if (entity.connectorType !== 'active') return 'single'
 
         return 'head'
     } else {

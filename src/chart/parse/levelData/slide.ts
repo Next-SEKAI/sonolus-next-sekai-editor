@@ -215,8 +215,10 @@ const isSeparatorSchema = Type.Number()
 const segmentKindSchema = Type.Union([
     Type.Literal(1),
     Type.Literal(2),
+    Type.Literal(3),
     Type.Literal(51),
     Type.Literal(52),
+    Type.Literal(53),
     Type.Literal(101),
     Type.Literal(102),
     Type.Literal(103),
@@ -240,6 +242,12 @@ const segmentKinds = {
         connectorActiveIsCritical: true,
         connectorGuideColor: 'yellow',
     },
+    3: {
+        connectorType: 'damage',
+        connectorIsFake: false,
+        connectorActiveIsCritical: false,
+        connectorGuideColor: 'green',
+    },
     51: {
         connectorType: 'active',
         connectorIsFake: true,
@@ -251,6 +259,12 @@ const segmentKinds = {
         connectorIsFake: true,
         connectorActiveIsCritical: true,
         connectorGuideColor: 'yellow',
+    },
+    53: {
+        connectorType: 'damage',
+        connectorIsFake: true,
+        connectorActiveIsCritical: false,
+        connectorGuideColor: 'green',
     },
     101: {
         connectorType: 'guide',
