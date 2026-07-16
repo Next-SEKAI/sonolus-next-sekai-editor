@@ -49,10 +49,6 @@ export const serializeStageStyleEventsToLevelDataEntities = (
                     value: +joint.isFullWidth,
                 },
                 {
-                    name: 'alpha',
-                    value: joint.stageAlpha,
-                },
-                {
                     name: 'noteAlpha',
                     value: joint.noteAlpha,
                 },

@@ -17,26 +17,30 @@ export const parseStageStyleEventsToChart = (
 
     const refs = getEventRefs(entities, 'StageStyleChange')
 
-    parseStageEvents(refs, firstRefs, chart.stageStyleEvents, (stageId, entity) => ({
-        stageId,
-        beat: getValue(entity, EngineArchetypeDataName.Beat, beatSchema),
-        editorLane: getOptionalValue(entity, 'editorLane', editorLaneSchema) ?? 0,
-        judgmentLineColor:
-            judgmentLineColors[getValue(entity, 'judgeLineColor', judgmentLineColorSchema)],
-        judgmentLineStyle:
-            judgmentLineStyles[
-                getOptionalValue(entity, 'judgeLineStyle', judgeLineStyleSchema) ?? 0
-            ],
-        leftBorderStyle: borderStyles[getValue(entity, 'leftBorderStyle', borderStyleSchema)],
-        rightBorderStyle: borderStyles[getValue(entity, 'rightBorderStyle', borderStyleSchema)],
-        isFullWidth: !!getOptionalValue(entity, 'fullWidth', fullWidthSchema),
-        stageAlpha: getValue(entity, 'alpha', alphaSchema),
-        noteAlpha: getOptionalValue(entity, 'noteAlpha', alphaSchema) ?? 1,
-        laneAlpha: getValue(entity, 'laneAlpha', alphaSchema),
-        judgmentLineAlpha: getValue(entity, 'judgeLineAlpha', alphaSchema),
-        divisionLineAlpha: getOptionalValue(entity, 'divisionLineAlpha', alphaSchema) ?? 1,
-        eventEase: eventEases[getValue(entity, 'ease', eventEaseSchema)],
-    }))
+    parseStageEvents(refs, firstRefs, chart.stageStyleEvents, (stageId, entity) => {
+        const alpha = getOptionalValue(entity, 'alpha', alphaSchema) ?? 1
+
+        return {
+            stageId,
+            beat: getValue(entity, EngineArchetypeDataName.Beat, beatSchema),
+            editorLane: getOptionalValue(entity, 'editorLane', editorLaneSchema) ?? 0,
+            judgmentLineColor:
+                judgmentLineColors[getValue(entity, 'judgeLineColor', judgmentLineColorSchema)],
+            judgmentLineStyle:
+                judgmentLineStyles[
+                    getOptionalValue(entity, 'judgeLineStyle', judgeLineStyleSchema) ?? 0
+                ],
+            leftBorderStyle: borderStyles[getValue(entity, 'leftBorderStyle', borderStyleSchema)],
+            rightBorderStyle: borderStyles[getValue(entity, 'rightBorderStyle', borderStyleSchema)],
+            isFullWidth: !!getOptionalValue(entity, 'fullWidth', fullWidthSchema),
+            noteAlpha: (getOptionalValue(entity, 'noteAlpha', alphaSchema) ?? 1) * alpha,
+            laneAlpha: getValue(entity, 'laneAlpha', alphaSchema) * alpha,
+            judgmentLineAlpha: getValue(entity, 'judgeLineAlpha', alphaSchema) * alpha,
+            divisionLineAlpha:
+                (getOptionalValue(entity, 'divisionLineAlpha', alphaSchema) ?? 1) * alpha,
+            eventEase: eventEases[getValue(entity, 'ease', eventEaseSchema)],
+        }
+    })
 }
 
 const editorLaneSchema = Type.Number()

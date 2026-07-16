@@ -53,7 +53,6 @@ export const checkDynamicStages = async () => {
         leftBorderStyle: 'default',
         rightBorderStyle: 'default',
         isFullWidth: false,
-        stageAlpha: 1,
         noteAlpha: 1,
         laneAlpha: 1,
         judgmentLineAlpha: 1,

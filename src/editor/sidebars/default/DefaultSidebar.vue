@@ -51,7 +51,6 @@ import MultiRotationField from '../../../modals/form/MultiRotationField.vue'
 import MultiSfxField from '../../../modals/form/MultiSfxField.vue'
 import MultiSizeField from '../../../modals/form/MultiSizeField.vue'
 import MultiSkipField from '../../../modals/form/MultiSkipField.vue'
-import MultiStageAlphaField from '../../../modals/form/MultiStageAlphaField.vue'
 import MultiStageField from '../../../modals/form/MultiStageField.vue'
 import MultiTimeScaleEaseField from '../../../modals/form/MultiTimeScaleEaseField.vue'
 import MultiTimeScaleField from '../../../modals/form/MultiTimeScaleField.vue'
@@ -93,7 +92,6 @@ const judgmentLineStyle = createModel('judgmentLineStyle')
 const leftBorderStyle = createModel('leftBorderStyle')
 const rightBorderStyle = createModel('rightBorderStyle')
 const isFullWidth = createModel('isFullWidth')
-const stageAlpha = createModel('stageAlpha')
 const noteAlpha = createModel('noteAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
@@ -173,7 +171,6 @@ const connectorPresentation = createModel('connectorPresentation')
                 v-model="rightBorderStyle"
             />
             <MultiIsFullWidthField v-if="types.stageStyleEventJoint" v-model="isFullWidth" />
-            <MultiStageAlphaField v-if="types.stageStyleEventJoint" v-model="stageAlpha" />
             <MultiNoteAlphaField v-if="types.stageStyleEventJoint" v-model="noteAlpha" />
             <MultiLaneAlphaField v-if="types.stageStyleEventJoint" v-model="laneAlpha" />
             <MultiJudgmentLineAlphaField

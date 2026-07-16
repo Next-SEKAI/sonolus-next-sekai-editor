@@ -993,9 +993,6 @@
             "stage": {
                 "label": "Stage"
             },
-            "stageAlpha": {
-                "label": "Stage Alpha"
-            },
             "timeScale": {
                 "label": "Time Scale"
             },

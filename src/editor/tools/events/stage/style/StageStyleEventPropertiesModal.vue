@@ -12,7 +12,6 @@ import MultiLaneAlphaField from '../../../../../modals/form/MultiLaneAlphaField.
 import MultiLeftBorderStyleField from '../../../../../modals/form/MultiLeftBorderStyleField.vue'
 import MultiNoteAlphaField from '../../../../../modals/form/MultiNoteAlphaField.vue'
 import MultiRightBorderStyleField from '../../../../../modals/form/MultiRightBorderStyleField.vue'
-import MultiStageAlphaField from '../../../../../modals/form/MultiStageAlphaField.vue'
 import MultiStageField from '../../../../../modals/form/MultiStageField.vue'
 import PropertiesModal from '../../../../../modals/form/PropertiesModal.vue'
 import { interpolateRaw } from '../../../../../utils/interpolate'
@@ -28,7 +27,6 @@ const judgmentLineStyle = createModel('judgmentLineStyle')
 const leftBorderStyle = createModel('leftBorderStyle')
 const rightBorderStyle = createModel('rightBorderStyle')
 const isFullWidth = createModel('isFullWidth')
-const stageAlpha = createModel('stageAlpha')
 const noteAlpha = createModel('noteAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
@@ -48,7 +46,6 @@ const editorLane = createModel('editorLane')
         <MultiLeftBorderStyleField v-model="leftBorderStyle" />
         <MultiRightBorderStyleField v-model="rightBorderStyle" />
         <MultiIsFullWidthField v-model="isFullWidth" />
-        <MultiStageAlphaField v-model="stageAlpha" />
         <MultiNoteAlphaField v-model="noteAlpha" />
         <MultiLaneAlphaField v-model="laneAlpha" />
         <MultiJudgmentLineAlphaField v-model="judgmentLineAlpha" />
