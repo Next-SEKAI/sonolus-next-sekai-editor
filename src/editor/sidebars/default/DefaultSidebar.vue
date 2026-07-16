@@ -43,6 +43,7 @@ import MultiLeftBorderStyleField from '../../../modals/form/MultiLeftBorderStyle
 import MultiLeftField from '../../../modals/form/MultiLeftField.vue'
 import MultiMaskLeftField from '../../../modals/form/MultiMaskLeftField.vue'
 import MultiMaskSizeField from '../../../modals/form/MultiMaskSizeField.vue'
+import MultiNoteAlphaField from '../../../modals/form/MultiNoteAlphaField.vue'
 import MultiNoteTypeField from '../../../modals/form/MultiNoteTypeField.vue'
 import MultiPivotLaneField from '../../../modals/form/MultiPivotLaneField.vue'
 import MultiRightBorderStyleField from '../../../modals/form/MultiRightBorderStyleField.vue'
@@ -93,6 +94,7 @@ const leftBorderStyle = createModel('leftBorderStyle')
 const rightBorderStyle = createModel('rightBorderStyle')
 const isFullWidth = createModel('isFullWidth')
 const stageAlpha = createModel('stageAlpha')
+const noteAlpha = createModel('noteAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
 const divisionLineAlpha = createModel('divisionLineAlpha')
@@ -172,6 +174,7 @@ const connectorPresentation = createModel('connectorPresentation')
             />
             <MultiIsFullWidthField v-if="types.stageStyleEventJoint" v-model="isFullWidth" />
             <MultiStageAlphaField v-if="types.stageStyleEventJoint" v-model="stageAlpha" />
+            <MultiNoteAlphaField v-if="types.stageStyleEventJoint" v-model="noteAlpha" />
             <MultiLaneAlphaField v-if="types.stageStyleEventJoint" v-model="laneAlpha" />
             <MultiJudgmentLineAlphaField
                 v-if="types.stageStyleEventJoint"

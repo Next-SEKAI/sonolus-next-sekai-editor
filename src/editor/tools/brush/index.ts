@@ -87,6 +87,7 @@ export type BrushProperties = {
     rightBorderStyle?: BorderStyle
     isFullWidth?: boolean
     stageAlpha?: number
+    noteAlpha?: number
     laneAlpha?: number
     judgmentLineAlpha?: number
     divisionLineAlpha?: number

@@ -15,6 +15,7 @@ export type StageStyleEventJointEntity = BaseStageEventJointEntity & {
     rightBorderStyle: BorderStyle
     isFullWidth: boolean
     stageAlpha: number
+    noteAlpha: number
     laneAlpha: number
     judgmentLineAlpha: number
     divisionLineAlpha: number
@@ -40,6 +41,7 @@ export const toStageStyleEventJointEntity = (
     rightBorderStyle: object.rightBorderStyle,
     isFullWidth: object.isFullWidth,
     stageAlpha: object.stageAlpha,
+    noteAlpha: object.noteAlpha,
     laneAlpha: object.laneAlpha,
     judgmentLineAlpha: object.judgmentLineAlpha,
     divisionLineAlpha: object.divisionLineAlpha,
