@@ -33,11 +33,10 @@ export const parseStageStyleEventsToChart = (
             leftBorderStyle: borderStyles[getValue(entity, 'leftBorderStyle', borderStyleSchema)],
             rightBorderStyle: borderStyles[getValue(entity, 'rightBorderStyle', borderStyleSchema)],
             isFullWidth: !!getOptionalValue(entity, 'fullWidth', fullWidthSchema),
-            noteAlpha: (getOptionalValue(entity, 'noteAlpha', alphaSchema) ?? 1) * alpha,
+            noteAlpha: getOptionalValue(entity, 'noteAlpha', alphaSchema) ?? 1,
             laneAlpha: getValue(entity, 'laneAlpha', alphaSchema) * alpha,
             judgmentLineAlpha: getValue(entity, 'judgeLineAlpha', alphaSchema) * alpha,
-            divisionLineAlpha:
-                (getOptionalValue(entity, 'divisionLineAlpha', alphaSchema) ?? 1) * alpha,
+            divisionLineAlpha: getOptionalValue(entity, 'divisionLineAlpha', alphaSchema) ?? 1,
             eventEase: eventEases[getValue(entity, 'ease', eventEaseSchema)],
         }
     })
