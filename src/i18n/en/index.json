@@ -156,6 +156,15 @@
                 "title": "Default Note Properties"
             }
         },
+        "noteSizes": {
+            "increase": {
+                "title": "Increase Note Size"
+            },
+            "decrease": {
+                "title": "Decrease Note Size"
+            },
+            "changed": "Changed note size to {0}"
+        },
         "offset": {
             "title": "Switch to Offset tool",
             "switched": "Switched to Offset tool"
