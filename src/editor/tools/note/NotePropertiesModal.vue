@@ -3,7 +3,7 @@ import { isDynamicStages } from '../../../history/dynamicStages.ts'
 import { i18n } from '../../../i18n'
 import MultiBeatField from '../../../modals/form/MultiBeatField.vue'
 import MultiConnectorActiveIsCriticalField from '../../../modals/form/MultiConnectorActiveIsCriticalField.vue'
-import MultiConnectorActiveIsFakeField from '../../../modals/form/MultiConnectorActiveIsFakeField.vue'
+import MultiConnectorIsFakeField from '../../../modals/form/MultiConnectorIsFakeField.vue'
 import MultiConnectorEaseField from '../../../modals/form/MultiConnectorEaseField.vue'
 import MultiConnectorGuideAlphaField from '../../../modals/form/MultiConnectorGuideAlphaField.vue'
 import MultiConnectorGuideColorField from '../../../modals/form/MultiConnectorGuideColorField.vue'
@@ -43,8 +43,8 @@ const sfx = createModel('sfx')
 const isConnectorSeparator = createModel('isConnectorSeparator')
 const connectorType = createModel('connectorType')
 const connectorEase = createModel('connectorEase')
+const connectorIsFake = createModel('connectorIsFake')
 const connectorActiveIsCritical = createModel('connectorActiveIsCritical')
-const connectorActiveIsFake = createModel('connectorActiveIsFake')
 const connectorGuideColor = createModel('connectorGuideColor')
 const connectorGuideAlpha = createModel('connectorGuideAlpha')
 const connectorLayer = createModel('connectorLayer')
@@ -80,13 +80,13 @@ const connectorPresentation = createModel('connectorPresentation')
             v-if="noteFields.connectorEase !== false"
             v-model="connectorEase"
         />
+        <MultiConnectorIsFakeField
+            v-if="noteFields.connectorIsFake !== false"
+            v-model="connectorIsFake"
+        />
         <MultiConnectorActiveIsCriticalField
             v-if="noteFields.connectorActiveIsCritical !== false"
             v-model="connectorActiveIsCritical"
-        />
-        <MultiConnectorActiveIsFakeField
-            v-if="noteFields.connectorActiveIsFake !== false"
-            v-model="connectorActiveIsFake"
         />
         <MultiConnectorGuideColorField
             v-if="noteFields.connectorGuideColor !== false"

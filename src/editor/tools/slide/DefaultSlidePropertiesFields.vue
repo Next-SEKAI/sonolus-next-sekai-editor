@@ -2,7 +2,7 @@
 import { defaultSlideProperties, defaultSlidePropertiesPresetIndex } from '.'
 import CopyPropertiesField from '../../../modals/form/CopyPropertiesField.vue'
 import OptionalConnectorActiveIsCriticalField from '../../../modals/form/OptionalConnectorActiveIsCriticalField.vue'
-import OptionalConnectorActiveIsFakeField from '../../../modals/form/OptionalConnectorActiveIsFakeField.vue'
+import OptionalConnectorIsFakeField from '../../../modals/form/OptionalConnectorIsFakeField.vue'
 import OptionalConnectorEaseField from '../../../modals/form/OptionalConnectorEaseField.vue'
 import OptionalConnectorGuideAlphaField from '../../../modals/form/OptionalConnectorGuideAlphaField.vue'
 import OptionalConnectorGuideColorField from '../../../modals/form/OptionalConnectorGuideColorField.vue'
@@ -32,8 +32,8 @@ const sfx = createModel('sfx')
 const isConnectorSeparator = createModel('isConnectorSeparator')
 const connectorType = createModel('connectorType')
 const connectorEase = createModel('connectorEase')
+const connectorIsFake = createModel('connectorIsFake')
 const connectorActiveIsCritical = createModel('connectorActiveIsCritical')
-const connectorActiveIsFake = createModel('connectorActiveIsFake')
 const connectorGuideColor = createModel('connectorGuideColor')
 const connectorGuideAlpha = createModel('connectorGuideAlpha')
 const connectorLayer = createModel('connectorLayer')
@@ -56,8 +56,8 @@ const copyProperties = createModel('copyProperties')
     <OptionalIsConnectorSeparatorField v-model="isConnectorSeparator" />
     <OptionalConnectorTypeField v-model="connectorType" />
     <OptionalConnectorEaseField v-model="connectorEase" />
+    <OptionalConnectorIsFakeField v-model="connectorIsFake" />
     <OptionalConnectorActiveIsCriticalField v-model="connectorActiveIsCritical" />
-    <OptionalConnectorActiveIsFakeField v-model="connectorActiveIsFake" />
     <OptionalConnectorGuideColorField v-model="connectorGuideColor" />
     <OptionalConnectorGuideAlphaField v-model="connectorGuideAlpha" />
     <OptionalConnectorLayerField v-model="connectorLayer" />

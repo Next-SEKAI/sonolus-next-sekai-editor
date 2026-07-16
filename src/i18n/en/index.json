@@ -788,9 +788,6 @@
             "connectorActiveIsCritical": {
                 "label": "Slide Critical"
             },
-            "connectorActiveIsFake": {
-                "label": "Slide Fake"
-            },
             "connectorEase": {
                 "label": "Connector Ease",
                 "linear": "Linear",
@@ -799,6 +796,9 @@
                 "inOut": "In-Out",
                 "outIn": "Out-In",
                 "none": "None"
+            },
+            "connectorIsFake": {
+                "label": "Connector Fake"
             },
             "connectorGuideAlpha": {
                 "label": "Guide Alpha"
@@ -832,7 +832,8 @@
             "connectorType": {
                 "label": "Connector Type",
                 "active": "Slide",
-                "guide": "Guide"
+                "guide": "Guide",
+                "damage": "Damage"
             },
             "copyProperties": {
                 "label": "Copy Properties"

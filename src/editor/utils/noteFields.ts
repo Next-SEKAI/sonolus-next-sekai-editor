@@ -12,8 +12,8 @@ export type NoteFields = {
     isConnectorSeparator: boolean
     connectorType: boolean
     connectorEase: boolean
+    connectorIsFake: boolean
     connectorActiveIsCritical: boolean
-    connectorActiveIsFake: boolean
     connectorGuideColor: boolean
     connectorGuideAlpha: boolean
     connectorLayer: boolean
@@ -36,6 +36,8 @@ export const getNoteFields = (note: NoteEntity): NoteFields => {
     const isInGuide = info.guideHead !== info.guideTail
     const isGuideHead = info.guideHead === info.note
     const isGuideTail = info.guideTail === info.note
+    const isInDamage = info.damageHead !== info.damageTail
+    const isDamageHead = info.damageHead === info.note
 
     return {
         isAttached: !isFirst && !isLast,
@@ -51,8 +53,10 @@ export const getNoteFields = (note: NoteEntity): NoteFields => {
         isConnectorSeparator: !isFirst && !isLast,
         connectorType: (isFirst || note.isConnectorSeparator) && !isLast,
         connectorEase: (isFirst || !note.isAttached) && !isLast,
+        connectorIsFake:
+            (isInActive && (isActiveHead || note.isConnectorSeparator)) ||
+            (isInDamage && (isDamageHead || note.isConnectorSeparator)),
         connectorActiveIsCritical: isInActive && (isActiveHead || note.isConnectorSeparator),
-        connectorActiveIsFake: isInActive && (isActiveHead || note.isConnectorSeparator),
         connectorGuideColor: isInGuide && (isGuideHead || note.isConnectorSeparator),
         connectorGuideAlpha: isInGuide && (isGuideHead || note.isConnectorSeparator || isGuideTail),
         connectorLayer: (isFirst || note.isConnectorSeparator) && !isLast,

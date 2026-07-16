@@ -19,7 +19,7 @@ export type NoteSfx =
     | 'criticalTick'
     | 'damage'
 
-export type ConnectorType = 'active' | 'guide'
+export type ConnectorType = 'active' | 'guide' | 'damage'
 
 export type ConnectorEase = 'linear' | 'in' | 'out' | 'inOut' | 'outIn' | 'none'
 
@@ -45,8 +45,8 @@ export type NoteObject = {
     isConnectorSeparator: boolean
     connectorType: ConnectorType
     connectorEase: ConnectorEase
+    connectorIsFake: boolean
     connectorActiveIsCritical: boolean
-    connectorActiveIsFake: boolean
     connectorGuideColor: ConnectorGuideColor
     connectorGuideAlpha: number
     connectorLayer: ConnectorLayer

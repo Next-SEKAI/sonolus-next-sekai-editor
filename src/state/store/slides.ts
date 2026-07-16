@@ -16,6 +16,8 @@ export type StoreSlides = {
             activeTail?: NoteEntity
             guideHead?: NoteEntity
             guideTail?: NoteEntity
+            damageHead?: NoteEntity
+            damageTail?: NoteEntity
         }[]
     >
     connector: Map<SlideId, ConnectorEntity[]>

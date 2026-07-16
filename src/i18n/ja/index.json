@@ -522,9 +522,6 @@
       "connectorActiveIsCritical": {
         "label": "スライドクリティカル"
       },
-      "connectorActiveIsFake": {
-        "label": "スライドフェイク"
-      },
       "connectorEase": {
         "label": "中継点の加減速",
         "linear": "直線",

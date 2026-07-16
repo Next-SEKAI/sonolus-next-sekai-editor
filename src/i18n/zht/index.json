@@ -502,9 +502,6 @@
       "connectorActiveIsCritical": {
         "label": "Slide Critical"
       },
-      "connectorActiveIsFake": {
-        "label": "假Slide"
-      },
       "connectorEase": {
         "label": "連接器形狀",
         "linear": "線性",
