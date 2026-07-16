@@ -25,6 +25,8 @@ import { jumpUp } from './jumps/jumpUp'
 import { manageGroups } from './manageGroups'
 import { manageStages } from './manageStages'
 import { createNote, note } from './note'
+import { decreaseNoteSize } from './noteSizes/decrease'
+import { increaseNoteSize } from './noteSizes/increase'
 import { offset } from './offset'
 import { open } from './open'
 import { paste } from './paste'
@@ -104,6 +106,8 @@ export const commands = {
     paste,
     undo,
     redo,
+    increaseNoteSize,
+    decreaseNoteSize,
 
     note,
     note0: createNote(0),
