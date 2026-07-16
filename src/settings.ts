@@ -24,7 +24,6 @@ const defaultNoteSlidePropertiesSchema = Type.Intersect([
                 Type.Literal('forceNonTick'),
             ]),
             isAttached: Type.Boolean(),
-            size: Type.Number(),
             isCritical: Type.Boolean(),
             flickDirection: Type.Union([
                 Type.Literal('none'),
