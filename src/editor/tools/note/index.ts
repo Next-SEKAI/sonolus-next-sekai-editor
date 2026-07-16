@@ -393,7 +393,7 @@ const getPropertiesFromSelection = () => {
     return {
         noteType: defaultNoteProperties.value.noteType ?? note?.noteType ?? 'default',
         isAttached: defaultNoteProperties.value.isAttached ?? note?.isAttached ?? false,
-        size: defaultNoteProperties.value.size ?? note?.size ?? 3,
+        size: note?.size ?? view.noteSize,
         isCritical: defaultNoteProperties.value.isCritical ?? note?.isCritical ?? false,
         flickDirection:
             defaultNoteProperties.value.flickDirection ?? note?.flickDirection ?? 'none',

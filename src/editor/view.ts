@@ -30,6 +30,7 @@ export const view = shallowReactive({
     w: 0,
     h: 0,
 
+    noteSize: 3,
     division: 4,
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     snapping: 'absolute' as 'absolute' | 'relative',

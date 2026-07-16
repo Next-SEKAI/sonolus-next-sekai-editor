@@ -17,7 +17,6 @@ import OptionalIsCriticalField from '../../../modals/form/OptionalIsCriticalFiel
 import OptionalIsFakeField from '../../../modals/form/OptionalIsFakeField.vue'
 import OptionalNoteTypeField from '../../../modals/form/OptionalNoteTypeField.vue'
 import OptionalSfxField from '../../../modals/form/OptionalSfxField.vue'
-import OptionalSizeField from '../../../modals/form/OptionalSizeField.vue'
 import PresetField from '../../../modals/form/PresetField.vue'
 import { settings } from '../../../settings'
 import { useProperties } from '../../utils/properties'
@@ -26,7 +25,6 @@ const createModel = useProperties(defaultNoteProperties)
 
 const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')
-const size = createModel('size')
 const isCritical = createModel('isCritical')
 const flickDirection = createModel('flickDirection')
 const isFake = createModel('isFake')
@@ -51,7 +49,6 @@ const copyProperties = createModel('copyProperties')
     />
     <OptionalNoteTypeField v-model="noteType" />
     <OptionalIsAttachedField v-model="isAttached" />
-    <OptionalSizeField v-model="size" />
     <OptionalIsCriticalField v-model="isCritical" />
     <OptionalFlickDirectionField v-model="flickDirection" />
     <OptionalIsFakeField v-model="isFake" />

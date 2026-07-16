@@ -340,7 +340,7 @@ const getPropertiesFromSelection = (beat: number) => {
     return {
         noteType: defaultSlideProperties.value.noteType ?? note?.noteType ?? 'default',
         isAttached: defaultSlideProperties.value.isAttached ?? note?.isAttached ?? false,
-        size: defaultSlideProperties.value.size ?? note?.size ?? 3,
+        size: note?.size ?? view.noteSize,
         isCritical: defaultSlideProperties.value.isCritical ?? note?.isCritical ?? false,
         flickDirection:
             defaultSlideProperties.value.flickDirection ?? note?.flickDirection ?? 'none',

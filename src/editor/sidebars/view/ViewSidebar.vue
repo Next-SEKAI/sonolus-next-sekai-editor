@@ -13,6 +13,7 @@ import { switchToStage } from '../../commands/stages'
 import { toolName, tools } from '../../tools'
 import { view } from '../../view'
 import BaseSidebar from '../BaseSidebar.vue'
+import SizeField from '../../../modals/form/SizeField.vue'
 
 const tool = computed({
     get: () => toolName.value,
@@ -77,6 +78,7 @@ const snapping = computed({
         <SelectField v-model="tool" :label="i18n.sidebars.view.tool" :options="toolOptions" />
         <OptionalGroupField v-model="groupId" />
         <OptionalStageField v-if="isDynamicStages" v-model="stageId" />
+        <SizeField v-model="view.noteSize" />
         <SelectField
             v-model="division"
             :label="i18n.sidebars.view.division"

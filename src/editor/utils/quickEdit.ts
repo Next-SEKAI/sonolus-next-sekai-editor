@@ -65,9 +65,6 @@ export const quickEdit = (properties: DefaultNoteSlideProperties) => {
         case 'isAttached':
             editSelectedEditableEntities({ isAttached: !value })
             break
-        case 'size':
-            editSelectedEditableEntities({ size: value as never })
-            break
         case 'isCritical':
             editSelectedEditableEntities({ isCritical: !value })
             break
