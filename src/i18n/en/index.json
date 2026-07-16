@@ -946,6 +946,9 @@
             "name": {
                 "label": "Name"
             },
+            "noteAlpha": {
+                "label": "Note Alpha"
+            },
             "noteType": {
                 "label": "Note Type",
                 "default": "Default",

@@ -9,6 +9,7 @@ import OptionalJudgmentLineColorField from '../../../../../modals/form/OptionalJ
 import OptionalJudgmentLineStyleField from '../../../../../modals/form/OptionalJudgmentLineStyleField.vue'
 import OptionalLaneAlphaField from '../../../../../modals/form/OptionalLaneAlphaField.vue'
 import OptionalLeftBorderStyleField from '../../../../../modals/form/OptionalLeftBorderStyleField.vue'
+import OptionalNoteAlphaField from '../../../../../modals/form/OptionalNoteAlphaField.vue'
 import OptionalRightBorderStyleField from '../../../../../modals/form/OptionalRightBorderStyleField.vue'
 import OptionalStageAlphaField from '../../../../../modals/form/OptionalStageAlphaField.vue'
 import { useProperties } from '../../../../utils/properties'
@@ -21,6 +22,7 @@ const leftBorderStyle = createModel('leftBorderStyle')
 const rightBorderStyle = createModel('rightBorderStyle')
 const isFullWidth = createModel('isFullWidth')
 const stageAlpha = createModel('stageAlpha')
+const noteAlpha = createModel('noteAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
 const divisionLineAlpha = createModel('divisionLineAlpha')
@@ -35,6 +37,7 @@ const copyProperties = createModel('copyProperties')
     <OptionalRightBorderStyleField v-model="rightBorderStyle" />
     <OptionalIsFullWidthField v-model="isFullWidth" />
     <OptionalStageAlphaField v-model="stageAlpha" />
+    <OptionalNoteAlphaField v-model="noteAlpha" />
     <OptionalLaneAlphaField v-model="laneAlpha" />
     <OptionalJudgmentLineAlphaField v-model="judgmentLineAlpha" />
     <OptionalDivisionLineAlphaField v-model="divisionLineAlpha" />

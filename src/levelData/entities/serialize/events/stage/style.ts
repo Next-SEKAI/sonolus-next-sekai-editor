@@ -53,6 +53,10 @@ export const serializeStageStyleEventsToLevelDataEntities = (
                     value: joint.stageAlpha,
                 },
                 {
+                    name: 'noteAlpha',
+                    value: joint.noteAlpha,
+                },
+                {
                     name: 'laneAlpha',
                     value: joint.laneAlpha,
                 },
