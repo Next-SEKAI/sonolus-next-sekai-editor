@@ -95,7 +95,7 @@ export const serializeSlidesToLevelDataEntities = (
                         name: 'segmentKind',
                         value:
                             note.connectorType === 'active'
-                                ? note.connectorActiveIsFake
+                                ? note.connectorIsFake
                                     ? note.connectorActiveIsCritical
                                         ? 52
                                         : 51
@@ -224,7 +224,7 @@ export const serializeSlidesToLevelDataEntities = (
                 if (head) {
                     if (
                         info.segmentHead.connectorType === 'active' &&
-                        !info.segmentHead.connectorActiveIsFake
+                        !info.segmentHead.connectorIsFake
                     ) {
                         const headTick = Math.round(head.beat * beatToTicks)
                         for (

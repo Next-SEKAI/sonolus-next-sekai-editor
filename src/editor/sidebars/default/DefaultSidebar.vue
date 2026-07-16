@@ -14,7 +14,7 @@ import MultiCameraZoomTargetLaneField from '../../../modals/form/MultiCameraZoom
 import MultiCameraZoomTargetYField from '../../../modals/form/MultiCameraZoomTargetYField.vue'
 import MultiCameraZoomVerticalAlignField from '../../../modals/form/MultiCameraZoomVerticalAlignField.vue'
 import MultiConnectorActiveIsCriticalField from '../../../modals/form/MultiConnectorActiveIsCriticalField.vue'
-import MultiConnectorActiveIsFakeField from '../../../modals/form/MultiConnectorActiveIsFakeField.vue'
+import MultiConnectorIsFakeField from '../../../modals/form/MultiConnectorIsFakeField.vue'
 import MultiConnectorEaseField from '../../../modals/form/MultiConnectorEaseField.vue'
 import MultiConnectorGuideAlphaField from '../../../modals/form/MultiConnectorGuideAlphaField.vue'
 import MultiConnectorGuideColorField from '../../../modals/form/MultiConnectorGuideColorField.vue'
@@ -112,8 +112,8 @@ const sfx = createModel('sfx')
 const isConnectorSeparator = createModel('isConnectorSeparator')
 const connectorType = createModel('connectorType')
 const connectorEase = createModel('connectorEase')
+const connectorIsFake = createModel('connectorIsFake')
 const connectorActiveIsCritical = createModel('connectorActiveIsCritical')
-const connectorActiveIsFake = createModel('connectorActiveIsFake')
 const connectorGuideColor = createModel('connectorGuideColor')
 const connectorGuideAlpha = createModel('connectorGuideAlpha')
 const connectorLayer = createModel('connectorLayer')
@@ -244,13 +244,13 @@ const connectorPresentation = createModel('connectorPresentation')
                 v-if="types.note && noteFields.connectorEase !== false"
                 v-model="connectorEase"
             />
+            <MultiConnectorIsFakeField
+                v-if="types.note && noteFields.connectorIsFake !== false"
+                v-model="connectorIsFake"
+            />
             <MultiConnectorActiveIsCriticalField
                 v-if="types.note && noteFields.connectorActiveIsCritical !== false"
                 v-model="connectorActiveIsCritical"
-            />
-            <MultiConnectorActiveIsFakeField
-                v-if="types.note && noteFields.connectorActiveIsFake !== false"
-                v-model="connectorActiveIsFake"
             />
             <MultiConnectorGuideColorField
                 v-if="types.note && noteFields.connectorGuideColor !== false"

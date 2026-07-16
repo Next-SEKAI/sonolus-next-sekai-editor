@@ -31,8 +31,8 @@ export type NoteEntity = BaseEntity & {
     connectorType: ConnectorType
     connectorEase: ConnectorEase
     connectorLayer: ConnectorLayer
+    connectorIsFake: boolean
     connectorActiveIsCritical: boolean
-    connectorActiveIsFake: boolean
     connectorGuideColor: ConnectorGuideColor
     connectorGuideAlpha: number
     connectorIsPassThrough: boolean
@@ -69,8 +69,8 @@ export const toNoteEntity = (
     isConnectorSeparator: object.isConnectorSeparator,
     connectorType: object.connectorType,
     connectorEase: object.connectorEase,
+    connectorIsFake: object.connectorIsFake,
     connectorActiveIsCritical: object.connectorActiveIsCritical,
-    connectorActiveIsFake: object.connectorActiveIsFake,
     connectorGuideColor: object.connectorGuideColor,
     connectorGuideAlpha: object.connectorGuideAlpha,
     connectorLayer: object.connectorLayer,

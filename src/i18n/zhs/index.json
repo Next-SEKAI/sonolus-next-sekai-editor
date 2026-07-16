@@ -502,9 +502,6 @@
       "connectorActiveIsCritical": {
         "label": "关键长按音符"
       },
-      "connectorActiveIsFake": {
-        "label": "假长按音符"
-      },
       "connectorEase": {
         "label": "连接缓动",
         "linear": "线性",

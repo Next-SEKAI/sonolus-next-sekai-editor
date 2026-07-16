@@ -58,8 +58,8 @@ export type BrushProperties = {
     isConnectorSeparator?: boolean
     connectorType?: ConnectorType
     connectorEase?: ConnectorEase
+    connectorIsFake?: boolean
     connectorActiveIsCritical?: boolean
-    connectorActiveIsFake?: boolean
     connectorGuideColor?: ConnectorGuideColor
     connectorGuideAlpha?: number
     connectorLayer?: ConnectorLayer

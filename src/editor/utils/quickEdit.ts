@@ -121,11 +121,11 @@ export const quickEdit = (properties: DefaultNoteSlideProperties) => {
                 ]),
             })
             break
+        case 'connectorIsFake':
+            editSelectedEditableEntities({ connectorIsFake: !value })
+            break
         case 'connectorActiveIsCritical':
             editSelectedEditableEntities({ connectorActiveIsCritical: !value })
-            break
-        case 'connectorActiveIsFake':
-            editSelectedEditableEntities({ connectorActiveIsFake: !value })
             break
         case 'connectorGuideColor':
             editSelectedEditableEntities({

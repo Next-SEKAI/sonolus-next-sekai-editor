@@ -502,9 +502,6 @@
       "connectorActiveIsCritical": {
         "label": "Kritik Kaydırma"
       },
-      "connectorActiveIsFake": {
-        "label": "Sahte Kaydırma"
-      },
       "connectorEase": {
         "label": "Bağlayıcı Yumuşatma",
         "linear": "Doğrusal",

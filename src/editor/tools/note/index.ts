@@ -328,12 +328,11 @@ export const editNote = (entity: NoteEntity, object: Partial<NoteObject>) => {
         isConnectorSeparator: object.isConnectorSeparator ?? entity.isConnectorSeparator,
         connectorType: object.connectorType ?? entity.connectorType,
         connectorEase: object.connectorEase ?? entity.connectorEase,
+        connectorIsFake: object.connectorIsFake ?? object.isFake ?? entity.connectorIsFake,
         connectorActiveIsCritical:
             object.connectorActiveIsCritical ??
             object.isCritical ??
             entity.connectorActiveIsCritical,
-        connectorActiveIsFake:
-            object.connectorActiveIsFake ?? object.isFake ?? entity.connectorActiveIsFake,
         connectorGuideColor: object.connectorGuideColor ?? entity.connectorGuideColor,
         connectorGuideAlpha: object.connectorGuideAlpha ?? entity.connectorGuideAlpha,
         connectorLayer: object.connectorLayer ?? entity.connectorLayer,
@@ -362,12 +361,11 @@ export const editSelectedNote = (
         isConnectorSeparator: object.isConnectorSeparator ?? entity.isConnectorSeparator,
         connectorType: object.connectorType ?? entity.connectorType,
         connectorEase: object.connectorEase ?? entity.connectorEase,
+        connectorIsFake: object.connectorIsFake ?? object.isFake ?? entity.connectorIsFake,
         connectorActiveIsCritical:
             object.connectorActiveIsCritical ??
             object.isCritical ??
             entity.connectorActiveIsCritical,
-        connectorActiveIsFake:
-            object.connectorActiveIsFake ?? object.isFake ?? entity.connectorActiveIsFake,
         connectorGuideColor: object.connectorGuideColor ?? entity.connectorGuideColor,
         connectorGuideAlpha: object.connectorGuideAlpha ?? entity.connectorGuideAlpha,
         connectorLayer: object.connectorLayer ?? entity.connectorLayer,
@@ -402,13 +400,13 @@ const getPropertiesFromSelection = () => {
         isConnectorSeparator: defaultNoteProperties.value.isConnectorSeparator ?? false,
         connectorType: defaultNoteProperties.value.connectorType ?? 'active',
         connectorEase: defaultNoteProperties.value.connectorEase ?? 'linear',
+        connectorIsFake:
+            defaultNoteProperties.value.connectorIsFake ??
+            defaultNoteProperties.value.isFake ??
+            false,
         connectorActiveIsCritical:
             defaultNoteProperties.value.connectorActiveIsCritical ??
             defaultNoteProperties.value.isCritical ??
-            false,
-        connectorActiveIsFake:
-            defaultNoteProperties.value.connectorActiveIsFake ??
-            defaultNoteProperties.value.isFake ??
             false,
         connectorGuideColor: defaultNoteProperties.value.connectorGuideColor ?? 'green',
         connectorGuideAlpha: defaultNoteProperties.value.connectorGuideAlpha ?? 1,

@@ -502,9 +502,6 @@
       "connectorActiveIsCritical": {
         "label": "Slide Critique"
       },
-      "connectorActiveIsFake": {
-        "label": "Slide Faux"
-      },
       "connectorEase": {
         "label": "Accélération du Connecteur",
         "linear": "Linéaire",

@@ -778,9 +778,6 @@
       "connectorActiveIsCritical": {
         "label": "크리티컬 슬라이드"
       },
-      "connectorActiveIsFake": {
-        "label": "가짜 슬라이"
-      },
       "connectorEase": {
         "label": "커넥터 이징",
         "linear": "선형",

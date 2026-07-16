@@ -350,15 +350,15 @@ const getPropertiesFromSelection = (beat: number) => {
         connectorType:
             defaultSlideProperties.value.connectorType ?? nearest?.connectorType ?? 'active',
         connectorEase: defaultSlideProperties.value.connectorEase ?? 'linear',
+        connectorIsFake:
+            defaultSlideProperties.value.connectorIsFake ??
+            defaultSlideProperties.value.isFake ??
+            nearest?.connectorIsFake ??
+            false,
         connectorActiveIsCritical:
             defaultSlideProperties.value.connectorActiveIsCritical ??
             defaultSlideProperties.value.isCritical ??
             nearest?.connectorActiveIsCritical ??
-            false,
-        connectorActiveIsFake:
-            defaultSlideProperties.value.connectorActiveIsFake ??
-            defaultSlideProperties.value.isFake ??
-            nearest?.connectorActiveIsFake ??
             false,
         connectorGuideColor:
             defaultSlideProperties.value.connectorGuideColor ??

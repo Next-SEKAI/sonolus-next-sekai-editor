@@ -73,8 +73,8 @@ export const parseUscChart = (objects: UscObject[]) => {
                         isConnectorSeparator: false,
                         connectorType: 'active',
                         connectorEase: 'linear',
+                        connectorIsFake: false,
                         connectorActiveIsCritical: object.critical,
-                        connectorActiveIsFake: false,
                         connectorGuideColor: 'green',
                         connectorGuideAlpha: 1,
                         connectorLayer: 'top',
@@ -111,8 +111,8 @@ export const parseUscChart = (objects: UscObject[]) => {
                             connection.type === 'start' || connection.type === 'tick'
                                 ? connectorEases[connection.ease]
                                 : 'linear',
+                        connectorIsFake: false,
                         connectorActiveIsCritical: object.critical,
-                        connectorActiveIsFake: false,
                         connectorGuideColor: 'green',
                         connectorGuideAlpha: 1,
                         connectorLayer: 'top',
@@ -138,8 +138,8 @@ export const parseUscChart = (objects: UscObject[]) => {
                         isConnectorSeparator: false,
                         connectorType: 'guide',
                         connectorEase: connectorEases[midpoint.ease],
+                        connectorIsFake: false,
                         connectorActiveIsCritical: false,
-                        connectorActiveIsFake: false,
                         connectorGuideColor: object.color,
                         connectorGuideAlpha: (i === 0
                             ? connectorGuideAlphaStarts
@@ -167,8 +167,8 @@ export const parseUscChart = (objects: UscObject[]) => {
                         isConnectorSeparator: false,
                         connectorType: 'active',
                         connectorEase: 'linear',
+                        connectorIsFake: false,
                         connectorActiveIsCritical: false,
-                        connectorActiveIsFake: false,
                         connectorGuideColor: 'green',
                         connectorGuideAlpha: 1,
                         connectorLayer: 'top',
