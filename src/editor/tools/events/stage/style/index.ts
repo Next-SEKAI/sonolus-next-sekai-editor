@@ -43,7 +43,6 @@ type DefaultStageStyleEventProperties = {
     leftBorderStyle?: BorderStyle
     rightBorderStyle?: BorderStyle
     isFullWidth?: boolean
-    stageAlpha?: number
     noteAlpha?: number
     laneAlpha?: number
     judgmentLineAlpha?: number
@@ -310,7 +309,6 @@ export const editStageStyleEvent = (
         leftBorderStyle: object.leftBorderStyle ?? entity.leftBorderStyle,
         rightBorderStyle: object.rightBorderStyle ?? entity.rightBorderStyle,
         isFullWidth: object.isFullWidth ?? entity.isFullWidth,
-        stageAlpha: object.stageAlpha ?? entity.stageAlpha,
         noteAlpha: object.noteAlpha ?? entity.noteAlpha,
         laneAlpha: object.laneAlpha ?? entity.laneAlpha,
         judgmentLineAlpha: object.judgmentLineAlpha ?? entity.judgmentLineAlpha,
@@ -334,7 +332,6 @@ export const editSelectedStageStyleEvent = (
         leftBorderStyle: object.leftBorderStyle ?? entity.leftBorderStyle,
         rightBorderStyle: object.rightBorderStyle ?? entity.rightBorderStyle,
         isFullWidth: object.isFullWidth ?? entity.isFullWidth,
-        stageAlpha: object.stageAlpha ?? entity.stageAlpha,
         noteAlpha: object.noteAlpha ?? entity.noteAlpha,
         laneAlpha: object.laneAlpha ?? entity.laneAlpha,
         judgmentLineAlpha: object.judgmentLineAlpha ?? entity.judgmentLineAlpha,
@@ -378,10 +375,6 @@ const getPropertiesFromSelection = () => {
             defaultStageStyleEventProperties.value.isFullWidth ??
             stageStyleEventJoint?.isFullWidth ??
             false,
-        stageAlpha:
-            defaultStageStyleEventProperties.value.stageAlpha ??
-            stageStyleEventJoint?.stageAlpha ??
-            1,
         noteAlpha:
             defaultStageStyleEventProperties.value.noteAlpha ??
             stageStyleEventJoint?.noteAlpha ??

@@ -980,9 +980,6 @@
       "stage": {
         "label": "스테이지"
       },
-      "stageAlpha": {
-        "label": "스테이지 불투명도"
-      },
       "timeScale": {
         "label": "시간 배율"
       },

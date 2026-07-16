@@ -43,7 +43,6 @@ import OptionalRotationField from '../../../modals/form/OptionalRotationField.vu
 import OptionalSfxField from '../../../modals/form/OptionalSfxField.vue'
 import OptionalSizeField from '../../../modals/form/OptionalSizeField.vue'
 import OptionalSkipField from '../../../modals/form/OptionalSkipField.vue'
-import OptionalStageAlphaField from '../../../modals/form/OptionalStageAlphaField.vue'
 import OptionalStageField from '../../../modals/form/OptionalStageField.vue'
 import OptionalTimeScaleEaseField from '../../../modals/form/OptionalTimeScaleEaseField.vue'
 import OptionalTimeScaleField from '../../../modals/form/OptionalTimeScaleField.vue'
@@ -94,7 +93,6 @@ const judgmentLineStyle = createModel('judgmentLineStyle')
 const leftBorderStyle = createModel('leftBorderStyle')
 const rightBorderStyle = createModel('rightBorderStyle')
 const isFullWidth = createModel('isFullWidth')
-const stageAlpha = createModel('stageAlpha')
 const noteAlpha = createModel('noteAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
@@ -149,7 +147,6 @@ const eventEase = createModel('eventEase')
     <OptionalLeftBorderStyleField v-if="isDynamicStages" v-model="leftBorderStyle" />
     <OptionalRightBorderStyleField v-if="isDynamicStages" v-model="rightBorderStyle" />
     <OptionalIsFullWidthField v-if="isDynamicStages" v-model="isFullWidth" />
-    <OptionalStageAlphaField v-if="isDynamicStages" v-model="stageAlpha" />
     <OptionalNoteAlphaField v-if="isDynamicStages" v-model="noteAlpha" />
     <OptionalLaneAlphaField v-if="isDynamicStages" v-model="laneAlpha" />
     <OptionalJudgmentLineAlphaField v-if="isDynamicStages" v-model="judgmentLineAlpha" />

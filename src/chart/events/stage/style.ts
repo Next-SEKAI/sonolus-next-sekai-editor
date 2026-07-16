@@ -17,7 +17,6 @@ export type StageStyleEventObject = {
     leftBorderStyle: BorderStyle
     rightBorderStyle: BorderStyle
     isFullWidth: boolean
-    stageAlpha: number
     noteAlpha: number
     laneAlpha: number
     judgmentLineAlpha: number
