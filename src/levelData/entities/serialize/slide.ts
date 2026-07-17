@@ -273,11 +273,14 @@ export const serializeSlidesToLevelDataEntities = (
                             i < tick;
                             i += ticksPerHidden
                         ) {
-                            if (
-                                info.segmentHead.connectorType === 'active' &&
-                                disallowHiddenTicks.has(i)
-                            )
-                                continue
+                            switch (info.segmentHead.connectorType) {
+                                case 'active':
+                                    if (disallowHiddenTicks.has(i)) continue
+                                    break
+                                case 'damage':
+                                    if (info.damageHead === head && headTick === i) continue
+                                    break
+                            }
 
                             addTickNote(i)
                         }
