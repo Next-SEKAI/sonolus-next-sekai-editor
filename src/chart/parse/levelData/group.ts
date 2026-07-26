@@ -6,9 +6,11 @@ export const parseGroupsToChart = ({ entities, addGroup }: ParseCtx) => {
         if (entity.archetype !== '#TIMESCALE_GROUP') continue
 
         addGroup(entity.name, getOptionalRef(entity, 'editorName'), {
-            forceNoteSpeed: getOptionalValue(entity, 'forceNoteSpeed', forceNoteSpeedSchema),
+            forceNoteSpeed:
+                // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+                getOptionalValue(entity, 'forceNoteSpeed', forceNoteSpeedSchema) || undefined,
         })
     }
 }
 
-const forceNoteSpeedSchema = Type.Number({ minimum: 1, maximum: 12 })
+const forceNoteSpeedSchema = Type.Union([Type.Literal(0), Type.Number({ minimum: 1, maximum: 12 })])
