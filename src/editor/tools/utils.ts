@@ -22,6 +22,15 @@ export const hitAllEntitiesAtPoint = (x: number, y: number) =>
         isVisible,
     )
 
+export const hitEntitiesInSelection = <T extends EntityType>(type: T, selection: Selection) =>
+    hitEntities(
+        type,
+        selection.laneMin,
+        selection.laneMax,
+        selection.timeMin,
+        selection.timeMax,
+    ).filter(isVisible)
+
 export const hitAllEntitiesInSelection = (selection: Selection) =>
     hitAllEntities(
         selection.laneMin,

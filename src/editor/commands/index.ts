@@ -16,6 +16,7 @@ import { stageStyleEvent } from './events/stage/style'
 import { stageTransformEvent } from './events/stage/transform'
 import { flip } from './flip'
 import { fullscreen } from './fullscreen'
+import { generateSlideNotes } from './generateSlideNotes'
 import { groupAll } from './groups/groupAll'
 import { groupNext } from './groups/groupNext'
 import { groupPrev } from './groups/groupPrev'
@@ -121,6 +122,7 @@ export const commands = {
     slide2: createSlide(2),
     slide3: createSlide(3),
     slide4: createSlide(4),
+    generateSlideNotes,
 
     bpm,
     timeScale,

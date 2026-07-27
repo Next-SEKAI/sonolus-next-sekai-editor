@@ -84,6 +84,10 @@
                 "one": "Switched to {0} group"
             }
         },
+        "generateSlideNotes": {
+            "title": "Switch to Generate Slide Notes tool",
+            "switched": "Switched to Generate Slide Notes tool"
+        },
         "help": {
             "title": "Help"
         },
@@ -421,6 +425,12 @@
                 "shift": "Use Shift key to operate on all related Note objects.",
                 "properties": "Switch to Slide Tool again to change preset or default properties."
             },
+            "generateSlideNotesTool": {
+                "title": "Generate Slide Notes Tool",
+                "generate": "Tap or drag to select 1 Note object to generate notes for the entire slide.",
+                "generateMultiple": "Tap or drag select 2 Note objects to generate notes between them.",
+                "deselect": "Tap empty space to deselect all objects."
+            },
             "bpmTool": {
                 "title": "BPM Tool",
                 "select": "Tap BPM objects to select 1 object.",
@@ -609,6 +619,12 @@
             "deselected": "Deselected all objects",
             "erasing": "Erasing {0} objects",
             "erased": "Erased {0} objects"
+        },
+        "generateSlideNotes": {
+            "title": "Generate Slide Notes",
+            "deselected": "Deselected all objects",
+            "selecting": "Selecting {0} objects",
+            "generated": "Generated {0} objects"
         },
         "note": {
             "title": "Note #{0}",
