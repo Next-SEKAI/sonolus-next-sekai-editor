@@ -4,7 +4,7 @@ import type { EventEase } from '../../../../../chart/events'
 import type { DivisionParity, StagePivotEventObject } from '../../../../../chart/events/stage/pivot'
 import { pushState, replaceState, state } from '../../../../../history'
 import { selectedEntities } from '../../../../../history/selectedEntities'
-import { defaultStageId } from '../../../../../history/stages'
+import { defaultStageId } from '../../../../../history/stages.ts'
 import { i18n } from '../../../../../i18n'
 import { showModal } from '../../../../../modals'
 import type { Entity } from '../../../../../state/entities'
@@ -71,7 +71,6 @@ export const stagePivotEvent: Tool = {
                 hovered: [],
                 creating: [
                     toStagePivotEventJointEntity({
-                        stageId: view.stageId ?? defaultStageId.value,
                         beat,
                         pivotLane: lane,
                         ...getPropertiesFromSelection(),
@@ -154,7 +153,6 @@ export const stagePivotEvent: Tool = {
             }
         } else {
             add({
-                stageId: view.stageId ?? defaultStageId.value,
                 beat,
                 pivotLane: lane,
                 ...getPropertiesFromSelection(),
@@ -222,7 +220,6 @@ export const stagePivotEvent: Tool = {
                     hovered: [],
                     creating: [
                         toStagePivotEventJointEntity({
-                            stageId: view.stageId ?? defaultStageId.value,
                             beat,
                             pivotLane: lane,
                             ...getPropertiesFromSelection(),
@@ -261,7 +258,6 @@ export const stagePivotEvent: Tool = {
                 const beat = yToValidBeat(y)
 
                 add({
-                    stageId: view.stageId ?? defaultStageId.value,
                     beat,
                     pivotLane: lane,
                     ...getPropertiesFromSelection(),
@@ -335,6 +331,7 @@ const getPropertiesFromSelection = () => {
     const stagePivotEventJoint = getStagePivotEventJointFromSelection()
 
     return {
+        stageId: view.stageId ?? stagePivotEventJoint?.stageId ?? defaultStageId.value,
         divisionSize:
             defaultStagePivotEventProperties.value.divisionSize ??
             stagePivotEventJoint?.divisionSize ??

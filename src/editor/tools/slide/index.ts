@@ -2,9 +2,9 @@ import { computed, ref } from 'vue'
 import type { Tool } from '..'
 import type { NoteObject } from '../../../chart/note'
 import { pushState, replaceState, state } from '../../../history'
-import { defaultGroupId } from '../../../history/groups'
+import { defaultGroupId } from '../../../history/groups.ts'
 import { selectedEntities } from '../../../history/selectedEntities'
-import { defaultStageId } from '../../../history/stages'
+import { defaultStageId } from '../../../history/stages.ts'
 import { store } from '../../../history/store'
 import { i18n } from '../../../i18n'
 import { showModal } from '../../../modals'
@@ -80,8 +80,6 @@ export const slide: Tool = {
                 hovered: [],
                 creating: [
                     toNoteEntity(getSelectedSlideId() ?? createSlideId(), {
-                        groupId: view.groupId ?? defaultGroupId.value,
-                        stageId: view.stageId ?? defaultStageId.value,
                         beat,
                         left: lane,
                         ...getPropertiesFromSelection(beat),
@@ -141,8 +139,6 @@ export const slide: Tool = {
             }
         } else {
             add(getSelectedSlideId() ?? createSlideId(), {
-                groupId: view.groupId ?? defaultGroupId.value,
-                stageId: view.stageId ?? defaultStageId.value,
                 beat,
                 left: lane,
                 ...getPropertiesFromSelection(beat),
@@ -212,8 +208,6 @@ export const slide: Tool = {
                     hovered: [],
                     creating: [
                         toNoteEntity(getSelectedSlideId() ?? createSlideId(), {
-                            groupId: view.groupId ?? defaultGroupId.value,
-                            stageId: view.stageId ?? defaultStageId.value,
                             beat,
                             ...getPropertiesFromSelection(beat),
                             left,
@@ -277,8 +271,6 @@ export const slide: Tool = {
                 const [left, size] = resize(active.lane, lane, 1)
 
                 add(getSelectedSlideId() ?? createSlideId(), {
-                    groupId: view.groupId ?? defaultGroupId.value,
-                    stageId: view.stageId ?? defaultStageId.value,
                     beat,
                     ...getPropertiesFromSelection(beat),
                     left,
@@ -338,6 +330,8 @@ const getPropertiesFromSelection = (beat: number) => {
     const nearest = note && getNearestNoteInSlide(note.slideId, beat)
 
     return {
+        groupId: view.groupId ?? note?.groupId ?? defaultGroupId.value,
+        stageId: view.stageId ?? note?.stageId ?? defaultStageId.value,
         noteType: defaultSlideProperties.value.noteType ?? note?.noteType ?? 'default',
         isAttached: defaultSlideProperties.value.isAttached ?? note?.isAttached ?? false,
         size: note?.size ?? view.noteSize,

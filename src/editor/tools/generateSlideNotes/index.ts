@@ -165,8 +165,8 @@ const apply = (notes: NoteEntity[]) => {
 
             entities.push(
                 ...addNote(transaction, slideId, {
-                    groupId: view.groupId ?? defaultGroupId.value,
-                    stageId: view.stageId ?? defaultStageId.value,
+                    groupId: view.groupId ?? nearest?.groupId ?? defaultGroupId.value,
+                    stageId: view.stageId ?? nearest?.stageId ?? defaultStageId.value,
                     beat,
                     left: 0,
                     noteType:
