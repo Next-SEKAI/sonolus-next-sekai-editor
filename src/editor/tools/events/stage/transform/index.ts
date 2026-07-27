@@ -70,7 +70,6 @@ export const stageTransformEvent: Tool = {
                 hovered: [],
                 creating: [
                     toStageTransformEventJointEntity({
-                        stageId: view.stageId ?? defaultStageId.value,
                         beat,
                         xTranslation: lane,
                         ...getPropertiesFromSelection(),
@@ -153,7 +152,6 @@ export const stageTransformEvent: Tool = {
             }
         } else {
             add({
-                stageId: view.stageId ?? defaultStageId.value,
                 beat,
                 xTranslation: lane,
                 ...getPropertiesFromSelection(),
@@ -221,7 +219,6 @@ export const stageTransformEvent: Tool = {
                     hovered: [],
                     creating: [
                         toStageTransformEventJointEntity({
-                            stageId: view.stageId ?? defaultStageId.value,
                             beat,
                             xTranslation: lane,
                             ...getPropertiesFromSelection(),
@@ -260,7 +257,6 @@ export const stageTransformEvent: Tool = {
                 const beat = yToValidBeat(y)
 
                 add({
-                    stageId: view.stageId ?? defaultStageId.value,
                     beat,
                     xTranslation: lane,
                     ...getPropertiesFromSelection(),
@@ -332,6 +328,7 @@ const getPropertiesFromSelection = () => {
     const stageTransformEventJoint = getStageTransformEventJointFromSelection()
 
     return {
+        stageId: view.stageId ?? stageTransformEventJoint?.stageId ?? defaultStageId.value,
         rotation:
             defaultStageTransformEventProperties.value.rotation ??
             stageTransformEventJoint?.rotation ??

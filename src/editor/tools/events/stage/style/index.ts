@@ -81,7 +81,6 @@ export const stageStyleEvent: Tool = {
                 hovered: [],
                 creating: [
                     toStageStyleEventJointEntity({
-                        stageId: view.stageId ?? defaultStageId.value,
                         beat,
                         editorLane: lane,
                         ...getPropertiesFromSelection(),
@@ -164,7 +163,6 @@ export const stageStyleEvent: Tool = {
             }
         } else {
             add({
-                stageId: view.stageId ?? defaultStageId.value,
                 beat,
                 editorLane: lane,
                 ...getPropertiesFromSelection(),
@@ -232,7 +230,6 @@ export const stageStyleEvent: Tool = {
                     hovered: [],
                     creating: [
                         toStageStyleEventJointEntity({
-                            stageId: view.stageId ?? defaultStageId.value,
                             beat,
                             editorLane: lane,
                             ...getPropertiesFromSelection(),
@@ -271,7 +268,6 @@ export const stageStyleEvent: Tool = {
                 const beat = yToValidBeat(y)
 
                 add({
-                    stageId: view.stageId ?? defaultStageId.value,
                     beat,
                     editorLane: lane,
                     ...getPropertiesFromSelection(),
@@ -355,6 +351,7 @@ const getPropertiesFromSelection = () => {
     const stageStyleEventJoint = getStageStyleEventJointFromSelection()
 
     return {
+        stageId: view.stageId ?? stageStyleEventJoint?.stageId ?? defaultStageId.value,
         judgmentLineColor:
             defaultStageStyleEventProperties.value.judgmentLineColor ??
             stageStyleEventJoint?.judgmentLineColor ??

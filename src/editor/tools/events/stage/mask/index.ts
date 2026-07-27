@@ -4,7 +4,7 @@ import type { EventEase } from '../../../../../chart/events'
 import type { StageMaskEventObject } from '../../../../../chart/events/stage/mask'
 import { pushState, replaceState, state } from '../../../../../history'
 import { selectedEntities } from '../../../../../history/selectedEntities'
-import { defaultStageId } from '../../../../../history/stages'
+import { defaultStageId } from '../../../../../history/stages.ts'
 import { i18n } from '../../../../../i18n'
 import { showModal } from '../../../../../modals'
 import type { Entity } from '../../../../../state/entities'
@@ -76,7 +76,6 @@ export const stageMaskEvent: Tool = {
                 hovered: [],
                 creating: [
                     toStageMaskEventJointEntity({
-                        stageId: view.stageId ?? defaultStageId.value,
                         beat,
                         maskLeft: lane,
                         ...getPropertiesFromSelection(),
@@ -158,7 +157,6 @@ export const stageMaskEvent: Tool = {
             }
         } else {
             add({
-                stageId: view.stageId ?? defaultStageId.value,
                 beat,
                 maskLeft: lane,
                 ...getPropertiesFromSelection(),
@@ -248,7 +246,6 @@ export const stageMaskEvent: Tool = {
                     hovered: [],
                     creating: [
                         toStageMaskEventJointEntity({
-                            stageId: view.stageId ?? defaultStageId.value,
                             beat,
                             ...getPropertiesFromSelection(),
                             maskLeft,
@@ -304,7 +301,6 @@ export const stageMaskEvent: Tool = {
                 const [maskLeft, maskSize] = resize(active.lane, lane)
 
                 add({
-                    stageId: view.stageId ?? defaultStageId.value,
                     beat,
                     ...getPropertiesFromSelection(),
                     maskLeft,
@@ -383,6 +379,7 @@ const getPropertiesFromSelection = () => {
     const stageMaskEventJoint = getStageMaskEventJointFromSelection()
 
     return {
+        stageId: view.stageId ?? stageMaskEventJoint?.stageId ?? defaultStageId.value,
         maskSize:
             defaultStageMaskEventProperties.value.maskSize ?? stageMaskEventJoint?.maskSize ?? 12,
         eventEase:

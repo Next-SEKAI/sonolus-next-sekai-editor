@@ -2,9 +2,9 @@ import { computed, ref } from 'vue'
 import type { Tool } from '..'
 import type { NoteObject } from '../../../chart/note'
 import { pushState, replaceState, state } from '../../../history'
-import { defaultGroupId } from '../../../history/groups'
+import { defaultGroupId } from '../../../history/groups.ts'
 import { selectedEntities } from '../../../history/selectedEntities'
-import { defaultStageId } from '../../../history/stages'
+import { defaultStageId } from '../../../history/stages.ts'
 import { i18n } from '../../../i18n'
 import { showModal } from '../../../modals'
 import { settings } from '../../../settings'
@@ -78,8 +78,6 @@ export const note: Tool = {
                 hovered: [],
                 creating: [
                     toNoteEntity(createSlideId(), {
-                        groupId: view.groupId ?? defaultGroupId.value,
-                        stageId: view.stageId ?? defaultStageId.value,
                         beat,
                         left: lane,
                         ...getPropertiesFromSelection(),
@@ -139,8 +137,6 @@ export const note: Tool = {
             }
         } else {
             add({
-                groupId: view.groupId ?? defaultGroupId.value,
-                stageId: view.stageId ?? defaultStageId.value,
                 beat,
                 left: lane,
                 ...getPropertiesFromSelection(),
@@ -210,8 +206,6 @@ export const note: Tool = {
                     hovered: [],
                     creating: [
                         toNoteEntity(createSlideId(), {
-                            groupId: view.groupId ?? defaultGroupId.value,
-                            stageId: view.stageId ?? defaultStageId.value,
                             beat,
                             ...getPropertiesFromSelection(),
                             left,
@@ -275,8 +269,6 @@ export const note: Tool = {
                 const [left, size] = resize(active.lane, lane, 1)
 
                 add({
-                    groupId: view.groupId ?? defaultGroupId.value,
-                    stageId: view.stageId ?? defaultStageId.value,
                     beat,
                     ...getPropertiesFromSelection(),
                     left,
@@ -389,6 +381,8 @@ const getPropertiesFromSelection = () => {
     const note = getNoteFromSelection()
 
     return {
+        groupId: view.groupId ?? note?.groupId ?? defaultGroupId.value,
+        stageId: view.stageId ?? note?.stageId ?? defaultStageId.value,
         noteType: defaultNoteProperties.value.noteType ?? note?.noteType ?? 'default',
         isAttached: defaultNoteProperties.value.isAttached ?? note?.isAttached ?? false,
         size: note?.size ?? view.noteSize,
