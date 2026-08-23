@@ -5,7 +5,6 @@ import MultiDivisionLineAlphaField from '../../../../../modals/form/MultiDivisio
 import MultiEditorLaneField from '../../../../../modals/form/MultiEditorLaneField.vue'
 import MultiEventEaseField from '../../../../../modals/form/MultiEventEaseField.vue'
 import MultiIsFullWidthField from '../../../../../modals/form/MultiIsFullWidthField.vue'
-import MultiIsMaskNotesField from '../../../../../modals/form/MultiIsMaskNotesField.vue'
 import MultiJudgmentLineAlphaField from '../../../../../modals/form/MultiJudgmentLineAlphaField.vue'
 import MultiJudgmentLineColorField from '../../../../../modals/form/MultiJudgmentLineColorField.vue'
 import MultiJudgmentLineStyleField from '../../../../../modals/form/MultiJudgmentLineStyleField.vue'
@@ -32,7 +31,6 @@ const noteAlpha = createModel('noteAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
 const divisionLineAlpha = createModel('divisionLineAlpha')
-const isMaskNotes = createModel('isMaskNotes')
 const eventEase = createModel('eventEase')
 const beat = createModel('beat')
 const editorLane = createModel('editorLane')
@@ -52,7 +50,6 @@ const editorLane = createModel('editorLane')
         <MultiLaneAlphaField v-model="laneAlpha" />
         <MultiJudgmentLineAlphaField v-model="judgmentLineAlpha" />
         <MultiDivisionLineAlphaField v-model="divisionLineAlpha" />
-        <MultiIsMaskNotesField v-model="isMaskNotes" />
         <MultiEventEaseField v-model="eventEase" />
         <MultiBeatField v-model="beat" />
         <MultiEditorLaneField v-model="editorLane" />

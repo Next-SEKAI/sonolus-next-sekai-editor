@@ -2,7 +2,7 @@ import { EngineArchetypeDataName } from '@sonolus/core'
 import Type from 'typebox'
 import { parseStageEvents } from '.'
 import { getEventRefs } from '..'
-import { getValue, type ParseCtx } from '../..'
+import { getOptionalValue, getValue, type ParseCtx } from '../..'
 import type { StageId } from '../../../../stages'
 import { beatSchema } from '../../schemas'
 import { eventEases, eventEaseSchema } from '../schemas'
@@ -26,6 +26,7 @@ export const parseStageMaskEventsToChart = (
             beat: getValue(entity, EngineArchetypeDataName.Beat, beatSchema),
             maskLeft: lane - size,
             maskSize: size * 2,
+            isMaskNotes: !!getOptionalValue(entity, 'maskNotes', maskNotesSchema),
             eventEase: eventEases[getValue(entity, 'ease', eventEaseSchema)],
         }
     })
@@ -34,3 +35,5 @@ export const parseStageMaskEventsToChart = (
 const laneSchema = Type.Number()
 
 const sizeSchema = Type.Number({ minimum: 0 })
+
+const maskNotesSchema = Type.Number()

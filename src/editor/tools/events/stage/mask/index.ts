@@ -35,6 +35,7 @@ import StageMaskEventSidebar from './StageMaskEventSidebar.vue'
 
 type DefaultStageMaskEventProperties = {
     maskSize?: number
+    isMaskNotes?: boolean
     eventEase?: EventEase
     copyProperties: boolean
 }
@@ -345,6 +346,7 @@ export const editStageMaskEvent = (
         beat: object.beat ?? entity.beat,
         maskLeft: object.maskLeft ?? entity.maskLeft,
         maskSize: object.maskSize ?? entity.maskSize,
+        isMaskNotes: object.isMaskNotes ?? entity.isMaskNotes,
         eventEase: object.eventEase ?? entity.eventEase,
     })
 }
@@ -360,6 +362,7 @@ export const editSelectedStageMaskEvent = (
         beat: object.beat ?? entity.beat,
         maskLeft: object.maskLeft ?? entity.maskLeft,
         maskSize: object.maskSize ?? entity.maskSize,
+        isMaskNotes: object.isMaskNotes ?? entity.isMaskNotes,
         eventEase: object.eventEase ?? entity.eventEase,
     })
 }
@@ -382,6 +385,10 @@ const getPropertiesFromSelection = () => {
         stageId: view.stageId ?? stageMaskEventJoint?.stageId ?? defaultStageId.value,
         maskSize:
             defaultStageMaskEventProperties.value.maskSize ?? stageMaskEventJoint?.maskSize ?? 12,
+        isMaskNotes:
+            defaultStageMaskEventProperties.value.isMaskNotes ??
+            stageMaskEventJoint?.isMaskNotes ??
+            false,
         eventEase:
             defaultStageMaskEventProperties.value.eventEase ??
             stageMaskEventJoint?.eventEase ??

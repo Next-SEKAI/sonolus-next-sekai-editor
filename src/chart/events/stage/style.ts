@@ -21,6 +21,5 @@ export type StageStyleEventObject = {
     laneAlpha: number
     judgmentLineAlpha: number
     divisionLineAlpha: number
-    isMaskNotes: boolean
     eventEase: EventEase
 }

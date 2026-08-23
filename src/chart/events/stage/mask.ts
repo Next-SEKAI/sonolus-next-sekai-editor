@@ -6,5 +6,6 @@ export type StageMaskEventObject = {
     beat: number
     maskLeft: number
     maskSize: number
+    isMaskNotes: boolean
     eventEase: EventEase
 }
