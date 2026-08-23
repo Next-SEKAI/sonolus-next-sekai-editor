@@ -33,6 +33,10 @@ export const serializeStageMaskEventsToLevelDataEntities = (
                     value: joint.maskSize / 2,
                 },
                 {
+                    name: 'maskNotes',
+                    value: +joint.isMaskNotes,
+                },
+                {
                     name: 'ease',
                     value: eventEases[joint.eventEase],
                 },

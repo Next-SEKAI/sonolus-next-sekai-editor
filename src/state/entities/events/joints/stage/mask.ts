@@ -5,6 +5,7 @@ export type StageMaskEventJointEntity = BaseStageEventJointEntity & {
     type: 'stageMaskEventJoint'
     maskLeft: number
     maskSize: number
+    isMaskNotes: boolean
 }
 
 export const toStageMaskEventJointEntity = (
@@ -22,5 +23,6 @@ export const toStageMaskEventJointEntity = (
     beat: object.beat,
     maskLeft: object.maskLeft,
     maskSize: object.maskSize,
+    isMaskNotes: object.isMaskNotes,
     eventEase: object.eventEase,
 })

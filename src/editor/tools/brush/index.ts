@@ -77,6 +77,7 @@ export type BrushProperties = {
     cameraRotation?: number
     cameraStageTilt?: number
     maskSize?: number
+    isMaskNotes?: boolean
     divisionSize?: number
     divisionParity?: DivisionParity
     yOffset?: number
@@ -90,7 +91,6 @@ export type BrushProperties = {
     laneAlpha?: number
     judgmentLineAlpha?: number
     divisionLineAlpha?: number
-    isMaskNotes?: boolean
     rotation?: number
     yTranslation?: number
     anchor?: Anchor

@@ -37,7 +37,6 @@ export const parseStageStyleEventsToChart = (
             laneAlpha: getValue(entity, 'laneAlpha', alphaSchema) * alpha,
             judgmentLineAlpha: getValue(entity, 'judgeLineAlpha', alphaSchema) * alpha,
             divisionLineAlpha: getOptionalValue(entity, 'divisionLineAlpha', alphaSchema) ?? 1,
-            isMaskNotes: !!getOptionalValue(entity, 'maskNotes', maskNotesSchema),
             eventEase: eventEases[getValue(entity, 'ease', eventEaseSchema)],
         }
     })
@@ -91,5 +90,3 @@ const borderStyles = {
 const fullWidthSchema = Type.Number()
 
 const alphaSchema = Type.Number({ minimum: 0, maximum: 1 })
-
-const maskNotesSchema = Type.Number()

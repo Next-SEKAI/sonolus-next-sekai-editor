@@ -2,6 +2,7 @@
 import { i18n } from '../../../../../i18n'
 import MultiBeatField from '../../../../../modals/form/MultiBeatField.vue'
 import MultiEventEaseField from '../../../../../modals/form/MultiEventEaseField.vue'
+import MultiIsMaskNotesField from '../../../../../modals/form/MultiIsMaskNotesField.vue'
 import MultiMaskLeftField from '../../../../../modals/form/MultiMaskLeftField.vue'
 import MultiMaskSizeField from '../../../../../modals/form/MultiMaskSizeField.vue'
 import MultiStageField from '../../../../../modals/form/MultiStageField.vue'
@@ -16,6 +17,7 @@ const { createModel } = useSelectedEntitiesProperties(
 const stageId = createModel('stageId')
 const maskLeft = createModel('maskLeft')
 const maskSize = createModel('maskSize')
+const isMaskNotes = createModel('isMaskNotes')
 const eventEase = createModel('eventEase')
 const beat = createModel('beat')
 </script>
@@ -27,6 +29,7 @@ const beat = createModel('beat')
         <MultiStageField v-model="stageId" />
         <MultiMaskLeftField v-model="maskLeft" />
         <MultiMaskSizeField v-model="maskSize" />
+        <MultiIsMaskNotesField v-model="isMaskNotes" />
         <MultiEventEaseField v-model="eventEase" />
         <MultiBeatField v-model="beat" />
     </PropertiesModal>

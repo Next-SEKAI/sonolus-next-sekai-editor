@@ -32,6 +32,7 @@ export const checkDynamicStages = async () => {
         beat: 0,
         maskLeft: -6,
         maskSize: 12,
+        isMaskNotes: false,
         eventEase: 'linear',
     })
     addStagePivotEventJoint(transaction, {
@@ -57,7 +58,6 @@ export const checkDynamicStages = async () => {
         laneAlpha: 1,
         judgmentLineAlpha: 1,
         divisionLineAlpha: 1,
-        isMaskNotes: false,
         eventEase: 'linear',
     })
 

@@ -85,6 +85,7 @@ const cameraZoomVerticalAlign = createModel('cameraZoomVerticalAlign')
 const cameraRotation = createModel('cameraRotation')
 const cameraStageTilt = createModel('cameraStageTilt')
 const maskSize = createModel('maskSize')
+const isMaskNotes = createModel('isMaskNotes')
 const divisionSize = createModel('divisionSize')
 const divisionParity = createModel('divisionParity')
 const yOffset = createModel('yOffset')
@@ -98,7 +99,6 @@ const noteAlpha = createModel('noteAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
 const divisionLineAlpha = createModel('divisionLineAlpha')
-const isMaskNotes = createModel('isMaskNotes')
 const rotation = createModel('rotation')
 const yTranslation = createModel('yTranslation')
 const anchor = createModel('anchor')
@@ -140,6 +140,7 @@ const eventEase = createModel('eventEase')
     <OptionalCameraRotationField v-if="isDynamicStages" v-model="cameraRotation" />
     <OptionalCameraStageTiltField v-if="isDynamicStages" v-model="cameraStageTilt" />
     <OptionalMaskSizeField v-if="isDynamicStages" v-model="maskSize" />
+    <OptionalIsMaskNotesField v-if="isDynamicStages" v-model="isMaskNotes" />
     <OptionalDivisionSizeField v-if="isDynamicStages" v-model="divisionSize" />
     <OptionalDivisionParityField v-if="isDynamicStages" v-model="divisionParity" />
     <OptionalYOffsetField v-if="isDynamicStages" v-model="yOffset" />
@@ -153,7 +154,6 @@ const eventEase = createModel('eventEase')
     <OptionalLaneAlphaField v-if="isDynamicStages" v-model="laneAlpha" />
     <OptionalJudgmentLineAlphaField v-if="isDynamicStages" v-model="judgmentLineAlpha" />
     <OptionalDivisionLineAlphaField v-if="isDynamicStages" v-model="divisionLineAlpha" />
-    <OptionalIsMaskNotesField v-if="isDynamicStages" v-model="isMaskNotes" />
     <OptionalRotationField v-if="isDynamicStages" v-model="rotation" />
     <OptionalYTranslationField v-if="isDynamicStages" v-model="yTranslation" />
     <OptionalAnchorField v-if="isDynamicStages" v-model="anchor" />

@@ -83,6 +83,7 @@ const cameraRotation = createModel('cameraRotation')
 const cameraStageTilt = createModel('cameraStageTilt')
 const maskLeft = createModel('maskLeft')
 const maskSize = createModel('maskSize')
+const isMaskNotes = createModel('isMaskNotes')
 const pivotLane = createModel('pivotLane')
 const divisionSize = createModel('divisionSize')
 const divisionParity = createModel('divisionParity')
@@ -97,7 +98,6 @@ const noteAlpha = createModel('noteAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
 const divisionLineAlpha = createModel('divisionLineAlpha')
-const isMaskNotes = createModel('isMaskNotes')
 const rotation = createModel('rotation')
 const xTranslation = createModel('xTranslation')
 const yTranslation = createModel('yTranslation')
@@ -151,6 +151,7 @@ const connectorPresentation = createModel('connectorPresentation')
             <MultiCameraStageTiltField v-if="types.cameraEventJoint" v-model="cameraStageTilt" />
             <MultiMaskLeftField v-if="types.stageMaskEventJoint" v-model="maskLeft" />
             <MultiMaskSizeField v-if="types.stageMaskEventJoint" v-model="maskSize" />
+            <MultiIsMaskNotesField v-if="types.stageMaskEventJoint" v-model="isMaskNotes" />
             <MultiPivotLaneField v-if="types.stagePivotEventJoint" v-model="pivotLane" />
             <MultiDivisionSizeField v-if="types.stagePivotEventJoint" v-model="divisionSize" />
             <MultiDivisionParityField v-if="types.stagePivotEventJoint" v-model="divisionParity" />
@@ -183,7 +184,6 @@ const connectorPresentation = createModel('connectorPresentation')
                 v-if="types.stageStyleEventJoint"
                 v-model="divisionLineAlpha"
             />
-            <MultiIsMaskNotesField v-if="types.stageStyleEventJoint" v-model="isMaskNotes" />
             <MultiRotationField v-if="types.stageTransformEventJoint" v-model="rotation" />
             <MultiXTranslationField v-if="types.stageTransformEventJoint" v-model="xTranslation" />
             <MultiYTranslationField v-if="types.stageTransformEventJoint" v-model="yTranslation" />
