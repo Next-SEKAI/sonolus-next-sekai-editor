@@ -47,6 +47,7 @@ type DefaultStageStyleEventProperties = {
     laneAlpha?: number
     judgmentLineAlpha?: number
     divisionLineAlpha?: number
+    isMaskNotes?: boolean
     eventEase?: EventEase
     copyProperties: boolean
 }
@@ -309,6 +310,7 @@ export const editStageStyleEvent = (
         laneAlpha: object.laneAlpha ?? entity.laneAlpha,
         judgmentLineAlpha: object.judgmentLineAlpha ?? entity.judgmentLineAlpha,
         divisionLineAlpha: object.divisionLineAlpha ?? entity.divisionLineAlpha,
+        isMaskNotes: object.isMaskNotes ?? entity.isMaskNotes,
         eventEase: object.eventEase ?? entity.eventEase,
     })
 }
@@ -332,6 +334,7 @@ export const editSelectedStageStyleEvent = (
         laneAlpha: object.laneAlpha ?? entity.laneAlpha,
         judgmentLineAlpha: object.judgmentLineAlpha ?? entity.judgmentLineAlpha,
         divisionLineAlpha: object.divisionLineAlpha ?? entity.divisionLineAlpha,
+        isMaskNotes: object.isMaskNotes ?? entity.isMaskNotes,
         eventEase: object.eventEase ?? entity.eventEase,
     })
 }
@@ -388,6 +391,10 @@ const getPropertiesFromSelection = () => {
             defaultStageStyleEventProperties.value.divisionLineAlpha ??
             stageStyleEventJoint?.divisionLineAlpha ??
             1,
+        isMaskNotes:
+            defaultStageStyleEventProperties.value.isMaskNotes ??
+            stageStyleEventJoint?.isMaskNotes ??
+            false,
         eventEase:
             defaultStageStyleEventProperties.value.eventEase ??
             stageStyleEventJoint?.eventEase ??

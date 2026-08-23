@@ -18,6 +18,7 @@ export type StageStyleEventJointEntity = BaseStageEventJointEntity & {
     laneAlpha: number
     judgmentLineAlpha: number
     divisionLineAlpha: number
+    isMaskNotes: boolean
 }
 
 export const toStageStyleEventJointEntity = (
@@ -43,5 +44,6 @@ export const toStageStyleEventJointEntity = (
     laneAlpha: object.laneAlpha,
     judgmentLineAlpha: object.judgmentLineAlpha,
     divisionLineAlpha: object.divisionLineAlpha,
+    isMaskNotes: object.isMaskNotes,
     eventEase: object.eventEase,
 })

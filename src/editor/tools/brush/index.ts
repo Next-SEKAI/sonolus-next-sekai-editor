@@ -90,6 +90,7 @@ export type BrushProperties = {
     laneAlpha?: number
     judgmentLineAlpha?: number
     divisionLineAlpha?: number
+    isMaskNotes?: boolean
     rotation?: number
     yTranslation?: number
     anchor?: Anchor

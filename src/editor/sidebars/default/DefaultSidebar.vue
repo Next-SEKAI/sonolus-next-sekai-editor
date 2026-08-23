@@ -60,6 +60,7 @@ import MultiYOffsetField from '../../../modals/form/MultiYOffsetField.vue'
 import MultiYTranslationField from '../../../modals/form/MultiYTranslationField.vue'
 import { useSelectedEntitiesProperties } from '../../utils/properties'
 import BaseSidebar from '../BaseSidebar.vue'
+import MultiIsMaskNotesField from '../../../modals/form/MultiIsMaskNotesField.vue'
 
 const { entities, types, noteFields, createModel } = useSelectedEntitiesProperties(isEditableEntity)
 
@@ -96,6 +97,7 @@ const noteAlpha = createModel('noteAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
 const divisionLineAlpha = createModel('divisionLineAlpha')
+const isMaskNotes = createModel('isMaskNotes')
 const rotation = createModel('rotation')
 const xTranslation = createModel('xTranslation')
 const yTranslation = createModel('yTranslation')
@@ -181,6 +183,7 @@ const connectorPresentation = createModel('connectorPresentation')
                 v-if="types.stageStyleEventJoint"
                 v-model="divisionLineAlpha"
             />
+            <MultiIsMaskNotesField v-if="types.stageStyleEventJoint" v-model="isMaskNotes" />
             <MultiRotationField v-if="types.stageTransformEventJoint" v-model="rotation" />
             <MultiXTranslationField v-if="types.stageTransformEventJoint" v-model="xTranslation" />
             <MultiYTranslationField v-if="types.stageTransformEventJoint" v-model="yTranslation" />

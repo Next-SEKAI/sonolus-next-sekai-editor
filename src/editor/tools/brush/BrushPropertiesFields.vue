@@ -50,6 +50,7 @@ import OptionalYOffsetBeatField from '../../../modals/form/OptionalYOffsetBeatFi
 import OptionalYOffsetField from '../../../modals/form/OptionalYOffsetField.vue'
 import OptionalYTranslationField from '../../../modals/form/OptionalYTranslationField.vue'
 import { useProperties } from '../../utils/properties'
+import OptionalIsMaskNotesField from '../../../modals/form/OptionalIsMaskNotesField.vue'
 
 const createModel = useProperties(brushProperties)
 
@@ -97,6 +98,7 @@ const noteAlpha = createModel('noteAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
 const divisionLineAlpha = createModel('divisionLineAlpha')
+const isMaskNotes = createModel('isMaskNotes')
 const rotation = createModel('rotation')
 const yTranslation = createModel('yTranslation')
 const anchor = createModel('anchor')
@@ -151,6 +153,7 @@ const eventEase = createModel('eventEase')
     <OptionalLaneAlphaField v-if="isDynamicStages" v-model="laneAlpha" />
     <OptionalJudgmentLineAlphaField v-if="isDynamicStages" v-model="judgmentLineAlpha" />
     <OptionalDivisionLineAlphaField v-if="isDynamicStages" v-model="divisionLineAlpha" />
+    <OptionalIsMaskNotesField v-if="isDynamicStages" v-model="isMaskNotes" />
     <OptionalRotationField v-if="isDynamicStages" v-model="rotation" />
     <OptionalYTranslationField v-if="isDynamicStages" v-model="yTranslation" />
     <OptionalAnchorField v-if="isDynamicStages" v-model="anchor" />

@@ -919,6 +919,9 @@
             "isFullWidth": {
                 "label": "Full Width"
             },
+            "isMaskNotes": {
+                "label": "Mask Notes"
+            },
             "isUntilEnd": {
                 "label": "Until End"
             },
