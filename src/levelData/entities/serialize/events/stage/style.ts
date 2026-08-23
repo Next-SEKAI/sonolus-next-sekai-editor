@@ -65,6 +65,10 @@ export const serializeStageStyleEventsToLevelDataEntities = (
                     value: joint.divisionLineAlpha,
                 },
                 {
+                    name: 'maskNotes',
+                    value: +joint.isMaskNotes,
+                },
+                {
                     name: 'ease',
                     value: eventEases[joint.eventEase],
                 },

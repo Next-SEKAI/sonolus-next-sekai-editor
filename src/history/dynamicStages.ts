@@ -57,6 +57,7 @@ export const checkDynamicStages = async () => {
         laneAlpha: 1,
         judgmentLineAlpha: 1,
         divisionLineAlpha: 1,
+        isMaskNotes: false,
         eventEase: 'linear',
     })
 

@@ -4,6 +4,7 @@ import CopyPropertiesField from '../../../../../modals/form/CopyPropertiesField.
 import OptionalDivisionLineAlphaField from '../../../../../modals/form/OptionalDivisionLineAlphaField.vue'
 import OptionalEventEaseField from '../../../../../modals/form/OptionalEventEaseField.vue'
 import OptionalIsFullWidthField from '../../../../../modals/form/OptionalIsFullWidthField.vue'
+import OptionalIsMaskNotesField from '../../../../../modals/form/OptionalIsMaskNotesField.vue'
 import OptionalJudgmentLineAlphaField from '../../../../../modals/form/OptionalJudgmentLineAlphaField.vue'
 import OptionalJudgmentLineColorField from '../../../../../modals/form/OptionalJudgmentLineColorField.vue'
 import OptionalJudgmentLineStyleField from '../../../../../modals/form/OptionalJudgmentLineStyleField.vue'
@@ -24,6 +25,7 @@ const noteAlpha = createModel('noteAlpha')
 const laneAlpha = createModel('laneAlpha')
 const judgmentLineAlpha = createModel('judgmentLineAlpha')
 const divisionLineAlpha = createModel('divisionLineAlpha')
+const isMaskNotes = createModel('isMaskNotes')
 const eventEase = createModel('eventEase')
 const copyProperties = createModel('copyProperties')
 </script>
@@ -38,6 +40,7 @@ const copyProperties = createModel('copyProperties')
     <OptionalLaneAlphaField v-model="laneAlpha" />
     <OptionalJudgmentLineAlphaField v-model="judgmentLineAlpha" />
     <OptionalDivisionLineAlphaField v-model="divisionLineAlpha" />
+    <OptionalIsMaskNotesField v-model="isMaskNotes" />
     <OptionalEventEaseField v-model="eventEase" />
     <CopyPropertiesField v-model="copyProperties" />
 </template>
