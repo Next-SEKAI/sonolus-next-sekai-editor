@@ -6,11 +6,13 @@ import { useProperties } from '../../../../utils/properties.ts'
 import OptionalRotationField from '../../../../../modals/form/OptionalRotationField.vue'
 import OptionalYTranslationField from '../../../../../modals/form/OptionalYTranslationField.vue'
 import OptionalAnchorField from '../../../../../modals/form/OptionalAnchorField.vue'
+import OptionalElevationField from '../../../../../modals/form/OptionalElevationField.vue'
 
 const createModel = useProperties(defaultStageTransformEventProperties)
 
 const rotation = createModel('rotation')
 const yTranslation = createModel('yTranslation')
+const elevation = createModel('elevation')
 const anchor = createModel('anchor')
 const eventEase = createModel('eventEase')
 const copyProperties = createModel('copyProperties')
@@ -19,6 +21,7 @@ const copyProperties = createModel('copyProperties')
 <template>
     <OptionalRotationField v-model="rotation" />
     <OptionalYTranslationField v-model="yTranslation" />
+    <OptionalElevationField v-model="elevation" />
     <OptionalAnchorField v-model="anchor" />
     <OptionalEventEaseField v-model="eventEase" />
     <CopyPropertiesField v-model="copyProperties" />

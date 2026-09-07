@@ -868,6 +868,9 @@
             "editorLane": {
                 "label": "Editor Lane"
             },
+            "elevation": {
+                "label": "Elevation"
+            },
             "eventEase": {
                 "label": "Event Ease",
                 "linear": "Linear",

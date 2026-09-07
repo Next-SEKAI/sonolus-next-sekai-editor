@@ -51,6 +51,7 @@ import OptionalYOffsetField from '../../../modals/form/OptionalYOffsetField.vue'
 import OptionalYTranslationField from '../../../modals/form/OptionalYTranslationField.vue'
 import { useProperties } from '../../utils/properties'
 import OptionalIsMaskNotesField from '../../../modals/form/OptionalIsMaskNotesField.vue'
+import OptionalElevationField from '../../../modals/form/OptionalElevationField.vue'
 
 const createModel = useProperties(brushProperties)
 
@@ -101,6 +102,7 @@ const judgmentLineAlpha = createModel('judgmentLineAlpha')
 const divisionLineAlpha = createModel('divisionLineAlpha')
 const rotation = createModel('rotation')
 const yTranslation = createModel('yTranslation')
+const elevation = createModel('elevation')
 const anchor = createModel('anchor')
 const eventEase = createModel('eventEase')
 </script>
@@ -156,6 +158,7 @@ const eventEase = createModel('eventEase')
     <OptionalDivisionLineAlphaField v-if="isDynamicStages" v-model="divisionLineAlpha" />
     <OptionalRotationField v-if="isDynamicStages" v-model="rotation" />
     <OptionalYTranslationField v-if="isDynamicStages" v-model="yTranslation" />
+    <OptionalElevationField v-if="isDynamicStages" v-model="elevation" />
     <OptionalAnchorField v-if="isDynamicStages" v-model="anchor" />
     <OptionalEventEaseField v-if="isDynamicStages" v-model="eventEase" />
 </template>

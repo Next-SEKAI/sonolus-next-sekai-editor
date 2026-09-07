@@ -10,6 +10,7 @@ import MultiRotationField from '../../../../../modals/form/MultiRotationField.vu
 import MultiXTranslationField from '../../../../../modals/form/MultiXTranslationField.vue'
 import MultiYTranslationField from '../../../../../modals/form/MultiYTranslationField.vue'
 import MultiAnchorField from '../../../../../modals/form/MultiAnchorField.vue'
+import MultiElevationField from '../../../../../modals/form/MultiElevationField.vue'
 
 const { createModel } = useSelectedEntitiesProperties(
     (entity) => entity.type === 'stageTransformEventJoint',
@@ -19,6 +20,7 @@ const stageId = createModel('stageId')
 const rotation = createModel('rotation')
 const xTranslation = createModel('xTranslation')
 const yTranslation = createModel('yTranslation')
+const elevation = createModel('elevation')
 const anchor = createModel('anchor')
 const eventEase = createModel('eventEase')
 const beat = createModel('beat')
@@ -32,6 +34,7 @@ const beat = createModel('beat')
         <MultiRotationField v-model="rotation" />
         <MultiXTranslationField v-model="xTranslation" />
         <MultiYTranslationField v-model="yTranslation" />
+        <MultiElevationField v-model="elevation" />
         <MultiAnchorField v-model="anchor" />
         <MultiEventEaseField v-model="eventEase" />
         <MultiBeatField v-model="beat" />

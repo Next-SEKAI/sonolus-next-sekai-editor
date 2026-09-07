@@ -61,6 +61,7 @@ import MultiYTranslationField from '../../../modals/form/MultiYTranslationField.
 import { useSelectedEntitiesProperties } from '../../utils/properties'
 import BaseSidebar from '../BaseSidebar.vue'
 import MultiIsMaskNotesField from '../../../modals/form/MultiIsMaskNotesField.vue'
+import MultiElevationField from '../../../modals/form/MultiElevationField.vue'
 
 const { entities, types, noteFields, createModel } = useSelectedEntitiesProperties(isEditableEntity)
 
@@ -101,6 +102,7 @@ const divisionLineAlpha = createModel('divisionLineAlpha')
 const rotation = createModel('rotation')
 const xTranslation = createModel('xTranslation')
 const yTranslation = createModel('yTranslation')
+const elevation = createModel('elevation')
 const anchor = createModel('anchor')
 const eventEase = createModel('eventEase')
 const noteType = createModel('noteType')
@@ -187,6 +189,7 @@ const connectorPresentation = createModel('connectorPresentation')
             <MultiRotationField v-if="types.stageTransformEventJoint" v-model="rotation" />
             <MultiXTranslationField v-if="types.stageTransformEventJoint" v-model="xTranslation" />
             <MultiYTranslationField v-if="types.stageTransformEventJoint" v-model="yTranslation" />
+            <MultiElevationField v-if="types.stageTransformEventJoint" v-model="elevation" />
             <MultiAnchorField v-if="types.stageTransformEventJoint" v-model="anchor" />
             <MultiEventEaseField
                 v-if="
