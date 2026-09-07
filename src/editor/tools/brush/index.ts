@@ -93,6 +93,7 @@ export type BrushProperties = {
     divisionLineAlpha?: number
     rotation?: number
     yTranslation?: number
+    elevation?: number
     anchor?: Anchor
     eventEase?: EventEase
 }

@@ -2,7 +2,7 @@ import { EngineArchetypeDataName } from '@sonolus/core'
 import Type from 'typebox'
 import { parseStageEvents } from '.'
 import { getEventRefs } from '..'
-import { getValue, type ParseCtx } from '../..'
+import { getOptionalValue, getValue, type ParseCtx } from '../..'
 import type { StageId } from '../../../../stages'
 import { beatSchema } from '../../schemas'
 import { eventEases, eventEaseSchema } from '../schemas'
@@ -23,6 +23,7 @@ export const parseStageTransformEventsToChart = (
         rotation: getValue(entity, 'rotate', rotateSchema),
         xTranslation: getValue(entity, 'xLaneTranslate', xLaneTranslateSchema),
         yTranslation: getValue(entity, 'yLaneTranslate', yLaneTranslateSchema),
+        elevation: getOptionalValue(entity, 'elevation', elevationSchema) ?? 0,
         anchor: anchors[getValue(entity, 'anchor', anchorSchema)],
         eventEase: eventEases[getValue(entity, 'ease', eventEaseSchema)],
     }))
@@ -33,6 +34,8 @@ const rotateSchema = Type.Number()
 const xLaneTranslateSchema = Type.Number()
 
 const yLaneTranslateSchema = Type.Number()
+
+const elevationSchema = Type.Number()
 
 const anchorSchema = Type.Union([Type.Literal(0), Type.Literal(1)])
 

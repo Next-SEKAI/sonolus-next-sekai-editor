@@ -35,6 +35,7 @@ import StageTransformEventSidebar from './StageTransformEventSidebar.vue'
 type DefaultStageTransformEventProperties = {
     rotation?: number
     yTranslation?: number
+    elevation?: number
     anchor?: Anchor
     eventEase?: EventEase
     copyProperties: boolean
@@ -291,6 +292,7 @@ export const editStageTransformEvent = (
         rotation: object.rotation ?? entity.rotation,
         xTranslation: object.xTranslation ?? entity.xTranslation,
         yTranslation: object.yTranslation ?? entity.yTranslation,
+        elevation: object.elevation ?? entity.elevation,
         anchor: object.anchor ?? entity.anchor,
         eventEase: object.eventEase ?? entity.eventEase,
     })
@@ -308,6 +310,7 @@ export const editSelectedStageTransformEvent = (
         rotation: object.rotation ?? entity.rotation,
         xTranslation: object.xTranslation ?? entity.xTranslation,
         yTranslation: object.yTranslation ?? entity.yTranslation,
+        elevation: object.elevation ?? entity.elevation,
         anchor: object.anchor ?? entity.anchor,
         eventEase: object.eventEase ?? entity.eventEase,
     })
@@ -336,6 +339,10 @@ const getPropertiesFromSelection = () => {
         yTranslation:
             defaultStageTransformEventProperties.value.yTranslation ??
             stageTransformEventJoint?.yTranslation ??
+            0,
+        elevation:
+            defaultStageTransformEventProperties.value.elevation ??
+            stageTransformEventJoint?.elevation ??
             0,
         anchor:
             defaultStageTransformEventProperties.value.anchor ??

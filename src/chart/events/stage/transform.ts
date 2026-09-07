@@ -9,6 +9,7 @@ export type StageTransformEventObject = {
     rotation: number
     xTranslation: number
     yTranslation: number
+    elevation: number
     anchor: Anchor
     eventEase: EventEase
 }

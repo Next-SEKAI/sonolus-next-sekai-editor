@@ -6,6 +6,7 @@ export type StageTransformEventJointEntity = BaseStageEventJointEntity & {
     rotation: number
     xTranslation: number
     yTranslation: number
+    elevation: number
     anchor: Anchor
 }
 
@@ -25,6 +26,7 @@ export const toStageTransformEventJointEntity = (
     rotation: object.rotation,
     xTranslation: object.xTranslation,
     yTranslation: object.yTranslation,
+    elevation: object.elevation,
     anchor: object.anchor,
     eventEase: object.eventEase,
 })

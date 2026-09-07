@@ -37,6 +37,10 @@ export const serializeStageTransformEventsToLevelDataEntities = (
                     value: joint.yTranslation,
                 },
                 {
+                    name: 'elevation',
+                    value: joint.elevation,
+                },
+                {
                     name: 'anchor',
                     value: anchors[joint.anchor],
                 },
