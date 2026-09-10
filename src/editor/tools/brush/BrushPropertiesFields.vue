@@ -52,6 +52,7 @@ import OptionalYTranslationField from '../../../modals/form/OptionalYTranslation
 import { useProperties } from '../../utils/properties'
 import OptionalIsMaskNotesField from '../../../modals/form/OptionalIsMaskNotesField.vue'
 import OptionalElevationField from '../../../modals/form/OptionalElevationField.vue'
+import OptionalTimeScaleTransitionField from '../../../modals/form/OptionalTimeScaleTransitionField.vue'
 
 const createModel = useProperties(brushProperties)
 
@@ -77,6 +78,7 @@ const connectorPresentation = createModel('connectorPresentation')
 const timeScale = createModel('timeScale')
 const skip = createModel('skip')
 const timeScaleEase = createModel('timeScaleEase')
+const timeScaleTransition = createModel('timeScaleTransition')
 const hideNotes = createModel('hideNotes')
 const cameraSize = createModel('cameraSize')
 const cameraZoom = createModel('cameraZoom')
@@ -130,6 +132,7 @@ const eventEase = createModel('eventEase')
     <OptionalTimeScaleField v-model="timeScale" />
     <OptionalSkipField v-model="skip" />
     <OptionalTimeScaleEaseField v-model="timeScaleEase" />
+    <OptionalTimeScaleTransitionField v-model="timeScaleTransition" />
     <OptionalHideNotesField v-model="hideNotes" />
     <OptionalCameraSizeField v-if="isDynamicStages" v-model="cameraSize" />
     <OptionalCameraZoomField v-if="isDynamicStages" v-model="cameraZoom" />

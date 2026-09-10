@@ -1028,6 +1028,11 @@
                 "inOutQuad": "In Out Quad",
                 "outInQuad": "Out In Quad"
             },
+            "timeScaleTransition": {
+                "label": "Time Scale Transition",
+                "timeScale": "Time Scale",
+                "scroll": "Scroll"
+            },
             "toggle": {
                 "enabled": "Enabled",
                 "disabled": "Disabled"

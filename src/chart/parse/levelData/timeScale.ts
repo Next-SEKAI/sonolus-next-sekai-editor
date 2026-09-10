@@ -14,6 +14,10 @@ export const parseTimeScalesToChart = ({ chart, entities, getGroupId }: ParseCtx
             timeScale: getValue(entity, EngineArchetypeDataName.TimeScale, valueSchema),
             skip: getValue(entity, '#TIMESCALE_SKIP', skipSchema),
             timeScaleEase: eases[getValue(entity, '#TIMESCALE_EASE', easeSchema)],
+            timeScaleTransition:
+                timeScaleTransitions[
+                    getOptionalValue(entity, 'transitionStyle', transitionStyleSchema) ?? 0
+                ],
             hideNotes: !!getOptionalValue(entity, 'hideNotes', hideNotesSchema),
         })
     }
@@ -41,6 +45,13 @@ const eases = {
     3: 'outQuad',
     4: 'inOutQuad',
     5: 'outInQuad',
+} as const
+
+const transitionStyleSchema = Type.Union([Type.Literal(0), Type.Literal(1)])
+
+const timeScaleTransitions = {
+    0: 'timeScale',
+    1: 'scroll',
 } as const
 
 const hideNotesSchema = Type.Number()

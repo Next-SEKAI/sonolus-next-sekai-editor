@@ -109,6 +109,7 @@ export const parseSusChart = (sus: Sus) => {
             timeScale: timeScaleChange.timeScale,
             skip: 0,
             timeScaleEase: 'none',
+            timeScaleTransition: 'timeScale',
             hideNotes: false,
         })
     }

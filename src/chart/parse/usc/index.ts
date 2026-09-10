@@ -52,6 +52,7 @@ export const parseUscChart = (objects: UscObject[]) => {
                         timeScale: change.timeScale,
                         skip: 0,
                         timeScaleEase: 'none',
+                        timeScaleTransition: 'timeScale',
                         hideNotes: false,
                     })
                 }

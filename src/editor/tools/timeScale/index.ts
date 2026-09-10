@@ -57,6 +57,7 @@ export const timeScale: Tool = {
                         timeScale: 1,
                         skip: 0,
                         timeScaleEase: 'none',
+                        timeScaleTransition: 'timeScale',
                         hideNotes: false,
                     }),
                 ],
@@ -98,6 +99,7 @@ export const timeScale: Tool = {
                             editorLane: entity.editorLane,
                             timeScale: entity.timeScale,
                             skip: entity.skip,
+                            timeScaleTransition: entity.timeScaleTransition,
                             ...(entity.timeScaleEase === 'none' && !entity.hideNotes
                                 ? {
                                       timeScaleEase: 'linear',
@@ -138,6 +140,7 @@ export const timeScale: Tool = {
                 timeScale: 1,
                 skip: 0,
                 timeScaleEase: 'none',
+                timeScaleTransition: 'timeScale',
                 hideNotes: false,
             }
 
@@ -212,6 +215,7 @@ export const timeScale: Tool = {
                                 timeScale: 1,
                                 skip: 0,
                                 timeScaleEase: 'none',
+                                timeScaleTransition: 'timeScale',
                                 hideNotes: false,
                             }),
                         ],
@@ -233,6 +237,7 @@ export const timeScale: Tool = {
                             timeScale: active.entity.timeScale,
                             skip: active.entity.skip,
                             timeScaleEase: active.entity.timeScaleEase,
+                            timeScaleTransition: active.entity.timeScaleTransition,
                             hideNotes: false,
                         }),
                     ],
@@ -271,6 +276,7 @@ export const timeScale: Tool = {
                         timeScale: 1,
                         skip: 0,
                         timeScaleEase: 'none',
+                        timeScaleTransition: 'timeScale',
                         hideNotes: false,
                     }
 
@@ -296,6 +302,7 @@ export const timeScale: Tool = {
                     timeScale: active.entity.timeScale,
                     skip: active.entity.skip,
                     timeScaleEase: active.entity.timeScaleEase,
+                    timeScaleTransition: active.entity.timeScaleTransition,
                     hideNotes: active.entity.hideNotes,
                 })
                 focusViewAtBeat(beat)
@@ -315,6 +322,7 @@ export const editTimeScale = (entity: TimeScaleEntity, object: Partial<TimeScale
         timeScale: object.timeScale ?? entity.timeScale,
         skip: object.skip ?? entity.skip,
         timeScaleEase: object.timeScaleEase ?? entity.timeScaleEase,
+        timeScaleTransition: object.timeScaleTransition ?? entity.timeScaleTransition,
         hideNotes: object.hideNotes ?? entity.hideNotes,
     })
 }
@@ -332,6 +340,7 @@ export const editSelectedTimeScale = (
         timeScale: object.timeScale ?? entity.timeScale,
         skip: object.skip ?? entity.skip,
         timeScaleEase: object.timeScaleEase ?? entity.timeScaleEase,
+        timeScaleTransition: object.timeScaleTransition ?? entity.timeScaleTransition,
         hideNotes: object.hideNotes ?? entity.hideNotes,
     })
 }

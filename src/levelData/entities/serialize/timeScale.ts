@@ -59,6 +59,10 @@ export const serializeTimeScalesToLevelDataEntities = (
                                 value: timeScaleEases[timeScale.timeScaleEase],
                             },
                             {
+                                name: 'transitionStyle',
+                                value: transitionStyles[timeScale.timeScaleTransition],
+                            },
+                            {
                                 name: 'hideNotes',
                                 value: +timeScale.hideNotes,
                             },
@@ -92,4 +96,9 @@ const timeScaleEases = {
     outQuad: 3,
     inOutQuad: 4,
     outInQuad: 5,
+}
+
+const transitionStyles = {
+    timeScale: 0,
+    scroll: 1,
 }
