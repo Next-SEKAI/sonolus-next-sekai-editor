@@ -7,6 +7,7 @@ import MultiHideNotesField from '../../../modals/form/MultiHideNotesField.vue'
 import MultiSkipField from '../../../modals/form/MultiSkipField.vue'
 import MultiTimeScaleEaseField from '../../../modals/form/MultiTimeScaleEaseField.vue'
 import MultiTimeScaleField from '../../../modals/form/MultiTimeScaleField.vue'
+import MultiTimeScaleTransitionField from '../../../modals/form/MultiTimeScaleTransitionField.vue'
 import PropertiesModal from '../../../modals/form/PropertiesModal.vue'
 import { useSelectedEntitiesProperties } from '../../utils/properties'
 
@@ -17,6 +18,7 @@ const { entities, createModel } = useSelectedEntitiesProperties(
 const timeScale = createModel('timeScale')
 const skip = createModel('skip')
 const timeScaleEase = createModel('timeScaleEase')
+const timeScaleTransition = createModel('timeScaleTransition')
 const hideNotes = createModel('hideNotes')
 const groupId = createModel('groupId')
 const beat = createModel('beat')
@@ -28,6 +30,7 @@ const editorLane = createModel('editorLane')
         <MultiTimeScaleField v-model="timeScale" />
         <MultiSkipField v-model="skip" />
         <MultiTimeScaleEaseField v-model="timeScaleEase" />
+        <MultiTimeScaleTransitionField v-model="timeScaleTransition" />
         <MultiHideNotesField v-model="hideNotes" />
         <MultiGroupField v-model="groupId" />
         <MultiBeatField v-if="entities.length === 1" v-model="beat" />

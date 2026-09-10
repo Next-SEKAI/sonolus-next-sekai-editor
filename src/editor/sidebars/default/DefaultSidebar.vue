@@ -62,6 +62,7 @@ import { useSelectedEntitiesProperties } from '../../utils/properties'
 import BaseSidebar from '../BaseSidebar.vue'
 import MultiIsMaskNotesField from '../../../modals/form/MultiIsMaskNotesField.vue'
 import MultiElevationField from '../../../modals/form/MultiElevationField.vue'
+import MultiTimeScaleTransitionField from '../../../modals/form/MultiTimeScaleTransitionField.vue'
 
 const { entities, types, noteFields, createModel } = useSelectedEntitiesProperties(isEditableEntity)
 
@@ -73,6 +74,7 @@ const stageId = createModel('stageId')
 const timeScale = createModel('timeScale')
 const skip = createModel('skip')
 const timeScaleEase = createModel('timeScaleEase')
+const timeScaleTransition = createModel('timeScaleTransition')
 const hideNotes = createModel('hideNotes')
 const cameraLeft = createModel('cameraLeft')
 const cameraSize = createModel('cameraSize')
@@ -133,6 +135,7 @@ const connectorPresentation = createModel('connectorPresentation')
             <MultiTimeScaleField v-if="types.timeScale" v-model="timeScale" />
             <MultiSkipField v-if="types.timeScale" v-model="skip" />
             <MultiTimeScaleEaseField v-if="types.timeScale" v-model="timeScaleEase" />
+            <MultiTimeScaleTransitionField v-if="types.timeScale" v-model="timeScaleTransition" />
             <MultiHideNotesField v-if="types.timeScale" v-model="hideNotes" />
             <MultiCameraLeftField v-if="types.cameraEventJoint" v-model="cameraLeft" />
             <MultiCameraSizeField v-if="types.cameraEventJoint" v-model="cameraSize" />
