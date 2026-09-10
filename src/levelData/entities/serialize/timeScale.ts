@@ -88,4 +88,8 @@ export const serializeTimeScalesToLevelDataEntities = (
 const timeScaleEases = {
     none: 0,
     linear: 1,
+    inQuad: 2,
+    outQuad: 3,
+    inOutQuad: 4,
+    outInQuad: 5,
 }

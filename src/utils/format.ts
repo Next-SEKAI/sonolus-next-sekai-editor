@@ -20,7 +20,7 @@ export const formatTimeScale = (value: number, skip: number, timeScaleEase: Time
         text += `${skip}`
     }
 
-    if (timeScaleEase === 'linear') {
+    if (timeScaleEase !== 'none') {
         text += '^'
     }
 

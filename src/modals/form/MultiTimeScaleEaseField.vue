@@ -1,26 +1,22 @@
 <script setup lang="ts">
 import type { TimeScaleEase } from '../../chart/timeScale'
 import { i18n } from '../../i18n'
-import MultiToggleField from './MultiToggleField.vue'
+import MultiSelectField from './MultiSelectField.vue'
 
-const modelValue = defineModel<
-    TimeScaleEase | undefined,
-    string,
-    boolean | undefined,
-    boolean | undefined
->({
-    required: true,
-    get: (value) => (value === undefined ? undefined : value !== 'none'),
-    set: (value): TimeScaleEase | undefined =>
-        value === undefined ? undefined : value ? 'linear' : 'none',
-})
+const modelValue = defineModel<TimeScaleEase | undefined>({ required: true })
 </script>
 
 <template>
-    <MultiToggleField
+    <MultiSelectField
         v-model="modelValue"
         :label="i18n.modals.form.timeScaleEase.label"
-        :disabled="i18n.modals.form.timeScaleEase.none"
-        :enabled="i18n.modals.form.timeScaleEase.linear"
+        :options="[
+            [i18n.modals.form.timeScaleEase.none, 'none'],
+            [i18n.modals.form.timeScaleEase.linear, 'linear'],
+            [i18n.modals.form.timeScaleEase.inQuad, 'inQuad'],
+            [i18n.modals.form.timeScaleEase.outQuad, 'outQuad'],
+            [i18n.modals.form.timeScaleEase.inOutQuad, 'inOutQuad'],
+            [i18n.modals.form.timeScaleEase.outInQuad, 'outInQuad'],
+        ]"
     />
 </template>
