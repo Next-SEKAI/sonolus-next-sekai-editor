@@ -103,7 +103,7 @@ export const timeScale: Tool = {
                                       timeScaleEase: 'linear',
                                       hideNotes: false,
                                   }
-                                : entity.timeScaleEase === 'linear' && !entity.hideNotes
+                                : entity.timeScaleEase !== 'none' && !entity.hideNotes
                                   ? {
                                         timeScaleEase: 'none',
                                         hideNotes: true,

@@ -25,11 +25,22 @@ const valueSchema = Type.Number()
 
 const skipSchema = Type.Number()
 
-const easeSchema = Type.Union([Type.Literal(0), Type.Literal(1)])
+const easeSchema = Type.Union([
+    Type.Literal(0),
+    Type.Literal(1),
+    Type.Literal(2),
+    Type.Literal(3),
+    Type.Literal(4),
+    Type.Literal(5),
+])
 
 const eases = {
     0: 'none',
     1: 'linear',
+    2: 'inQuad',
+    3: 'outQuad',
+    4: 'inOutQuad',
+    5: 'outInQuad',
 } as const
 
 const hideNotesSchema = Type.Number()

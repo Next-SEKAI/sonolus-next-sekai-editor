@@ -1022,7 +1022,11 @@
             "timeScaleEase": {
                 "label": "Time Scale Ease",
                 "none": "None",
-                "linear": "Linear"
+                "linear": "Linear",
+                "inQuad": "In Quad",
+                "outQuad": "Out Quad",
+                "inOutQuad": "In Out Quad",
+                "outInQuad": "Out In Quad"
             },
             "toggle": {
                 "enabled": "Enabled",
