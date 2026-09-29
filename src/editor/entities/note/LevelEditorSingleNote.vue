@@ -12,16 +12,28 @@ defineProps<{
 
 <template>
     <component
-        :is="
-            bodyComponents.single[
-                entity.isCritical ? 'yellow' : entity.flickDirection !== 'none' ? 'red' : 'cyan'
-            ]
+        :is="bodyComponents.single"
+        :color="
+            entity.noteColor !== 'default'
+                ? entity.noteColor
+                : entity.isCritical
+                  ? 'critical'
+                  : entity.flickDirection !== 'none'
+                    ? 'flick'
+                    : 'tap'
         "
         :size="entity.size"
     />
     <component
-        :is="arrowComponents[entity.isCritical ? 'yellow' : 'red'][entity.flickDirection]"
+        :is="arrowComponents[entity.flickDirection]"
         v-if="entity.flickDirection !== 'none'"
+        :color="
+            entity.noteColor !== 'default'
+                ? entity.noteColor
+                : entity.isCritical
+                  ? 'critical'
+                  : 'flick'
+        "
         :size="entity.size"
     />
     <component :is="fakeMarkerComponent" v-if="entity.isFake" :size="entity.size" />

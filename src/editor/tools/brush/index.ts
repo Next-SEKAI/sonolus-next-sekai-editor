@@ -17,6 +17,7 @@ import type {
     ConnectorPresentation,
     ConnectorType,
     FlickDirection,
+    NoteColor,
     NoteSfx,
     NoteType,
 } from '../../../chart/note'
@@ -53,6 +54,7 @@ export type BrushProperties = {
     size?: number
     isCritical?: boolean
     flickDirection?: FlickDirection
+    noteColor?: NoteColor
     isFake?: boolean
     sfx?: NoteSfx
     isConnectorSeparator?: boolean

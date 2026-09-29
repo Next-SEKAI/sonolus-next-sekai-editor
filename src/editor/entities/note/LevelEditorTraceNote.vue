@@ -2,7 +2,7 @@
 import type { NoteEntity } from '../../../state/entities/slides/note'
 import { arrowComponents } from './arrow'
 import { bodyComponents } from './body'
-import { diamondComponents } from './diamond'
+import { diamondComponent } from './diamond'
 import { fakeMarkerComponent } from './fakeMarker'
 
 defineProps<{
@@ -13,24 +13,41 @@ defineProps<{
 
 <template>
     <component
-        :is="
-            bodyComponents.trace[
-                entity.isCritical ? 'yellow' : entity.flickDirection !== 'none' ? 'red' : 'green'
-            ]
+        :is="bodyComponents.trace"
+        :color="
+            entity.noteColor !== 'default'
+                ? entity.noteColor
+                : entity.isCritical
+                  ? 'critical'
+                  : entity.flickDirection !== 'none'
+                    ? 'flick'
+                    : 'hold'
         "
         :size="entity.size"
     />
     <component
-        :is="
-            diamondComponents[
-                entity.isCritical ? 'yellow' : entity.flickDirection !== 'none' ? 'red' : 'green'
-            ]
+        :is="diamondComponent"
+        :color="
+            entity.noteColor !== 'default'
+                ? entity.noteColor
+                : entity.isCritical
+                  ? 'critical'
+                  : entity.flickDirection !== 'none'
+                    ? 'flick'
+                    : 'hold'
         "
         :size="entity.size"
     />
     <component
-        :is="arrowComponents[entity.isCritical ? 'yellow' : 'red'][entity.flickDirection]"
+        :is="arrowComponents[entity.flickDirection]"
         v-if="entity.flickDirection !== 'none'"
+        :color="
+            entity.noteColor !== 'default'
+                ? entity.noteColor
+                : entity.isCritical
+                  ? 'critical'
+                  : 'flick'
+        "
         :size="entity.size"
     />
     <component :is="fakeMarkerComponent" v-if="entity.isFake" :size="entity.size" />

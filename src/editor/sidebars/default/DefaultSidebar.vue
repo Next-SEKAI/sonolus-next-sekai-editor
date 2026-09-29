@@ -63,6 +63,7 @@ import BaseSidebar from '../BaseSidebar.vue'
 import MultiIsMaskNotesField from '../../../modals/form/MultiIsMaskNotesField.vue'
 import MultiElevationField from '../../../modals/form/MultiElevationField.vue'
 import MultiTimeScaleTransitionField from '../../../modals/form/MultiTimeScaleTransitionField.vue'
+import MultiNoteColorField from '../../../modals/form/MultiNoteColorField.vue'
 
 const { entities, types, noteFields, createModel } = useSelectedEntitiesProperties(isEditableEntity)
 
@@ -113,6 +114,7 @@ const left = createModel('left')
 const size = createModel('size')
 const isCritical = createModel('isCritical')
 const flickDirection = createModel('flickDirection')
+const noteColor = createModel('noteColor')
 const isFake = createModel('isFake')
 const sfx = createModel('sfx')
 const isConnectorSeparator = createModel('isConnectorSeparator')
@@ -238,6 +240,10 @@ const connectorPresentation = createModel('connectorPresentation')
             <MultiFlickDirectionField
                 v-if="types.note && noteFields.flickDirection !== false"
                 v-model="flickDirection"
+            />
+            <MultiNoteColorField
+                v-if="types.note && noteFields.noteColor !== false"
+                v-model="noteColor"
             />
             <MultiIsFakeField v-if="types.note && noteFields.isFake !== false" v-model="isFake" />
             <MultiSfxField v-if="types.note && noteFields.sfx !== false" v-model="sfx" />

@@ -34,6 +34,17 @@ const defaultNoteSlidePropertiesSchema = Type.Intersect([
                 Type.Literal('downLeft'),
                 Type.Literal('downRight'),
             ]),
+            noteColor: Type.Union([
+                Type.Literal('default'),
+                Type.Literal('neutral'),
+                Type.Literal('red'),
+                Type.Literal('green'),
+                Type.Literal('blue'),
+                Type.Literal('yellow'),
+                Type.Literal('purple'),
+                Type.Literal('cyan'),
+                Type.Literal('black'),
+            ]),
             isFake: Type.Boolean(),
             sfx: Type.Union([
                 Type.Literal('default'),

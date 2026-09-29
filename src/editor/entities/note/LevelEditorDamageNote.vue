@@ -10,6 +10,6 @@ defineProps<{
 </script>
 
 <template>
-    <component :is="bodyComponents.damage" :size="entity.size" />
+    <component :is="bodyComponents.damage" :color="entity.noteColor" :size="entity.size" />
     <component :is="fakeMarkerComponent" v-if="entity.isFake" :size="entity.size" />
 </template>

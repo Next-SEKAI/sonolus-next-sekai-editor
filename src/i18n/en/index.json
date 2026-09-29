@@ -972,6 +972,18 @@
             "noteAlpha": {
                 "label": "Note Alpha"
             },
+            "noteColor": {
+                "label": "Note Color",
+                "default": "Default",
+                "neutral": "Neutral",
+                "red": "Red",
+                "green": "Green",
+                "blue": "Blue",
+                "yellow": "Yellow",
+                "purple": "Purple",
+                "cyan": "Cyan",
+                "black": "Black"
+            },
             "noteType": {
                 "label": "Note Type",
                 "default": "Default",

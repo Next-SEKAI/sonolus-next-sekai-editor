@@ -53,6 +53,7 @@ import { useProperties } from '../../utils/properties'
 import OptionalIsMaskNotesField from '../../../modals/form/OptionalIsMaskNotesField.vue'
 import OptionalElevationField from '../../../modals/form/OptionalElevationField.vue'
 import OptionalTimeScaleTransitionField from '../../../modals/form/OptionalTimeScaleTransitionField.vue'
+import OptionalNoteColorField from '../../../modals/form/OptionalNoteColorField.vue'
 
 const createModel = useProperties(brushProperties)
 
@@ -63,6 +64,7 @@ const isAttached = createModel('isAttached')
 const size = createModel('size')
 const isCritical = createModel('isCritical')
 const flickDirection = createModel('flickDirection')
+const noteColor = createModel('noteColor')
 const isFake = createModel('isFake')
 const sfx = createModel('sfx')
 const isConnectorSeparator = createModel('isConnectorSeparator')
@@ -117,6 +119,7 @@ const eventEase = createModel('eventEase')
     <OptionalSizeField v-model="size" />
     <OptionalIsCriticalField v-model="isCritical" />
     <OptionalFlickDirectionField v-model="flickDirection" />
+    <OptionalNoteColorField v-model="noteColor" />
     <OptionalIsFakeField v-model="isFake" />
     <OptionalSfxField v-model="sfx" />
     <OptionalIsConnectorSeparatorField v-model="isConnectorSeparator" />
