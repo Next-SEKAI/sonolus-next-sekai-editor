@@ -190,6 +190,10 @@ const apply = (notes: NoteEntity[]) => {
                         nearest?.connectorType ??
                         'active',
                     connectorEase: defaultSlideProperties.value.connectorEase ?? 'linear',
+                    connectorColor:
+                        defaultSlideProperties.value.connectorColor ??
+                        nearest?.connectorColor ??
+                        'default',
                     connectorIsFake:
                         defaultSlideProperties.value.connectorIsFake ??
                         defaultSlideProperties.value.isFake ??
@@ -200,10 +204,6 @@ const apply = (notes: NoteEntity[]) => {
                         defaultSlideProperties.value.isCritical ??
                         nearest?.connectorActiveIsCritical ??
                         false,
-                    connectorGuideColor:
-                        defaultSlideProperties.value.connectorGuideColor ??
-                        nearest?.connectorGuideColor ??
-                        'green',
                     connectorGuideAlpha:
                         defaultSlideProperties.value.connectorGuideAlpha ??
                         nearest?.connectorGuideAlpha ??

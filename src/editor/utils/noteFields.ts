@@ -13,9 +13,9 @@ export type NoteFields = {
     isConnectorSeparator: boolean
     connectorType: boolean
     connectorEase: boolean
+    connectorColor: boolean
     connectorIsFake: boolean
     connectorActiveIsCritical: boolean
-    connectorGuideColor: boolean
     connectorGuideAlpha: boolean
     connectorLayer: boolean
     connectorIsPassThrough: boolean
@@ -55,11 +55,11 @@ export const getNoteFields = (note: NoteEntity): NoteFields => {
         isConnectorSeparator: !isFirst && !isLast,
         connectorType: (isFirst || note.isConnectorSeparator) && !isLast,
         connectorEase: (isFirst || !note.isAttached) && !isLast,
+        connectorColor: (isFirst || note.isConnectorSeparator) && !isLast,
         connectorIsFake:
             (isInActive && (isActiveHead || note.isConnectorSeparator)) ||
             (isInDamage && (isDamageHead || note.isConnectorSeparator)),
         connectorActiveIsCritical: isInActive && (isActiveHead || note.isConnectorSeparator),
-        connectorGuideColor: isInGuide && (isGuideHead || note.isConnectorSeparator),
         connectorGuideAlpha: isInGuide && (isGuideHead || note.isConnectorSeparator || isGuideTail),
         connectorLayer: (isFirst || note.isConnectorSeparator) && !isLast,
         connectorIsPassThrough: (isFirst || note.isConnectorSeparator) && !isLast,

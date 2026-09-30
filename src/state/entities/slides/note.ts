@@ -2,8 +2,8 @@ import type { SlideId } from '.'
 import type { BaseEntity } from '..'
 import type { GroupId } from '../../../chart/groups'
 import type {
+    ConnectorColor,
     ConnectorEase,
-    ConnectorGuideColor,
     ConnectorLayer,
     ConnectorPresentation,
     ConnectorType,
@@ -32,10 +32,10 @@ export type NoteEntity = BaseEntity & {
     isConnectorSeparator: boolean
     connectorType: ConnectorType
     connectorEase: ConnectorEase
+    connectorColor: ConnectorColor
     connectorLayer: ConnectorLayer
     connectorIsFake: boolean
     connectorActiveIsCritical: boolean
-    connectorGuideColor: ConnectorGuideColor
     connectorGuideAlpha: number
     connectorIsPassThrough: boolean
     connectorPresentation: ConnectorPresentation
@@ -72,9 +72,9 @@ export const toNoteEntity = (
     isConnectorSeparator: object.isConnectorSeparator,
     connectorType: object.connectorType,
     connectorEase: object.connectorEase,
+    connectorColor: object.connectorColor,
     connectorIsFake: object.connectorIsFake,
     connectorActiveIsCritical: object.connectorActiveIsCritical,
-    connectorGuideColor: object.connectorGuideColor,
     connectorGuideAlpha: object.connectorGuideAlpha,
     connectorLayer: object.connectorLayer,
     connectorIsPassThrough: object.connectorIsPassThrough,

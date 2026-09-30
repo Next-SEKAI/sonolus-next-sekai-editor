@@ -150,9 +150,9 @@ export const parseSusChart = (sus: Sus) => {
                 isConnectorSeparator: false,
                 connectorType: 'active',
                 connectorEase: 'linear',
+                connectorColor: 'default',
                 connectorIsFake: false,
                 connectorActiveIsCritical: isCritical,
-                connectorGuideColor: 'green',
                 connectorGuideAlpha: 1,
                 connectorLayer: 'top',
                 connectorIsPassThrough: false,
@@ -172,10 +172,10 @@ export const parseSusChart = (sus: Sus) => {
         const sfx = 'default'
         const connectorType = slide.type === 3 ? 'active' : 'guide'
         const isConnectorSeparator = connectorType === 'guide'
+        const connectorColor =
+            connectorType === 'active' ? 'default' : slideCriticalMod ? 'yellow' : 'green'
         const connectorIsFake = false
         const connectorActiveIsCritical = connectorType === 'active' && slideCriticalMod
-        const connectorGuideColor =
-            connectorType === 'guide' && slideCriticalMod ? 'yellow' : 'green'
         const connectorLayer = connectorType === 'guide' ? 'bottom' : 'top'
         const connectorIsPassThrough = false
         const connectorPresentation = 'default'
@@ -216,9 +216,9 @@ export const parseSusChart = (sus: Sus) => {
                             isConnectorSeparator,
                             connectorType,
                             connectorEase,
+                            connectorColor,
                             connectorIsFake,
                             connectorActiveIsCritical,
-                            connectorGuideColor,
                             connectorGuideAlpha,
                             connectorLayer,
                             connectorIsPassThrough,
@@ -241,9 +241,9 @@ export const parseSusChart = (sus: Sus) => {
                             isConnectorSeparator,
                             connectorType,
                             connectorEase,
+                            connectorColor,
                             connectorIsFake,
                             connectorActiveIsCritical,
-                            connectorGuideColor,
                             connectorGuideAlpha,
                             connectorLayer,
                             connectorIsPassThrough,
@@ -270,9 +270,9 @@ export const parseSusChart = (sus: Sus) => {
                             isConnectorSeparator,
                             connectorType,
                             connectorEase,
+                            connectorColor,
                             connectorIsFake,
                             connectorActiveIsCritical,
-                            connectorGuideColor,
                             connectorGuideAlpha,
                             connectorLayer,
                             connectorIsPassThrough,
@@ -295,9 +295,9 @@ export const parseSusChart = (sus: Sus) => {
                             isConnectorSeparator,
                             connectorType,
                             connectorEase,
+                            connectorColor,
                             connectorIsFake,
                             connectorActiveIsCritical,
-                            connectorGuideColor,
                             connectorGuideAlpha,
                             connectorLayer,
                             connectorIsPassThrough,
@@ -324,9 +324,9 @@ export const parseSusChart = (sus: Sus) => {
                             isConnectorSeparator,
                             connectorType,
                             connectorEase,
+                            connectorColor,
                             connectorIsFake,
                             connectorActiveIsCritical,
-                            connectorGuideColor,
                             connectorGuideAlpha,
                             connectorLayer,
                             connectorIsPassThrough,
@@ -349,9 +349,9 @@ export const parseSusChart = (sus: Sus) => {
                             isConnectorSeparator,
                             connectorType,
                             connectorEase,
+                            connectorColor,
                             connectorIsFake,
                             connectorActiveIsCritical,
-                            connectorGuideColor,
                             connectorGuideAlpha,
                             connectorLayer,
                             connectorIsPassThrough,
@@ -379,9 +379,9 @@ export const parseSusChart = (sus: Sus) => {
                         isConnectorSeparator,
                         connectorType,
                         connectorEase,
+                        connectorColor,
                         connectorIsFake,
                         connectorActiveIsCritical,
-                        connectorGuideColor,
                         connectorGuideAlpha,
                         connectorLayer,
                         connectorIsPassThrough,

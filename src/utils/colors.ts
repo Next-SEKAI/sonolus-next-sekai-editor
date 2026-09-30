@@ -55,12 +55,10 @@ export const damageColors = {
     black: '#323232',
 }
 
-export const activeColors = {
+export const connectorColors = {
     normal: '#7fffd3',
     critical: '#fbffdc',
-}
-
-export const guideColors = {
+    damage: '#ff80ff',
     neutral: '#ededed',
     red: '#d6737b',
     green: '#73d69d',
@@ -70,5 +68,3 @@ export const guideColors = {
     cyan: '#73acd6',
     black: '#000000',
 }
-
-export const damageColor = '#ff80ff'

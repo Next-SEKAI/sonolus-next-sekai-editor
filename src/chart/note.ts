@@ -26,8 +26,8 @@ export type ConnectorType = 'active' | 'guide' | 'damage'
 
 export type ConnectorEase = 'linear' | 'in' | 'out' | 'inOut' | 'outIn' | 'none'
 
-export type ConnectorGuideColor =
-    'neutral' | 'red' | 'green' | 'blue' | 'yellow' | 'purple' | 'cyan' | 'black'
+export type ConnectorColor =
+    'default' | 'neutral' | 'red' | 'green' | 'blue' | 'yellow' | 'purple' | 'cyan' | 'black'
 
 export type ConnectorLayer = 'top' | 'bottom' | 'under' | 'over'
 
@@ -49,9 +49,9 @@ export type NoteObject = {
     isConnectorSeparator: boolean
     connectorType: ConnectorType
     connectorEase: ConnectorEase
+    connectorColor: ConnectorColor
     connectorIsFake: boolean
     connectorActiveIsCritical: boolean
-    connectorGuideColor: ConnectorGuideColor
     connectorGuideAlpha: number
     connectorLayer: ConnectorLayer
     connectorIsPassThrough: boolean

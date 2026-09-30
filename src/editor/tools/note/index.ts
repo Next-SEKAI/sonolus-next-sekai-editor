@@ -321,12 +321,12 @@ export const editNote = (entity: NoteEntity, object: Partial<NoteObject>) => {
         isConnectorSeparator: object.isConnectorSeparator ?? entity.isConnectorSeparator,
         connectorType: object.connectorType ?? entity.connectorType,
         connectorEase: object.connectorEase ?? entity.connectorEase,
+        connectorColor: object.connectorColor ?? entity.connectorColor,
         connectorIsFake: object.connectorIsFake ?? object.isFake ?? entity.connectorIsFake,
         connectorActiveIsCritical:
             object.connectorActiveIsCritical ??
             object.isCritical ??
             entity.connectorActiveIsCritical,
-        connectorGuideColor: object.connectorGuideColor ?? entity.connectorGuideColor,
         connectorGuideAlpha: object.connectorGuideAlpha ?? entity.connectorGuideAlpha,
         connectorLayer: object.connectorLayer ?? entity.connectorLayer,
         connectorIsPassThrough: object.connectorIsPassThrough ?? entity.connectorIsPassThrough,
@@ -355,12 +355,12 @@ export const editSelectedNote = (
         isConnectorSeparator: object.isConnectorSeparator ?? entity.isConnectorSeparator,
         connectorType: object.connectorType ?? entity.connectorType,
         connectorEase: object.connectorEase ?? entity.connectorEase,
+        connectorColor: object.connectorColor ?? entity.connectorColor,
         connectorIsFake: object.connectorIsFake ?? object.isFake ?? entity.connectorIsFake,
         connectorActiveIsCritical:
             object.connectorActiveIsCritical ??
             object.isCritical ??
             entity.connectorActiveIsCritical,
-        connectorGuideColor: object.connectorGuideColor ?? entity.connectorGuideColor,
         connectorGuideAlpha: object.connectorGuideAlpha ?? entity.connectorGuideAlpha,
         connectorLayer: object.connectorLayer ?? entity.connectorLayer,
         connectorIsPassThrough: object.connectorIsPassThrough ?? entity.connectorIsPassThrough,
@@ -397,6 +397,7 @@ const getPropertiesFromSelection = () => {
         isConnectorSeparator: defaultNoteProperties.value.isConnectorSeparator ?? false,
         connectorType: defaultNoteProperties.value.connectorType ?? 'active',
         connectorEase: defaultNoteProperties.value.connectorEase ?? 'linear',
+        connectorColor: defaultNoteProperties.value.connectorColor ?? 'default',
         connectorIsFake:
             defaultNoteProperties.value.connectorIsFake ??
             defaultNoteProperties.value.isFake ??
@@ -405,7 +406,6 @@ const getPropertiesFromSelection = () => {
             defaultNoteProperties.value.connectorActiveIsCritical ??
             defaultNoteProperties.value.isCritical ??
             false,
-        connectorGuideColor: defaultNoteProperties.value.connectorGuideColor ?? 'green',
         connectorGuideAlpha: defaultNoteProperties.value.connectorGuideAlpha ?? 1,
         connectorLayer: defaultNoteProperties.value.connectorLayer ?? 'top',
         connectorIsPassThrough: defaultNoteProperties.value.connectorIsPassThrough ?? false,

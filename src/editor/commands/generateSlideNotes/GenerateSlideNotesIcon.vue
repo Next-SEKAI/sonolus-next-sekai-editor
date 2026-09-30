@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { activeColors } from '../../../utils/colors'
+import { connectorColors } from '../../../utils/colors'
 </script>
 
 <template>
@@ -9,7 +9,7 @@ import { activeColors } from '../../../utils/colors'
             y="-0.55"
             width="1"
             height="1.1"
-            :fill="activeColors.normal"
+            :fill="connectorColors.normal"
             fill-opacity="0.8"
         />
         <g transform="scale(0.6, 0.6) translate(0, 0.4)">

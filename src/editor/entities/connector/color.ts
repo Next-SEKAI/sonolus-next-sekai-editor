@@ -1,7 +1,7 @@
 import { bpms } from '../../../history/bpms'
 import type { NoteEntity } from '../../../state/entities/slides/note'
 import { beatToTime } from '../../../state/integrals/bpms'
-import { activeColors, damageColor, guideColors } from '../../../utils/colors'
+import { connectorColors } from '../../../utils/colors'
 import { remap } from '../../../utils/math'
 
 export type Gradient = {
@@ -27,12 +27,15 @@ export const getColor = (
     if (segmentHead.connectorType !== 'guide')
         return {
             fill: {
-                fill:
-                    segmentHead.connectorType === 'damage'
-                        ? damageColor
-                        : activeColors[
-                              segmentHead.connectorActiveIsCritical ? 'critical' : 'normal'
-                          ],
+                fill: connectorColors[
+                    segmentHead.connectorColor !== 'default'
+                        ? segmentHead.connectorColor
+                        : segmentHead.connectorType === 'active'
+                          ? segmentHead.connectorActiveIsCritical
+                              ? 'critical'
+                              : 'normal'
+                          : 'damage'
+                ],
                 'fill-opacity': 0.8,
             },
         }
@@ -47,7 +50,9 @@ export const getColor = (
         },
         gradient: {
             id,
-            color: guideColors[segmentHead.connectorGuideColor],
+            color: connectorColors[
+                segmentHead.connectorColor !== 'default' ? segmentHead.connectorColor : 'green'
+            ],
             headAlpha:
                 remap(
                     tSegmentHead,
