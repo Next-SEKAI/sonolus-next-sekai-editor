@@ -182,6 +182,30 @@ const directions = {
     5: 'downRight',
 } as const
 
+const styleSchema = Type.Union([
+    Type.Literal(0),
+    Type.Literal(1),
+    Type.Literal(2),
+    Type.Literal(3),
+    Type.Literal(4),
+    Type.Literal(5),
+    Type.Literal(6),
+    Type.Literal(7),
+    Type.Literal(8),
+])
+
+const noteColors = {
+    0: 'default',
+    1: 'neutral',
+    2: 'red',
+    3: 'green',
+    4: 'blue',
+    5: 'yellow',
+    6: 'purple',
+    7: 'cyan',
+    8: 'black',
+} as const
+
 const sfxSchema = Type.Union([
     Type.Literal(0),
     Type.Literal(1),
@@ -391,6 +415,7 @@ const toNoteObject = (
         size: size * 2,
         isCritical: false,
         flickDirection: directions[getValue(entity, 'direction', directionSchema)],
+        noteColor: noteColors[getOptionalValue(entity, 'style', styleSchema) ?? 0],
         isFake: false,
         sfx: sfxs[getOptionalValue(entity, 'effectKind', sfxSchema) ?? 0],
         isConnectorSeparator: !!getOptionalValue(entity, 'isSeparator', isSeparatorSchema),

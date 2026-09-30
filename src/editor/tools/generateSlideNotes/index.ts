@@ -179,6 +179,8 @@ const apply = (notes: NoteEntity[]) => {
                         defaultSlideProperties.value.flickDirection ??
                         nearest?.flickDirection ??
                         'none',
+                    noteColor:
+                        defaultSlideProperties.value.noteColor ?? nearest?.noteColor ?? 'default',
                     isFake: defaultSlideProperties.value.isFake ?? nearest?.isFake ?? false,
                     sfx: defaultSlideProperties.value.sfx ?? nearest?.sfx ?? 'default',
                     isConnectorSeparator:

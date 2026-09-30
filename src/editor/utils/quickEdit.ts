@@ -5,6 +5,7 @@ import type {
     ConnectorPresentation,
     ConnectorType,
     FlickDirection,
+    NoteColor,
     NoteSfx,
     NoteType,
 } from '../../chart/note'
@@ -78,6 +79,21 @@ export const quickEdit = (properties: DefaultNoteSlideProperties) => {
                     'down',
                     'downLeft',
                     'downRight',
+                ]),
+            })
+            break
+        case 'noteColor':
+            editSelectedEditableEntities({
+                noteColor: rotate(value as NoteColor, [
+                    'default',
+                    'neutral',
+                    'red',
+                    'green',
+                    'blue',
+                    'yellow',
+                    'purple',
+                    'cyan',
+                    'black',
                 ]),
             })
             break

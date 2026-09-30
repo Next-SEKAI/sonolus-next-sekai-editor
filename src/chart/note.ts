@@ -6,6 +6,9 @@ export type NoteType = 'default' | 'trace' | 'anchor' | 'damage' | 'forceTick' |
 export type FlickDirection =
     'none' | 'up' | 'upLeft' | 'upRight' | 'down' | 'downLeft' | 'downRight'
 
+export type NoteColor =
+    'default' | 'neutral' | 'red' | 'green' | 'blue' | 'yellow' | 'purple' | 'cyan' | 'black'
+
 export type NoteSfx =
     | 'default'
     | 'none'
@@ -40,6 +43,7 @@ export type NoteObject = {
     size: number
     isCritical: boolean
     flickDirection: FlickDirection
+    noteColor: NoteColor
     isFake: boolean
     sfx: NoteSfx
     isConnectorSeparator: boolean

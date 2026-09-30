@@ -24,6 +24,7 @@ import MultiSizeField from '../../../modals/form/MultiSizeField.vue'
 import MultiStageField from '../../../modals/form/MultiStageField.vue'
 import PropertiesModal from '../../../modals/form/PropertiesModal.vue'
 import { useSelectedEntitiesProperties } from '../../utils/properties'
+import MultiNoteColorField from '../../../modals/form/MultiNoteColorField.vue'
 
 const { noteFields, createModel } = useSelectedEntitiesProperties(
     (entity) => entity.type === 'note',
@@ -38,6 +39,7 @@ const left = createModel('left')
 const size = createModel('size')
 const isCritical = createModel('isCritical')
 const flickDirection = createModel('flickDirection')
+const noteColor = createModel('noteColor')
 const isFake = createModel('isFake')
 const sfx = createModel('sfx')
 const isConnectorSeparator = createModel('isConnectorSeparator')
@@ -66,6 +68,7 @@ const connectorPresentation = createModel('connectorPresentation')
             v-if="noteFields.flickDirection !== false"
             v-model="flickDirection"
         />
+        <MultiNoteColorField v-if="noteFields.noteColor !== false" v-model="noteColor" />
         <MultiIsFakeField v-if="noteFields.isFake !== false" v-model="isFake" />
         <MultiSfxField v-if="noteFields.sfx !== false" v-model="sfx" />
         <MultiIsConnectorSeparatorField

@@ -128,6 +128,10 @@ export const serializeSlidesToLevelDataEntities = (
                         name: 'segmentPresentation',
                         value: segmentPresentations[note.connectorPresentation],
                     },
+                    {
+                        name: 'style',
+                        value: styles[note.noteColor],
+                    },
                 ],
             }
             entities.push(entity)
@@ -440,4 +444,16 @@ const segmentLayers = {
 const segmentPresentations = {
     default: 0,
     fullscreen: 1,
+}
+
+const styles = {
+    default: 0,
+    neutral: 1,
+    red: 2,
+    green: 3,
+    blue: 4,
+    yellow: 5,
+    purple: 6,
+    cyan: 7,
+    black: 8,
 }

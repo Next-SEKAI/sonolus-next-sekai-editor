@@ -8,6 +8,7 @@ import type {
     ConnectorPresentation,
     ConnectorType,
     FlickDirection,
+    NoteColor,
     NoteObject,
     NoteSfx,
     NoteType,
@@ -25,6 +26,7 @@ export type NoteEntity = BaseEntity & {
     size: number
     isCritical: boolean
     flickDirection: FlickDirection
+    noteColor: NoteColor
     isFake: boolean
     sfx: NoteSfx
     isConnectorSeparator: boolean
@@ -64,8 +66,9 @@ export const toNoteEntity = (
     size: object.size,
     isCritical: object.isCritical,
     flickDirection: object.flickDirection,
-    sfx: object.sfx,
+    noteColor: object.noteColor,
     isFake: object.isFake,
+    sfx: object.sfx,
     isConnectorSeparator: object.isConnectorSeparator,
     connectorType: object.connectorType,
     connectorEase: object.connectorEase,

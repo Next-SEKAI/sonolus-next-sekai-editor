@@ -20,6 +20,7 @@ import OptionalSfxField from '../../../modals/form/OptionalSfxField.vue'
 import PresetField from '../../../modals/form/PresetField.vue'
 import { settings } from '../../../settings'
 import { useProperties } from '../../utils/properties'
+import OptionalNoteColorField from '../../../modals/form/OptionalNoteColorField.vue'
 
 const createModel = useProperties(defaultNoteProperties)
 
@@ -27,6 +28,7 @@ const noteType = createModel('noteType')
 const isAttached = createModel('isAttached')
 const isCritical = createModel('isCritical')
 const flickDirection = createModel('flickDirection')
+const noteColor = createModel('noteColor')
 const isFake = createModel('isFake')
 const sfx = createModel('sfx')
 const isConnectorSeparator = createModel('isConnectorSeparator')
@@ -51,6 +53,7 @@ const copyProperties = createModel('copyProperties')
     <OptionalIsAttachedField v-model="isAttached" />
     <OptionalIsCriticalField v-model="isCritical" />
     <OptionalFlickDirectionField v-model="flickDirection" />
+    <OptionalNoteColorField v-model="noteColor" />
     <OptionalIsFakeField v-model="isFake" />
     <OptionalSfxField v-model="sfx" />
     <OptionalIsConnectorSeparatorField v-model="isConnectorSeparator" />

@@ -338,6 +338,7 @@ const getPropertiesFromSelection = (beat: number) => {
         isCritical: defaultSlideProperties.value.isCritical ?? note?.isCritical ?? false,
         flickDirection:
             defaultSlideProperties.value.flickDirection ?? note?.flickDirection ?? 'none',
+        noteColor: defaultSlideProperties.value.noteColor ?? note?.noteColor ?? 'default',
         isFake: defaultSlideProperties.value.isFake ?? note?.isFake ?? false,
         sfx: defaultSlideProperties.value.sfx ?? note?.sfx ?? 'default',
         isConnectorSeparator: defaultSlideProperties.value.isConnectorSeparator ?? false,

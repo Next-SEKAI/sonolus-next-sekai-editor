@@ -144,6 +144,7 @@ export const parseSusChart = (sus: Sus) => {
                 size: note.width,
                 isCritical,
                 flickDirection: flickDirections[flickMods.get(key) ?? 'none'],
+                noteColor: 'default',
                 isFake: false,
                 sfx: 'default',
                 isConnectorSeparator: false,
@@ -166,6 +167,7 @@ export const parseSusChart = (sus: Sus) => {
 
         const slideCriticalMod = criticalMods.has(getKey(startNote))
 
+        const noteColor = 'default'
         const isFake = false
         const sfx = 'default'
         const connectorType = slide.type === 3 ? 'active' : 'guide'
@@ -208,6 +210,7 @@ export const parseSusChart = (sus: Sus) => {
                             size,
                             isCritical,
                             flickDirection: 'none',
+                            noteColor,
                             isFake,
                             sfx,
                             isConnectorSeparator,
@@ -232,6 +235,7 @@ export const parseSusChart = (sus: Sus) => {
                             size,
                             isCritical,
                             flickDirection: 'none',
+                            noteColor,
                             isFake,
                             sfx,
                             isConnectorSeparator,
@@ -260,6 +264,7 @@ export const parseSusChart = (sus: Sus) => {
                             size,
                             isCritical,
                             flickDirection: 'none',
+                            noteColor,
                             isFake,
                             sfx,
                             isConnectorSeparator,
@@ -284,6 +289,7 @@ export const parseSusChart = (sus: Sus) => {
                             size,
                             isCritical,
                             flickDirection: flickDirections[flickMods.get(key) ?? 'none'],
+                            noteColor,
                             isFake,
                             sfx,
                             isConnectorSeparator,
@@ -312,6 +318,7 @@ export const parseSusChart = (sus: Sus) => {
                             size,
                             isCritical,
                             flickDirection: 'none',
+                            noteColor,
                             isFake,
                             sfx,
                             isConnectorSeparator,
@@ -336,6 +343,7 @@ export const parseSusChart = (sus: Sus) => {
                             size,
                             isCritical,
                             flickDirection: 'none',
+                            noteColor,
                             isFake,
                             sfx,
                             isConnectorSeparator,
@@ -365,6 +373,7 @@ export const parseSusChart = (sus: Sus) => {
                         size,
                         isCritical,
                         flickDirection: 'none',
+                        noteColor,
                         isFake,
                         sfx,
                         isConnectorSeparator,
