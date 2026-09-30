@@ -73,9 +73,8 @@ const defaultNoteSlidePropertiesSchema = Type.Intersect([
                 Type.Literal('outIn'),
                 Type.Literal('none'),
             ]),
-            connectorIsFake: Type.Boolean(),
-            connectorActiveIsCritical: Type.Boolean(),
-            connectorGuideColor: Type.Union([
+            connectorColor: Type.Union([
+                Type.Literal('default'),
                 Type.Literal('neutral'),
                 Type.Literal('red'),
                 Type.Literal('green'),
@@ -85,6 +84,8 @@ const defaultNoteSlidePropertiesSchema = Type.Intersect([
                 Type.Literal('cyan'),
                 Type.Literal('black'),
             ]),
+            connectorIsFake: Type.Boolean(),
+            connectorActiveIsCritical: Type.Boolean(),
             connectorGuideAlpha: Type.Number(),
             connectorLayer: Type.Union([
                 Type.Literal('top'),

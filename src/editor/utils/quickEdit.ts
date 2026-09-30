@@ -1,6 +1,6 @@
 import type {
+    ConnectorColor,
     ConnectorEase,
-    ConnectorGuideColor,
     ConnectorLayer,
     ConnectorPresentation,
     ConnectorType,
@@ -137,15 +137,10 @@ export const quickEdit = (properties: DefaultNoteSlideProperties) => {
                 ]),
             })
             break
-        case 'connectorIsFake':
-            editSelectedEditableEntities({ connectorIsFake: !value })
-            break
-        case 'connectorActiveIsCritical':
-            editSelectedEditableEntities({ connectorActiveIsCritical: !value })
-            break
-        case 'connectorGuideColor':
+        case 'connectorColor':
             editSelectedEditableEntities({
-                connectorGuideColor: rotate(value as ConnectorGuideColor, [
+                connectorColor: rotate(value as ConnectorColor, [
+                    'default',
                     'neutral',
                     'red',
                     'green',
@@ -156,6 +151,12 @@ export const quickEdit = (properties: DefaultNoteSlideProperties) => {
                     'black',
                 ]),
             })
+            break
+        case 'connectorIsFake':
+            editSelectedEditableEntities({ connectorIsFake: !value })
+            break
+        case 'connectorActiveIsCritical':
+            editSelectedEditableEntities({ connectorActiveIsCritical: !value })
             break
         case 'connectorGuideAlpha':
             editSelectedEditableEntities({ connectorGuideAlpha: value as never })

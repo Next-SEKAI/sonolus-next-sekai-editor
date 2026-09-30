@@ -804,6 +804,18 @@
             "connectorActiveIsCritical": {
                 "label": "Slide Critical"
             },
+            "connectorColor": {
+                "label": "Connector Color",
+                "default": "Default",
+                "neutral": "Neutral",
+                "red": "Red",
+                "green": "Green",
+                "blue": "Blue",
+                "yellow": "Yellow",
+                "purple": "Purple",
+                "cyan": "Cyan",
+                "black": "Black"
+            },
             "connectorEase": {
                 "label": "Connector Ease",
                 "linear": "Linear",
@@ -818,17 +830,6 @@
             },
             "connectorGuideAlpha": {
                 "label": "Guide Alpha"
-            },
-            "connectorGuideColor": {
-                "label": "Guide Color",
-                "neutral": "Neutral",
-                "red": "Red",
-                "green": "Green",
-                "blue": "Blue",
-                "yellow": "Yellow",
-                "purple": "Purple",
-                "cyan": "Cyan",
-                "black": "Black"
             },
             "connectorIsPassThrough": {
                 "label": "Connector Pass Through"

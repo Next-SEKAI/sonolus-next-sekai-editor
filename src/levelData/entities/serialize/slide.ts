@@ -95,18 +95,14 @@ export const serializeSlidesToLevelDataEntities = (
                         name: 'segmentKind',
                         value:
                             note.connectorType === 'active'
-                                ? note.connectorIsFake
-                                    ? note.connectorActiveIsCritical
-                                        ? 52
-                                        : 51
-                                    : note.connectorActiveIsCritical
-                                      ? 2
-                                      : 1
+                                ? activeSegmentKinds[note.connectorIsFake ? 'fake' : 'normal'][
+                                      note.connectorActiveIsCritical ? 'critical' : 'normal'
+                                  ][note.connectorColor]
                                 : note.connectorType === 'damage'
-                                  ? note.connectorIsFake
-                                      ? 53
-                                      : 3
-                                  : guideSegmentKinds[note.connectorGuideColor],
+                                  ? damageSegmentKinds[note.connectorIsFake ? 'fake' : 'normal'][
+                                        note.connectorColor
+                                    ]
+                                  : guideSegmentKinds[note.connectorColor],
                     },
                     {
                         name: 'segmentAlpha',
@@ -423,7 +419,84 @@ const connectorEases = {
     none: 0,
 }
 
+const activeSegmentKinds = {
+    normal: {
+        normal: {
+            default: 1,
+            neutral: 11,
+            red: 12,
+            green: 13,
+            blue: 14,
+            yellow: 15,
+            purple: 16,
+            cyan: 17,
+            black: 18,
+        },
+        critical: {
+            default: 2,
+            neutral: 21,
+            red: 22,
+            green: 23,
+            blue: 24,
+            yellow: 25,
+            purple: 26,
+            cyan: 27,
+            black: 28,
+        },
+    },
+    fake: {
+        normal: {
+            default: 51,
+            neutral: 61,
+            red: 62,
+            green: 63,
+            blue: 64,
+            yellow: 65,
+            purple: 66,
+            cyan: 67,
+            black: 68,
+        },
+        critical: {
+            default: 52,
+            neutral: 71,
+            red: 72,
+            green: 73,
+            blue: 74,
+            yellow: 75,
+            purple: 76,
+            cyan: 77,
+            black: 78,
+        },
+    },
+}
+
+const damageSegmentKinds = {
+    normal: {
+        default: 3,
+        neutral: 31,
+        red: 32,
+        green: 33,
+        blue: 34,
+        yellow: 35,
+        purple: 36,
+        cyan: 37,
+        black: 38,
+    },
+    fake: {
+        default: 53,
+        neutral: 81,
+        red: 82,
+        green: 83,
+        blue: 84,
+        yellow: 85,
+        purple: 86,
+        cyan: 87,
+        black: 88,
+    },
+}
+
 const guideSegmentKinds = {
+    default: 103,
     neutral: 101,
     red: 102,
     green: 103,

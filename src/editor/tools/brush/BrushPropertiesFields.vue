@@ -13,7 +13,7 @@ import OptionalConnectorActiveIsCriticalField from '../../../modals/form/Optiona
 import OptionalConnectorIsFakeField from '../../../modals/form/OptionalConnectorIsFakeField.vue'
 import OptionalConnectorEaseField from '../../../modals/form/OptionalConnectorEaseField.vue'
 import OptionalConnectorGuideAlphaField from '../../../modals/form/OptionalConnectorGuideAlphaField.vue'
-import OptionalConnectorGuideColorField from '../../../modals/form/OptionalConnectorGuideColorField.vue'
+import OptionalConnectorColorField from '../../../modals/form/OptionalConnectorColorField.vue'
 import OptionalConnectorIsPassThroughField from '../../../modals/form/OptionalConnectorIsPassThroughField.vue'
 import OptionalConnectorLayerField from '../../../modals/form/OptionalConnectorLayerField.vue'
 import OptionalConnectorPresentationField from '../../../modals/form/OptionalConnectorPresentationField.vue'
@@ -70,9 +70,9 @@ const sfx = createModel('sfx')
 const isConnectorSeparator = createModel('isConnectorSeparator')
 const connectorType = createModel('connectorType')
 const connectorEase = createModel('connectorEase')
+const connectorColor = createModel('connectorColor')
 const connectorIsFake = createModel('connectorIsFake')
 const connectorActiveIsCritical = createModel('connectorActiveIsCritical')
-const connectorGuideColor = createModel('connectorGuideColor')
 const connectorGuideAlpha = createModel('connectorGuideAlpha')
 const connectorLayer = createModel('connectorLayer')
 const connectorIsPassThrough = createModel('connectorIsPassThrough')
@@ -125,9 +125,9 @@ const eventEase = createModel('eventEase')
     <OptionalIsConnectorSeparatorField v-model="isConnectorSeparator" />
     <OptionalConnectorTypeField v-model="connectorType" />
     <OptionalConnectorEaseField v-model="connectorEase" />
+    <OptionalConnectorColorField v-model="connectorColor" />
     <OptionalConnectorIsFakeField v-model="connectorIsFake" />
     <OptionalConnectorActiveIsCriticalField v-model="connectorActiveIsCritical" />
-    <OptionalConnectorGuideColorField v-model="connectorGuideColor" />
     <OptionalConnectorGuideAlphaField v-model="connectorGuideAlpha" />
     <OptionalConnectorLayerField v-model="connectorLayer" />
     <OptionalConnectorIsPassThroughField v-model="connectorIsPassThrough" />
