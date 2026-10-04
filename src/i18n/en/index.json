@@ -756,6 +756,10 @@
         }
     },
     "modals": {
+        "alternativeEditor": {
+            "title": "Alternative Editor",
+            "message": "Check out the alternative editor by qwewqa, with more features such as live preview."
+        },
         "form": {
             "confirm": "Confirm",
             "anchor": {

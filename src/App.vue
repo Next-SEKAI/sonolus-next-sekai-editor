@@ -7,6 +7,10 @@ import ModalManager from './modals/ModalManager.vue'
 import LevelPreview from './preview/LevelPreview.vue'
 import { screenSm, screenWidth } from './screen'
 import { settings } from './settings'
+import { showModal } from './modals/index.ts'
+import AlternativeEditorModal from './modals/AlternativeEditorModal.vue'
+
+void showModal(AlternativeEditorModal, {})
 
 watch(
     () => settings.locale,
