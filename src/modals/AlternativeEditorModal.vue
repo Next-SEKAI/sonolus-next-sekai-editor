@@ -13,10 +13,10 @@ defineEmits<{
             <p>{{ i18n.modals.alternativeEditor.message }}</p>
             <a
                 class="mt-2 block cursor-pointer underline"
-                href="https://next-sekai-editor-test.qwewqa.xyz"
+                href="https://nse.qwewqa.dev"
                 target="_blank"
             >
-                https://next-sekai-editor-test.qwewqa.xyz
+                https://nse.qwewqa.dev
             </a>
         </div>
 
